@@ -35,7 +35,7 @@ module.exports = {
         specialLink: ['hrefLeft', 'hrefRight'],
         aspects: ['invalidHref', 'preferButton']
       }
-    ],
+    ]
     // 'no-restricted-imports': [
     //   'error',
     //   {
