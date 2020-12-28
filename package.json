@@ -1,0 +1,50 @@
+{
+  "name": "hic-clone",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "NODE_ENV=development next dev",
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,scss,md,json}' --config ./.prettierrc",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "@amplitude/node": "^1.1.0",
+    "@amplitude/react-amplitude": "^1.0.0",
+    "@fingerprintjs/fingerprintjs": "^3.0.3",
+    "@material-ui/core": "^4.11.2",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "amplitude-js": "^7.3.3",
+    "browser-signature": "^1.0.4",
+    "compression": "^1.7.4",
+    "express": "^4.17.1",
+    "next": "10.0.3",
+    "next-redux-wrapper": "^6.0.2",
+    "prop-types": "^15.7.2",
+    "pure-react-carousel": "^1.27.6",
+    "react": "17.0.1",
+    "react-amplitude": "^0.1.7",
+    "react-dom": "17.0.1",
+    "react-gtm-module": "^2.0.11",
+    "react-lazyload": "^3.1.0",
+    "react-lottie": "^1.2.3",
+    "react-material-ui-form-validator": "^2.1.1",
+    "react-redux": "^7.2.2",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "node-sass": "^5.0.0",
+    "prettier": "^2.2.1",
+    "styled-jsx-plugin-sass": "^1.0.0"
+  }
+}
