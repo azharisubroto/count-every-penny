@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+//import React, { useState } from 'react'
 import Head from 'next/head'
-import Drawer from '@material-ui/core/Drawer'
+//import Drawer from '@material-ui/core/Drawer'
 import Button from '../components/Button'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
@@ -8,13 +8,13 @@ import NavBar from '../components/NavBar'
 import FooterSimple from '../components/FooterSimple'
 import { useAmp } from 'next/amp'
 export const config = { amp: 'hybrid' }
-import Lottie from 'react-lottie'
-import * as animationData from '../components/Lottie/arrow.json'
+//import Lottie from 'react-lottie'
+//import * as animationData from '../components/Lottie/arrow.json'
 
 export default function Article2(props) {
   const isAmp = useAmp()
   const { children } = props
-  const [showSidebar, setShowSidebar] = useState(false)
+  //const [showSidebar, setShowSidebar] = useState(false)
 
   /**
    * Age Card
@@ -34,12 +34,12 @@ export default function Article2(props) {
 
             <div className="age-buttons">
               {Array.apply(null, {
-                length: 27
+                length: 28
               }).map((e, i) => (
-                <Button key={'age-' + i} width="31%" height="36" smWidth="31%">
+                <Button key={'age-' + i} width="22%" height="36" smWidth="22%" style={{ padding: '0 10px' }}>
                   <strong>
                     {i == 0 && <>&lt; </>}
-                    {i == 26 && <>&gt; </>}
+                    {i == 27 && <>&gt; </>}
                     {i + 50}
                   </strong>
                 </Button>
@@ -60,23 +60,23 @@ export default function Article2(props) {
 
             .age-card-2--head {
               font-size: 20px;
-              line-height: 35px;
+              line-height: 30px;
               font-weight: 700;
               background: rgba(0, 0, 0, 0.2);
               color: #fff;
-              padding: 20px;
+              padding: 10px 20px;
               text-align: center;
             }
 
             .age-card-2--content {
-              padding: 20px;
+              padding: 10px 20px 15px;
               font-size: 18px;
             }
 
             .age-card-2--subheadline {
               background: rgba(0, 0, 0, 0.2);
               padding: 8px;
-              font-size: 16px;
+              font-size: 14px;
             }
           }
 
@@ -84,7 +84,7 @@ export default function Article2(props) {
             display: flex;
             flex-wrap: wrap;
             gap: 10px;
-            margin-top: 20px;
+            margin-top: 10px;
           }
         `}</style>
       </>
@@ -92,23 +92,23 @@ export default function Article2(props) {
   }
 
   // Toggle Drawer
-  const toggleDrawer = (open) => (event) => {
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return
-    }
+  // const toggleDrawer = (open) => (event) => {
+  //   if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+  //     return
+  //   }
 
-    setShowSidebar(open)
-  }
+  //   setShowSidebar(open)
+  // }
 
   // Lottie setup
-  const defaultOptions = {
-    loop: true,
-    autoplay: true,
-    animationData: animationData.default,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice'
-    }
-  }
+  // const defaultOptions = {
+  //   loop: true,
+  //   autoplay: true,
+  //   animationData: animationData.default,
+  //   rendererSettings: {
+  //     preserveAspectRatio: 'xMidYMid slice'
+  //   }
+  // }
 
   return (
     <>
@@ -146,7 +146,7 @@ export default function Article2(props) {
         </Container>
       </section>
 
-      <div className="d-sm-none">
+      {/* <div className="d-sm-none">
         <div className="m-sidebar-drawer">
           <Button onClick={toggleDrawer(true)} height="60" width="40" color="transparent" style={{ padding: 0 }}>
             <div style={{ transform: 'rotate(90deg)' }}>
@@ -164,7 +164,7 @@ export default function Article2(props) {
           </div>
           <AgeCard />
         </Drawer>
-      </div>
+      </div> */}
 
       {/* Footer */}
       <FooterSimple isamp={isAmp ? 1 : 0} />
