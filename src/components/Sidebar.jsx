@@ -1,3 +1,4 @@
+import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/styles'
 import theme from '../theme'
@@ -8,10 +9,12 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: `3px solid ${theme.palette.secondary.bevel}`
   },
   'age-btn': {
-    padding: '10px 5px',
+    padding: '10px 0',
     minWidth: 'inherit',
     maxWidth: 'inherit',
-    width: 'calc(25% - 10px)'
+    width: 'calc((100% / 4) - 10px)',
+    margin: 5,
+    lineHeight: 1
   }
 }))
 
@@ -34,9 +37,9 @@ export default function Sidebar(props) {
           </div>
           <p>We’ll show best quotes for you</p>
 
-          <div className="age-buttons">
+          <Box display="flex" justifyContent="space-between" flexWrap="wrap">
             {Array.apply(null, {
-              length: 40
+              length: 28
             }).map((e, i) => (
               <Button
                 key={'age-' + i}
@@ -46,12 +49,12 @@ export default function Sidebar(props) {
                 className={classes['age-btn']}>
                 <strong>
                   {i == 0 && <>&lt; </>}
-                  {i == 43 && <>&gt; </>}
-                  {i + 40}
+                  {i == 27 && <>&gt; </>}
+                  {i + 43}
                 </strong>
               </Button>
             ))}
-          </div>
+          </Box>
 
           <div className="age-card-footer">*Average savings based off 15178 customers during FY18/19.</div>
         </div>
@@ -61,34 +64,35 @@ export default function Sidebar(props) {
             .age-card {
               background: ${theme.palette.primary.darken1};
               border-radius: 3px;
-              padding: 28px 35px;
+              padding: 20px;
               color: #fff;
             }
             .alert {
-              padding: 15px 18px;
+              padding: 10px;
               border-radius: 5px;
               background: #fff;
               color: ${theme.palette.primary.main};
             }
             .headline {
               font-weight: 800;
-              font-size: 24px;
-              line-height: 26px;
+              font-size: 20px;
+              line-height: 22px;
               text-align: center;
               color: #fff;
-              margin: 20px 0 10px;
+              margin-top: 10px;
             }
             p {
               text-align: center;
+              margin: 5px 0;
             }
             .age-buttons {
               display: flex;
               flex-wrap: wrap;
-              gap: 10px;
             }
             .age-card-footer {
               text-align: center;
-              margin-top: 20px;
+              font-size: 14px;
+              padding-top: 5px;
             }
           `}
         </style>

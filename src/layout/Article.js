@@ -60,9 +60,6 @@ export default function Article({ children }) {
             @media screen and (min-width: 1024px) {
               position: sticky;
               top: 0;
-              bottom: 0;
-              max-height: 100vh;
-              overflow-y: auto;
               padding: 35px 0 0;
             }
           }
