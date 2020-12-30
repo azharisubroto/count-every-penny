@@ -2,10 +2,12 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 
 export default function NavBarForm(props) {
-  const { logoprops } = props
-  const { logoWidth, logoHeight } = logoprops
-  const l_width = logoWidth ? logoWidth : '177'
-  const l_height = logoHeight ? logoHeight : '40'
+  let l_width, l_height
+  if (props.logoprops) {
+    const { logoWidth, logoHeight } = props.logoprops
+    l_width = logoWidth ? logoWidth : '177'
+    l_height = logoHeight ? logoHeight : '40'
+  }
   return (
     <>
       <header {...props}>
