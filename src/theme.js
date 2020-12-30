@@ -65,7 +65,8 @@ const theme = createMuiTheme({
     cep: {
       primary: '#F09020',
       secondary: '#035AA6',
-      yellow: '#FCBF1E'
+      yellow: '#FCBF1E',
+      cyan: '#40BAD5'
     },
     success: {
       main: '#5BB75B',

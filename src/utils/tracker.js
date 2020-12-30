@@ -46,6 +46,9 @@ export const get_os = () => {
 }
 
 export const logEvent = async (props) => {
+  // Disable tracking when in dev mode
+  if (process.env.NODE_ENV !== 'production') return false
+
   TagManager.initialize(tagManagerArgs)
 
   const deviceID = getDeviceID()

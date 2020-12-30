@@ -14,17 +14,60 @@ import theme from '../../theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { logEvent } from '../../utils/tracker'
 
+// CoverStyle to reusable
 const coverstyle = {
   display: 'flex',
   alignItems: 'center',
   fontSize: 18,
-  fontStyle: 'italic',
   fontWeight: 600,
   borderBottom: '1px solid #eee',
   height: 60,
   lineHeight: '60px'
 }
 
+// Active State style
+const formControlTouch = {
+  border: '1px solid #F09020',
+  boxShadow: '0px 0px 6px rgba(255, 155, 37, 0.5)'
+}
+
+const formControlStyle = {
+  width: '100%',
+  color: '#333',
+  fontWeight: '700',
+  '& .MuiInputBase-formControl': {
+    height: 60,
+    minHeight: 60,
+    lineHeight: '60px',
+    '&:hover fieldset': formControlTouch,
+    '&.Mui-focused fieldset': formControlTouch
+  },
+  '& input': {
+    fontWeight: 700,
+    fontSize: 21
+  },
+  '& > div.Mui-error': {
+    '& input': {
+      color: 'red!important'
+    },
+    '& fieldset': {
+      borderColor: 'red!important'
+    }
+  },
+  '& fieldset': {
+    border: '1px solid #dfdfdf'
+  },
+  '& .MuiSelect-select': {
+    paddingTop: 0,
+    paddingBottom: 0
+  },
+  '& > div > div': coverstyle,
+  '& > div.Mui-error *': {
+    color: 'red!important'
+  }
+}
+
+// Custom Styles
 const useStyles = makeStyles((theme) => ({
   formcard: {
     background: '#fff',
@@ -56,55 +99,17 @@ const useStyles = makeStyles((theme) => ({
   relative: {
     position: 'relative'
   },
-  formcontrol: {
-    width: '100%',
-    fontStyle: 'italic',
-    color: '#333',
-    fontWeight: '700',
-    '& .MuiInputBase-formControl': {
-      height: 60,
-      minHeight: 60,
-      lineHeight: '60px'
-    },
-    '& input': {
-      fontWeight: 700,
-      fontSize: 21
-    },
-    '& > div.Mui-error input': {
-      color: 'red!important'
-    },
-    '& fieldset': {
-      border: '1px solid #dfdfdf'
-    }
-  },
   label: {
     fontStyle: 'normal',
     fontWeight: '600',
     fontSize: 20,
     lineHeight: '27px',
     color: '#474747',
-    marginBottom: 15
+    marginBottom: 15,
+    textTransform: 'capitalize'
   },
-  coverselect: {
-    width: '100%',
-    position: 'relative',
-    '& .MuiInputBase-formControl': {
-      height: 60,
-      minHeight: 60,
-      lineHeight: '60px'
-    },
-    '& .MuiSelect-select': {
-      paddingTop: 0,
-      paddingBottom: 0
-    },
-    '& > div > div': coverstyle,
-    '& > div.Mui-error *': {
-      color: 'red!important'
-    },
-    '& fieldset': {
-      border: '1px solid #dfdfdf'
-    }
-  },
+  formcontrol: formControlStyle,
+  coverselect: formControlStyle,
   coveritem: coverstyle,
   selicon: {
     width: 40,
@@ -121,17 +126,15 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 21
   },
   valid: {
-    color: `${theme.palette.cep.secondary}`,
+    color: '#333',
     '& input, & .seltext, & .MuiInputBase-input, & .seltext-root': {
-      color: `${theme.palette.cep.secondary}`
+      color: '#333'
     },
-    '& .Mui-focused': {
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: `${theme.palette.cep.secondary}`
-      }
-    },
+
     '& fieldset': {
-      borderColor: `${theme.palette.cep.secondary}`
+      borderColor: `${theme.palette.cep.secondary}!important`,
+      borderWidth: '2px !important',
+      boxShadow: 'none!important'
     }
   },
   submitbutton: {
@@ -152,23 +155,28 @@ const useStyles = makeStyles((theme) => ({
 const coverlist = [
   {
     value: 'none',
-    name: 'Select the cover type...'
+    name: 'Select the cover type...',
+    img: '/static/img/form/asterisks.svg'
   },
   {
     value: 'single',
-    name: 'Single'
+    name: 'Myself',
+    img: '/static/img/form_b/icon-single-male.svg'
   },
   {
     value: 'couple',
-    name: 'Couple'
+    name: 'Myself & My partner',
+    img: '/static/img/form_b/icon-couple.svg'
   },
   {
     value: 'family',
-    name: 'Family'
+    name: 'My Family',
+    img: '/static/img/form_b/icon-family.svg'
   },
   {
     value: 'single-parents',
-    name: 'Single Parent Family'
+    name: 'Myself & My Kid(s)',
+    img: '/static/img/form_b/icon-single-parent.svg'
   }
 ]
 
@@ -249,6 +257,26 @@ const FormStep = (props) => {
     })
   })
 
+  // Check Route
+  useEffect(() => {
+    const path = router.pathname
+    const passed_step = parseInt(state.step_passed)
+    const step = parseInt(path.substr(path.length - 1))
+    console.log(passed_step, step)
+
+    // If not thank you
+    if (path != '/form/thankyou') {
+      if (passed_step < step) {
+        router.push(`/form/step${passed_step}`)
+      }
+    } else {
+      const step_t = 5
+      if (passed_step < step_t) {
+        router.push(`/form/step${passed_step}`)
+      }
+    }
+  }, [router.asPath])
+
   // Handle Select Change
   const handleChange = (e, key) => {
     const { value } = e.target
@@ -268,16 +296,25 @@ const FormStep = (props) => {
         event_type: `Submitted Form Step ${step}`
       })
 
+      // Set passed step
+      dispatch(
+        formCounter({
+          ...state,
+          step_passed: parseInt(step + 1)
+        })
+      )
+
       router.push(`/form/step${parseInt(step + 1)}`).then(() => window.scrollTo(0, 0))
     }
   }
 
   return (
     <>
-      <ValidatorForm instantValidate={true} onSubmit={handleSubmit}>
+      <ValidatorForm instantValidate={false} onSubmit={handleSubmit}>
         <Grid container spacing={3}>
           {/* LEFT */}
           <Grid item xs={12} md={6}>
+            {/* I’m looking health cover for... */}
             {step == 1 && (
               <>
                 <InputLabel
@@ -303,13 +340,11 @@ const FormStep = (props) => {
                       key={item.value}
                       value={item.value}>
                       <div className={classes.selicon}>
-                        <img
-                          src={'/static/img/form/dropdown-' + item.value + '.png'}
-                          alt=""
-                          loading="lazy"
-                          height="30"
-                          width="30"
-                        />
+                        {item.value == 'none' ? (
+                          <img src={item.img} alt="" loading="lazy" height="24" width="24" />
+                        ) : (
+                          <img src={item.img} alt="" loading="lazy" height="42" width="42" />
+                        )}
                       </div>
 
                       <div className={`${classes.seltext} seltext-root`}>{item.name}</div>
@@ -326,7 +361,7 @@ const FormStep = (props) => {
                 </InputLabel>
                 <TextValidator
                   validators={['required', 'isNumber', 'goodAge']}
-                  errorMessages={['Required', 'Numeric only', 'Valid age is from 18 to 120']}
+                  errorMessages={['Required', 'Numeric only', 'Valid age is between 18 to 120']}
                   id="age"
                   placeholder="Enter My Age"
                   variant="outlined"
@@ -349,12 +384,13 @@ const FormStep = (props) => {
 
           {/* RIGHT */}
           <Grid item xs={12} md={6}>
+            {/* My four digit postcode */}
             {step == 1 && (
               <>
                 <InputLabel
                   className={`${classes.label} ${state.postcode != '' && state.postcode.length == 4 && classes.valid}`}
                   id="postcode-label">
-                  My 4 digit postcode
+                  My four digit postcode
                 </InputLabel>
                 <TextValidator
                   validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$']}

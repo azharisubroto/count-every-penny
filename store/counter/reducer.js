@@ -5,12 +5,13 @@ const initialState = {
   client: '',
   counter: 0,
   form: {
+    step_passed: 1,
     covertype: 'none',
     postcode: '',
     age: '',
     fund: 'none',
-    hospital_covers: '',
-    extra_covers: '',
+    hospitalCovers: ['private_hospital_shared'],
+    extraCovers: [],
     name: '',
     phone: '',
     email: ''
