@@ -13,15 +13,69 @@ import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '../../../store/counter/action'
 import { logEvent } from '../../utils/tracker'
 import { useRouter } from 'next/router'
+import Slide from '@material-ui/core/Slide'
 
 // Styling
+
+// Active State style
+const formControlTouch = {
+  border: '1px solid #F09020',
+  boxShadow: '0px 0px 6px rgba(255, 155, 37, 0.5)'
+}
+
+const formControlStyle = {
+  width: '100%',
+  color: '#333',
+  fontWeight: '700',
+  '& .MuiInputBase-formControl': {
+    height: 60,
+    minHeight: 60,
+    lineHeight: '60px',
+    '&:hover fieldset': formControlTouch,
+    '&.Mui-focused fieldset': formControlTouch
+  },
+  '& input': {
+    fontWeight: 700,
+    fontSize: 21
+  },
+  '& > div.Mui-error': {
+    '& input': {
+      color: 'red!important'
+    },
+    '& fieldset': {
+      borderColor: 'red!important'
+    }
+  },
+  '& fieldset': {
+    border: '1px solid #dfdfdf'
+  },
+  '& .MuiSelect-select': {
+    paddingTop: 0,
+    paddingBottom: 0
+  },
+  '& > div.Mui-error *': {
+    color: 'red!important'
+  }
+}
+
 const useStyles = makeStyles((theme) => ({
-  dialog: {
+  cep_dialog: {
+    [theme.breakpoints.down('xs')]: {
+      '& .MuiPaper-root': {
+        margin: 0,
+        maxWidth: '100%',
+        height: '100vh',
+        overflowY: 'scroll'
+      }
+    },
     '& .MuiDialogTitle-root': {
       background: theme.palette.cep.primary,
-      paddingTop: 20,
-      paddingBottom: 20,
+      paddingTop: 15,
+      paddingBottom: 15,
       color: '#fff',
+      [theme.breakpoints.down('sm')]: {
+        display: 'none'
+      },
       '& h2': {
         fontstyle: 'normal',
         fontWeight: 700,
@@ -43,56 +97,34 @@ const useStyles = makeStyles((theme) => ({
   },
   dialogintro: {
     textAlign: 'center',
-    margin: '20px 0',
-    fontSize: 24,
-    lineHeight: '28px',
+    margin: '10px 0',
+    fontSize: 22,
+    lineHeight: '25px',
     color: '#404040'
   },
-  formcontrol: {
-    width: '100%',
-    fontStyle: 'italic',
-    color: '#333',
-    fontWeight: '700',
-    '& .MuiInputBase-formControl': {
-      height: 60,
-      minHeight: 60,
-      lineHeight: '60px'
-    },
-    '& input': {
-      fontWeight: 700,
-      fontSize: 21
-    },
-    '& > div.Mui-error input': {
-      color: 'red!important'
-    },
-    '& fieldset': {
-      border: '1px solid #dfdfdf'
-    }
-  },
+  formcontrol: formControlStyle,
   label: {
     fontStyle: 'normal',
     fontWeight: '600',
-    fontSize: 20,
-    lineHeight: '27px',
+    fontSize: 18,
+    lineHeight: '26px',
     color: '#474747',
-    marginBottom: 15,
+    marginBottom: 10,
     textAlign: 'left'
   },
   mb4: {
     marginBottom: 20
   },
   valid: {
-    color: `${theme.palette.secondary.main}`,
-    '& input, & .seltext, & .MuiInputBase-input, & .seltext-root, & .MuiInputLabel-root': {
-      color: `${theme.palette.secondary.main}`
+    color: '#333',
+    '& input, & .seltext, & .MuiInputBase-input, & .seltext-root': {
+      color: '#333'
     },
-    '& .Mui-focused': {
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: `${theme.palette.secondary.main}`
-      }
-    },
+
     '& fieldset': {
-      borderColor: `${theme.palette.secondary.main}`
+      borderColor: `${theme.palette.cep.secondary}!important`,
+      borderWidth: '2px !important',
+      boxShadow: 'none!important'
     }
   },
   submitbutton: {
@@ -110,13 +142,17 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
+// TRansition dialog
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />
+})
 // Main Page component
 export default function Step5(props) {
   const classes = useStyles(props)
   const router = useRouter()
   const state = useSelector((state) => state.counter.form)
   const dispatch = useDispatch()
-  const [open, setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(false)
 
   useEffect(() => {
     ValidatorForm.addValidationRule('auPhone', (phone_num) => {
@@ -129,12 +165,11 @@ export default function Step5(props) {
     logEvent({
       event_type: `Opened Form Step 5`
     })
-  }, [])
 
-  // Open Dialog
-  // const handleClickOpen = () => {
-  //   setOpen(true)
-  // }
+    setTimeout(() => {
+      setOpen(true)
+    }, 1000)
+  }, [])
 
   // Close Dialog
   const handleClose = () => {
@@ -146,6 +181,12 @@ export default function Step5(props) {
     logEvent({
       event_type: `Submitted Form Step 5`
     })
+    dispatch(
+      formCounter({
+        ...state,
+        step_passed: 5
+      })
+    )
     router.push(`/form/thankyou`).then(() => window.scrollTo(0, 0))
   }
 
@@ -170,17 +211,25 @@ export default function Step5(props) {
       {/* DIALOG BOX */}
       <Dialog
         scroll="body"
+        TransitionComponent={Transition}
         open={open}
+        keepMounted
         disableBackdropClick
         disableEscapeKeyDown
         onClose={handleClose}
-        className={classes.dialog}>
+        className={classes.cep_dialog}
+        aria-labelledby="alert-dialog-slide-title"
+        aria-describedby="alert-dialog-slide-description">
+        {/* Title */}
         <DialogTitle>{'Almost there.'}</DialogTitle>
+
+        {/* Content */}
         <DialogContent>
           <DialogContentText className={classes.dialogintro}>
             Add your details so we can get the best comparison from our panel direct to you.
           </DialogContentText>
 
+          {/* MAIN FORM */}
           <ValidatorForm instantValidate onSubmit={handleSubmit} key={'profileform'}>
             {/* MY NAME */}
             <div className={`${classes.mb4} ${state.name != '' && classes.valid}`}>

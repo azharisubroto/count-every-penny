@@ -1,42 +1,18 @@
-import { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import Form from '../../layout/Form'
 import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
-import Switch from '../../components/Switch'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-//import { useSelector } from 'react-redux'
+import CoverItem from '../../components/CoverItem'
+import { useSelector, useDispatch } from 'react-redux'
+import { formCounter } from '../../../store/counter/action'
 import theme from '../../theme'
 import { useRouter } from 'next/router'
-import makeStyles from '@material-ui/core/styles/makeStyles'
 import { logEvent } from '../../utils/tracker'
+import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles((theme) => ({
-  coverlist: {
-    borderBottom: '1px solid #d7d7d7',
-    fontStyle: 'italic',
-    padding: '12px 30px 12px 60px',
-    [theme.breakpoints.down('md')]: {
-      height: 'auto',
-      padding: '10px 20px'
-    },
-    '& span': {
-      fontSize: 18,
-      [theme.breakpoints.down('xs')]: {
-        fontSize: 15
-      }
-    },
-    '& label': {
-      marginLeft: 0,
-      width: '100%',
-      justifyContent: 'space-between'
-    },
-    '&:last-of-type': {
-      borderBottom: 0
-    }
-  },
   coverparent: {
     padding: 0
   },
@@ -68,39 +44,81 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Step3(props) {
+function Step3(props) {
   const classes = useStyles(props)
   const router = useRouter()
-  //const state = useSelector((state) => state.counter.form)
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state.counter.form)
 
-  // if (state.covertype == 'none' || state.postcode == '') {
-  //   router.push(`/form/step1`).then(() => window.scrollTo(0, 0))
-  // } else {
-  //   if (state.age == '' || state.fund == '') {
-  //     router.push(`/form/step2`).then(() => window.scrollTo(0, 0))
-  //   }
-  // }
+  const [coverList] = useState(props.data)
+  const hospitalCovers = state.hospitalCovers
+  const extraCovers = state.extraCovers
 
-  const [coverList, setCoverList] = useState(null)
+  // Handle Change Switch
+  const handleChange = (e) => {
+    const key = e.target.value
+    const check = e.target.checked
+    const type = e.target.name
 
-  useEffect(async () => {
-    if (coverList == null) {
-      const res = await fetch('/api/coverlist')
-      const data = await res.json()
-      setCoverList(data)
+    // current_hospital
+    if (type == 'hospital') {
+      var current_hospital = hospitalCovers
+      if (check !== false) {
+        current_hospital.push(key)
+      } else {
+        var index = current_hospital.indexOf(key)
+        if (index !== -1) {
+          current_hospital.splice(index, 1)
+        }
+      }
+
+      // Dispatch
+      dispatch(
+        formCounter({
+          ...state,
+          hospitalCovers: current_hospital
+        })
+      )
     }
 
-    logEvent({
-      event_type: `Opened Form Step 3`
-    })
-  }, [])
+    // Extra
+    else {
+      var current_extra = hospitalCovers
+      if (check !== false) {
+        current_extra.push(key)
+      } else {
+        var idx = current_extra.indexOf(key)
+        if (idx !== -1) {
+          current_extra.splice(idx, 1)
+        }
+      }
 
-  const CoverItem = ({ item }) => {
-    return (
-      <ListItem className={classes.coverlist} button>
-        <FormControlLabel value={item.label} control={<Switch />} label={item.name} labelPlacement="start" />
-      </ListItem>
-    )
+      // Dispatch
+      dispatch(
+        formCounter({
+          ...state,
+          extraCovers: current_extra
+        })
+      )
+    }
+  }
+
+  // Handle submit
+  const handleSubmit = () => {
+    if (state.hospitalCovers.length > 0 || state.extraCovers.length > 0) {
+      logEvent({
+        event_type: `Submitted Form Step 3`
+      })
+      dispatch(
+        formCounter({
+          ...state,
+          step_passed: 3
+        })
+      )
+      router.push('/form/step4/')
+    } else {
+      window.scrollTo(0, 0)
+    }
   }
 
   return (
@@ -115,6 +133,13 @@ export default function Step3(props) {
         <Container style={{ maxWidth: 1200 }}>
           <h2>Simply choose the benefits most important to you to receive personalised cover options.</h2>
 
+          {hospitalCovers.length == 0 && extraCovers == 0 && (
+            <div className="error">You need to select at least one cover option</div>
+          )}
+
+          {/* <pre>{JSON.stringify(hospitalCovers, null, 2)}</pre>
+          <pre>{JSON.stringify(extraCovers, null, 2)}</pre> */}
+
           <Grid container space={4}>
             <Grid item xs={12} md={12}>
               {/* HOSPITAL: */}
@@ -123,12 +148,23 @@ export default function Step3(props) {
                   <h2>Hospital Cover</h2>
                 </div>
                 <div className="coverbox--body">
+                  {/* Status: {hospitalCovers['private_hospital_shared'] !== false ? 'checked' : 'not checked'} */}
                   <Grid container space={0}>
                     <Grid item xs={12} md={6} className={classes.leftside}>
                       {coverList != null && (
                         <List className={classes.coverparent}>
                           {coverList.hospitalCovers.map((item, i) => {
-                            if (i < 8) return <CoverItem key={item.label} item={item} />
+                            if (i < 8)
+                              return (
+                                <CoverItem
+                                  key={item.label}
+                                  title={item.name}
+                                  value={item.label}
+                                  name="hospital"
+                                  checked={state.hospitalCovers.indexOf(item.label) !== -1 ? true : false}
+                                  onClick={handleChange}
+                                />
+                              )
                           })}
                         </List>
                       )}
@@ -137,7 +173,17 @@ export default function Step3(props) {
                       {coverList != null && (
                         <List className={classes.coverparent}>
                           {coverList.hospitalCovers.map((item, i) => {
-                            if (i >= 8) return <CoverItem key={item.label} item={item} />
+                            if (i >= 8)
+                              return (
+                                <CoverItem
+                                  key={item.label}
+                                  title={item.name}
+                                  value={item.label}
+                                  name="hospital"
+                                  checked={state.hospitalCovers.indexOf(item.label) !== -1 ? true : false}
+                                  onChange={handleChange}
+                                />
+                              )
                           })}
                         </List>
                       )}
@@ -157,7 +203,17 @@ export default function Step3(props) {
                       {coverList != null && (
                         <List className={classes.coverparent}>
                           {coverList.extraCovers.map((item, i) => {
-                            if (i < 7) return <CoverItem key={item.label} item={item} />
+                            if (i < 7)
+                              return (
+                                <CoverItem
+                                  key={item.label}
+                                  title={item.name}
+                                  value={item.label}
+                                  name="extra"
+                                  checked={state.extraCovers.indexOf(item.label) !== -1 ? true : false}
+                                  onChange={handleChange}
+                                />
+                              )
                           })}
                         </List>
                       )}
@@ -166,7 +222,17 @@ export default function Step3(props) {
                       {coverList != null && (
                         <List className={classes.coverparent}>
                           {coverList.extraCovers.map((item, i) => {
-                            if (i >= 7) return <CoverItem key={item.label} item={item} />
+                            if (i >= 7)
+                              return (
+                                <CoverItem
+                                  key={item.label}
+                                  title={item.name}
+                                  value={item.label}
+                                  name="extra"
+                                  checked={state.extraCovers.indexOf(item.label) !== -1 ? true : false}
+                                  onChange={handleChange}
+                                />
+                              )
                           })}
                         </List>
                       )}
@@ -195,10 +261,7 @@ export default function Step3(props) {
             disableElevation
             className={classes.submitbutton}
             onClick={() => {
-              logEvent({
-                event_type: `Submitted Form Step 3`
-              })
-              router.push('/form/step4/')
+              handleSubmit()
             }}
             fullWidth>
             Continue
@@ -274,9 +337,37 @@ export default function Step3(props) {
             }
           }
         }
+
+        .error {
+          text-align: center;
+          font-size: 20px;
+          margin-top: 25px;
+          padding: 15px 0;
+          color: #721c24;
+          background-color: #f8d7da;
+          border-color: #f5c6cb;
+          margin-bottom: 1rem;
+          border: 1px solid transparent;
+          border-radius: 0.25rem;
+          position: relative;
+          font-weight: 800;
+        }
       `}</style>
     </>
   )
 }
 
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:3000/api/coverlist')
+  const data = await res.json()
+
+  // By returning { props: posts }, the Blog component
+  return {
+    props: {
+      data
+    }
+  }
+}
 Step3.Layout = Form
+
+export default Step3

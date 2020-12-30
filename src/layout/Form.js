@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import NavBarForm from '../components/NavBarForm'
@@ -7,8 +8,24 @@ const FeefoSlide = dynamic(() => import('../components/FeefoSlide'))
 const FooterSimple = dynamic(() => import('../components/FooterSimple'))
 const BestFeatures = dynamic(() => import('../components/BestFeatures'))
 import { wrapper } from '../../store/store'
+import theme from '../theme'
+import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 
 function Form({ children }) {
+  const router = useRouter()
+  const state = useSelector((state) => state.counter.form)
+
+  useEffect(() => {
+    const pathname = router.pathname
+    const step_passed = state.step_passed
+    const step = parseInt(pathname.substr(pathname.length - 1))
+
+    if (step_passed < step) {
+      router.push(step_passed).then(() => window.scrollTo(0, 0))
+    }
+  }, [state, router.pathname])
+
   return (
     <>
       <Head>
@@ -45,7 +62,16 @@ function Form({ children }) {
 
       {/* Feefo Slideshow */}
       <LazyLoad offset={[-100, 100]} height={250}>
-        <FeefoSlide />
+        <FeefoSlide
+          slideBackground={theme.palette.cep.primary}
+          slideDotsColor="#fff"
+          slideDotsPosition="right"
+          slideFontStyle="normal"
+          slideFontWeight="400"
+          slideQuoteIconColor="#fff"
+          maxWidth={1160}
+          slideTheme="dark"
+        />
       </LazyLoad>
 
       {/* FooterSimple */}

@@ -1,12 +1,18 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
+import { useSelector, useDispatch } from 'react-redux'
+import { formCounter } from '../../../store/counter/action'
+import { wrapper } from '../../../store/store'
 import Lottie from 'react-lottie'
 import * as animationData from '../../components/Lottie/file-search.json'
 import { useRouter } from 'next/router'
 import { logEvent } from '../../utils/tracker'
 
-export default function Step4() {
+function Step4() {
   const router = useRouter()
+  const dispatch = useDispatch()
+  const state = useSelector((state) => state.counter.form)
+
   const statically = 'https://cdn.statically.io/img'
   const hichost = 'asset.healthinsurancecomparison.com.au/wp-content/uploads/2020/04'
   const imgopt = '?h=75&q=70&f=webp'
@@ -28,7 +34,17 @@ export default function Step4() {
       logEvent({
         event_type: `Submitted Form Step 4`
       })
-      router.push(`/form/step5`).then(() => window.scrollTo(0, 0))
+
+      dispatch(
+        formCounter({
+          ...state,
+          step_passed: 4
+        })
+      )
+
+      router.push(`/form/step5`).then(() => {
+        window.scrollTo(0, 0)
+      })
     }, 5000)
   }, [])
 
@@ -61,7 +77,7 @@ export default function Step4() {
           <div className="partners">
             {partners.map((item) => (
               <div key={item}>
-                <img src={`${statically}/${hichost}${item}${imgopt}`} alt="" loading="lazy" height="75" />
+                <img src={`${statically}/${hichost}${item}${imgopt}`} alt="" loading="lazy" height="40" />
               </div>
             ))}
           </div>
@@ -76,7 +92,6 @@ export default function Step4() {
         }
 
         .hero {
-          background: #fff;
           font-size: 25px;
           text-align: center;
           padding: 90px 0 0;
@@ -85,6 +100,7 @@ export default function Step4() {
           h1 {
             margin: 0 auto;
             max-width: 1170px;
+            font-size: 32px;
           }
 
           h2 {
@@ -101,7 +117,6 @@ export default function Step4() {
         }
 
         .partners-section {
-          background: #fff;
           padding: 30px 0;
           min-height: 50vh;
         }
@@ -112,7 +127,7 @@ export default function Step4() {
           display: flex;
           flex-wrap: wrap;
           gap: 5px;
-          justify-content: space-between;
+          justify-content: center;
         }
 
         .loading {
@@ -126,3 +141,5 @@ export default function Step4() {
     </>
   )
 }
+
+export default wrapper.withRedux(Step4)
