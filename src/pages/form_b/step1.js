@@ -7,19 +7,74 @@ import FooterSimple from '../../components/FooterSimple'
 import Head from 'next/head'
 import theme from '../../theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import { useRouter } from 'next/router'
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   bar: () => ({
     borderRadius: 50,
     backgroundColor: 'rgba(0,0,0,.1)'
   }),
   filled: () => ({
     backgroundColor: theme.palette.cep.yellow
-  })
+  }),
+  lifestageCard: {
+    background: '#fff',
+    border: '1px solid #d6d6d6',
+    borderEadius: '4px',
+    width: '200px',
+    height: '200px',
+    fontSize: '18px',
+    lineHeight: '25px',
+    textAlign: 'center',
+    letterSpacing: '0.03em',
+    textTransform: 'capitalize',
+    padding: '32px 25px',
+    cursor: 'pointer',
+    filter: 'grayscale(100%)',
+    transition: 'all 0.2s ease',
+    '&:hover': {
+      borderColor: '#000'
+    },
+    '&.active': {
+      border: '1px solid #f09020',
+      boxShadow: '0px 0px 6px rgba(255, 155, 37, 0.5)',
+      filter: 'grayscale(0)'
+    },
+    [theme.breakpoints.down('md')]: {
+      flex: '1 1 100%',
+      width: '100%',
+      display: 'flex',
+      textAlign: 'left',
+      height: 'auto',
+      padding: 10,
+      alignItems: 'center',
+      marginBottom: 10,
+      borderRadius: 4,
+      '& .MuiBox-root:first-of-type': {
+        maxWidth: 42,
+        marginRight: 15,
+        '& img': {
+          height: 42
+        }
+      },
+      '& .MuiBox-root:last-of-type': {
+        marginLeft: 'auto',
+        marginTop: 0
+      }
+    }
+  },
+  lifestagecards: {
+    '& .MuiBox-root': {
+      [theme.breakpoints.down('md')]: {
+        flex: '1 1 100%'
+      }
+    }
+  }
 }))
 
 export default function form2Step1(props) {
-  const [progress] = useState(10)
+  const router = useRouter()
+  const [progress] = useState(0)
   const [lifestage, setLifestage] = useState(null)
   const classes = useStyles(props)
 
@@ -28,6 +83,7 @@ export default function form2Step1(props) {
    */
   const handleLifeStageClick = (type) => {
     setLifestage(type)
+    router.push('/form_b/step2')
   }
 
   /**
@@ -41,7 +97,7 @@ export default function form2Step1(props) {
     return (
       <>
         {/* Card Parent */}
-        <div {...other} className={`lifestageCard ${isActive ? 'active' : ''}`}>
+        <div {...other} className={`${classes.lifestageCard} ${isActive ? 'active' : ''}`}>
           {children}
         </div>
 
@@ -73,17 +129,17 @@ export default function form2Step1(props) {
               filter: grayscale(0);
             }
           }
+          @media screen and (max-width: 667px) {
+            .lifestageCard {
+              width: 100%;
+              height: auto;
+              flex: 1 1 100%;
+            }
+          }
         `}</style>
       </>
     )
   }
-
-  /**
-   * Handle Progress
-   */
-  // const handleProgress = () => {
-  //   setProgress(parseInt(progress + 10))
-  // }
 
   // Slide Background
   const slideBg =
@@ -108,7 +164,7 @@ export default function form2Step1(props) {
       <section className="hero">
         <div className="container text-center">
           <h1>
-            Compare Australian Health Insurance Providers<span>in 5 Minutes</span>
+            Compare Australian Health Insurance Providers <span>in 5 Minutes</span>
           </h1>
 
           <Box pt={{ xs: 2, sm: 3, md: 3 }}>
@@ -134,7 +190,12 @@ export default function form2Step1(props) {
                 </Box>
 
                 {/* Life Card Section */}
-                <Box mt={{ xs: 2, sm: 3, md: 4 }} display="flex" justifyContent="space-between">
+                <Box
+                  className={classes.lifestagecards}
+                  mt={{ xs: 2, sm: 3, md: 4 }}
+                  display="flex"
+                  flexWrap="wrap"
+                  justifyContent="space-between">
                   <Box>
                     <LifeStageCard
                       isActive={lifestage == 'single-male' ? 'active' : ''}
@@ -142,7 +203,7 @@ export default function form2Step1(props) {
                       <Box>
                         <img src="/static/img/form_b/icon-single-male.svg" alt="" width="70" height="70" />
                       </Box>
-                      <Box mt={1}>Just for me - Male</Box>
+                      <Box mt={{ md: 1 }}>Just for me - Male</Box>
                     </LifeStageCard>
                   </Box>
 
@@ -153,7 +214,7 @@ export default function form2Step1(props) {
                       <Box>
                         <img src="/static/img/form_b/icon-single-female.svg" alt="" width="70" height="70" />
                       </Box>
-                      <Box mt={1}>Just for me - Female</Box>
+                      <Box mt={{ md: 1 }}>Just for me - Female</Box>
                     </LifeStageCard>
                   </Box>
 
@@ -164,7 +225,7 @@ export default function form2Step1(props) {
                       <Box>
                         <img src="/static/img/form_b/icon-couple.svg" alt="" width="70" height="70" />
                       </Box>
-                      <Box mt={1}>For me and my partner</Box>
+                      <Box mt={{ md: 1 }}>For me and my partner</Box>
                     </LifeStageCard>
                   </Box>
 
@@ -175,7 +236,7 @@ export default function form2Step1(props) {
                       <Box>
                         <img src="/static/img/form_b/icon-family.svg" alt="" width="70" height="70" />
                       </Box>
-                      <Box mt={1}>For my whole family</Box>
+                      <Box mt={{ md: 1 }}>For my whole family</Box>
                     </LifeStageCard>
                   </Box>
 
@@ -186,7 +247,7 @@ export default function form2Step1(props) {
                       <Box>
                         <img src="/static/img/form_b/icon-single-parent.svg" alt="" width="70" height="70" />
                       </Box>
-                      <Box mt={1}>For my family - single parent</Box>
+                      <Box mt={{ md: 1 }}>For my family - single parent</Box>
                     </LifeStageCard>
                   </Box>
                 </Box>
@@ -230,17 +291,22 @@ export default function form2Step1(props) {
             margin-top: 0;
             z-index: 1;
 
+            @media screen and (max-width: 667px) {
+              font-size: 32px;
+            }
+
             span {
               position: relative;
               display: inline-block;
+              color: ${theme.palette.cep.secondary};
               &:before {
                 content: '';
                 height: 30px;
                 background: ${theme.palette.cep.yellow};
                 position: absolute;
                 bottom: 0;
-                left: -10px;
-                right: -10px;
+                left: -5px;
+                right: -5px;
                 margin: 0 auto;
                 z-index: -1;
               }

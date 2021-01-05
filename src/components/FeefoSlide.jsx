@@ -31,6 +31,7 @@ const FeefoSlide = (props) => {
     slideQuoteIconColor,
     slideDotsPosition,
     maxWidth,
+    disableRatingCard,
     ...rest
   } = props
 
@@ -67,7 +68,12 @@ const FeefoSlide = (props) => {
         <Container style={{ maxWidth: maxWidth ? maxWidth : 1120 }}>
           <Grid container spacing={4}>
             {/* Left Content */}
-            <Grid item xs={12} sm={7} md={8} lg={9}>
+            <Grid
+              item
+              xs={12}
+              sm={disableRatingCard != true ? 7 : 12}
+              md={disableRatingCard != true ? 8 : 12}
+              lg={disableRatingCard != true ? 9 : 12}>
               <Card
                 dark={slideTheme == 'dark' ? true : false}
                 color={slideBackground ? slideBackground : theme.palette.cep.primary}
@@ -111,17 +117,19 @@ const FeefoSlide = (props) => {
             </Grid>
 
             {/* Sidebar */}
-            <Grid item xs={12} sm={5} md={4} lg={3}>
-              {' '}
-              {/* RATING BOX */}
-              <Card color="#fff" padding="30px 45px 28px" className="ratingcard">
-                <img src="/static/img/feefo.png" width="136" height="32" alt="feefo logo" />
-                <div style={{ margin: '10px 0' }}>Customer Experience</div>
-                <Rating name="read-only" value={4.5} precision={0.5} readOnly />
-                <div style={{ margin: '10px 0' }}>Product Rating</div>
-                <Rating name="read-only" value={4.5} precision={0.5} readOnly />
-              </Card>
-            </Grid>
+            {disableRatingCard != true && (
+              <Grid item xs={12} sm={5} md={4} lg={3}>
+                {' '}
+                {/* RATING BOX */}
+                <Card color="#fff" padding="30px 45px 28px" className="ratingcard">
+                  <img src="/static/img/feefo.png" width="136" height="32" alt="feefo logo" />
+                  <div style={{ margin: '10px 0' }}>Customer Experience</div>
+                  <Rating name="read-only" value={4.5} precision={0.5} readOnly />
+                  <div style={{ margin: '10px 0' }}>Product Rating</div>
+                  <Rating name="read-only" value={4.5} precision={0.5} readOnly />
+                </Card>
+              </Grid>
+            )}
           </Grid>
         </Container>
       </Box>
