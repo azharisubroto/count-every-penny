@@ -7,7 +7,6 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Alert from '@material-ui/lab/Alert'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
-import { useAmp } from 'next/amp'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
 //const useStyles = makeStyles({
@@ -123,10 +122,9 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 // Enable AMP
-export const config = { amp: 'hybrid' }
 
 export default function ThousandsOfAussies(props) {
-  const isamp = useAmp()
+  const isamp = false
   const classes = useStyles(props)
   const mainlink = 'https://google.com'
 
