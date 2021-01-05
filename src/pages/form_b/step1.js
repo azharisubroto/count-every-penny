@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: '0px 0px 6px rgba(255, 155, 37, 0.5)',
       filter: 'grayscale(0)'
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       flex: '1 1 100%',
       width: '100%',
       display: 'flex',
