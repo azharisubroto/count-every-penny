@@ -309,10 +309,19 @@ const coverlist = [
   "I'm planning on having a baby"
 ]
 
+const loadintexts = [
+  'Reviewing your hospital cover preferences...',
+  'Checking your extras cover selections...',
+  'Searching health cover policy database...',
+  'Looking for appropriate health cover options...'
+]
+
 // Main Component
 function form4Page(props) {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
+  const [step6texts, setStep6texts] = useState(loadintexts[0])
+
   const [step, setStep] = useState(1)
   const classes = useStyles(props)
   const state = useSelector((state) => state.form4.form)
@@ -332,8 +341,20 @@ function form4Page(props) {
     } else if (step == 6) {
       setProgress(85)
       setTimeout(() => {
-        redirect(7)
+        setStep6texts(loadintexts[1])
+      }, 2000)
+
+      setTimeout(() => {
+        setStep6texts(loadintexts[2])
+      }, 3000)
+
+      setTimeout(() => {
+        setStep6texts(loadintexts[3])
       }, 4000)
+
+      setTimeout(() => {
+        redirect(7)
+      }, 5000)
     } else if (step == 7) {
       setProgress(90)
     } else if (step == 8) {
@@ -471,6 +492,7 @@ function form4Page(props) {
     )
   }
 
+  // Lottie options
   const defaultOptions = {
     loop: false,
     autoplay: true,
@@ -887,7 +909,7 @@ function form4Page(props) {
         <>
           <Box maxWidth="1120px" mx="auto" pt={{ xs: 6, sm: 7, md: 8 }}>
             <div className="text-center text-24 lh-30 text-md-32 lh-md-35">
-              <strong>Reviewing your hospital cover preferences...</strong>
+              <strong>{step6texts}</strong>
             </div>
           </Box>
           <FindAnimation />
