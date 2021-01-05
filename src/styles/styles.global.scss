@@ -2,7 +2,7 @@
 //   -webkit-font-smoothing: antialiased;
 //   -moz-osx-font-smoothing: grayscale;
 // }
-
+@import 'breakpoint.scss';
 html,
 body {
   padding: 0;
@@ -35,6 +35,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Nunito Sans', Arial, sans-serif;
+}
+
+svg {
+  max-width: 100%!important;
 }
 
 h1 {
@@ -78,4 +82,45 @@ img {
   padding: 0 15px;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* font-size by number */
+@for $i from 5 through 90 {
+  .text-#{$i},
+  *.text-#{$i} {
+      font-size: #{$i}px!important;
+  }
+}
+
+// Line height by number
+
+.d-none {
+  display: none;
+}
+
+@for $i from 20 through 40 {
+  .lh-#{$i} {
+      line-height: #{$i}px!important;
+  }
+}
+
+@include respond-above(md) {
+  @for $i from 5 through 70 {
+      .text-md-#{$i},
+      *.text-md-#{$i} {
+          font-size: #{$i}px!important;
+      }
+  }
+  @for $i from 20 through 40 {
+      .lh-md-#{$i} {
+          line-height: #{$i}px!important;
+      }
+  }
+  .d-md-none {
+    display: none;
+  }
+
+  .d-md-block {
+    display: block;
+  }
 }
