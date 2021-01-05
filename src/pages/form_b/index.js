@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import NavBarForm from '../../components/NavBarForm'
 import FeefoSlide from '../../components/FeefoSlide'
 import Box from '@material-ui/core/Box'
@@ -135,17 +135,39 @@ function form2Step1(props) {
   const step = parseInt(state.step_passed + 1)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    if (step == 1) {
+      setProgress(0)
+    } else if (step == 2) {
+      setProgress(20)
+    } else if (step == 3) {
+      setProgress(40)
+    } else if (step == 4) {
+      setProgress(60)
+    } else if (step == 5) {
+      setProgress(80)
+    } else if (step == 6) {
+      setProgress(85)
+    } else if (step == 7) {
+      setProgress(90)
+    } else if (step == 8) {
+      setProgress(98)
+    }
+  }, [step])
+
   /**
    * Handle LifeStageClick
    */
   const handleLifeStageClick = (value) => {
-    dispatch(
-      form4({
-        ...state,
-        lifestage: value,
-        step_passed: 1
-      })
-    )
+    setTimeout(() => {
+      dispatch(
+        form4({
+          ...state,
+          lifestage: value,
+          step_passed: 1
+        })
+      )
+    }, 2000)
     window.scrollTo(0, 0)
     setProgress(20)
   }
@@ -203,7 +225,6 @@ function form2Step1(props) {
       {/* FORM HERO */}
       <section className="hero">
         {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
-        {step}
         <div className="container text-center">
           {step == 1 && (
             <Box pt={{ xs: 3, sm: 4, md: 4, lg: 4 }} mx={{ md: 5 }}>
@@ -263,7 +284,7 @@ function form2Step1(props) {
                 )}
 
                 {step == 2 && (
-                  <Box mt={{ xs: 2, sm: 3, md: 4 }} display="flex" justifyContent="center">
+                  <Box mt={{ xs: 2, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
                     <Button className={`${classes.simplebtn} text-18 text-md-25`}>Yes</Button>
                     <Button className={`${classes.simplebtn} text-18 text-md-25`} to="./step3">
                       No
