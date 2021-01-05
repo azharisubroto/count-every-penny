@@ -21,14 +21,13 @@ const useStyles = makeStyles((theme) => ({
     background: '#fff',
     border: '1px solid #d6d6d6',
     borderEadius: '4px',
-    width: '200px',
     height: '200px',
     fontSize: '18px',
     lineHeight: '25px',
     textAlign: 'center',
     letterSpacing: '0.03em',
     textTransform: 'capitalize',
-    padding: '32px 25px',
+    padding: '32px 15px',
     cursor: 'pointer',
     filter: 'grayscale(100%)',
     transition: 'all 0.2s ease',
@@ -65,8 +64,11 @@ const useStyles = makeStyles((theme) => ({
   },
   lifestagecards: {
     '& .MuiBox-root': {
+      flex: '1 1 15%',
+      padding: '0 10px',
       [theme.breakpoints.down('md')]: {
-        flex: '1 1 100%'
+        flex: '1 1 15%',
+        padding: '0 10px'
       }
     }
   }
