@@ -83,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: 'rgba(0,0,0,.1)'
   }),
   filled: () => ({
+    borderRadius: 90,
     backgroundColor: theme.palette.cep.yellow
   }),
   simplebtn: {
@@ -137,7 +138,8 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 4,
       '& .MuiBox-root:first-of-type': {
         maxWidth: 42,
-        marginRight: 15,
+        marginRight: 0,
+        paddingLeft: 0,
         '& img': {
           height: 42
         }
@@ -154,6 +156,10 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 10px',
       [theme.breakpoints.down('md')]: {
         flex: '1 1 15%',
+        padding: '0 10px'
+      },
+      [theme.breakpoints.down('sm')]: {
+        flex: '1 1 100%',
         padding: '0 10px'
       }
     }
@@ -786,7 +792,7 @@ function form4Page(props) {
       {/* STEP 6 */}
       {step == 6 && (
         <>
-          <Box maxWidth="1120px" mx="auto" pt={{ sm: 4, md: 8 }}>
+          <Box maxWidth="1120px" mx="auto" pt={{ xs: 6, sm: 7, md: 8 }}>
             <div className="text-center text-24 lh-30 text-md-32 lh-md-35">
               <strong>Reviewing your hospital cover preferences...</strong>
             </div>
@@ -860,6 +866,11 @@ function form4Page(props) {
         .form_b_card {
           background: #fff;
           border-radius: 4px 4px 0 0;
+          min-height: 290px;
+
+          @media screen and (max-width: 667px) {
+            padding-top: 40px;
+          }
         }
 
         .lookingfor {

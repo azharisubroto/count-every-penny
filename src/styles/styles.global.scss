@@ -116,6 +116,11 @@ img {
           line-height: #{$i}px!important;
       }
   }
+
+  .text-md-center {
+    text-align: center;
+  }
+  
   .d-md-none {
     display: none;
   }
