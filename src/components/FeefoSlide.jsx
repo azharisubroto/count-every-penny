@@ -156,6 +156,9 @@ const FeefoSlide = (props) => {
             max-width: 100%;
             display: inline-block;
           }
+          @media screen and (min-width: 800px) {
+            height: 100%;
+          }
           @media screen and (max-width: 768px) and (min-width: 501px) {
             height: 100%;
           }
