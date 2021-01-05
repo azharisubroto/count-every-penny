@@ -141,7 +141,7 @@ const FeefoSlide = (props) => {
             : ''}
 
           @media screen and (max-width: 500px) {
-            padding-top: 80px !important;
+            padding-top: 40px !important;
           }
         }
         .hictransition {
@@ -232,7 +232,9 @@ FeefoSlide.propTypes = {
   /** - Quote icon color */
   slideQuoteIconColor: PropTypes.string,
   /** - Set dots position. */
-  slideDotsPosition: PropTypes.oneOf(['left', 'center', 'right'])
+  slideDotsPosition: PropTypes.oneOf(['left', 'center', 'right']),
+  /** - Disable Rating Card */
+  disableRatingCard: PropTypes.bool
 }
 
 FeefoSlide.defaultProps = {

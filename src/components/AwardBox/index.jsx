@@ -11,10 +11,10 @@ import Card from '../../components/Card'
 //   }
 // }))
 
-export default function AwardBox({ maxWidth }) {
+export default function AwardBox({ maxWidth, ...rest }) {
   //const classes = useStyles(props)
   return (
-    <Box pt={5} pb={5} style={{ background: '#fff' }}>
+    <Box {...rest} pt={5} pb={5} style={{ background: '#fff' }}>
       <Container style={{ maxWidth: maxWidth ? maxWidth : 1120 }}>
         <Grid item xs={12}>
           <Card padding="0">

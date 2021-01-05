@@ -9,11 +9,12 @@ const initialState = {
     has_life_insurance: '',
     primary_health_cover: 'Select One',
     fund: 'Select One',
-    dob: '',
+    yob: '',
     postcode: '',
     name: '',
     phone: '',
-    email: ''
+    email: '',
+    age: ''
   }
 }
 

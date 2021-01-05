@@ -111,7 +111,7 @@ img {
           font-size: #{$i}px!important;
       }
   }
-  @for $i from 20 through 40 {
+  @for $i from 20 through 50 {
       .lh-md-#{$i} {
           line-height: #{$i}px!important;
       }

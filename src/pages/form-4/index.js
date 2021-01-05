@@ -7,7 +7,6 @@ import FindAnimation from '../../components/FindAnimation'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import LinearProgress from '@material-ui/core/LinearProgress'
 import AwardBox from '../../components/AwardBox'
@@ -50,7 +49,19 @@ const formControlStyle = {
     minHeight: 60,
     lineHeight: '60px',
     '&:hover fieldset': formControlTouch,
-    '&.Mui-focused fieldset': formControlTouch
+    '&.Mui-focused fieldset': formControlTouch,
+    [theme.breakpoints.down('sm')]: {
+      height: 50,
+      lineHeight: '50px',
+      minHeight: 50,
+      '& .MuiInputBase-input': {
+        height: 50,
+        lineHeight: '50px',
+        paddingTop: 0,
+        paddingBottom: 0,
+        fontSize: 16
+      }
+    }
   },
   '& input': {
     fontWeight: 700,
@@ -96,7 +107,7 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'capitalize',
     width: 200,
     margin: '0 10px',
-    '&:hover': {
+    '&:hover, &.active': {
       border: '1px solid #F09020',
       boxShadow: '0px 0px 6px rgba(255, 155, 37, 0.5)'
     },
@@ -226,12 +237,21 @@ const useStyles = makeStyles((theme) => ({
     color: '#474747',
     marginBottom: 15,
     textTransform: 'capitalize',
-    textAlign: 'left'
+    textAlign: 'left',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: 18,
+      marginBottom: 5
+    }
   },
   feefocustom: {
     paddingBottom: 0,
     '& .MuiContainer-root': {
       padding: 0
+    }
+  },
+  awardbox: {
+    '& .card': {
+      boxShadow: '0px 18px 24px rgba(0, 0, 0, 0.05)!important'
     }
   }
 }))
@@ -322,6 +342,29 @@ function form4Page(props) {
   }, [step])
 
   useEffect(() => {
+    ValidatorForm.addValidationRule('isNotNone', (value) => {
+      if (value != 'none') {
+        return true
+      }
+      return false
+    })
+    ValidatorForm.addValidationRule('goodAge', (value) => {
+      if (parseInt(value) < 18 || parseInt(value) > 120) {
+        return false
+      }
+      return true
+    })
+    ValidatorForm.addValidationRule('auPhone', (phone_num) => {
+      const phonePattern = /^0[0-8]\d{8}$/g
+      return phonePattern.test(phone_num)
+    })
+    ValidatorForm.addValidationRule('allowedYears', (year) => {
+      if (parseInt(year) < 1900 || parseInt(year) > 2003) {
+        return false
+      }
+      return true
+    })
+
     const thisstep = parseInt(router.query.step)
     if (thisstep > 1) {
       setStep(thisstep)
@@ -404,7 +447,7 @@ function form4Page(props) {
    * @param {*} param0
    */
   const handleSubmit = (e) => {
-    e.preventDefault()
+    console.log(e.target)
   }
 
   /**
@@ -474,7 +517,7 @@ function form4Page(props) {
             <div className="container text-center">
               {step == 1 && (
                 <Box pt={{ xs: 3, sm: 4, md: 4, lg: 4 }} mx={{ md: 5 }}>
-                  <h1 className="text-32 lh-40 text-md-40 lh-md-50">
+                  <h1 className="text-24 lh-30 text-md-40 lh-md-45">
                     Compare Australian Health Insurance Providers <span>in 5 Minutes</span>
                   </h1>
                 </Box>
@@ -482,7 +525,7 @@ function form4Page(props) {
 
               <Box pt={{ xs: 2, sm: 3, md: 3 }}>
                 <div className="form_b_card">
-                  <Box pt={{ xs: 2, sm: 3, md: 5 }} px={{ xs: 2, sm: 3, md: 5 }}>
+                  <Box pt={{ xs: 2, sm: 3, md: 5, lg: 5 }} px={{ xs: 2, sm: 3, md: 5 }}>
                     {/* Linear Progress */}
                     <div className="progress-bar-main">
                       <div className="progress-indicator">{progress}%</div>
@@ -534,7 +577,9 @@ function form4Page(props) {
                     {step == 2 && (
                       <Box mt={{ xs: 2, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
                         <Button
-                          className={`${classes.simplebtn} text-18 text-md-25`}
+                          className={`${classes.simplebtn} ${
+                            state.has_life_insurance == 'Yes' ? 'active' : ''
+                          } text-18 text-md-25`}
                           onClick={() => {
                             setState('has_life_insurance', 'Yes')
                             redirect(3)
@@ -542,7 +587,9 @@ function form4Page(props) {
                           Yes
                         </Button>
                         <Button
-                          className={`${classes.simplebtn} text-18 text-md-25`}
+                          className={`${classes.simplebtn} ${
+                            state.has_life_insurance == 'No' ? 'active' : ''
+                          } text-18 text-md-25`}
                           onClick={() => {
                             setState('has_life_insurance', 'No')
                             redirect(3)
@@ -631,47 +678,65 @@ function form4Page(props) {
                     {/* STEP 5 */}
                     {step == 5 && (
                       <>
-                        <Box mt={{ xs: 2, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
-                          <Box maxWidth="500px" width="100%">
-                            <div className={classes.label}>What is your date of birth</div>
-                            <TextField
-                              placeholder="DD/MM/YYYY"
-                              variant="outlined"
-                              className={`${classes.formcontrol}`}
-                              InputProps={{
-                                startAdornment: (
-                                  <InputAdornment position="start" style={{ marginRight: 10 }}>
-                                    <img src="/static/img/calendar.svg" alt="" height="30" loading="lazy" />
-                                  </InputAdornment>
-                                )
-                              }}></TextField>
-
-                            <Box mt={3}>
-                              <div className={classes.label}>My four digit postcode</div>
-                              <TextField
-                                placeholder="2000"
+                        <ValidatorForm key="step5validator" instantValidate={true} onSubmit={handleSubmit}>
+                          <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
+                            <Box maxWidth="500px" width="100%">
+                              <div className={classes.label}>Tell us your year of birth</div>
+                              <TextValidator
+                                placeholder="YYYY"
                                 variant="outlined"
+                                value={state.yob}
                                 className={`${classes.formcontrol}`}
+                                validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$', 'allowedYears']}
+                                errorMessages={['Required', 'Numeric only', 'Must be 4 digit', 'Invalid Year']}
+                                onChange={(e) => {
+                                  setState('yob', e.target.value)
+                                }}
                                 InputProps={{
                                   startAdornment: (
                                     <InputAdornment position="start" style={{ marginRight: 10 }}>
-                                      <img src="/static/img/form/location.svg" alt="" height="30" loading="lazy" />
+                                      <img src="/static/img/calendar.svg" alt="" height="30" loading="lazy" />
                                     </InputAdornment>
                                   )
-                                }}></TextField>
+                                }}
+                              />
+
+                              <Box mt={3}>
+                                <div className={classes.label}>My four digit postcode</div>
+                                <TextValidator
+                                  placeholder="2000"
+                                  variant="outlined"
+                                  value={state.postcode}
+                                  className={`${classes.formcontrol}`}
+                                  validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$']}
+                                  errorMessages={['Required', 'Numeric only', 'Must be 4 digit']}
+                                  onChange={(e) => {
+                                    setState('postcode', e.target.value)
+                                  }}
+                                  InputProps={{
+                                    startAdornment: (
+                                      <InputAdornment position="start" style={{ marginRight: 10 }}>
+                                        <img src="/static/img/form/location.svg" alt="" height="30" loading="lazy" />
+                                      </InputAdornment>
+                                    )
+                                  }}
+                                />
+                              </Box>
                             </Box>
                           </Box>
-                        </Box>
 
-                        <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
-                          <Button
-                            className={classes.submitbutton}
-                            onClick={() => {
-                              redirect(6)
-                            }}>
-                            Find Quotes
-                          </Button>
-                        </Box>
+                          <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
+                            <Button
+                              onClick={() => {
+                                redirect(6)
+                              }}
+                              disabled={state.yob == '' || state.postcode == ''}
+                              type="submit"
+                              className={classes.submitbutton}>
+                              Find Quotes
+                            </Button>
+                          </Box>
+                        </ValidatorForm>
                       </>
                     )}
 
@@ -687,7 +752,7 @@ function form4Page(props) {
                                   Almost there. Please add your details so we can get the best comparison from our panel
                                   direct to you.
                                 </h3>
-                                <p className="text-16 text-md-24 text-md-20 lh-md-35">
+                                <p className="text-16 text-md-24 text-md-18 lh-md-28">
                                   One of our consultants will contact you as soon as possible, for now sit tight, you’re
                                   already on your way to finding the right fund, with the right cover.
                                 </p>
@@ -709,11 +774,12 @@ function form4Page(props) {
                               <ValidatorForm instantValidate={false} onSubmit={handleSubmit}>
                                 <InputLabel className={`${classes.label}`}>My Age</InputLabel>
                                 <TextValidator
-                                  validators={['required', 'isNumber', 'goodAge']}
+                                  validators={['required', 'isNumber']}
                                   errorMessages={['Required', 'Numeric only', 'Valid age is between 18 to 120']}
                                   id="age"
                                   placeholder="Enter My Age"
                                   variant="outlined"
+                                  value={state.age}
                                   className={`${classes.formcontrol}`}
                                 />
 
@@ -724,6 +790,7 @@ function form4Page(props) {
                                     errorMessages={['Required', 'Invalid phone number format']}
                                     placeholder="Enter preferred number"
                                     variant="outlined"
+                                    value={state.phone}
                                     className={`${classes.formcontrol}`}
                                     inputProps={{ maxLength: 10, pattern: '[0-9]', type: 'number' }}
                                   />
@@ -737,7 +804,7 @@ function form4Page(props) {
                                     errorMessages={['Required', 'Invalid email address']}
                                     placeholder="Enter email"
                                     variant="outlined"
-                                    maxLength={10}
+                                    value={state.email}
                                     className={`${classes.formcontrol}`}
                                   />
                                 </Box>
@@ -780,9 +847,26 @@ function form4Page(props) {
           )}
 
           {step == 8 && (
-            <div className="d-none d-md-block">
-              <AwardBox maxWidth="1200px" />
-            </div>
+            <>
+              <div className="d-none d-md-block">
+                <AwardBox maxWidth="1200px" className={classes.awardbox} />
+              </div>
+
+              <div className="d-md-none">
+                <Box px={2} pt={5} pb={5}>
+                  <FeefoSlide
+                    className={`${classes.feefocustom}`}
+                    slideBackground="linear-gradient(69.17deg, #F5F5F5 1.82%, rgba(255, 255, 255, 0) 63.85%), linear-gradient(243.37deg, rgba(228, 228, 228, 0.4) 0%, rgba(255, 255, 255, 0.1) 49.83%)"
+                    slideDotsColor={theme.palette.cep.primary}
+                    slideDotsPosition="right"
+                    slideFontStyle="normal"
+                    slideFontWeight="400"
+                    slideQuoteIconColor="#F09020"
+                    maxWidth={1220}
+                  />
+                </Box>
+              </div>
+            </>
           )}
 
           <FooterSimple style={{ marginTop: 0 }} />
@@ -867,10 +951,6 @@ function form4Page(props) {
           background: #fff;
           border-radius: 4px 4px 0 0;
           min-height: 290px;
-
-          @media screen and (max-width: 667px) {
-            padding-top: 40px;
-          }
         }
 
         .lookingfor {
