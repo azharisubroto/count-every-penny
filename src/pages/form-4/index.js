@@ -793,7 +793,7 @@ function form4Page(props) {
                               </div>
                             </Grid>
                             <Grid item xs={12} md={6}>
-                              <ValidatorForm instantValidate={false} onSubmit={handleSubmit}>
+                              <ValidatorForm instantValidate={true} onSubmit={handleSubmit}>
                                 <InputLabel className={`${classes.label}`}>My Age</InputLabel>
                                 <TextValidator
                                   validators={['required', 'isNumber']}
