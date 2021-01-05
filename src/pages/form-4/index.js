@@ -235,7 +235,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 20,
     lineHeight: '27px',
     color: '#474747',
-    marginBottom: 15,
+    marginBottom: 10,
     textTransform: 'capitalize',
     textAlign: 'left',
     [theme.breakpoints.down('sm')]: {
@@ -752,7 +752,7 @@ function form4Page(props) {
                                   Almost there. Please add your details so we can get the best comparison from our panel
                                   direct to you.
                                 </h3>
-                                <p className="text-16 text-md-24 text-md-18 lh-md-28">
+                                <p className="text-16 text-md-24 text-md-18 lh-md-32">
                                   One of our consultants will contact you as soon as possible, for now sit tight, you’re
                                   already on your way to finding the right fund, with the right cover.
                                 </p>
@@ -781,6 +781,9 @@ function form4Page(props) {
                                   variant="outlined"
                                   value={state.age}
                                   className={`${classes.formcontrol}`}
+                                  onChange={(e) => {
+                                    setState('age', e.target.value)
+                                  }}
                                 />
 
                                 <Box mt={{ xs: 3, md: 4, lg: 5 }}>
@@ -793,6 +796,9 @@ function form4Page(props) {
                                     value={state.phone}
                                     className={`${classes.formcontrol}`}
                                     inputProps={{ maxLength: 10, pattern: '[0-9]', type: 'number' }}
+                                    onChange={(e) => {
+                                      setState('phone', e.target.value)
+                                    }}
                                   />
                                 </Box>
                                 <Box mt={{ xs: 3, md: 4, lg: 5 }}>
@@ -806,6 +812,9 @@ function form4Page(props) {
                                     variant="outlined"
                                     value={state.email}
                                     className={`${classes.formcontrol}`}
+                                    onChange={(e) => {
+                                      setState('email', e.target.value)
+                                    }}
                                   />
                                 </Box>
                                 <Box mt={{ xs: 3, md: 4, lg: 5 }}>
