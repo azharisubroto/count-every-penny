@@ -84,6 +84,18 @@ img {
   margin: 0 auto;
 }
 
+.fw-600 {
+  font-weight: 600
+}
+
+.fw-700 {
+  font-weight: 700
+}
+
+.fw-800 {
+  font-weight: 800
+}
+
 /* font-size by number */
 @for $i from 5 through 90 {
   .text-#{$i},

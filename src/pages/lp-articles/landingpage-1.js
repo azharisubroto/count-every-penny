@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button'
 import Alert from '@material-ui/lab/Alert'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import LifeStageStack from '@/components/Articles/LifeStageStack'
 
 //const useStyles = makeStyles({
 const useStyles = makeStyles((theme) => ({
@@ -60,7 +61,10 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: '1.6',
     '& a': {
       color: theme.palette.textPrimary.lighten1,
-      textDecoration: 'none'
+      textDecoration: 'underline'
+    },
+    '& .MuiAlert-icon': {
+      marginRight: 5
     }
   },
   alertIcon: {
@@ -76,10 +80,12 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   caption: {
-    padding: '8px 15px 12px 15px',
-    fontSize: 12,
+    padding: '12px 15px 12px 15px',
+    fontSize: 14,
     background: '#EEF5F7',
-    margin: 0
+    margin: 0,
+    lineHeight: 1,
+    color: '#393939'
   },
   paragraph: {
     fontSize: 18,
@@ -112,6 +118,12 @@ const useStyles = makeStyles((theme) => ({
   succesalert: {
     borderLeft: `3px solid ${theme.palette.primary.darken1}`,
     borderRadius: 0
+  },
+  infoalert: {
+    backgroundColor: '#E8F3FC',
+    borderLeft: `3px solid #3D91DF`,
+    borderRadius: 0,
+    color: '#3D91DF'
   },
   sectionheading: {
     fontWeight: 800,
@@ -151,16 +163,16 @@ export default function LandingPage1(props) {
     return (
       <Card
         style={{
-          background: 'url("/static/img/cta-bg.svg") no-repeat top -10px left -10px'
+          background: 'url("/static/img/cta-bg.svg") no-repeat top -10px left -10px!important'
         }}
         color="#fff">
         {/* MAIN ARTICLE HEADLINE */}
         {!isamp ? (
           <Typography component="h3" align="center">
-            <strong>{title}</strong>
+            <strong className="text-20 lh-24">{title}</strong>
           </Typography>
         ) : (
-          <h3>{title}</h3>
+          <h3 className="text-20 lh-24">{title}</h3>
         )}
         <br />
 
@@ -196,9 +208,9 @@ export default function LandingPage1(props) {
           New Report Claims Thousands Of Aussies Are Bailing On Private Health Insurance - Count Every Penny
         </title>
       </Head>
-      <Card>
+      <Card display="block">
         <Typography component="span" gutterBottom color="textSecondary" style={{ fontSize: 14 }}>
-          Health Insurance
+          HEALTH INSURANCE
         </Typography>
 
         <Typography component="h1" gutterBottom className={classes.headline}>
@@ -283,13 +295,49 @@ export default function LandingPage1(props) {
           you the benefits you expect.
         </P>
 
-        <Alert icon={false} className={classes.succesalert} severity="info">
+        <Alert icon={false} className={`${classes.infoalert} text-16`} severity="info">
           <strong>UPDATE:</strong> 30,000+ AU Households have now signed up to this genius free service and are
           protecting themselves from being ripped off. Learn more.
         </Alert>
 
         <Typography className={classes.sectionheading} component="h4">
           <strong>Here’s How You Do It:</strong>
+        </Typography>
+
+        <P>
+          <strong>Step 1:</strong> Select your current life stage below.
+          <br />
+          <strong>Step 2:</strong> Once you select your preferred coverage options, you will have the opportunity to
+          compare quotes from multiple health funds.
+        </P>
+
+        {/* Life Stage Stack */}
+        <LifeStageStack href="https://google.com/" />
+
+        <Typography className={classes.sectionheading} component="h4">
+          <strong>What You Need To Know To Save Money On Your Health Insurance</strong>
+        </Typography>
+
+        <P>
+          Even with Australian Consumer Law requiring health funds to be more transparent with their policies, they’re
+          still confusing and difficult to navigate for the average person. This makes it more likely for you to get
+          stuck paying a much higher premium for cover you’ll never actually use.
+        </P>
+
+        <P>
+          The easiest way to ensure you’re getting the most value out of your insurance policy is by using our free
+          comparison service. This will allow you to compare different hospital and extras cover from multiple health
+          funds side by side. You will also get help from your own team of insurance experts, so you won’t have to try
+          to read all of the fine print on your own.
+        </P>
+
+        <CtaBox
+          title="How long has it been since you last compared your health insurance?"
+          buttons={['Less than 1 year', '1 - 3 years', 'Over 3 years']}
+        />
+
+        <Typography className={classes.sectionheading} component="h4">
+          <strong>Here are our top 3 tips to get the best value for your money:</strong>
         </Typography>
 
         <P icon>
