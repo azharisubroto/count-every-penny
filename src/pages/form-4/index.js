@@ -984,7 +984,7 @@ function form4Page(props) {
           <Lottie options={defaultOptions} height={300} width={300} />
 
           <div style={{ textAlign: 'center', fontSize: 32, lineHeight: '35px', fontWeight: 600 }}>
-            We found<span className="highlight">6 QUOTES</span> that appear to suit your preferences
+            We found <span className="highlight">6 QUOTES</span> that appear to suit your preferences
           </div>
 
           <Box mx={{ sm: 0, lg: 8 }}>
