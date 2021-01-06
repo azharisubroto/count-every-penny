@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>HIC Clone</title>
+        <title>Count Every Penny</title>
       </Head>
       <article>Homepage</article>
     </>

@@ -18,6 +18,7 @@ import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import InputLabel from '@material-ui/core/InputLabel'
 import theme from '../../theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import InputMask from 'react-input-mask'
 import { useRouter, withRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { wrapper } from '../../../store/store'
@@ -324,28 +325,19 @@ const covers = [
 // Fund lists
 const funds = [
   'Select One',
-  'Bupa',
+  'AHM Health Insurance',
   'Australian Unity',
-  'Bupa',
-  'Defence Health',
+  'BUPA',
   'GMHBA',
-  'HBF',
-  'HCF',
-  'Medibank',
+  'HBF (Health Benefits Fund)',
+  'HCF (Hospitals Contribution Fund)',
+  'health.com.au',
+  'Latrobe Health',
+  'Medibank Provate',
   'NIB',
-  'Teachers Health',
-  'Other fund',
+  'ACA Health Benefits',
+  'Other fund or not listed',
   "I'm not currently insured"
-]
-
-// Cover list
-const coverlist = [
-  'Select One',
-  "I'm looking for better health cover",
-  'I have a specific health concern',
-  "I'm looking for cheaper cover",
-  'I just want to compare options',
-  "I'm planning on having a baby"
 ]
 
 const loadintexts = [
@@ -376,8 +368,6 @@ function form4Page(props) {
     } else if (step == 4) {
       setProgress(60)
     } else if (step == 5) {
-      setProgress(80)
-    } else if (step == 6) {
       setProgress(85)
       setTimeout(() => {
         setStep6texts(loadintexts[1])
@@ -392,11 +382,11 @@ function form4Page(props) {
       }, 4000)
 
       setTimeout(() => {
-        redirect(7)
+        redirect(6)
       }, 5000)
-    } else if (step == 7) {
+    } else if (step == 6) {
       setProgress(90)
-    } else if (step == 8) {
+    } else if (step == 7) {
       setProgress(98)
     }
   }, [step])
@@ -573,7 +563,7 @@ function form4Page(props) {
       />
 
       {/* FORM HERO */}
-      {(step < 6 || step == 8) && (
+      {(step < 5 || step == 7) && (
         <>
           <section className="hero">
             {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
@@ -587,23 +577,26 @@ function form4Page(props) {
                 </Box>
               )}
 
-              <div className={`${classes.keyfeatures} d-none d-md-block`}>
-                <Grid container spacing={0} alignItems="center">
-                  {/* LEFT */}
-                  <Grid item xs={12} md={3}>
-                    <div className={classes.featureitem}>Policies from $2.93 per day</div>
+              {/* KEY FEATURES for STEP 1 only */}
+              {step == 1 && (
+                <div className={`${classes.keyfeatures} d-none d-md-block`}>
+                  <Grid container spacing={0} alignItems="center">
+                    {/* LEFT */}
+                    <Grid item xs={12} md={3}>
+                      <div className={classes.featureitem}>Policies from $2.93 per day</div>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <div className={classes.featureitem}>No lock in contracts</div>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <div className={classes.featureitem}>No fees or markups</div>
+                    </Grid>
+                    <Grid item xs={12} md={3}>
+                      <div className={classes.featureitem}>100% Australian owned & operated</div>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} md={3}>
-                    <div className={classes.featureitem}>No lock in contracts</div>
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <div className={classes.featureitem}>No fees or markups</div>
-                  </Grid>
-                  <Grid item xs={12} md={3}>
-                    <div className={classes.featureitem}>100% Australian owned & operated</div>
-                  </Grid>
-                </Grid>
-              </div>
+                </div>
+              )}
 
               <Box>
                 <div className="form_b_card">
@@ -628,9 +621,8 @@ function form4Page(props) {
                         <div className="lookingfor text-20 lh-25 text-md-32 lh-md-40">
                           {step == 1 && <>I’m looking a Health cover for...</>}
                           {step == 2 && <>What kind of cover are you looking for?</>}
-                          {step == 3 && <>What is your primary health cover consideration?</>}
-                          {step == 4 && <>Who is your current health fund?</>}
-                          {step == 5 && <>Tell us about yourself</>}
+                          {step == 3 && <>Who is your current health fund?</>}
+                          {step == 4 && <>Tell us about yourself</>}
                         </div>
                       </Box>
                     )}
@@ -682,46 +674,8 @@ function form4Page(props) {
                       </Box>
                     )}
 
-                    {/* STEP 3 */}
-                    {step == 3 && (
-                      <>
-                        {/* Life Card Section */}
-                        <Box mt={{ xs: 2, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
-                          <Select
-                            className={`${classes.coverselect}`}
-                            placeholder="Select the cover type..."
-                            value={state.primary_health_cover}
-                            variant="outlined"
-                            onChange={(e) => {
-                              setState('primary_health_cover', e.target.value)
-                            }}>
-                            {coverlist.map((item) => (
-                              <MenuItem
-                                disabled={item == 'Select One'}
-                                className={classes.coveritem}
-                                key={item}
-                                value={item}>
-                                <div className={`${classes.seltext} seltext-root`}>{item}</div>
-                              </MenuItem>
-                            ))}
-                          </Select>
-                        </Box>
-
-                        <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
-                          <Button
-                            disabled={state.primary_health_cover == 'Select One'}
-                            className={classes.submitbutton}
-                            onClick={() => {
-                              redirect(4)
-                            }}>
-                            Next
-                          </Button>
-                        </Box>
-                      </>
-                    )}
-
                     {/* STEP 4 */}
-                    {step == 4 && (
+                    {step == 3 && (
                       <>
                         {/* Life Card Section */}
                         <Box mt={{ xs: 2, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
@@ -750,7 +704,7 @@ function form4Page(props) {
                             disabled={state.fund == 'Select One' || state.fund == 'none'}
                             className={classes.submitbutton}
                             onClick={() => {
-                              redirect(5)
+                              redirect(4)
                             }}>
                             Next
                           </Button>
@@ -759,30 +713,39 @@ function form4Page(props) {
                     )}
 
                     {/* STEP 5 */}
-                    {step == 5 && (
+                    {step == 4 && (
                       <>
                         <ValidatorForm key="step5validator" instantValidate={true} onSubmit={handleSubmit}>
                           <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
                             <Box maxWidth="500px" width="100%">
                               <div className={classes.label}>Tell us your year of birth</div>
-                              <TextValidator
-                                placeholder="YYYY"
-                                variant="outlined"
+
+                              <InputMask
+                                mask="99/99/9999"
+                                alwaysShowMask={true}
                                 value={state.yob}
-                                className={`${classes.formcontrol}`}
-                                validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$', 'allowedYears']}
-                                errorMessages={['Required', 'Numeric only', 'Must be 4 digit', 'Invalid Year']}
+                                disabled={false}
+                                maskChar={null}
                                 onChange={(e) => {
                                   setState('yob', e.target.value)
-                                }}
-                                InputProps={{
-                                  startAdornment: (
-                                    <InputAdornment position="start" style={{ marginRight: 10 }}>
-                                      <img src="/static/img/calendar.svg" alt="" height="30" loading="lazy" />
-                                    </InputAdornment>
-                                  )
-                                }}
-                              />
+                                }}>
+                                {() => (
+                                  <TextValidator
+                                    placeholder="DD/MM/YYYY"
+                                    variant="outlined"
+                                    className={`${classes.formcontrol}`}
+                                    validators={['required']}
+                                    errorMessages={['Required']}
+                                    InputProps={{
+                                      startAdornment: (
+                                        <InputAdornment position="start" style={{ marginRight: 10 }}>
+                                          <img src="/static/img/calendar.svg" alt="" height="30" loading="lazy" />
+                                        </InputAdornment>
+                                      )
+                                    }}
+                                  />
+                                )}
+                              </InputMask>
 
                               <Box mt={3}>
                                 <div className={classes.label}>My four digit postcode</div>
@@ -811,7 +774,7 @@ function form4Page(props) {
                           <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
                             <Button
                               onClick={() => {
-                                redirect(6)
+                                redirect(5)
                               }}
                               disabled={state.yob == '' || state.postcode == ''}
                               type="submit"
@@ -824,7 +787,7 @@ function form4Page(props) {
                     )}
 
                     {/* STEP 8 */}
-                    {step == 8 && (
+                    {step == 7 && (
                       <>
                         <Box mt={4}>
                           <Grid container spacing={3}>
@@ -926,7 +889,7 @@ function form4Page(props) {
           </section>
 
           {/* FEEFO SLIDE */}
-          {step != 8 && (
+          {step != 7 && (
             <Box py={5} style={{ backgroundColor: '#fff' }}>
               <FeefoSlide
                 slideBackground={slideBg}
@@ -940,7 +903,7 @@ function form4Page(props) {
             </Box>
           )}
 
-          {step == 8 && (
+          {step == 7 && (
             <>
               <div className="d-none d-md-block">
                 <AwardBox maxWidth="1200px" className={classes.awardbox} />
@@ -968,7 +931,7 @@ function form4Page(props) {
       )}
 
       {/* STEP 6 */}
-      {step == 6 && (
+      {step == 5 && (
         <>
           <Box maxWidth="1120px" mx="auto" pt={{ xs: 6, sm: 7, md: 8 }}>
             <div className="text-center text-24 lh-30 text-md-32 lh-md-35">
@@ -979,7 +942,7 @@ function form4Page(props) {
         </>
       )}
 
-      {step == 7 && (
+      {step == 6 && (
         <div className="container">
           <Lottie options={defaultOptions} height={300} width={300} />
 
@@ -999,7 +962,7 @@ function form4Page(props) {
               style={{ maxWidth: 580, margin: '0 auto' }}
               className={classes.submitbutton}
               onClick={() => {
-                redirect(8)
+                redirect(7)
               }}>
               Show My Quotes
             </Button>
