@@ -1,15 +1,7 @@
 import Box from '@material-ui/core/Box'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Card from '../../components/Card'
-//import makeStyles from '@material-ui/core/styles/makeStyles'
-
-//const useStyles = makeStyles({
-// const useStyles = makeStyles(() => ({
-//   awardcard: {
-//     boxShadow: '0 3px 4px rgba(0,0,0,.1)'
-//   }
-// }))
+import Card from '@/components/Card'
 
 export default function AwardBox({ maxWidth, ...rest }) {
   //const classes = useStyles(props)

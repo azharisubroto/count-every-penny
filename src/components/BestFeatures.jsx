@@ -2,7 +2,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
 import dynamic from 'next/dynamic'
-const FeatureBox = dynamic(() => import('../components/FeatureBox'))
+const FeatureBox = dynamic(() => import('@/components/FeatureBox'))
 
 export default function BestFeatures() {
   const benefits = [

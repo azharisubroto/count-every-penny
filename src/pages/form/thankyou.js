@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import Head from 'next/head'
-import Form from '../../layout/Form'
-import theme from '../../theme'
-import { logEvent } from '../../utils/tracker'
+import Form from '@/layout/Form'
+import theme from '@/theme'
+import { logEvent } from '@/utils/tracker'
 
 export default function ThankYou() {
   useEffect(() => {

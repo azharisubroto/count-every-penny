@@ -1,6 +1,6 @@
 import React from 'react'
 import Lottie from 'react-lottie'
-import * as animationData from '../components/Lottie/file-search.json'
+import * as animationData from '@/components/Lottie/file-search.json'
 
 function findAnimation() {
   const statically = 'https://cdn.statically.io/img'

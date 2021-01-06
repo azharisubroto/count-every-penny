@@ -4,9 +4,9 @@ import 'pure-react-carousel/dist/react-carousel.es.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Box from '@material-ui/core/Box'
-import Card from '../components/Card'
+import Card from '@/components/Card'
 import Rating from '@material-ui/lab/Rating'
-import theme from '../theme'
+import theme from '@/theme'
 import PropTypes from 'prop-types'
 
 /**

@@ -1,4 +1,4 @@
-import Partners from '../components/Partners'
+import Partners from '@/components/Partners'
 
 export default function FooterSimple(props) {
   const { isamp, ...other } = props
