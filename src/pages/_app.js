@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import 'bootstrap/dist/css/bootstrap-utilities.min.css'
 import '../styles/styles.global.scss'
 import theme from '@/theme'
 
