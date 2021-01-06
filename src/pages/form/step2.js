@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-import FormHero from '../../components/FormHero'
-import Form from '../../layout/Form'
-import { logEvent } from '../../utils/tracker'
+import FormHero from '@/components/FormHero'
+import Form from '@/layout/Form'
+import { logEvent } from '@/utils/tracker'
 
 export default function Step2() {
   useEffect(async () => {

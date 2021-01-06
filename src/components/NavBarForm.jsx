@@ -1,6 +1,6 @@
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Logo from '../components/Logo'
+import Logo from '@/components/Logo'
 
 export default function NavBarForm(props) {
   let l_width = 177,

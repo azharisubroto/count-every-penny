@@ -2,9 +2,9 @@ import React from 'react'
 import Head from 'next/head'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import NavBar from '../components/NavBar'
-import Sidebar from '../components/Sidebar'
-import FooterSimple from '../components/FooterSimple'
+import NavBar from '@/components/NavBar'
+import Sidebar from '@/components/Sidebar'
+import FooterSimple from '@/components/FooterSimple'
 import { useAmp } from 'next/amp'
 export const config = { amp: 'hybrid' }
 

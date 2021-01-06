@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import { useSelector, useDispatch } from 'react-redux'
-import { formCounter } from '../../../store/counter/action'
-import { wrapper } from '../../../store/store'
+import { formCounter } from '@/store/counter/action'
+import { wrapper } from '@/store/store'
 import Lottie from 'react-lottie'
-import * as animationData from '../../components/Lottie/file-search.json'
+import * as animationData from '@/components/Lottie/file-search.json'
 import { useRouter } from 'next/router'
-import { logEvent } from '../../utils/tracker'
+import { logEvent } from '@/utils/tracker'
 
 function Step4() {
   const router = useRouter()

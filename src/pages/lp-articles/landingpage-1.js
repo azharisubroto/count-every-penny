@@ -1,28 +1,18 @@
 import Head from 'next/head'
-import Article2 from '../layout/Article2'
+import Article from '@/layout/Article'
 import Card from '@/components/Card'
 import ArticleAuthor from '@/components/ArticleAuthor'
 import AustraliaState from '@/components/AustraliaState'
 import Typography from '@material-ui/core/Typography'
-import Button from '@/components/Button'
+import Button from '@material-ui/core/Button'
 import Alert from '@material-ui/lab/Alert'
 import ArrowRightIcon from '@material-ui/icons/ArrowRight'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
-const statically = 'https://cdn.statically.io/img'
-const hichost = 'asset.healthinsurancecomparison.com.au/wp-content/uploads/2020/04'
-const imgopt = '?h=75&q=70&f=webp'
-const partners = [
-  '/28014653/partner-ahm.png',
-  '/28014719/partner-nib.png',
-  '/28014701/partner-australianUnity.png',
-  '/28014705/partner-hcf.png',
-  '/28014720/partner-peoplecare.png',
-  '/28014714/partner-gmhba.png'
-]
-
+//const useStyles = makeStyles({
 const useStyles = makeStyles((theme) => ({
   articlecard: {
+    padding: 40,
     backgroundColor: '#fff',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
     borderRadius: 3,
@@ -32,17 +22,6 @@ const useStyles = makeStyles((theme) => ({
     '& a': {
       color: 'inherit',
       textDecoration: 'none'
-    },
-    '& hr': {
-      margin: '20px 0',
-      opacity: '0.3'
-    },
-    '& h4': {
-      fontSize: 24,
-      margin: '0 0 20px 0',
-      '&.text-center': {
-        textAlign: 'center'
-      }
     }
   },
   headline: {
@@ -70,22 +49,22 @@ const useStyles = makeStyles((theme) => ({
     }
   },
   alert: {
-    backgroundColor: 'rgba(12, 52, 90, 0.2)',
-    borderLeft: `3px solid #0C345A`,
-    borderRadius: 0,
+    backgroundColor: theme.palette.primary.lighten1,
+    borderRadius: 3,
+    borderLeft: `3px solid ${theme.palette.primary.main}`,
     overflow: 'hidden',
-    color: '#0C345A',
-    fontWeight: 400,
+    color: theme.palette.textPrimary.main,
+    fontWeight: 800,
     fontSize: 13,
     padding: '5px 10px',
     lineHeight: '1.6',
     '& a': {
-      color: 'inherit',
+      color: theme.palette.textPrimary.lighten1,
       textDecoration: 'none'
     }
   },
   alertIcon: {
-    color: '#0C345A'
+    color: theme.palette.textPrimary.lighten1
   },
   thumbnailContainer: {
     margin: '20px 0',
@@ -111,8 +90,8 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: 800
     },
     '&.hasIcon': {
-      paddingLeft: 40,
-      background: 'url("/static/img/check-round.svg") no-repeat top 5px left'
+      paddingLeft: 30,
+      background: 'url("/static/img/check.svg") no-repeat top 10px left'
     }
   },
   ctabutton: {
@@ -139,18 +118,12 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 22,
     lineHeight: '32px',
     margin: '30px 0'
-  },
-  partners: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    gap: '0',
-    fontSize: 24
   }
 }))
 
-export default function HighCancerRisks(props) {
+// Enable AMP
+
+export default function LandingPage1(props) {
   const isamp = false
   const classes = useStyles(props)
   const mainlink = 'https://google.com'
@@ -174,12 +147,16 @@ export default function HighCancerRisks(props) {
    * @param {String} title
    * @param {Object} props
    */
-  const CtaBox = ({ title, buttons, colors }) => {
+  const CtaBox = ({ title, buttons }) => {
     return (
-      <Card dark disableElevation color="#0C345A">
+      <Card
+        style={{
+          background: 'url("/static/img/cta-bg.svg") no-repeat top -10px left -10px'
+        }}
+        color="#fff">
         {/* MAIN ARTICLE HEADLINE */}
         {!isamp ? (
-          <Typography component="h1" align="center">
+          <Typography component="h3" align="center">
             <strong>{title}</strong>
           </Typography>
         ) : (
@@ -188,8 +165,14 @@ export default function HighCancerRisks(props) {
         <br />
 
         <div className="buttons-wrapper">
-          {buttons.map((item, i) => (
-            <Button key={item} href={mainlink} color={colors[i]} width="32%" height="45">
+          {buttons.map((item) => (
+            <Button
+              variant="contained"
+              color="primary"
+              disableElevation={true}
+              key={item}
+              className={classes.ctabutton}
+              href={mainlink}>
               {item}
             </Button>
           ))}
@@ -210,17 +193,16 @@ export default function HighCancerRisks(props) {
     <>
       <Head>
         <title>
-          High cancer risks and record NHS delays are driving UK families to prioritise getting life cover - Count Every
-          Penny
+          New Report Claims Thousands Of Aussies Are Bailing On Private Health Insurance - Count Every Penny
         </title>
       </Head>
-      <Card className={classes.articlecard}>
+      <Card>
         <Typography component="span" gutterBottom color="textSecondary" style={{ fontSize: 14 }}>
-          HEALTH INSURANCE
+          Health Insurance
         </Typography>
 
         <Typography component="h1" gutterBottom className={classes.headline}>
-          High cancer risks and record NHS delays are driving UK families to prioritise getting life cover
+          New Report Claims Thousands Of Aussies Are Bailing On Private Health Insurance — Should You Join Them?
         </Typography>
 
         {/* SUB HEADLING */}
@@ -229,15 +211,7 @@ export default function HighCancerRisks(props) {
         </Typography>
 
         {/* AUTHOR */}
-        <ArticleAuthor
-          variant="inline"
-          isamp={isamp}
-          avatar="/static/img/audrea.webp"
-          name="Audrea B."
-          date="31st July 2020"
-        />
-
-        <hr />
+        <ArticleAuthor isamp={isamp} avatar="/static/img/audrea.webp" name="Audrea B." date="31st July 2020" />
 
         {/* Alert */}
         <Alert
@@ -251,7 +225,7 @@ export default function HighCancerRisks(props) {
         {!isamp ? (
           <div className={classes.thumbnailContainer}>
             <img
-              src="https://cdn.statically.io/img/hic.azhdev.com/static/img/doctors.webp?h=281&q=70"
+              src="/static/img/doctors.webp"
               width="680"
               height="281"
               style={{ width: '100%' }}
@@ -268,7 +242,7 @@ export default function HighCancerRisks(props) {
             <br />
             <amp-img
               alt="doctors"
-              src="https://cdn.statically.io/img/hic.azhdev.com/static/img/doctors.webp?h=281&q=70"
+              src="/static/img/doctors.webp"
               width="680"
               height="281"
               attribution="Thanks to a there might still be one area where you can save your
@@ -290,7 +264,6 @@ export default function HighCancerRisks(props) {
         {/* CTA */}
         <CtaBox
           title="What type of health cover do you have?"
-          colors={['#07AF43', '#23ABD1', '#E94A73']}
           buttons={['Hospital Cover', 'Extras Cover', 'Combined Cover']}
         />
 
@@ -310,11 +283,7 @@ export default function HighCancerRisks(props) {
           you the benefits you expect.
         </P>
 
-        <Alert
-          icon={false}
-          className={classes.alert}
-          severity="info"
-          style={{ padding: '10px 20px', marginBottom: 30 }}>
+        <Alert icon={false} className={classes.succesalert} severity="info">
           <strong>UPDATE:</strong> 30,000+ AU Households have now signed up to this genius free service and are
           protecting themselves from being ripped off. Learn more.
         </Alert>
@@ -350,16 +319,14 @@ export default function HighCancerRisks(props) {
         </P>
 
         {!isamp ? (
-          <Card color="#fff" light outlined disableElevation padding="15px 20px">
-            <h4 className="text-center">Some of the funds we compare:</h4>
-            <div className={classes.partners}>
-              {partners.map((item) => (
-                <div key={item}>
-                  <img src={`${statically}/${hichost}${item}${imgopt}`} alt="" loading="lazy" height="40" />
-                </div>
-              ))}
-            </div>
-          </Card>
+          <img
+            src="/static/img/funds.svg"
+            alt="funds"
+            loading="lazy"
+            width="700"
+            height="148"
+            style={{ width: '100%' }}
+          />
         ) : (
           <amp-img alt="doctors" width="700" height="148" src="/static/img/funds.svg" layout="responsive"></amp-img>
         )}
@@ -389,42 +356,10 @@ export default function HighCancerRisks(props) {
           your area and could be eligible for significant savings.
         </P>
 
-        <AustraliaState
-          disableElevation
-          colors={{
-            WA: '#E94A73',
-            NT: '#23ABD1',
-            NSW: '#77B5EE',
-            VIC: '#23ABD1',
-            TAS: '#07AF43',
-            QLD: '#E0960B',
-            SA: '#07AF43'
-          }}
-          dark
-          background="#0C345A"
-          ctaColor="#F7CD5C"
-          ctaProps={{
-            style: {
-              color: '#000!important'
-            }
-          }}
-          link={mainlink}
-          isamp={isamp}
-        />
-
-        <hr />
-
-        <P>
-          <small>
-            <em>
-              This article is opinion only and should not be taken as medical or financial advice. Check with a
-              financial professional before making any decisions.
-            </em>
-          </small>
-        </P>
+        <AustraliaState link={mainlink} isamp={isamp} />
       </Card>
     </>
   )
 }
 
-HighCancerRisks.Layout = Article2
+LandingPage1.Layout = Article

@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import NavBarForm from '../components/NavBarForm'
+import NavBarForm from '@/components/NavBarForm'
 import LazyLoad from 'react-lazyload'
-const AwardBox = dynamic(() => import('../components/AwardBox'))
-const FeefoSlide = dynamic(() => import('../components/FeefoSlide'))
-const FooterSimple = dynamic(() => import('../components/FooterSimple'))
-const BestFeatures = dynamic(() => import('../components/BestFeatures'))
-import { wrapper } from '../../store/store'
-import theme from '../theme'
+const AwardBox = dynamic(() => import('@/components/AwardBox'))
+const FeefoSlide = dynamic(() => import('@/components/FeefoSlide'))
+const FooterSimple = dynamic(() => import('@/components/FooterSimple'))
+const BestFeatures = dynamic(() => import('@/components/BestFeatures'))
+import { wrapper } from '@/store/store'
+import theme from '@/theme'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 

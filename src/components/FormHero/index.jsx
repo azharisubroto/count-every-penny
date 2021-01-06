@@ -8,11 +8,11 @@ import MenuItem from '@material-ui/core/MenuItem'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
-import { formCounter } from '../../../store/counter/action'
+import { formCounter } from '@/store/counter/action'
 import { ValidatorForm, TextValidator, SelectValidator } from 'react-material-ui-form-validator'
-import theme from '../../theme'
+import theme from '@/theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { logEvent } from '../../utils/tracker'
+import { logEvent } from '@/utils/tracker'
 
 // CoverStyle to reusable
 const coverstyle = {

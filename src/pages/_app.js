@@ -1,13 +1,11 @@
-// @ts-check
 import React from 'react'
-//import Head from 'next/head'
 import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import '../styles/styles.global.scss'
-import theme from '../theme'
+import theme from '@/theme'
 
-function MyApp(props) {
+function CountEveryPenny(props) {
   const { Component, pageProps } = props
   const Layout = Component.Layout ? Component.Layout : React.Fragment
 
@@ -29,9 +27,9 @@ function MyApp(props) {
   )
 }
 
-export default MyApp
+export default CountEveryPenny
 
-MyApp.propTypes = {
+CountEveryPenny.propTypes = {
   Component: PropTypes.elementType.isRequired,
   pageProps: PropTypes.object.isRequired
 }

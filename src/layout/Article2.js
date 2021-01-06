@@ -1,20 +1,15 @@
-//import React, { useState } from 'react'
 import Head from 'next/head'
-//import Drawer from '@material-ui/core/Drawer'
-import Button from '../components/Button'
+import Button from '@/components/Button'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import NavBar from '../components/NavBar'
-import FooterSimple from '../components/FooterSimple'
+import NavBar from '@/components/NavBar'
+import FooterSimple from '@/components/FooterSimple'
 import { useAmp } from 'next/amp'
 export const config = { amp: 'hybrid' }
-//import Lottie from 'react-lottie'
-//import * as animationData from '../components/Lottie/arrow.json'
 
 export default function Article2(props) {
   const isAmp = useAmp()
   const { children } = props
-  //const [showSidebar, setShowSidebar] = useState(false)
 
   /**
    * Age Card

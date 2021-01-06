@@ -1,6 +1,6 @@
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import theme from '../theme'
+import theme from '@/theme'
 
 export default function Footer(props) {
   return (
