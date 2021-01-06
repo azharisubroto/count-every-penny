@@ -1,7 +1,7 @@
-const LifeStageCard = ({ href, ...props }) => {
+const LifeStageCard = ({ href, bevel, ...props }) => {
   return (
     <>
-      <a href={href} {...props}>
+      <a href={href} {...props} className={`${bevel ? 'bevel' : ''}`}>
         {props.children}
       </a>
       <style jsx>{`
@@ -16,6 +16,12 @@ const LifeStageCard = ({ href, ...props }) => {
           padding: 18px 20px;
           height: 100%;
           transition: all 0.2s ease;
+
+          &.bevel {
+            background: #ffffff;
+            box-shadow: inset 3px 3px 4px 2px rgba(255, 255, 255, 0.34), inset -3px -3px 3px 2px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+          }
 
           &:hover {
             border-color: #000;
