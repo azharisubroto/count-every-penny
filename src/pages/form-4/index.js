@@ -537,6 +537,14 @@ function form4Page(props) {
   const slideBg =
     'linear-gradient(69.17deg, #F5F5F5 1.82%, rgba(255, 255, 255, 0) 63.85%), linear-gradient(243.37deg, rgba(228, 228, 228, 0.4) 0%, rgba(255, 255, 255, 0.1) 49.83%);'
 
+  const formatChars = {
+    n: '[0-3]',
+    m: '[0-9]',
+    e: '[0-1]',
+    d: '[0-9]',
+    z: '[1-2]',
+    y: '[0-9]'
+  }
   return (
     <>
       <Head>
@@ -721,21 +729,22 @@ function form4Page(props) {
                               <div className={classes.label}>Tell us your year of birth</div>
 
                               <InputMask
-                                mask="99/99/9999"
-                                alwaysShowMask={true}
+                                mask="nm/ed/zyyy"
+                                alwaysShowMask={false}
+                                formatChars={formatChars}
+                                maskChar={null}
                                 value={state.yob}
                                 disabled={false}
-                                maskChar={null}
                                 onChange={(e) => {
                                   setState('yob', e.target.value)
                                 }}>
                                 {() => (
                                   <TextValidator
-                                    placeholder="DD/MM/YYYY"
                                     variant="outlined"
                                     className={`${classes.formcontrol}`}
                                     validators={['required']}
                                     errorMessages={['Required']}
+                                    placeholder="DD/MM/YYYY"
                                     InputProps={{
                                       startAdornment: (
                                         <InputAdornment position="start" style={{ marginRight: 10 }}>
