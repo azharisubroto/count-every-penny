@@ -126,11 +126,15 @@ const useStyles = makeStyles((theme) => ({
     textTransform: 'capitalize',
     padding: '20px 15px',
     cursor: 'pointer',
-    filter: 'grayscale(100%)',
     borderRadius: 4,
     transition: 'all 0.2s ease',
+    '&.bw': {
+      filter: 'grayscale(100%)'
+    },
     '&:hover': {
-      borderColor: '#000'
+      border: '1px solid #f09020',
+      boxShadow: '0px 0px 6px rgba(255, 155, 37, 0.5)',
+      filter: 'grayscale(0)'
     },
     '&.active': {
       border: '1px solid #f09020',
@@ -253,6 +257,19 @@ const useStyles = makeStyles((theme) => ({
     '& .card': {
       boxShadow: '0px 18px 24px rgba(0, 0, 0, 0.05)!important'
     }
+  },
+  keyfeatures: {
+    background: 'rgba(255,255,255,.6)',
+    padding: 20,
+    marginTop: 10
+  },
+  featureitem: {
+    display: 'block',
+    paddingLeft: 35,
+    background: 'url(/static/img/bi_check.svg) no-repeat left center',
+    backgroundSize: '20px 20px',
+    textAlign: 'left',
+    fontSize: 14
   }
 }))
 
@@ -285,18 +302,40 @@ const lifestagelists = [
   }
 ]
 
+// Cover types
+const covers = [
+  {
+    img: '/static/img/hospital-and-extras.svg',
+    text: 'Hospital & Extras',
+    value: 'Hospital & Extras'
+  },
+  {
+    img: '/static/img/hospital.svg',
+    text: 'Hospital Only',
+    value: 'Hospital Only'
+  },
+  {
+    img: '/static/img/extras.svg',
+    text: 'Extras Only',
+    value: 'Extras Only'
+  }
+]
+
 // Fund lists
 const funds = [
   'Select One',
+  'Bupa',
   'Australian Unity',
-  'bupa',
-  'defence health',
+  'Bupa',
+  'Defence Health',
   'GMHBA',
   'HBF',
   'HCF',
   'Medibank',
   'NIB',
-  'Teachers Health'
+  'Teachers Health',
+  'Other fund',
+  "I'm not currently insured"
 ]
 
 // Cover list
@@ -478,11 +517,13 @@ function form4Page(props) {
    * @param {string} LifeStage.img - Card Icon
    * @param {string} LifeStage.text - Card Text
    */
-  const LifeStageCard = ({ isActive, img, text, ...other }) => {
+  const LifeStageCard = ({ isActive, img, text, noBlackWhite, ...other }) => {
     return (
       <>
         {/* Card Parent */}
-        <div {...other} className={`${classes.lifestageCard} ${isActive ? 'active' : ''}`}>
+        <div
+          {...other}
+          className={`${classes.lifestageCard} ${isActive ? 'active' : ''} ${noBlackWhite !== true ? 'color' : 'bw'}`}>
           <Box>
             <img src={img} alt="" width="70" height="70" />
           </Box>
@@ -539,13 +580,32 @@ function form4Page(props) {
             <div className="container text-center">
               {step == 1 && (
                 <Box pt={{ xs: 3, sm: 4, md: 4, lg: 4 }} mx={{ md: 5 }}>
-                  <h1 className="text-24 lh-30 text-md-40 lh-md-45">
-                    Compare Australian Health Insurance Providers <span>in 5 Minutes</span>
+                  <h1 className="text-24 lh-30 text-md-36 lh-md-40">
+                    Compare, Switch, &amp; Save
+                    <br />– We saved the average Aussie <span>$347.95</span> on their cover
                   </h1>
                 </Box>
               )}
 
-              <Box pt={{ xs: 2, sm: 3, md: 3 }}>
+              <div className={`${classes.keyfeatures} d-none d-md-block`}>
+                <Grid container spacing={0} alignItems="center">
+                  {/* LEFT */}
+                  <Grid item xs={12} md={3}>
+                    <div className={classes.featureitem}>Policies from $2.93 per day</div>
+                  </Grid>
+                  <Grid item xs={12} md={3}>
+                    <div className={classes.featureitem}>No lock in contracts</div>
+                  </Grid>
+                  <Grid item xs={12} md={3}>
+                    <div className={classes.featureitem}>No fees or markups</div>
+                  </Grid>
+                  <Grid item xs={12} md={3}>
+                    <div className={classes.featureitem}>100% Australian owned & operated</div>
+                  </Grid>
+                </Grid>
+              </div>
+
+              <Box>
                 <div className="form_b_card">
                   <Box pt={{ xs: 2, sm: 3, md: 5, lg: 5 }} px={{ xs: 2, sm: 3, md: 5 }}>
                     {/* Linear Progress */}
@@ -567,7 +627,7 @@ function form4Page(props) {
                       <Box mt={3}>
                         <div className="lookingfor text-20 lh-25 text-md-32 lh-md-40">
                           {step == 1 && <>I’m looking a Health cover for...</>}
-                          {step == 2 && <>Do you currently have health insurance?</>}
+                          {step == 2 && <>What kind of cover are you looking for?</>}
                           {step == 3 && <>What is your primary health cover consideration?</>}
                           {step == 4 && <>Who is your current health fund?</>}
                           {step == 5 && <>Tell us about yourself</>}
@@ -586,6 +646,7 @@ function form4Page(props) {
                         {lifestagelists.map((item) => (
                           <Box key={item.value}>
                             <LifeStageCard
+                              noBlackWhite
                               img={item.img}
                               text={item.text}
                               isActive={state.lifestage == item.value ? 'active' : ''}
@@ -597,27 +658,27 @@ function form4Page(props) {
                     )}
 
                     {step == 2 && (
-                      <Box mt={{ xs: 2, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
-                        <Button
-                          className={`${classes.simplebtn} ${
-                            state.has_life_insurance == 'Yes' ? 'active' : ''
-                          } text-18 text-md-25`}
-                          onClick={() => {
-                            setState('has_life_insurance', 'Yes')
-                            redirect(3)
-                          }}>
-                          Yes
-                        </Button>
-                        <Button
-                          className={`${classes.simplebtn} ${
-                            state.has_life_insurance == 'No' ? 'active' : ''
-                          } text-18 text-md-25`}
-                          onClick={() => {
-                            setState('has_life_insurance', 'No')
-                            redirect(3)
-                          }}>
-                          No
-                        </Button>
+                      <Box
+                        className={classes.lifestagecards}
+                        mt={{ xs: 2, sm: 3, md: 4 }}
+                        mx="auto"
+                        display="flex"
+                        flexWrap="wrap"
+                        maxWidth={700}
+                        justifyContent="space-between">
+                        {covers.map((item) => (
+                          <Box key={item.value}>
+                            <LifeStageCard
+                              img={item.img}
+                              text={item.text}
+                              isActive={state.cover_type == item.value ? 'active' : ''}
+                              onClick={() => {
+                                setState('cover_type', item.value)
+                                redirect(3)
+                              }}
+                            />
+                          </Box>
+                        ))}
                       </Box>
                     )}
 
@@ -794,17 +855,18 @@ function form4Page(props) {
                             </Grid>
                             <Grid item xs={12} md={6}>
                               <ValidatorForm instantValidate={true} onSubmit={handleSubmit}>
-                                <InputLabel className={`${classes.label}`}>My Age</InputLabel>
+                                <InputLabel className={`${classes.label}`}>My Name</InputLabel>
                                 <TextValidator
-                                  validators={['required', 'isNumber']}
-                                  errorMessages={['Required', 'Numeric only', 'Valid age is between 18 to 120']}
+                                  validators={['required']}
+                                  errorMessages={['Required']}
                                   id="age"
-                                  placeholder="Enter My Age"
+                                  placeholder="Enter Full Name"
                                   variant="outlined"
-                                  value={state.age}
+                                  name="full_name"
+                                  value={state.name}
                                   className={`${classes.formcontrol}`}
                                   onChange={(e) => {
-                                    setState('age', e.target.value)
+                                    setState('name', e.target.value)
                                   }}
                                 />
 
@@ -813,7 +875,7 @@ function form4Page(props) {
                                   <TextValidator
                                     validators={['required', 'auPhone']}
                                     errorMessages={['Required', 'Invalid phone number format']}
-                                    placeholder="Enter preferred number"
+                                    placeholder="enter phone number"
                                     variant="outlined"
                                     value={state.phone}
                                     className={`${classes.formcontrol}`}
@@ -830,7 +892,7 @@ function form4Page(props) {
                                   <TextValidator
                                     validators={['required', 'isEmail']}
                                     errorMessages={['Required', 'Invalid email address']}
-                                    placeholder="Enter email"
+                                    placeholder="Enter email address"
                                     variant="outlined"
                                     value={state.email}
                                     className={`${classes.formcontrol}`}
@@ -845,9 +907,10 @@ function form4Page(props) {
                                     variant="contained"
                                     size="large"
                                     disableElevation
+                                    disabled={state.name == '' || state.phone == '' || state.email == ''}
                                     className={classes.submitbutton}
                                     fullWidth>
-                                    Next
+                                    Get Me My Quotes
                                   </Button>
                                 </Box>
                               </ValidatorForm>

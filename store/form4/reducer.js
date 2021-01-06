@@ -6,15 +6,14 @@ const initialState = {
   form: {
     step_passed: 0,
     lifestage: '',
-    has_life_insurance: '',
+    cover_type: '',
     primary_health_cover: 'Select One',
     fund: 'Select One',
     yob: '',
     postcode: '',
     name: '',
     phone: '',
-    email: '',
-    age: ''
+    email: ''
   }
 }
 
