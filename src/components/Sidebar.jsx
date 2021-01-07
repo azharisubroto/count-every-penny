@@ -26,8 +26,8 @@ export default function Sidebar(props) {
       <aside {...props}>
         <div className="age-card">
           <div className="alert text-primary">
-            <strong>Australia:</strong> We saved our average customer <strong>$380.79*</strong> on their average annual
-            premium!
+            <strong>Australia:</strong> We saved our average customer $357.95* on their average annual premium. Policies
+            start from just <strong>$2.93</strong> per day!
           </div>
 
           <div className="headline">
@@ -56,7 +56,7 @@ export default function Sidebar(props) {
             ))}
           </Box>
 
-          <div className="age-card-footer">*Average savings based off 15178 customers during FY18/19.</div>
+          <div className="age-card-footer">*Average savings based on data from 13136 customers during 2020.</div>
         </div>
 
         <style jsx>
