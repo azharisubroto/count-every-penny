@@ -38,15 +38,8 @@ const FeefoSlide = (props) => {
   // Slides JSON
   const slides = [
     {
-      author: 'Alan',
-      text: `My family have been loyal customers to our old
-      health insurance and decided to give Health
-      Insurance Comparison a go! We have now
-      switched Health Insurance and made a saving of
-      $1000.00 and a better cover. Have put my
-      family and friends onto Health Insurance
-      Comparison and they are loving the savings
-      too!! Recommend anyone to give them ago!!`
+      author: 'Caroline',
+      text: `The service was excelent. We ended up saving approximately %800.00 for changing our Health Insurance. Definitely would recommend your service. Thank you!`
     },
     {
       author: 'Brooke',

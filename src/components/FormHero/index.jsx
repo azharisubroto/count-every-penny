@@ -183,7 +183,7 @@ const coverlist = [
 // Funds List
 const fundlist = [
   {
-    text: 'Bupa',
+    text: 'Select One',
     value: 'none'
   },
   {
