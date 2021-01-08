@@ -358,7 +358,7 @@ function Step3(props) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:3000/api/coverlist')
+  const res = await fetch('https://counteverypenny.com.au/api/coverlist')
   const data = await res.json()
 
   // By returning { props: posts }, the Blog component

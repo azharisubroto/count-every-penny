@@ -14,6 +14,7 @@ import { formCounter } from '@/store/counter/action'
 import { logEvent } from '@/utils/tracker'
 import { useRouter } from 'next/router'
 import Slide from '@material-ui/core/Slide'
+import axios from 'axios'
 
 // Styling
 
@@ -177,17 +178,51 @@ export default function Step5(props) {
   }
 
   // Handle Submit
-  const handleSubmit = () => {
-    logEvent({
-      event_type: `Submitted Form Step 5`
-    })
-    dispatch(
-      formCounter({
-        ...state,
-        step_passed: 5
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('/api/lead', {
+        fullname: state.name,
+        phone: state.phone,
+        email: state.email,
+        postcode: state.postcode,
+        life_stage: state.covertype,
+        health_fund: state.fund,
+        cover_type: JSON.stringify({
+          hospital: state.hospitalCovers,
+          extras: state.extraCovers
+        }),
+        age: state.age,
+        //date_of_birth: '02/03/1995',
+        utm_source: 'utm_source',
+        utm_medium: 'utm_medium',
+        utm_campaign: 'utm_campaign',
+        utm_content: 'utm_content',
+        utm_term: 'utm_term'
       })
-    )
-    router.push(`/form/thankyou`).then(() => window.scrollTo(0, 0))
+      const data = await response.data
+
+      if (data.status == 'success') {
+        logEvent({
+          event_type: `Submitted Form Step 5`
+        })
+        dispatch(
+          formCounter({
+            ...state,
+            step_passed: 5
+          })
+        )
+        router.push(`/form/thankyou`).then(() => window.scrollTo(0, 0))
+      } else {
+        logEvent({
+          event_type: `Submission Failed`
+        })
+      }
+    } catch (error) {
+      logEvent({
+        event_type: `Submission Failed`
+      })
+      alert('An error occured')
+    }
   }
 
   // Handle input change
