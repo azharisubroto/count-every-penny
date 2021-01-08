@@ -53,7 +53,7 @@ class Leads
     private $state;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $age;
 
@@ -81,6 +81,16 @@ class Leads
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $lead_uuid;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $activecampaign_id;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $date_of_birth;
 
     public function getId(): ?int
     {
@@ -239,6 +249,30 @@ class Leads
     public function setState(string $state): self
     {
         $this->state = $state;
+
+        return $this;
+    }
+
+    public function getActivecampaignId(): ?int
+    {
+        return $this->activecampaign_id;
+    }
+
+    public function setActivecampaignId(?int $activecampaign_id): self
+    {
+        $this->activecampaign_id = $activecampaign_id;
+
+        return $this;
+    }
+
+    public function getDateOfBirth(): ?\DateTimeInterface
+    {
+        return $this->date_of_birth;
+    }
+
+    public function setDateOfBirth(?\DateTimeInterface $date_of_birth): self
+    {
+        $this->date_of_birth = $date_of_birth;
 
         return $this;
     }
