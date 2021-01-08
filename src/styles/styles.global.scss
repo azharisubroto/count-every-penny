@@ -8,6 +8,7 @@ body {
   padding: 0;
   margin-left: 0;
   margin-right: 0;
+  font-family: 'Nunito Sans', Arial, sans-serif !important;
 }
 
 html {
@@ -22,10 +23,10 @@ html {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-input[type="number"]::-webkit-inner-spin-button, 
-input[type="number"]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 body {
@@ -132,7 +133,7 @@ img {
   .text-md-center {
     text-align: center;
   }
-  
+
   .d-md-none {
     display: none;
   }
@@ -141,3 +142,8 @@ img {
     display: block;
   }
 }
+
+// Pages
+@import "mixins/device";
+@import "pages/variables";
+@import "pages/misc";
