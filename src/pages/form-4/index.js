@@ -886,6 +886,18 @@ function form4Page(props) {
                                   </Button>
                                 </Box>
                               </ValidatorForm>
+
+                              <Box mt={3} mx={{ sm: 0, lg: 3 }}>
+                                <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>
+                                  Free 210 piece first aid kit if you switch in January
+                                </div>
+                                <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>
+                                  100% Australian owned &amp; operated
+                                </div>
+                                <div className={`${classes.featureitem} text-16 text-md-18`}>
+                                  No lock in contracts &amp; 30 day cooling off period
+                                </div>
+                              </Box>
                             </Grid>
                           </Grid>
                         </Box>
@@ -939,7 +951,7 @@ function form4Page(props) {
         </>
       )}
 
-      {/* STEP 6 */}
+      {/* STEP 5 */}
       {step == 5 && (
         <>
           <Box maxWidth="1120px" mx="auto" pt={{ xs: 6, sm: 7, md: 8 }}>
@@ -951,6 +963,7 @@ function form4Page(props) {
         </>
       )}
 
+      {/* STEP 6 */}
       {step == 6 && (
         <div className="container">
           <Lottie options={defaultOptions} height={300} width={300} />
@@ -966,16 +979,23 @@ function form4Page(props) {
             </p>
           </Box>
 
-          <div style={{ margin: '0 auto', maxWidth: 580 }}>
+          <Box maxWidth={994} mx={`auto`}>
             <Button
-              style={{ maxWidth: 580, margin: '0 auto' }}
               className={classes.submitbutton}
               onClick={() => {
                 redirect(7)
               }}>
               Show My Quotes
             </Button>
-          </div>
+
+            <p className="mt-3 text-14 text-center disclaimer">
+              By clicking &lsquo;Get my quotes&rsquo;, I acknowledge that I have read and agree to the{' '}
+              <a href="/terms-of-use/">Terms of Use</a>, the &nbsp;
+              <a href="/privacy-policy">Privacy Policy</a> and the Collection Notice. I confirm that you may contact me
+              about your services. I consent to you using sensitive personal information that you may collect for the
+              purposes of providing your products and services.
+            </p>
+          </Box>
         </div>
       )}
 
@@ -1080,6 +1100,13 @@ function form4Page(props) {
           }
           @media screen and (max-width: 667px) {
             text-align: center;
+          }
+        }
+
+        .disclaimer {
+          color: #636363;
+          a {
+            color: ${theme.palette.cep.primary};
           }
         }
       `}</style>
