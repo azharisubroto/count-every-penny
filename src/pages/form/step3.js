@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 import Form from '@/layout/Form'
 import List from '@material-ui/core/List'
 import CoverItem from '@/components/CoverItem'
+import Tooltip from '@material-ui/core/Tooltip'
 import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '@/store/counter/action'
 import theme from '@/theme'
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     marginBottom: 30,
     '& a': {
-      color: theme.palette.cep.primary,
+      color: theme.palette.cep.secondary,
       textDecoration: 'underline'
     }
   },
@@ -247,9 +248,15 @@ function Step3(props) {
           <p className={classes.disclaimer}>
             By clicking &apos;Continue search&apos;, I acknowledge that I have read and agree to the{' '}
             <a href="/terms-of-use/">Terms of Use</a>, the <a href="/privacy-policy/">Privacy Policy</a> and the &nbsp;
-            <a href="/collection-notice/">Collection Notice</a>. I confirm that you may contact me about your services.
-            I consent to you using sensitive personal information that you may collect for the purposes of providing
-            your products and services.
+            <Tooltip
+              style={{ maxWidth: 500 }}
+              arrow
+              interactive
+              title="Personal information is being collected by Asymmetric Information (AM) who can be contacted at compliance@asymmetricinformation.com.au. Personal information is being collected by AI so that AI can provide and market its products and services to you which may include telephone calls to you about our products and services.If AI does not collect personal information from you, AI will not, nor will our partners, be able to provide its products or services to you.To provide AI's products and services, AI may need to disclose personal information to commercial partners to fulfil your requests or third party service providers who provide services to AI.For more information, please review our Privacy Policy.In some circumstances AI may disclose personal information to overseas recipients in the United States of America, Serbia, Philippines & India.">
+              <a href="/collection-notice/">Collection Notice</a>
+            </Tooltip>
+            . I confirm that you may contact me about your services. I consent to you using sensitive personal
+            information that you may collect for the purposes of providing your products and services.
           </p>
 
           {/* SUBMIT */}

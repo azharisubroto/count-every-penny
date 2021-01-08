@@ -3,6 +3,7 @@ import NavBarForm from '@/components/NavBarForm'
 import FeefoSlide from '@/components/FeefoSlide'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
+import Tooltip from '@material-ui/core/Tooltip'
 import FindAnimation from '@/components/FindAnimation'
 import Select from '@material-ui/core/Select'
 import MenuItem from '@material-ui/core/MenuItem'
@@ -992,9 +993,16 @@ function form4Page(props) {
             <p className="mt-3 text-14 text-center disclaimer">
               By clicking &lsquo;Get my quotes&rsquo;, I acknowledge that I have read and agree to the{' '}
               <a href="/terms-of-use/">Terms of Use</a>, the &nbsp;
-              <a href="/privacy-policy">Privacy Policy</a> and the Collection Notice. I confirm that you may contact me
-              about your services. I consent to you using sensitive personal information that you may collect for the
-              purposes of providing your products and services.
+              <a href="/privacy-policy">Privacy Policy</a> and the
+              <Tooltip
+                style={{ maxWidth: 500 }}
+                arrow
+                interactive
+                title="Personal information is being collected by Asymmetric Information (AM) who can be contacted at compliance@asymmetricinformation.com.au. Personal information is being collected by AI so that AI can provide and market its products and services to you which may include telephone calls to you about our products and services.If AI does not collect personal information from you, AI will not, nor will our partners, be able to provide its products or services to you.To provide AI's products and services, AI may need to disclose personal information to commercial partners to fulfil your requests or third party service providers who provide services to AI.For more information, please review our Privacy Policy.In some circumstances AI may disclose personal information to overseas recipients in the United States of America, Serbia, Philippines & India.">
+                <a href="/collection-notice">Collection Notice</a>
+              </Tooltip>
+              . I confirm that you may contact me about your services. I consent to you using sensitive personal
+              information that you may collect for the purposes of providing your products and services.
             </p>
           </Box>
         </div>
