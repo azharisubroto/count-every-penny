@@ -37,7 +37,6 @@ class DefaultController extends AbstractController
         $lifeStage = $request->get('life_stage');
         $coverType = !empty($request->get('cover_type')) ? json_decode($request->get('cover_type'), true) : [];
         $healthFund = $request->get('health_fund');
-        $state = $request->get('state');
 
         $doctrine = $this->getDoctrine();
         $em = $doctrine->getManager();
@@ -68,10 +67,6 @@ class DefaultController extends AbstractController
             $error[] = 'health fund cannot empty';
         }
 
-        if(empty($state)) {
-            $error[] = 'state cannot empty';
-        }
-
         if(!empty($error)) {
             return $this->json([
                 'status' => 'fail',
@@ -80,6 +75,7 @@ class DefaultController extends AbstractController
         }
 
         $nameDetail = $this->helper->getDetailNamePart($fullname);
+        $state = $this->helper->getStateFromPostcode($postcode);
 
         if(empty($age) && !empty($dateOfBirth)) {
             $tmp_dob = explode('/', $dateOfBirth);

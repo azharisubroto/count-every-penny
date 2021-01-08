@@ -2,8 +2,17 @@
 
 namespace App\Service;
 
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+
 class Helper
 {
+
+    private $parameter;
+
+    public function __construct(ParameterBagInterface $params)
+    {
+        $this->parameter = $params;
+    }
 
     public function getDetailNamePart($fullname)
     {
@@ -43,6 +52,14 @@ class Helper
         $age = $today->diff($dob);
         $age = $age->y;
         return $age;
+    }
+
+    public function getStateFromPostcode($postcode)
+    {
+        $projectDir = $this->parameter->get('kernel.project_dir');
+        $geodata = json_decode(file_get_contents($projectDir . '/public/postcode_state.json'), true);
+
+        return $geodata[$postcode];
     }
 
     public function createGetRequest($url, $headers = [])
