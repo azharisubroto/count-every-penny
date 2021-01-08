@@ -1,0 +1,184 @@
+.page{
+    &--misc{
+        color: #333;
+        background-color: #f9f9f9;
+        .container{
+            padding-left: 16px;
+            padding-right: 16px;
+            @media (min-width: 600px){
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+        }
+    }
+    &-title{
+        padding: 30px 0;
+        text-align: center;
+        background-color: $primary;
+        position: relative;
+        margin-bottom: 20px;
+
+        &:before, &:after{
+            width: 96px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            background-image: url('/static/img/misc-pages/page-title-ornament-1.png');
+            background-size: cover;
+            content: "";
+        }
+
+        &:before{
+            left: 0;
+        }
+
+        &:after{
+            right: 0;
+            transform: rotate(180deg);
+        }
+
+        .container{
+            position: relative;
+            &:before, &:after{
+                width: 77px;
+                height: 85px;
+                position: absolute;
+                bottom: -30px;
+                background-image: url('/static/img/misc-pages/page-title-ornament-2.png');
+                background-size: cover;
+                content: "";
+            }
+
+            &:before{
+                left: 24px;
+            }
+
+            &:after{
+                right: 24px;
+                transform: scaleX(-1);
+            }
+        }
+
+        h1{
+            font-weight: 800;
+            font-size: 30px;
+            line-height: 36px;
+            margin: 0;
+            color: $white;
+        }
+    }
+
+    &-content{
+        padding: 20px;
+        background-color: $white;
+        border-radius: 4px;
+        &__item{
+            margin-bottom: 60px;
+
+            &:last-of-type{
+                margin-bottom: 0;
+            }
+        }
+        h4{
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            margin-top: 0;
+        }
+
+        p{
+            font-size: 18px;
+            line-height: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        a{
+            color: $primary;
+
+            &:hover{
+                color: lighten($primary, 10%);
+            }
+        }
+
+        &-table{
+            margin-bottom: 20px;
+            border-radius: 4px;
+            overflow: hidden;
+            .table{
+                border: 1px solid #EFEFEF;
+                border-spacing: 0;
+                tr{
+                    th, td{
+                        font-size: 18px;
+                        line-height: 30px;
+                        padding: 15px 20px;
+                        color: #333;
+                        vertical-align: middle;
+                        border: none;
+
+                        @include device(mobile){
+                            font-size: 15px;
+                            line-height: 18px;
+                            padding: 15px 10px;
+                        }
+                    }
+
+                    td{
+                        background-color: #fdfdfd;
+                    }
+
+                    th{
+                        font-weight: 700;
+                        font-size: 20px;
+                        line-height: 27px;
+                    }
+                }
+
+                &-orange{
+                    th{
+                        background-color: $primary;
+                        color: $white !important;
+                        &:nth-child(2){
+                            background-color: #E98A1A;
+                        }
+                        &:nth-child(3){
+                            background-color: #D3801F;
+                        }
+                    }
+                }
+            }
+        }
+
+        ul{
+            padding: 0;
+            margin-bottom: 0;
+            padding-left: 10px;
+            li{
+                font-size: 18px;
+                line-height: 28px;
+                margin-top: 0;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            &.check{
+                list-style: none;
+
+                li{
+                    padding-left: 40px;
+                    &:before{
+                        position: absolute;
+                        content: "";
+                        width: 26px;
+                        height: 26px;
+                        left: 0;
+                        background-image: url('/static/img/misc-pages/check.png');
+                        background-size: cover;
+                        top: 2px;
+                    }
+                }
+            }
+        }
+    }
+}
