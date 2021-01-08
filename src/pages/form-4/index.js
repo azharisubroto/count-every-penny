@@ -847,7 +847,7 @@ function form4Page(props) {
                                   <TextValidator
                                     validators={['required', 'auPhone']}
                                     errorMessages={['Required', 'Invalid phone number format']}
-                                    placeholder="enter phone number"
+                                    placeholder="Enter Phone Number"
                                     variant="outlined"
                                     value={state.phone}
                                     className={`${classes.formcontrol}`}
@@ -864,7 +864,7 @@ function form4Page(props) {
                                   <TextValidator
                                     validators={['required', 'isEmail']}
                                     errorMessages={['Required', 'Invalid email address']}
-                                    placeholder="Enter email address"
+                                    placeholder="Enter Email Address"
                                     variant="outlined"
                                     value={state.email}
                                     className={`${classes.formcontrol}`}
@@ -974,8 +974,9 @@ function form4Page(props) {
 
           <Box mx={{ sm: 0, lg: 8 }}>
             <p style={{ textAlign: 'center' }} className="text-16 lh-md-24 text-md-20 lh-md-35">
-              One of our consultants will contact you as soon as possible, for now sit tight, you’re already on your way
-              to finding the right fund, with the right cover.
+              No fluff, just a fact: In 2020, we saved 53,893 Aussie singles, couples, and families $357.95 on their
+              health cover - policies start from just $2.93 per day. There are no fees or markups - we guarantee all
+              quotes come directly from the insurers.
             </p>
           </Box>
 
