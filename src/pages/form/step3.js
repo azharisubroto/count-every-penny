@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button'
 import Form from '@/layout/Form'
 import List from '@material-ui/core/List'
 import CoverItem from '@/components/CoverItem'
+import Tooltip from '@material-ui/core/Tooltip'
 import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '@/store/counter/action'
 import theme from '@/theme'
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 0,
     marginBottom: 30,
     '& a': {
-      color: theme.palette.cep.primary,
+      color: theme.palette.cep.secondary,
       textDecoration: 'underline'
     }
   },
@@ -123,9 +124,21 @@ function Step3(props) {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero text-start py-md-5 py-4">
         <Container style={{ maxWidth: 1120 }}>
-          <h1>Make your health insurance cover work for you.</h1>
+          {/* HEADING AND IMAGE */}
+          <Grid container spacing={4}>
+            <Grid item md={7}>
+              <h1 className="my-0" style={{ marginBottom: 0, marginTop: 30, textAlign: 'left!important' }}>
+                Make your health insurance cover work for you.
+              </h1>
+            </Grid>
+            <Grid item md={5}>
+              <div className="hero-img-type text-md-end">
+                <img src="/static/img/mascott.svg" alt="" width="227" height="332" loading="lazy" />
+              </div>
+            </Grid>
+          </Grid>
         </Container>
       </section>
 
@@ -247,9 +260,15 @@ function Step3(props) {
           <p className={classes.disclaimer}>
             By clicking &apos;Continue search&apos;, I acknowledge that I have read and agree to the{' '}
             <a href="/terms-of-use/">Terms of Use</a>, the <a href="/privacy-policy/">Privacy Policy</a> and the &nbsp;
-            <a href="/collection-notice/">Collection Notice</a>. I confirm that you may contact me about your services.
-            I consent to you using sensitive personal information that you may collect for the purposes of providing
-            your products and services.
+            <Tooltip
+              style={{ maxWidth: 500 }}
+              arrow
+              interactive
+              title="Personal information is being collected by Asymmetric Information (AM) who can be contacted at compliance@asymmetricinformation.com.au. Personal information is being collected by AI so that AI can provide and market its products and services to you which may include telephone calls to you about our products and services.If AI does not collect personal information from you, AI will not, nor will our partners, be able to provide its products or services to you.To provide AI's products and services, AI may need to disclose personal information to commercial partners to fulfil your requests or third party service providers who provide services to AI.For more information, please review our Privacy Policy.In some circumstances AI may disclose personal information to overseas recipients in the United States of America, Serbia, Philippines & India.">
+              <a href="/collection-notice/">Collection Notice</a>
+            </Tooltip>
+            . I confirm that you may contact me about your services. I consent to you using sensitive personal
+            information that you may collect for the purposes of providing your products and services.
           </p>
 
           {/* SUBMIT */}
@@ -272,25 +291,70 @@ function Step3(props) {
       {/* JSX Styling */}
       <style jsx>{`
         .hero {
-          background-color: ${theme.palette.cep.primary};
-          padding: 40px 0;
-          color: #fff;
-
+          position: relative;
+          z-index: 0;
+          overflow: hidden;
+          @media screen and (min-width: 1024px) {
+            background: #f9f9f9;
+            &:before {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+              height: 100%;
+              width: 100%;
+              transform-origin: top left;
+              background: ${theme.palette.cep.primary};
+              content: '';
+              z-index: -1;
+            }
+            &:after {
+              content: '';
+              position: absolute;
+              top: 0;
+              right: 0;
+              height: 300px;
+              width: 300px;
+              background: url('/static/img/decoration.svg') no-repeat top right;
+              z-index: -1;
+            }
+          }
+          @media screen and (max-width: 1023px) {
+            background: ${theme.palette.cep.primary};
+            padding: 40px 0;
+          }
+          @media screen and (max-width: 769px) {
+            margin-bottom: 40px;
+          }
           h1 {
             font-weight: 800;
             font-size: 42px;
             line-height: 54px;
             color: #fff;
-            margin-top: 26px;
             margin-bottom: 26px;
-            text-align: center;
+            margin-top: 0;
             @media screen and (max-width: 769px) {
               font-size: 20px;
               line-height: 30px;
               text-align: center;
               font-weight: 700;
-              margin-top: 0;
               margin: 0;
+            }
+          }
+          .hero-img-type {
+            text-align: right;
+            position: absolute;
+            top: 0;
+            right: 5%;
+            img {
+              height: 332px;
+              width: 267px;
+              position: relative;
+              transform: translateX(50px);
+            }
+            @media screen and (max-width: 769px) {
+              display: none;
             }
           }
         }

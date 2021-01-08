@@ -5,6 +5,7 @@ import { formCounter } from '@/store/counter/action'
 import { wrapper } from '@/store/store'
 import Lottie from 'react-lottie'
 import * as animationData from '@/components/Lottie/file-search.json'
+import NavBarForm from '@/components/NavBarForm'
 import { useRouter } from 'next/router'
 import { logEvent } from '@/utils/tracker'
 
@@ -63,6 +64,8 @@ function Step4() {
       <Head>
         <title>Finding Policies Now - Count Every Penny</title>
       </Head>
+
+      <NavBarForm />
 
       <section className="hero">
         <div className="container">
