@@ -36,6 +36,15 @@ class Helper
         return $partofname;
     }
 
+    public function calculateAge($dob)
+    {
+        $today = new \DateTime();
+        $dob = new \DateTime($dob);
+        $age = $today->diff($dob);
+        $age = $age->y;
+        return $age;
+    }
+
     public function createGetRequest($url, $headers = [])
     {
         $curl = curl_init($url);
