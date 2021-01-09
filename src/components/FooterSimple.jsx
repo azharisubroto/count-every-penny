@@ -16,19 +16,16 @@ export default function FooterSimple(props) {
         <div>
           <ul>
             <li>
-              <a href="https://google.com">Privacy Policy</a>
+              <a href="https://counteverypenny.com.au">Privacy Policy</a>
             </li>
             <li>
-              <a href="https://google.com">Terms of Use</a>
+              <a href="https://counteverypenny.com.au">Terms of Use</a>
             </li>
             <li>
-              <a href="https://google.com">Contact Us</a>
+              <a href="https://counteverypenny.com.au">Contact Us</a>
             </li>
             <li>
-              <a href="https://google.com">Twitter</a>
-            </li>
-            <li>
-              <a href="https://google.com">Facebook</a>
+              <a href="https://counteverypenny.com.au">Facebook</a>
             </li>
           </ul>
         </div>
@@ -39,10 +36,12 @@ export default function FooterSimple(props) {
         </div>
 
         {/* Copyright */}
-        <p className="copyright">
-          &copy; Copyright Count Every Penny 2013-2018. All rights reserved. Counteverypenny.com.au does not compare all
-          products in the market. The availability of products compared may change from time to time. Not all products
-          available from our partners are compared and not all products are available to all customers.
+        <p className="copyright text-14">
+          <strong>
+            &copy; Copyright Count Every Penny 2013-2018. All rights reserved. Counteverypenny.com.au does not compare
+            all products in the market. The availability of products compared may change from time to time. Not all
+            products available from our partners are compared and not all products are available to all customers.
+          </strong>
         </p>
       </footer>
 
