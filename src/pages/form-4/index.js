@@ -10,6 +10,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 import Grid from '@material-ui/core/Grid'
 import InputAdornment from '@material-ui/core/InputAdornment'
 import LinearProgress from '@material-ui/core/LinearProgress'
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import AwardBox from '@/components/AwardBox'
 import FooterSimple from '@/components/FooterSimple'
 import Head from 'next/head'
@@ -24,6 +26,8 @@ import { useRouter, withRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import { wrapper } from '@/store/store'
 import { form4 } from '@/store/form4/action'
+import axios from 'axios'
+import { logEvent } from '@/utils/form4tracker'
 
 // Styling
 const coverstyle = {
@@ -272,6 +276,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundSize: '20px 20px',
     textAlign: 'left',
     fontSize: 14
+  },
+  backdrop: {
+    zIndex: 999,
+    color: '#fff'
   }
 }))
 
@@ -309,17 +317,17 @@ const covers = [
   {
     img: '/static/img/hospital-and-extras.svg',
     text: 'Hospital & Extras',
-    value: 'Hospital & Extras'
+    value: 'hospital_extras'
   },
   {
     img: '/static/img/hospital.svg',
     text: 'Hospital Only',
-    value: 'Hospital Only'
+    value: 'hospital'
   },
   {
     img: '/static/img/extras.svg',
     text: 'Extras Only',
-    value: 'Extras Only'
+    value: 'extras'
   }
 ]
 
@@ -353,7 +361,7 @@ function form4Page(props) {
   const router = useRouter()
   const [progress, setProgress] = useState(0)
   const [step6texts, setStep6texts] = useState(loadintexts[0])
-
+  const [loading, setLoading] = useState(false)
   const [step, setStep] = useState(1)
   const classes = useStyles(props)
   const state = useSelector((state) => state.form4.form)
@@ -362,14 +370,35 @@ function form4Page(props) {
   useEffect(() => {
     if (step == 1) {
       setProgress(0)
+
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 1`
+      })
     } else if (step == 2) {
       setProgress(20)
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 2`
+      })
     } else if (step == 3) {
       setProgress(40)
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 3`
+      })
     } else if (step == 4) {
       setProgress(60)
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 4`
+      })
     } else if (step == 5) {
       setProgress(85)
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 5`
+      })
       setTimeout(() => {
         setStep6texts(loadintexts[1])
       }, 2000)
@@ -387,8 +416,16 @@ function form4Page(props) {
       }, 5000)
     } else if (step == 6) {
       setProgress(90)
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 6`
+      })
     } else if (step == 7) {
       setProgress(98)
+      // Log event
+      logEvent({
+        event_type: `Form 4: Opened Step 7`
+      })
     }
   }, [step])
 
@@ -469,6 +506,9 @@ function form4Page(props) {
    * Set router
    */
   const redirect = (step) => {
+    logEvent({
+      event_type: `Form 4: Submitted Step ${step}`
+    })
     router
       .push({
         pathname: '/form-4',
@@ -493,12 +533,55 @@ function form4Page(props) {
     )
   }
 
+  const NohandleSubmit = () => {
+    console.log('step 4')
+  }
+
   /**
    * Hanle Submit
    * @param {*} param0
    */
-  const handleSubmit = (e) => {
-    console.log(e.target)
+  const handleSubmit = async () => {
+    setLoading(true)
+    try {
+      const response = await axios.post('/api/lead', {
+        fullname: state.name,
+        phone: state.phone,
+        email: state.email,
+        postcode: state.postcode,
+        life_stage: state.lifestage,
+        health_fund: state.fund,
+        cover_type: JSON.stringify({
+          hospital: state.cover_type == 'hospital_extras' || state.cover_type == 'hospital' ? 1 : 0,
+          extras: state.cover_type == 'hospital_extras' || state.cover_type == 'extras' ? 1 : 0
+        }),
+        date_of_birth: state.yob,
+        utm_source: router.query.utm_source ? router.query.utm_source : '',
+        utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+        utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+        utm_content: router.query.utm_content ? router.query.utm_content : '',
+        utm_term: router.query.utm_term ? router.query.utm_term : ''
+      })
+      const data = await response.data
+
+      if (data.status == 'success') {
+        logEvent({
+          event_type: `Form 4: Submitted Step 7`
+        })
+        router.push(`/form/thankyou`).then(() => window.scrollTo(0, 0))
+      } else {
+        logEvent({
+          event_type: `Submission Failed`
+        })
+      }
+      setLoading(false)
+    } catch (error) {
+      logEvent({
+        event_type: `Submission Failed`
+      })
+      alert('An error occured')
+      setLoading(false)
+    }
   }
 
   /**
@@ -721,10 +804,10 @@ function form4Page(props) {
                       </>
                     )}
 
-                    {/* STEP 5 */}
+                    {/* STEP 4 */}
                     {step == 4 && (
                       <>
-                        <ValidatorForm key="step5validator" instantValidate={true} onSubmit={handleSubmit}>
+                        <ValidatorForm key="step5validator" instantValidate={true} onSubmit={NohandleSubmit}>
                           <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
                             <Box maxWidth="500px" width="100%">
                               <div className={classes.label}>Tell us your year of birth</div>
@@ -796,7 +879,7 @@ function form4Page(props) {
                       </>
                     )}
 
-                    {/* STEP 8 */}
+                    {/* STEP 7, LAST */}
                     {step == 7 && (
                       <>
                         <Box mt={4}>
@@ -887,6 +970,11 @@ function form4Page(props) {
                                   </Button>
                                 </Box>
                               </ValidatorForm>
+
+                              {/* Submission Loader Effect */}
+                              <Backdrop className={classes.backdrop} open={loading}>
+                                <CircularProgress color="secondary" />
+                              </Backdrop>
 
                               <Box mt={3} mx={{ sm: 0, lg: 3 }}>
                                 <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>

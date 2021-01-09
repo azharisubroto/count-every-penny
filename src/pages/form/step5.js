@@ -6,6 +6,8 @@ import InputLabel from '@material-ui/core/InputLabel'
 import Dialog from '@material-ui/core/Dialog'
 import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
+import Backdrop from '@material-ui/core/Backdrop'
+import CircularProgress from '@material-ui/core/CircularProgress'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
@@ -140,6 +142,10 @@ const useStyles = makeStyles((theme) => ({
     '&:hover': {
       backgroundColor: '#035AA6'
     }
+  },
+  backdrop: {
+    zIndex: 9999999999,
+    color: '#fff'
   }
 }))
 
@@ -154,6 +160,7 @@ export default function Step5(props) {
   const state = useSelector((state) => state.counter.form)
   const dispatch = useDispatch()
   const [open, setOpen] = React.useState(false)
+  const [loading, setLoading] = React.useState(false)
 
   useEffect(() => {
     ValidatorForm.addValidationRule('auPhone', (phone_num) => {
@@ -179,6 +186,7 @@ export default function Step5(props) {
 
   // Handle Submit
   const handleSubmit = async () => {
+    setLoading(true)
     try {
       const response = await axios.post('/api/lead', {
         fullname: state.name,
@@ -193,11 +201,11 @@ export default function Step5(props) {
         }),
         age: state.age,
         //date_of_birth: '02/03/1995',
-        utm_source: 'utm_source',
-        utm_medium: 'utm_medium',
-        utm_campaign: 'utm_campaign',
-        utm_content: 'utm_content',
-        utm_term: 'utm_term'
+        utm_source: router.query.utm_source ? router.query.utm_source : '',
+        utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+        utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+        utm_content: router.query.utm_content ? router.query.utm_content : '',
+        utm_term: router.query.utm_term ? router.query.utm_term : ''
       })
       const data = await response.data
 
@@ -217,11 +225,14 @@ export default function Step5(props) {
           event_type: `Submission Failed`
         })
       }
+      setLoading(false)
     } catch (error) {
       logEvent({
         event_type: `Submission Failed`
       })
       alert('An error occured')
+
+      setLoading(false)
     }
   }
 
@@ -334,6 +345,10 @@ export default function Step5(props) {
           </ValidatorForm>
         </DialogContent>
       </Dialog>
+
+      <Backdrop className={classes.backdrop} open={loading}>
+        <CircularProgress color="secondary" />
+      </Backdrop>
     </>
   )
 }

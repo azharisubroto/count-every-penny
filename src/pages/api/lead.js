@@ -16,11 +16,13 @@ export default async (req, res) => {
   })
 
   const data = await response.json()
-  if (data.status == 'success') {
-    res.status(200).json(JSON.stringify(data))
-  } else {
-    res.status(500).json(JSON.stringify({ status: 'fail' }))
-  }
+  res.status(200).json(JSON.stringify(data))
+
+  // if (data.status == 'success') {
+  //   res.status(200).json(JSON.stringify(data))
+  // } else {
+  //   res.status(500).json(JSON.stringify({ status: data.status }))
+  // }
 
   //const data = await response.json()
 
