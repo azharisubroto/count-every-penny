@@ -1,4 +1,5 @@
 .page{
+    padding-bottom: 40px;
     &--misc{
         color: #333;
         background-color: #f9f9f9;
@@ -191,6 +192,8 @@
         width: calc(25% - 20px);
         left: calc(75% - 30px);
         position: absolute;
+        height: 100%;
+        overflow: auto;
         &.is-position-fixed{
             transition: all 300ms ease-in-out;
             position: absolute;

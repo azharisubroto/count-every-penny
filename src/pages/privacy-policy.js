@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
+import FooterMisc from '@/components/FooterMisc'
 import Tocbot from './tocbot'
 
 export default function privacyPolicy() {
@@ -363,6 +364,8 @@ export default function privacyPolicy() {
           <Tocbot />
         </div>
       </div>
+
+      <FooterMisc style={{ marginTop: 0 }} />
     </>
   )
 }
