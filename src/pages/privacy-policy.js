@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
+import Tocbot from './tocbot'
 
 export default function privacyPolicy() {
   return (
@@ -25,9 +26,9 @@ export default function privacyPolicy() {
         <div className="container">
           <div className="row">
             <div className="col-lg-9">
-              <section className="page-content">
+              <section className="page-content js-toc-content">
                 <div className="page-content__item">
-                  <h4 id="introduction">Introduction</h4>
+                  <h4 id="toc-1">Introduction</h4>
                   <p>
                     Asymmetric Information (AI) and its related bodies corporate are committed to protecting the privacy
                     and personal information of customers. This Privacy Policy describes the practices and processes AI
@@ -97,7 +98,7 @@ export default function privacyPolicy() {
                   </ul>
                 </div>
                 <div className="page-content__item">
-                  <h4>Why does AI collect personal information?</h4>
+                  <h4 id="toc-2">Why does AI collect personal information?</h4>
                   <p>AI collects personal information in order to:</p>
                   <ul className="check">
                     <li>to allow you to compare products and/or obtain quotes for products or make enquiries;</li>
@@ -133,7 +134,7 @@ export default function privacyPolicy() {
                   </p>
                 </div>
                 <div className="page-content__item">
-                  <h4>AI's use and disclosure of personal information</h4>
+                  <h4 id="toc-3">AI's use and disclosure of personal information</h4>
                   <p>
                     Where AI collects personal information for a particular purpose, it may use and disclose the
                     information for that purpose or another purpose that is related to that purpose (or that is directly
@@ -233,7 +234,7 @@ export default function privacyPolicy() {
                 </div>
 
                 <div className="page-content__item">
-                  <h4>Is personal information disclosed outside Australia?</h4>
+                  <h4 id="toc-4">Is personal information disclosed outside Australia?</h4>
                   <p>
                     Some of our service providers and/or business partners may be located in overseas locations. If we
                     are permitted by law to do so, we may disclose your personal information to these providers or
@@ -243,7 +244,7 @@ export default function privacyPolicy() {
                 </div>
 
                 <div className="page-content__item">
-                  <h4>How does AI protect your personal information?</h4>
+                  <h4 id="toc-5">How does AI protect your personal information?</h4>
                   <p>
                     AI recognises the importance of protecting your personal information and of ensuring that it is
                     complete, accurate, up-to-date and relevant. We will take reasonable steps to ensure this occurs. If
@@ -254,7 +255,7 @@ export default function privacyPolicy() {
                 </div>
 
                 <div className="page-content__item">
-                  <h4>Can you access or correct personal information AI holds about you?</h4>
+                  <h4 id="toc-6">Can you access or correct personal information AI holds about you?</h4>
                   <p>
                     You have a right to access personal information we hold about you. If your request is particularly
                     complex or requires detailed searching of our records, there may be a cost to you in order for us to
@@ -286,7 +287,7 @@ export default function privacyPolicy() {
                 </div>
 
                 <div className="page-content__item">
-                  <h4>Dealing with AI online</h4>
+                  <h4 id="toc-7">Dealing with AI online</h4>
                   <p>
                     We collect personal information about the other websites that are visited by computers that are used
                     to visit our website. This information may be aggregated to provide us with information about the
@@ -310,7 +311,7 @@ export default function privacyPolicy() {
                   </p>
                 </div>
                 <div className="page-content__item">
-                  <h4>How to opt out</h4>
+                  <h4 id="toc-8">How to opt out</h4>
                   <p>
                     If you no longer want to receive communications from us that are non-account related or legally
                     required, you may request to opt-out from receiving such marketing communication by emailing us on
@@ -322,7 +323,7 @@ export default function privacyPolicy() {
                   </p>
                 </div>
                 <div className="page-content__item">
-                  <h4>Complaints and further information</h4>
+                  <h4 id="toc-9">Complaints and further information</h4>
                   <p>
                     If you believe your privacy has been interfered with and wish to make a complaint, please contact
                     our Compliance Manager at{' '}
@@ -355,8 +356,11 @@ export default function privacyPolicy() {
                 </div>
               </section>
             </div>
-            <div className="col-lg-3"></div>
+            <div className="col-lg-3 page-aside js-toc">
+              <aside className=""></aside>
+            </div>
           </div>
+          <Tocbot />
         </div>
       </div>
     </>
