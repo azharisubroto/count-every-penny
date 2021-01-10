@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
 import FooterMisc from '@/components/FooterMisc'
-import Tocbot from './tocbot'
+import Tocbot from '@/utils/tocbot'
 
 export default function privacyPolicy() {
   return (
