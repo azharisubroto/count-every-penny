@@ -39,7 +39,6 @@ export default function FooterMisc(props) {
           background: #fff;
           padding: 20px 0;
           text-align: center;
-          border-top: 1px solid #eeeeee;
           margin-top: 50px;
 
           a {
@@ -51,7 +50,7 @@ export default function FooterMisc(props) {
             text-align: left;
             padding-left: 40px;
             padding-right: 40px;
-            background: #fafafa;
+            background-color: #fafafa;
           }
 
           .logo {

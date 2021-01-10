@@ -206,7 +206,7 @@ export default function privacyPolicy() {
                     Personal information may also be disclosed to third party agents and service providers who AI
                     engages to assist in the provision of products and services. These include:
                   </p>
-                  <ul>
+                  <ul className="check">
                     <li>sales agents and representatives;</li>
                     <li>printers, mail distributors, couriers and dispatch centres;</li>
                     <li>call centres operated by entities outside the AI group;</li>
@@ -217,7 +217,7 @@ export default function privacyPolicy() {
                     AI may also disclose personal information as authorised by privacy law for a range of other
                     purposes, including:
                   </p>
-                  <ul>
+                  <ul className="check">
                     <li>where necessary to prevent or lessen a serious threat to health or safety;</li>
                     <li>for law enforcement or crime prevention purposes;</li>
                     <li>for the investigation of unlawful activity;</li>
