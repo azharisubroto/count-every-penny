@@ -50,7 +50,8 @@ const formControlStyle = {
     }
   },
   '& fieldset': {
-    border: '1px solid #dfdfdf'
+    border: '1px solid #dfdfdf',
+    top: 0
   },
   '& .MuiSelect-select': {
     paddingTop: 0,
