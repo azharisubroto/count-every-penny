@@ -316,6 +316,7 @@ export default function privacyPolicy() {
                   <p>
                     If you no longer want to receive communications from us that are non-account related or legally
                     required, you may request to opt-out from receiving such marketing communication by emailing us on
+                    &nbsp;
                     <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
                       asymmetricinfoau@gmail.com.au
                     </a>
@@ -342,7 +343,7 @@ export default function privacyPolicy() {
                     If you are dissatisfied with the outcome of your complaint, or you do not receive a response to your
                     complaint within 30 days, you may make a complaint to the Office of the Australian Information
                     Commissioner (OAIC). Complaints to the OAIC must be made in writing. Where possible, complaints to
-                    the OAIC should be made through the online Privacy Complaint form, available at
+                    the OAIC should be made through the online Privacy Complaint form, available at &nbsp;
                     <a
                       href="www.oaic.gov.au/privacy/making-a-privacy-complaint/"
                       target="_blank"
