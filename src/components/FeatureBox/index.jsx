@@ -26,7 +26,7 @@ export default function FeatureBox({ image, link, title, text }) {
           width: 120px;
           height: 120px;
           border-radius: 120px;
-          line-height: 120px;
+          line-height: 80px;
           text-align: center;
           background: rgba(86, 78, 102, 0.05);
           position: relative;
