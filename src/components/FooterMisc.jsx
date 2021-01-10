@@ -3,7 +3,7 @@ export default function FooterMisc(props) {
   const logo = '/static/img/logo-cep.svg'
   return (
     <>
-      <footer className="footer" {...other}>
+      <footer className="footer" {...other} id="footer">
         {!isamp ? (
           <img src={logo} loading="lazy" alt="Logo" width="152" height="35" className="logo" />
         ) : (

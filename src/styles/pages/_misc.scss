@@ -202,12 +202,21 @@
         position: absolute;
         height: 100%;
         overflow: auto;
+        padding-bottom: 164px;
         &.is-position-fixed{
             transition: all 300ms ease-in-out;
             position: absolute;
             left: calc(75% - 30px);
         }
 
+        &.position-relative{
+            position: relative !important;
+        }
+        &.position-absolute{
+            position: absolute !important;
+            bottom: 0;
+            top: unset;
+        }
         .toc-list{
             padding: 0;
             margin: 0;

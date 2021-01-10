@@ -358,7 +358,7 @@ export default function privacyPolicy() {
                 </div>
               </section>
             </div>
-            <div className="col-lg-3 page-aside js-toc">
+            <div className="col-lg-3 page-aside js-toc" id="page-aside">
               <aside className=""></aside>
             </div>
           </div>
