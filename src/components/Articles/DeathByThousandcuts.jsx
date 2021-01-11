@@ -71,7 +71,13 @@ const useStyles = makeStyles((theme) => ({
   thumbnailContainer: {
     margin: '20px 0',
     background: '#EEF5F7',
+    height: 300,
+    overflow: 'hidden',
+    position: 'relative',
     '& img': {
+      top: '50%',
+      position: 'absolute',
+      transform: 'translateY(-50%)',
       [theme.breakpoints.down('xs')]: {
         height: 'auto'
       }
@@ -134,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
 function DeathByThousandCut(props) {
   const isamp = false
   const classes = useStyles(props)
-  const mainlink = 'https://google.com'
+  const mainlink = '/form/step1'
 
   return (
     <>
@@ -156,45 +162,28 @@ function DeathByThousandCut(props) {
 
         {/* SUB HEADLING */}
         <Typography component="h2" gutterBottom className={classes.subheadline}>
-          We saved the average Aussie $357.95* on their health insurance in 2020 - let us do the same for you!
+          Revolutionary comparison service saves average Aussie $357.95* on their health insurance in 2020 - can they do
+          the same for you?
         </Typography>
 
         {/* AUTHOR */}
         <ArticleAuthor isamp={isamp} avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
 
         {/* THUMBNAIL */}
-        {!isamp ? (
-          <div className={classes.thumbnailContainer}>
-            <img
-              src="/static/img/articles/2-mail-4.webp"
-              width="610"
-              height="610"
-              style={{ width: '100%' }}
-              loading="lazy"
-              alt="doctors"
-            />
-            <div className={classes.caption}>
-              Health insurance premiums are going up AGAIN in April, but this Australian owned & operated service could
-              save you big money
-            </div>
+        <div className={classes.thumbnailContainer}>
+          <img
+            src="/static/img/articles/2-mail-4.webp"
+            width="610"
+            height="610"
+            style={{ width: '100%' }}
+            loading="lazy"
+            alt="doctors"
+          />
+          <div className={classes.caption}>
+            Health insurance premiums are going up AGAIN in April, but this Australian owned & operated service could
+            save you big money
           </div>
-        ) : (
-          <>
-            <br />
-            <amp-img
-              alt="doctors"
-              src="/static/img/articles/2-mail-4.webp"
-              width="680"
-              height="281"
-              attribution="Thanks to a there might still be one area where you can save your
-              pennies"
-              layout="responsive"></amp-img>
-            <div className={classes.caption}>
-              Health insurance premiums are going up AGAIN in April, but this Australian owned & operated service could
-              save you big money
-            </div>
-          </>
-        )}
+        </div>
 
         <P>
           Did you know that Aussies are being slugged with two health insurance rate rises in 6 months? The October 2020
@@ -227,7 +216,7 @@ function DeathByThousandCut(props) {
         </P>
 
         {/* Life Stage Stack */}
-        <LifeStageStack href="https://google.com/" />
+        <LifeStageStack link={mainlink} />
 
         <Typography className={classes.sectionheading} component="h4">
           <strong>Not all funds are created equal</strong>
@@ -272,7 +261,7 @@ function DeathByThousandCut(props) {
           </div>
 
           <div className="px-4">
-            <img src="/static/img/articles/chart-1.svg" alt="" loading="lazy" />
+            <img src="/static/img/articles/chart-2.png" alt="" loading="lazy" />
           </div>
 
           <div className="mt-2 text-center px-4">Source: Health.gov.au and RBA</div>
@@ -496,13 +485,13 @@ function DeathByThousandCut(props) {
             <div className="col-lg-8 col-md-8">
               <div className="article-widget-freebies__title">
                 <img src="/static/img/icons/free.svg" alt="Free" loading="lazy" />
-                <h5>210 PCS Emergency First Aid Kit Medical Travel Set</h5>
+                <h5>210 PCS Emergency First Aid Kit - Home, Car & Travel</h5>
               </div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur fringilla laoreet justo sit amet
-                consequat. Aliquam non ex erat.
+                Get this deluxe 210 piece first aid kit FREE when you switch and save with Health Insurance Comparison.
+                While stocks last only.
               </p>
-              <a href="http://counteverypenny.com.au" className="btn btn-primary">
+              <a href={mainlink} className="btn btn-primary">
                 Compare Now
               </a>
             </div>
@@ -538,7 +527,7 @@ function DeathByThousandCut(props) {
           your area and could be eligible for significant savings.
         </P>
 
-        <AustraliaState link={mainlink} isamp={isamp} />
+        <AustraliaState link={mainlink} price="357.95" isamp={isamp} />
       </Card>
 
       <style jsx global>{`

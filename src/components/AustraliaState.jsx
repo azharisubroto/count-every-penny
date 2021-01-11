@@ -6,7 +6,8 @@ export default function AustraliaStates({
   disableElevation,
   dark,
   ctaColor,
-  ctaProps
+  ctaProps,
+  price
 }) {
   const states = ['WA', 'NT', 'QLD', 'SA', 'NSW', 'ACT', 'VIC', 'TAS']
   const bg = background ? background : '#fff'
@@ -19,7 +20,7 @@ export default function AustraliaStates({
           <svg width="469" height="430" viewBox="0 0 469 430" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clipPath="url(#clip0)">
               <g className="first" clipPath="url(#clip1)">
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="wa"
                     opacity="0.9"
@@ -27,7 +28,7 @@ export default function AustraliaStates({
                     fill={colors ? colors['WA'] : '#1D83E2'}
                   />
                 </a>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="nt"
                     opacity="0.9"
@@ -35,7 +36,7 @@ export default function AustraliaStates({
                     fill={colors ? colors['NT'] : '#4A9CE8'}
                   />
                 </a>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="nsw"
                     opacity="0.9"
@@ -45,7 +46,7 @@ export default function AustraliaStates({
                     fill={colors ? colors['NSW'] : '#1D83E2'}
                   />
                 </a>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="vic"
                     opacity="0.9"
@@ -53,7 +54,7 @@ export default function AustraliaStates({
                     fill={colors ? colors['VIC'] : '#1769B5'}
                   />
                 </a>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="tas"
                     opacity="0.9"
@@ -61,7 +62,7 @@ export default function AustraliaStates({
                     fill={colors ? colors['TAS'] : '#114F88'}
                   />
                 </a>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="qld"
                     opacity="0.9"
@@ -69,7 +70,7 @@ export default function AustraliaStates({
                     fill={colors ? colors['QLD'] : '#A5CDF3'}
                   />
                 </a>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">
+                <a href={link}>
                   <path
                     className="sa"
                     opacity="0.9"
@@ -131,7 +132,8 @@ export default function AustraliaStates({
                   marginRight: 0,
                   width: '80%'
                 }}>
-                Australia: We saved our average customer <strong>$375.74 on their average annual premium!</strong>
+                Australia: We saved our average customer &nbsp;
+                <strong>{price ? price : '$375.74'} on their average annual premium!</strong>
               </div>
             </div>
           </div>
@@ -140,7 +142,7 @@ export default function AustraliaStates({
           <ul>
             {states.map((state) => (
               <li key={state}>
-                <a href="https://www.yourlifechoices.com.au/lp-articles/household/">{state}</a>
+                <a href={link}>{state}</a>
               </li>
             ))}
           </ul>
