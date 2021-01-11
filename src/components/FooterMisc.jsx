@@ -27,9 +27,10 @@ export default function FooterMisc(props) {
 
         {/* Copyright */}
         <p className="copyright">
-          &copy; Copyright Count Every Penny 2013-2018. All rights reserved. Counteverypenny.com.au does not compare all
-          products in the market. The availability of products compared may change from time to time. Not all products
-          available from our partners are compared and not all products are available to all customers.
+          &copy; Copyright Count Every Penny 2021. All rights reserved. Counteverypenny.com.au or the companies it works
+          with does not compare all products in the market. The availability of products compared may change from time
+          to time. Not all products available from our partners are compared and not all products are available to all
+          customers. This is a sponsored article and is intended as an advertisement, not editorial content.
         </p>
       </footer>
 

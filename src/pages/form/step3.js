@@ -84,7 +84,7 @@ function Step3(props) {
 
     // Extra
     else {
-      var current_extra = hospitalCovers
+      var current_extra = extraCovers
       if (check !== false) {
         current_extra.push(key)
       } else {
