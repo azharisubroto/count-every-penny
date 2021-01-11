@@ -11,8 +11,20 @@ export default class MyDocument extends Document {
           {/* PWA primary color */}
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:2189729,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+              })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');`
+            }}></script>
         </Head>
         <body>
+          <script src="https://cdn.optimizely.com/js/19735997801.js"></script>
           <Main />
           <NextScript />
         </body>
