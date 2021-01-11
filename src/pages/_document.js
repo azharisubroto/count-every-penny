@@ -9,6 +9,8 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* PWA primary color */}
+          <script src="https://cdn.optimizely.com/js/19735997801.js"></script>
+
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <script
@@ -24,7 +26,6 @@ export default class MyDocument extends Document {
             }}></script>
         </Head>
         <body>
-          <script src="https://cdn.optimizely.com/js/19735997801.js"></script>
           <Main />
           <NextScript />
         </body>
