@@ -145,6 +145,7 @@ export default function Article2() {
                   customMap={
                     <AustraliaState
                       disableElevation
+                      price="$357.95"
                       colors={{
                         WA: '#E94A73',
                         NT: '#23ABD1',
