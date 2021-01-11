@@ -10,7 +10,7 @@ export default function ThankYou2() {
   return (
     <>
       <Head>
-        <title>Thankyou 1</title>
+        <title>Thankyou 2</title>
       </Head>
       {/* NAVBAR */}
       <NavBarThanks />
