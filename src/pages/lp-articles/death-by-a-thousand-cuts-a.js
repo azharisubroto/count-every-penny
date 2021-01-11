@@ -3,7 +3,6 @@ import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import Sidebar from '@/components/Sidebar'
 import FooterSimple from '@/components/FooterSimple'
-export const config = { amp: 'hybrid' }
 import DeathByThousandcuts from '@/components/Articles/DeathByThousandcuts'
 
 export default function Article() {
