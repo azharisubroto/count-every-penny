@@ -528,7 +528,7 @@ function DeathByThousandCut(props) {
           your area and could be eligible for significant savings.
         </P>
 
-        <AustraliaState link={mainlink} price="357.95" isamp={isamp} />
+        <AustraliaState link={mainlink} price="$357.95" isamp={isamp} />
       </Card>
 
       <style jsx global>{`
