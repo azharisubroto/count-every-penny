@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
 import FooterMisc from '@/components/FooterMisc'
-import Tocbot from '@/utils/tocbot'
 
 export default function privacyPolicy() {
   return (
@@ -26,10 +25,9 @@ export default function privacyPolicy() {
 
         <div className="container">
           <div className="row">
-            <div className="col-lg-9">
-              <section className="page-content js-toc-content">
+            <div className="col-lg-12">
+              <section className="page-content">
                 <div className="page-content__item">
-                  <h4 id="toc-1">Introduction</h4>
                   <p>
                     Asymmetric Information (AI) and its related bodies corporate are committed to protecting the privacy
                     and personal information of customers. This Privacy Policy describes the practices and processes AI
@@ -64,10 +62,10 @@ export default function privacyPolicy() {
                   </div>
                   <p>
                     AI is required to comply with the Privacy Act 1988 (Cth) and is bound by the Australian Privacy
-                    Principles (<strong>APPs</strong>) set out in that Act. The APPs establish minimum standards for the
-                    collection, use, disclosure and handling of personal information. They apply to personal information
-                    in any form, including electronic and digital form. The APPs can be accessed at the website of the
-                    office of the Australian Information Commissioner:
+                    Principles (APPs) set out in that Act. The APPs establish minimum standards for the collection, use,
+                    disclosure and handling of personal information. They apply to personal information in any form,
+                    including electronic and digital form. The APPs can be accessed at the website of the office of the
+                    Australian Information Commissioner: &nbsp;
                     <a href="www.oaic.gov.au" target="_blank">
                       www.oaic.gov.au
                     </a>
@@ -85,13 +83,13 @@ export default function privacyPolicy() {
                       AI's collection, use, disclosure or handling of personal information.
                     </li>
                     <li>
-                      <strong>Personal information/</strong> means information or an opinion about an identified
+                      <strong>Personal information</strong> means information or an opinion about an identified
                       individual or an individual who is reasonably identifiable, whether the information or opinion is
                       true or not and whether the information or opinion is recorded in material form or not. Personal
                       information includes sensitive information.
                     </li>
                     <li>
-                      <strong>Sensitive information/</strong> means personal information about an individual's racial or
+                      <strong>Sensitive information</strong> means personal information about an individual's racial or
                       ethnic origin, political opinions or memberships, religious beliefs or affiliations, philosophical
                       beliefs, professional or trade association/union memberships, sexual preferences and practices or
                       criminal record.
@@ -181,7 +179,7 @@ export default function privacyPolicy() {
                       You may opt out of receiving direct marketing communications from AI at any time by contacting us
                       at{' '}
                       <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
-                        asymmetricinfoau@gmail.com.au/
+                        asymmetricinfoau@gmail.com.au
                       </a>
                       .
                     </li>
@@ -358,11 +356,7 @@ export default function privacyPolicy() {
                 </div>
               </section>
             </div>
-            <div className="col-lg-3 page-aside js-toc" id="page-aside">
-              <aside className=""></aside>
-            </div>
           </div>
-          <Tocbot />
         </div>
       </div>
 
