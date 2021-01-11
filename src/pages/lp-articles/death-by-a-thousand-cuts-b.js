@@ -6,7 +6,7 @@ import NavBar from '@/components/NavBar'
 import DeathByThousandcuts from '@/components/Articles/DeathByThousandcuts'
 import FooterSimple from '@/components/FooterSimple'
 
-export default function Article2(props) {
+export default function Article2() {
   const isAmp = false
 
   /**
