@@ -14,12 +14,16 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 'inherit',
     width: 'calc((100% / 4) - 10px)',
     margin: 5,
-    lineHeight: 1
+    lineHeight: 1,
+    '&:hover': {
+      color: '#fff'
+    }
   }
 }))
 
 export default function Sidebar(props) {
   const classes = useStyles(props)
+  const { link, subheading } = props
 
   return (
     <>
@@ -35,7 +39,7 @@ export default function Sidebar(props) {
             <br />
             compare now!
           </div>
-          <p>We’ll show best quotes for you</p>
+          <p>{subheading ? subheading : 'We’ll show best quotes for you'}</p>
 
           <Box display="flex" justifyContent="space-between" flexWrap="wrap">
             {Array.apply(null, {
@@ -46,6 +50,7 @@ export default function Sidebar(props) {
                 variant="contained"
                 color="primary"
                 disableElevation
+                href={link}
                 className={classes['age-btn']}>
                 <strong>
                   {i == 0 && <>&lt; </>}

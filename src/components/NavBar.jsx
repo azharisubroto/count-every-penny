@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function NavBar(props) {
   const classes = useStyles(props)
-  const { isamp, logo, cta, height, ...other } = props
+  const { isamp, logo, cta, height, link, ...other } = props
   const logoImg = logo ? logo : '/static/logo-cep.svg'
   const chevron = '/static/img/chevron-right.svg'
   return (
@@ -34,7 +34,12 @@ export default function NavBar(props) {
               {cta != null ? (
                 cta
               ) : (
-                <Button className={classes.getquotes} variant="contained" color="primary" disableElevation={true}>
+                <Button
+                  href={link}
+                  className={classes.getquotes}
+                  variant="contained"
+                  color="primary"
+                  disableElevation={true}>
                   Get Quotes
                   {!isamp && <img src={chevron} alt="chevron" width="20" height="20" style={{ marginLeft: 5 }} />}
                 </Button>
