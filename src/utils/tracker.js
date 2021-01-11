@@ -52,39 +52,10 @@ export const logEvent = async (props) => {
   TagManager.initialize(tagManagerArgs)
 
   const deviceID = getDeviceID()
-  let lat = false
-  let lon = false
 
-  let postcode = ''
-  let state = null
-  const saved_geo = localStorage.getItem('user-location')
-  state = localStorage.getItem('persist:nextjs')
+  var state = localStorage.getItem('persist:nextjs')
   state = state && JSON.parse(state)
   state = state && JSON.parse(state.counter).form
-
-  // Check geo location via local storage first
-  if (saved_geo) {
-    const local_geo = JSON.parse(saved_geo)
-    lat = local_geo.lat
-    lon = local_geo.lon
-  } else {
-    postcode = state && state.postcode
-
-    if (postcode) {
-      const australia_subs = await fetch('/api/location/' + postcode)
-      const suburbs = await australia_subs.json()
-
-      if (suburbs.length > 0) {
-        lat = suburbs[0].latitude
-        lon = suburbs[0].longitude
-        const geo = {
-          lat: lat,
-          lon: lon
-        }
-        localStorage.setItem('user-location', JSON.stringify(geo))
-      }
-    }
-  }
 
   /**
    * Log Event
@@ -106,8 +77,6 @@ export const logEvent = async (props) => {
       company_name: ['Count Every Penny']
     },
     os_name: get_os(),
-    ...(lat && { location_lat: lat }),
-    ...(lon && { location_lng: lon }),
     ...(navigator.platform && { platform: navigator.platform }),
     ...(navigator.platform && { device_model: navigator.platform }),
     ...(state?.email && { user_id: state.email })

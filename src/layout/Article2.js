@@ -4,11 +4,9 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import NavBar from '@/components/NavBar'
 import FooterSimple from '@/components/FooterSimple'
-import { useAmp } from 'next/amp'
-export const config = { amp: 'hybrid' }
 
 export default function Article2(props) {
-  const isAmp = useAmp()
+  const isAmp = false
   const { children } = props
 
   /**

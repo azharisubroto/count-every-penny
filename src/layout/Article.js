@@ -5,11 +5,9 @@ import Grid from '@material-ui/core/Grid'
 import NavBar from '@/components/NavBar'
 import Sidebar from '@/components/Sidebar'
 import FooterSimple from '@/components/FooterSimple'
-import { useAmp } from 'next/amp'
-export const config = { amp: 'hybrid' }
 
 export default function Article({ children }) {
-  const isAmp = useAmp()
+  const isAmp = false
   return (
     <>
       <Head>

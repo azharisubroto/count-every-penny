@@ -20,35 +20,35 @@ export default function Footer(props) {
             <Grid item xs={6} sm={3} sd={3} md={3} lg={3}>
               <ul className="list-unstyled">
                 <li>
-                  <a href="https://google.com">About Us</a>
+                  <a href="/about-us">About Us</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">Health Funds</a>
+                  <a href="/health-funds">Health Funds</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">Guides</a>
+                  <a href="/guides">Guides</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">Careers</a>
+                  <a href="/careers">Careers</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">Contact Us</a>
+                  <a href="mailto:asymmetricinfoau@gmail.com">Contact Us</a>
                 </li>
               </ul>
             </Grid>
             <Grid item xs={6} sm={3} sd={3} md={3} lg={3}>
               <ul className="list-unstyled">
                 <li>
-                  <a href="https://google.com">Privacy Policy</a>
+                  <a href="/privacy-policy">Privacy Policy</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">Terms of use</a>
+                  <a href="/terms-and-conditions">Terms of use</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">FAQ</a>
+                  <a href="/faq">FAQ</a>
                 </li>{' '}
                 <li>
-                  <a href="https://google.com">Complaints</a>
+                  <a href="/complaints">Complaints</a>
                 </li>{' '}
                 <li></li>
               </ul>

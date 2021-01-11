@@ -58,30 +58,6 @@ export const logEvent = async (props) => {
   state = state && JSON.parse(state)
   state = state && JSON.parse(state.form4).form
 
-  // Check geo location via local storage first
-  // if (saved_geo) {
-  //   const local_geo = JSON.parse(saved_geo)
-  //   lat = local_geo.lat
-  //   lon = local_geo.lon
-  // } else {
-  //   postcode = state && state.postcode
-
-  //   if (postcode) {
-  //     const australia_subs = await fetch('/api/location/' + postcode)
-  //     const suburbs = await australia_subs.json()
-
-  //     if (suburbs.length > 0) {
-  //       lat = suburbs[0].latitude
-  //       lon = suburbs[0].longitude
-  //       const geo = {
-  //         lat: lat,
-  //         lon: lon
-  //       }
-  //       localStorage.setItem('user-location', JSON.stringify(geo))
-  //     }
-  //   }
-  // }
-
   /**
    * Log Event
    * @see https://developers.amplitude.com/docs/http-api-v2
