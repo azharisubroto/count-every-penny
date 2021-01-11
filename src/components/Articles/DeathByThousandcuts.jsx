@@ -71,14 +71,14 @@ const useStyles = makeStyles((theme) => ({
   thumbnailContainer: {
     margin: '20px 0 0',
     background: '#EEF5F7',
-    height: 300,
+    height: 350,
     overflow: 'hidden',
     position: 'relative',
 
     '& img': {
       top: '50%',
       position: 'absolute',
-      transform: 'translateY(-50%)',
+      transform: 'translateY(-55%)',
       [theme.breakpoints.down('xs')]: {
         height: 'auto'
       }
