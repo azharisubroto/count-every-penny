@@ -11,7 +11,7 @@ export default function ThankYou1() {
   return (
     <>
       <Head>
-        <title>Thankyou 1</title>
+        <title>Thankyou</title>
       </Head>
       {/* NAVBAR */}
       <NavBarThanks />
