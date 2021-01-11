@@ -8,6 +8,43 @@
             background-color: #f9f9f9;
             padding: 0;
         }
+
+        &-two{
+            .page-content{
+                .card{
+                    &-rating{
+                        .card{
+                            &-text{
+                                min-height: unset !important;
+                            }
+                        }
+                    }
+
+                    &-award{
+                        @include device(tablet){
+                            align-items: center;
+                        }
+                        &-gold{
+                            @include device(tablet){
+                                width: 160px;
+                                flex: 0 0 160px;
+                            }
+                        }
+                        &-year{
+                            &__item{
+                                @include device(tablet){
+                                    width: calc(100% / 7);
+                                }
+
+                                @include device(mobile){
+                                    width: calc(100% / 3);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .thanks{

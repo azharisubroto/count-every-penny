@@ -139,7 +139,7 @@ export default function ThankYou1() {
                 <div className="col-md-6">
                   <div className="card card-widget">
                     <div className="card-body">
-                      <h5 className="card-title text-center mb-25px">Premium increases 2020 and 2021</h5>
+                      <h5 className="card-title text-center">Premium increases 2020 and 2021</h5>
                       <div className="card-table">
                         <table className="table table-borderless table-fund">
                           <thead>
@@ -223,7 +223,7 @@ export default function ThankYou1() {
                 <div className="col-md-6">
                   <div className="card card-widget">
                     <div className="card-body">
-                      <h5 className="card-title text-center mb-25px">Premium increases 2020 and 2021</h5>
+                      <h5 className="card-title text-center">Average saving by life stage</h5>
                       <div className="card-table">
                         <table className="table table-borderless table-fund">
                           <thead>
