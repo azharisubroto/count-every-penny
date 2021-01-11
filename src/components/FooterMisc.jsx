@@ -14,13 +14,13 @@ export default function FooterMisc(props) {
         <div>
           <ul>
             <li>
-              <a href="https://google.com">Privacy Policy</a>
+              <a href="/privacy-policy">Privacy Policy</a>
             </li>
             <li>
-              <a href="https://google.com">Terms of Use</a>
+              <a href="/terms-and-conditions">Terms of Use</a>
             </li>
             <li>
-              <a href="https://google.com">Contact Us</a>
+              <a href="mailto:asymmetricinfoau@gmail.com">Contact Us</a>
             </li>
           </ul>
         </div>

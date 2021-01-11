@@ -16,10 +16,10 @@ export default function FooterSimple(props) {
         <div>
           <ul>
             <li>
-              <a href="https://counteverypenny.com.au">Privacy Policy</a>
+              <a href="/privacy-policy">Privacy Policy</a>
             </li>
             <li>
-              <a href="https://counteverypenny.com.au">Terms of Use</a>
+              <a href="/terms-and-conditions">Terms of Use</a>
             </li>
             <li>
               <a href="mailto:asymmetricinfoau@gmail.com">Contact Us</a>
