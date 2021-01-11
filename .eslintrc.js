@@ -27,6 +27,7 @@ module.exports = {
   rules: {
     semi: [2, 'never'],
     'react/react-in-jsx-scope': 'off',
+    'react/no-unescaped-entities': 'off',
     'react/prop-types': 0,
     'jsx-a11y/anchor-is-valid': [
       'error',

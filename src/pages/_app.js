@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { ThemeProvider } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'tocbot/src/scss/tocbot.scss'
 import '../styles/styles.global.scss'
 import theme from '@/theme'
 
