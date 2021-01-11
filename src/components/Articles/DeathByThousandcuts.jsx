@@ -69,11 +69,12 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.textPrimary.lighten1
   },
   thumbnailContainer: {
-    margin: '20px 0',
+    margin: '20px 0 0',
     background: '#EEF5F7',
     height: 300,
     overflow: 'hidden',
     position: 'relative',
+
     '& img': {
       top: '50%',
       position: 'absolute',
@@ -88,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 14,
     background: '#EEF5F7',
     margin: 0,
-    lineHeight: 1,
+    lineHeight: '1.5',
     color: '#393939'
   },
   paragraph: {
@@ -179,10 +180,10 @@ function DeathByThousandCut(props) {
             loading="lazy"
             alt="doctors"
           />
-          <div className={classes.caption}>
-            Health insurance premiums are going up AGAIN in April, but this Australian owned & operated service could
-            save you big money
-          </div>
+        </div>
+        <div className={classes.caption}>
+          Health insurance premiums are going up AGAIN in April, but this Australian owned & operated service could save
+          you big money
         </div>
 
         <P>
