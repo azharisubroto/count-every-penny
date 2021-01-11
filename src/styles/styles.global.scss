@@ -148,8 +148,17 @@ img {
   }
 }
 
+.section-title{
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 40px;
+  text-align: center;
+  margin-bottom: 35px;
+}
+
 // Pages
 @import "mixins/device";
+@import "mixins/image";
 @import "pages/variables";
 @import "pages/misc";
 @import "pages/thanks";

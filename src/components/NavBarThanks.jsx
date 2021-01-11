@@ -39,6 +39,10 @@ export default function NavBarThanks() {
                 img {
                   height: 38px;
                   width: auto;
+
+                  @media screen and (max-width: 768px - 1) {
+                    height: 30px;
+                  }
                 }
 
                 &:after {

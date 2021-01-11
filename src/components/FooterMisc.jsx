@@ -46,17 +46,10 @@ export default function FooterMisc(props) {
             text-decoration: none;
           }
 
-          @media screen and (max-width: 500px) {
-            text-align: left;
-            padding-left: 40px;
-            padding-right: 40px;
-            background-color: #fafafa;
-          }
-
           .logo {
             display: none;
             @media screen and (max-width: 500px) {
-              display: inline-block;
+              display: none;
             }
           }
 
@@ -64,21 +57,22 @@ export default function FooterMisc(props) {
             display: block;
             list-style: none;
             padding-left: 0;
-            @media screen and (max-width: 500px) {
-              columns: 2;
-              -webkit-columns: 2;
-              -moz-columns: 2;
-              margin-top: 30px;
-              padding-bottom: 10px;
-              border-bottom: 1px solid #cacaca;
+
+            @media screen and (max-width: 768px - 1) {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
             }
+
             li {
               line-height: 1;
               display: inline-block;
               margin: 0 10px;
               font-weight: 700;
-              @media screen and (max-width: 500px) {
-                margin: 0 20px 20px 0;
+              @media screen and (max-width: 768px - 1) {
+                margin-bottom: 10px;
+                width: 35%;
+                text-align: center;
               }
             }
           }

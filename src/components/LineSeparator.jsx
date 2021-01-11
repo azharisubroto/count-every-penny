@@ -10,6 +10,12 @@ export default function LineSeparator() {
         {`
           .line-separator {
             margin: 40px 0;
+
+            img {
+              @media screen and (max-width: 768px - 1) {
+                height: 5px;
+              }
+            }
           }
         `}
       </style>
