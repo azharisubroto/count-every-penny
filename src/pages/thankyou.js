@@ -5,7 +5,7 @@ import LineSeparator from '@/components/LineSeparator'
 import ThanksVideo from '@/components/ThanksVideo'
 import ThanksBenefit from '@/components/ThanksBenefit'
 import ThanksAward from '@/components/ThanksAward'
-import ThanksSlide from '@/components/ThanksSlide'
+import ThanksSwiper from '@/components/ThanksSwiper'
 
 export default function ThankYou1() {
   return (
@@ -270,7 +270,7 @@ export default function ThankYou1() {
           </section>
 
           {/* Features */}
-          <ThanksSlide />
+          <ThanksSwiper />
 
           {/* Features */}
           <ThanksBenefit />
