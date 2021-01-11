@@ -3,6 +3,7 @@ import Button from '@/components/Button'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import NavBar from '@/components/NavBar'
+import AustraliaState from '@/components/AustraliaState'
 import DeathByThousandcuts from '@/components/Articles/DeathByThousandcuts'
 import FooterSimple from '@/components/FooterSimple'
 
@@ -126,7 +127,12 @@ export default function Article2() {
       </Head>
 
       {/* NavBar */}
-      <NavBar logo="/static/logo-cep.svg" isamp={isAmp ? 1 : 0} height="70" cta={<Button>Get Quotes</Button>} />
+      <NavBar
+        logo="/static/logo-cep.svg"
+        isamp={isAmp ? 1 : 0}
+        height="70"
+        cta={<Button href="/form/step1">Get Quotes</Button>}
+      />
 
       {/* Container */}
       <section className="main-content">
@@ -135,7 +141,32 @@ export default function Article2() {
             {/* Left Content */}
             <Grid item xs={12} md={8}>
               <div className="content-wrapper">
-                <DeathByThousandcuts />
+                <DeathByThousandcuts
+                  customMap={
+                    <AustraliaState
+                      disableElevation
+                      colors={{
+                        WA: '#E94A73',
+                        NT: '#23ABD1',
+                        NSW: '#77B5EE',
+                        VIC: '#23ABD1',
+                        TAS: '#07AF43',
+                        QLD: '#E0960B',
+                        SA: '#07AF43'
+                      }}
+                      dark
+                      background="#0C345A"
+                      ctaColor="#F7CD5C"
+                      ctaProps={{
+                        style: {
+                          display: 'none'
+                        }
+                      }}
+                      link="/form/step1"
+                      isamp={false}
+                    />
+                  }
+                />
               </div>
             </Grid>
 

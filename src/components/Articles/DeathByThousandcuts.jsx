@@ -142,6 +142,7 @@ function DeathByThousandCut(props) {
   const isamp = false
   const classes = useStyles(props)
   const mainlink = '/form/step1'
+  const { customMap } = props
 
   return (
     <>
@@ -528,7 +529,8 @@ function DeathByThousandCut(props) {
           your area and could be eligible for significant savings.
         </P>
 
-        <AustraliaState link={mainlink} price="$357.95" isamp={isamp} />
+        {!customMap && <AustraliaState link={mainlink} price="$357.95" isamp={isamp} />}
+        {customMap !== false && customMap}
       </Card>
 
       <style jsx global>{`
