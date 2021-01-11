@@ -569,7 +569,7 @@ function form4Page(props) {
         logEvent({
           event_type: `Form 4: Submitted Step 7`
         })
-        router.push(`/form/thankyou`).then(() => window.scrollTo(0, 0))
+        router.push(`/thankyou/thankyou-2`).then(() => window.scrollTo(0, 0))
       } else {
         logEvent({
           event_type: `Submission Failed`

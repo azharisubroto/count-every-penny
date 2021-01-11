@@ -220,7 +220,7 @@ export default function Step5(props) {
             step_passed: 5
           })
         )
-        router.push(`/form/thankyou`).then(() => window.scrollTo(0, 0))
+        router.push(`/thankyou/thankyou-1`).then(() => window.scrollTo(0, 0))
       } else {
         logEvent({
           event_type: `Submission Failed`

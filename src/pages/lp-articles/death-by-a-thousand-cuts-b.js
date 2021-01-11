@@ -155,7 +155,7 @@ export default function Article2() {
       <style jsx global>
         {`
           body {
-            background: #f3f3f3;
+            background: #f3f3f3 !important;
           }
           .main-content {
             padding: 0 0;
