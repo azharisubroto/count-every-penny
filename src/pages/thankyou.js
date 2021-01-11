@@ -43,6 +43,7 @@ export default function ThankYou1() {
           </section>
           <section className="thanks-rating">
             <div className="container">
+              <h4 className="section-title">Count Every Penny and Health Insurance Comparison Reviews</h4>
               <div className="row">
                 <div className="col-md-6">
                   <div className="card card-rating">
@@ -139,7 +140,13 @@ export default function ThankYou1() {
                 <div className="col-md-6">
                   <div className="card card-widget">
                     <div className="card-body">
-                      <h5 className="card-title text-center">Premium increases 2020 and 2021</h5>
+                      <h5 className="card-title text-center mb-10px">
+                        Health Insurance Premium Increases in 2020 and 2021
+                      </h5>
+                      <p className="mb-30px text-center">
+                        The table below shows that some funds (which we cannot name here) are increasing their premiums
+                        by 4 times as much as other funds. You can talk to one of our advisors for the full details
+                      </p>
                       <div className="card-table">
                         <table className="table table-borderless table-fund">
                           <thead>
@@ -212,18 +219,17 @@ export default function ThankYou1() {
                       </div>
                       <p className="card-source">Source: Health.gov.au</p>
                     </div>
-                    <div className="card-footer">
-                      <p>
-                        Integer luctus tempor ex at ornare. Morbi et interdum est. Integer laoreet ex et mauris euismod,
-                        eu cursus erat efficitur.
-                      </p>
-                    </div>
                   </div>
                 </div>
                 <div className="col-md-6">
                   <div className="card card-widget">
                     <div className="card-body">
-                      <h5 className="card-title text-center">Average saving by life stage</h5>
+                      <h5 className="card-title text-center mb-10px">
+                        Average Savings with Count Every Penny and Health Insurance Comparison by Life Stage
+                      </h5>
+                      <p className="mb-30px text-center">
+                        See the average savings our customers made by life stage in 2020
+                      </p>
                       <div className="card-table">
                         <table className="table table-borderless table-fund">
                           <thead>
@@ -256,12 +262,6 @@ export default function ThankYou1() {
                           </tbody>
                         </table>
                       </div>
-                    </div>
-                    <div className="card-footer">
-                      <p>
-                        Integer luctus tempor ex at ornare. Morbi et interdum est. Integer laoreet ex et mauris euismod,
-                        eu cursus erat efficitur.
-                      </p>
                     </div>
                   </div>
                 </div>
