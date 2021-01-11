@@ -21,12 +21,10 @@ const ThanksSwiper = () => {
   }, [])
   return (
     <>
-      <div className="swiper-container">
-        <div className="swiper-wrapper">
-          {Array.apply(null, {
-            length: 7
-          }).map((e, i) => (
-            <div index={i} key={i} className="swiper-slide">
+      <section className="thanks-slide pl-3">
+        <div className="swiper-container">
+          <div className="swiper-wrapper">
+            <div className="swiper-slide">
               <div className="card card-fund">
                 <div className="card-header">
                   <h6>Fund 1</h6>
@@ -47,11 +45,180 @@ const ThanksSwiper = () => {
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 2</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>4.68%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>4.07%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total">8.75%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 3</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>4.32%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>4.30%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total">8.62%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 4</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>3.91%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>4.26%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total">8.17%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div className="swiper-pagination"></div>
-      </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 5</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>3.94%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>0.83%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total total-success">4.77%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 6</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>2.66%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>1.11%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total total-success">3.77%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 7</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>2.90%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>0.50%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total total-success">3.40%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Fund 8</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6>1.98%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6>0.94%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total total-success">2.92%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="swiper-slide">
+              <div className="card card-fund">
+                <div className="card-header">
+                  <h6>Industry Average</h6>
+                </div>
+                <div className="card-body">
+                  <div className="card-fund__item">
+                    <p>October 2020</p>
+                    <h6 className="total total-warning">2.92%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>April 2020</p>
+                    <h6 className="total total-warning">2.74%</h6>
+                  </div>
+                  <div className="card-fund__item">
+                    <p>Total Rate Rise</p>
+                    <h6 className="total total-warning">5.66%</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="swiper-pagination"></div>
+        </div>
+      </section>
       {/* Style */}
       <style jsx>
         {`
@@ -89,6 +256,14 @@ const ThanksSwiper = () => {
 
                   &.total {
                     color: #b41818;
+
+                    &-success {
+                      color: #85a412 !important;
+                    }
+
+                    &-warning {
+                      color: #7c4e18 !important;
+                    }
                   }
                 }
 
