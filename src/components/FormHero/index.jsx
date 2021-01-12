@@ -304,11 +304,11 @@ const FormStep = (props) => {
       )
 
       const utms = {
-        utm_source: router.query.utm_source ? router.query.utm_source : '',
-        utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
-        utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
-        utm_content: router.query.utm_content ? router.query.utm_content : '',
-        utm_term: router.query.utm_term ? router.query.utm_term : ''
+        ...(router.query.utm_source && { utm_source: router.query.utm_source }),
+        ...(router.query.utm_medium && { utm_medium: router.query.utm_medium }),
+        ...(router.query.utm_campaign && { utm_campaign: router.query.utm_campaign }),
+        ...(router.query.utm_content && { utm_content: router.query.utm_content }),
+        ...(router.query.utm_term && { utm_term: router.query.utm_term })
       }
 
       const urlparam = Object.entries(utms)
