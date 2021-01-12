@@ -18,6 +18,9 @@ const theme = createMuiTheme({
         },
         '.MuiCard-root.MuiPaper-elevation1': {
           boxShadow: '0px 18px 24px 0 rgba(0, 0, 0, 0.05)'
+        },
+        '.MuiOutlinedInput-notchedOutline': {
+          top: '0!important'
         }
       }
     }

@@ -6,6 +6,7 @@ import NavBar from '@/components/NavBar'
 import AustraliaState from '@/components/AustraliaState'
 import DeathByThousandcuts from '@/components/Articles/DeathByThousandcuts'
 import FooterSimple from '@/components/FooterSimple'
+import theme from '@/theme'
 
 export default function Article2() {
   const isAmp = false
@@ -188,6 +189,21 @@ export default function Article2() {
         {`
           body {
             background: #f3f3f3 !important;
+          }
+          .btn-primary {
+            background: ${theme.palette.cep.yellow};
+            border-color: ${theme.palette.cep.yellow};
+            color: #000;
+
+            &:hover {
+              background: ${theme.palette.cep.yellow};
+              border-color: ${theme.palette.cep.yellow};
+              color: #000;
+              opacity: 0.7;
+            }
+          }
+          a:hover {
+            color: initial !important;
           }
           .main-content {
             padding: 0 0;

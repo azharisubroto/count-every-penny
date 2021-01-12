@@ -665,7 +665,7 @@ function form4Page(props) {
                 <Box pt={{ xs: 3, sm: 4, md: 4, lg: 4 }} mx={{ md: 5 }}>
                   <h1 className="text-24 lh-30 text-md-36 lh-md-40">
                     Compare, Switch, &amp; Save
-                    <br />– We saved the average Aussie <span>$347.95</span> on their cover
+                    <br />– We saved the average Aussie <span>$357.95</span> on their cover
                   </h1>
                 </Box>
               )}
@@ -811,7 +811,7 @@ function form4Page(props) {
                         <ValidatorForm key="step5validator" instantValidate={true} onSubmit={NohandleSubmit}>
                           <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
                             <Box maxWidth="500px" width="100%">
-                              <div className={classes.label}>Tell us your year of birth</div>
+                              <div className={classes.label}>My Date of Birth Is</div>
 
                               <InputMask
                                 mask="nm/ed/zyyy"

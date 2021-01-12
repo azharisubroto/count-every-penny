@@ -286,7 +286,7 @@ export default function Step5(props) {
               <TextValidator
                 validators={['required']}
                 errorMessages={['Required']}
-                placeholder="Enter my name"
+                placeholder="Enter name"
                 variant="outlined"
                 value={state.name}
                 className={`${classes.formcontrol}`}

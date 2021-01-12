@@ -321,14 +321,14 @@ const FormStep = (props) => {
                 <InputLabel
                   className={`${classes.label} ${state.covertype != 'none' && classes.valid}`}
                   id="cover-type-label">
-                  The cover type I&apos;m looking for is
+                  I want cover for
                 </InputLabel>
                 <SelectValidator
                   validators={['required', 'isNotNone']}
                   errorMessages={['Required', 'Required']}
                   className={`${classes.coverselect} ${state.covertype != 'none' && classes.valid}`}
                   value={state.covertype}
-                  placeholder="Select the cover type..."
+                  placeholder="Select your life stage"
                   variant="outlined"
                   select
                   onChange={(e) => {
