@@ -1,32 +1,20 @@
-import React from 'react'
-import Slide from '@material-ui/core/Slide'
-import Dialog from '@material-ui/core/Dialog'
-
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />
-})
-
-function AdrewVideo() {
-  const [open, setOpen] = React.useState(false)
-  const yt_link = 'https://www.youtube.com/embed/7QltMeIbkaM'
-
-  const handleClickOpen = () => {
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
+function AdrewVideo(props) {
+  const { videoID } = props
 
   return (
     <figure className="article-video mx-0">
       <div className="row g-0">
         <div className="col-lg-8">
           <div className="article-video__thumb">
-            <img src="/static/img/articles/video-thumb.png" alt="Health" />
-            <button onClick={handleClickOpen} className="article-video__play">
-              <img src="/static/img/play.svg" alt="Play" />
-            </button>
+            <iframe
+              title="video"
+              src={`https://www.youtube.com/embed/${videoID ? videoID : '7QltMeIbkaM'}`}
+              frameBorder="0"
+              autoPlay="1"
+              width="600"
+              height="400"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen></iframe>
           </div>
         </div>
         <div className="col-lg-4 card mb-0">
@@ -36,23 +24,6 @@ function AdrewVideo() {
           </div>
         </div>
       </div>
-
-      <Dialog
-        open={open}
-        TransitionComponent={Transition}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description">
-        <iframe
-          title="video"
-          src={yt_link}
-          frameBorder="0"
-          autoPlay="1"
-          width="600"
-          height="400"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen></iframe>
-      </Dialog>
 
       <style jsx>{`
         .article-video__thumb {
@@ -64,6 +35,15 @@ function AdrewVideo() {
           background-color: #f09020;
           height: 0;
           padding-bottom: 56.5%;
+
+          iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+          }
 
           &:before {
             position: absolute;

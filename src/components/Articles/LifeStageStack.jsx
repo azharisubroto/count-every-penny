@@ -4,19 +4,19 @@ import LifeStageCard from './LifeStageCard'
 // Stages
 const stages = [
   {
-    text: 'Just me',
+    text: 'Myself',
     img: '/static/img/articles/just-me.svg'
   },
   {
-    text: 'Me and My partner',
+    text: 'Myself and my partner',
     img: '/static/img/articles/me-and-partner.svg'
   },
   {
-    text: 'My Family',
+    text: 'My family',
     img: '/static/img/articles/family.svg'
   },
   {
-    text: 'Me and My kid(s)',
+    text: 'Myself and my kid(s)',
     img: '/static/img/articles/me-and-kids.svg'
   }
 ]

@@ -24,7 +24,7 @@ export default function Article2() {
 
           <div className="age-card-2--content">
             <div className="age-card-2--subheadline">
-              <strong>Australia:</strong> We saved our average customer $357.95* on their average annual premium!
+              <strong>Australia:</strong> We saved our average customer $357.95 on their annual premium!
             </div>
 
             <div className="age-buttons">
@@ -48,10 +48,7 @@ export default function Article2() {
             </div>
 
             <div className="age-card-2--subheadline" style={{ marginTop: 20 }}>
-              *Average savings based off 15178 customers during FY18/19. Average saving based off 20,400 customers
-              during 2019 <br />
-              <br />
-              *Average savings based on data from 13136 customers during 2020.
+              *Average savings based on the data from 13,136 customers during 2020
             </div>
           </div>
         </div>
@@ -146,7 +143,12 @@ export default function Article2() {
                   customMap={
                     <AustraliaState
                       disableElevation
-                      price="$357.95"
+                      infoText={
+                        <>
+                          <strong>Australia:</strong> We saved our average customer{' '}
+                          <strong>$357.95 on their annual premium!</strong>
+                        </>
+                      }
                       colors={{
                         WA: '#E94A73',
                         NT: '#23ABD1',
@@ -194,12 +196,31 @@ export default function Article2() {
             background: ${theme.palette.cep.yellow};
             border-color: ${theme.palette.cep.yellow};
             color: #000;
+            position: relative;
+            font-weight: 700;
+            z-index: 1;
 
-            &:hover {
+            &:before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 4px;
+              width: 100%;
+              margin: auto;
+              z-index: -1;
+              background: #fff;
+              opacity: 0.2;
+            }
+
+            &:hover,
+            &:focus,
+            &:active {
               background: ${theme.palette.cep.yellow};
               border-color: ${theme.palette.cep.yellow};
               color: #000;
-              opacity: 0.7;
+              opacity: 0.8;
             }
           }
           a:hover {
