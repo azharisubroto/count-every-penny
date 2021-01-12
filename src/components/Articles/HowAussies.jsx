@@ -141,20 +141,20 @@ function SeniorAussies(props) {
   return (
     <>
       <Head>
-        <title>Aussies aged between 56 and 74 are missing out on health insurance savings every year.</title>
+        <title>Health Insurance from $2.93 a day*</title>
       </Head>
       <Card display="block">
         <Typography component="span" gutterBottom color="textSecondary" style={{ fontSize: 14 }}>
-          How Older Aussies Can Stop Missing Out on Health Cover Savings
+          How to get health insurance from $2.93* a day*
         </Typography>
 
         <Typography component="h1" gutterBottom className={classes.headline}>
-          Aussies aged between 56 and 74 are missing out on health insurance savings every year.
+          Health Insurance from $2.93 a day*
         </Typography>
 
         {/* SUB HEADLING */}
         <Typography component="h2" gutterBottom className={classes.subheadline}>
-          You could save up to $357.95* on your health insurance.
+          Hospital and extras cover starting from $2.93 a day.
         </Typography>
 
         {/* AUTHOR */}
@@ -163,7 +163,7 @@ function SeniorAussies(props) {
         {/* THUMBNAIL */}
         <div className={classes.thumbnailContainer}>
           <img
-            src="/static/img/articles/5-aussies-aged.jpg"
+            src="/static/img/articles/6-how-aussies-get-health-insurance.jpg"
             width="610"
             height="610"
             style={{ width: '100%' }}
@@ -171,26 +171,20 @@ function SeniorAussies(props) {
             alt="Older Aussies are Saving on their Health Insurance using this service."
           />
         </div>
-        <div className={classes.caption}>Older Aussies are Saving on their Health Insurance using this service.</div>
+        <div className={classes.caption}>Finally, Affordable Health Insurance. </div>
 
         <P>
-          We’ll get straight to the point: <strong>You’re almost certainly overpaying for your health insurance</strong>
-          . We saved the average Aussie <strong>$357.95 on their policy in 2020</strong> and there’s a very good chance
-          we can save you a similar amount.
+          It’s no secret Aussies are <strong>stuck paying higher premiums</strong> for{' '}
+          <strong>health cover they don’t need</strong>. Insurance policies are difficult to understand, the ‘health
+          insurance’ language is complicated and the insurers benefit from you not fully understanding what you’re
+          buying into, which undoubtedly leaves you confused, and afraid to switch to better value cover.
         </P>
 
         <P>
-          When was the last time you checked what services your health insurance cover includes? Everyday, we see older
-          Australians paying expensive health insurance premiums for services they’ll never need, like couples aged 50+
-          paying hundreds of dollars more for pregnancy and IVF cover.
-        </P>
-
-        <P>
-          <strong>You might also be a victim of ‘premium creep’</strong>. While it’s true that most policies get more
-          expensive over time, funds increase their premiums at drastically different rates. For example, over the last
-          two rate rises, one fund had an <strong>average increase of 2.92%</strong>, while another had an{' '}
-          <strong>increase of 9.36%</strong>. That’s over the exact same period of time and translates into literally
-          hundreds of dollars of difference for essentially the same level of cover.
+          The reality is, <strong>there is more affordable health insurance on the market</strong> and it starts with
+          getting cover from as little as $2.93 a day*, and that’s for a hospital and extras combined policy. To make
+          this even better? We make it easy to switch cover. We are here to talk you through what you’re buying into and
+          all the ‘health insurance’ language that comes with it.
         </P>
 
         <Typography className={classes.sectionheading} component="h4">
@@ -208,43 +202,60 @@ function SeniorAussies(props) {
         <LifeStageStack link={mainlink} />
 
         <P>
-          Our free comparison service shows mature Aussies and retirees where to make big savings without compromising
-          on cover and how to avoid paying for cover they don’t need.
+          There’s a reason Aussies are stuck paying higher premiums for health insurance they don’t need. According to
+          Dr Anthony Bartone, Federal President of the Australian Medical Association, people are dropping their health
+          cover due to the confusion in understanding what they are paying for, and the difficulty the average Aussie
+          faces when trying to save money by switching health insurance policies.
         </P>
 
-        <P>
-          Our award-winning comparison service Count Every Penny is giving older Aussies a fighting chance by giving
-          them the power to compare health insurers cover options, side by side, saving them time, money and helping
-          them make the best, most informed choices about their private health cover. We are achieving this by teaming
-          up with industry-leader{' '}
-          <a href="HealthInsuranceComparison.com.au" target="_blank">
-            HealthInsuranceComparison.com.au
-          </a>
-          .
-        </P>
+        <p className="text-md-18 lh-md-30 my-4 mb-0">
+          Here are some tips to help you with switching your health cover, saving money and avoiding any confusion
+          around what you’re paying for:
+        </p>
+        <ul className="text-md-18 lh-md-30 my-4 mt-0">
+          <li>
+            <strong>Know your needs:</strong> there’s two different categories of private health insurance: hospital
+            cover and extras cover. Hospital cover is for in-hospital expenses like accommodation, medicine, and doctor
+            fees. Extras cover includes necessary services that are outside of hospital cover, like dental, optical,
+            chiropractic and physiotherapy care. Unsure what you need? Our experts can provide you with a more in-depth
+            look at what you really need and help you make a more personalised cover to suit your situation.
+          </li>
+          <li>
+            <strong>Don’t just set it and forget it:</strong> Regularly check-up on your health insurance needs and
+            consider what you may need for the future. Remember, when switching health cover, you’re protected by law
+            when it comes to waiting periods. If you’re switching to <strong>hospital cover</strong> that{' '}
+            <strong>offers an equal or lower level of coverage</strong>, insurers{' '}
+            <strong>cannot make you re-serve any additional waiting periods</strong>. On the other hand, if you’re
+            increasing benefits or changing extras cover, certain waiting periods may apply - but health funds sometimes
+            run special offers that waive some waiting periods altogether.
+          </li>
+          <li>
+            <strong>Shop around:</strong> there are different levels of insurance policies for hospital cover and extras
+            cover. We recommend using our free comparison service and the help of our team of experts to compare
+            different health funds, prices and levels of cover.{' '}
+          </li>
+        </ul>
 
         <P>
-          We’ve teamed up with{' '}
+          Count Every Penny is working with{' '}
           <a href="HealthInsuranceComparison.com.au" target="_blank">
             HealthInsuranceComparison.com.au
           </a>{' '}
-          because we know many older Australians are feeling increasingly stung by the permanently rising costs of
-          private health insurance in Australia, and we want to do something about it.
+          to help Australians ‘ditch and switch’ their health insurer, and turn back the clock on high premiums.
+        </P>
+
+        <P>
+          When you work with both our teams, you get the peace of mind that comes with working with
+          trusted-professionals who have the years of experience needed to navigate the complicated health insurance
+          system and keep you from any further confusion.{' '}
         </P>
 
         <Cta2 />
 
         <P>
-          By teaming up our services, Older Aussies can compare multiple health insurance brands, cover options and
-          pricing all in one place. Our service saves you time, but the biggest benefit for most is how much money you
-          can save off your yearly premiums, in fact,{' '}
-          <strong>our customers save an average of $357.95* annually</strong>.
-        </P>
-
-        <P>
-          Our services are customised too. When you first arrive at counteverypenny.com.au you will be asked for some
-          basic details. Our system then searches it’s extensive database of policies to show you policies better suited
-          to your needs, side by side, to help you make a well informed decision.
+          Count Every Penny is a <strong>one-of-a-kind comparison service</strong> made for hard working Aussies. Our
+          team of experts save <strong>Aussies an average of $357.95**</strong> a year and in a few short minutes, you
+          could be on your way to <strong>hundreds of dollars in savings</strong>.
         </P>
 
         <Typography className={classes.sectionheading} component="h4">
@@ -271,17 +282,10 @@ function SeniorAussies(props) {
         {customMap !== false && customMap}
 
         <P>
-          Here at Count Every Penny, we really do care about every penny. When you work with our team, you get the peace
-          of mind that comes with working with trusted-professionals who have the years of experience needed to navigate
-          the complicated health insurance system and keep you from any further confusion.
+          *Based on the ‘AHM Starter basic and black 50 extras’ for a single individual based in Victoria.
+          <br />
+          **Average savings based off 13,136 customers during 2020
         </P>
-
-        <P>
-          Our team will make sure you have the cover you need, while paying the best possible price for the cover you
-          want.
-        </P>
-
-        <P>*Average savings based off 13,136 customers during 2020'</P>
       </Card>
 
       <style jsx global>{`
