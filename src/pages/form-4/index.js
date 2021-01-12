@@ -480,14 +480,7 @@ function form4Page(props) {
       )
     }, 1000)
 
-    router
-      .push({
-        pathname: '/form-4',
-        query: {
-          step: 2
-        }
-      })
-      .then(() => window.scrollTo(0, 0))
+    redirect(2)
   }
 
   /**
@@ -497,9 +490,14 @@ function form4Page(props) {
     logEvent(`Form 4: Submitted Step ${step}`)
     router
       .push({
-        pathname: '/form-4',
+        pathname: `/form-4`,
         query: {
-          step: step
+          step: step,
+          utm_source: router.query.utm_source ? router.query.utm_source : '',
+          utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+          utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+          utm_content: router.query.utm_content ? router.query.utm_content : '',
+          utm_term: router.query.utm_term ? router.query.utm_term : ''
         }
       })
       .then(() => window.scrollTo(0, 0))
