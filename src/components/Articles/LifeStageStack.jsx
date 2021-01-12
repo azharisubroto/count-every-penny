@@ -28,7 +28,7 @@ const LifeStageStack = ({ className, link, ...props }) => {
         <div className="row px-md-3">
           {stages.map((item) => (
             <div key={item.text} className="col-6 col-md-3 px-2 mb-4 mb-md-0">
-              <LifeStageCard href={link} target="_blank">
+              <LifeStageCard href={link}>
                 <img src={item.img} height="121" loading="lazy" alt={item.text} />
 
                 <div className="mt-2 text-18 fw-600">{item.text}</div>

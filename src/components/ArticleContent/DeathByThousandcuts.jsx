@@ -1,4 +1,4 @@
-import Head from 'next/head'
+import React from 'react'
 import Link from 'next/link'
 import Card from '@/components/Card'
 import ArticleAuthor from '@/components/ArticleAuthor'
@@ -9,6 +9,7 @@ import PremiumIncrease from '@/components/PremiumIncrease'
 import AndrewVideo from '@/components/AndrewVideo'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
+import { logEvent } from '@/utils/analytics'
 
 const useStyles = makeStyles((theme) => ({
   articlecard: {
@@ -147,12 +148,6 @@ function DeathByThousandCut(props) {
 
   return (
     <>
-      <Head>
-        <title>
-          Death by a thousand cuts - how to stop your health insurer bleeding you dry as Aussies get stung with a second
-          rate rise in 6 months
-        </title>
-      </Head>
       <Card display="block">
         <Typography component="span" gutterBottom color="textSecondary" style={{ fontSize: 14 }}>
           Two rate rises in 6 months leaves Aussies with $230.36 bigger bills
@@ -183,6 +178,7 @@ function DeathByThousandCut(props) {
             alt="doctors"
           />
         </div>
+
         <div className={classes.caption}>
           Health insurance premiums are going up AGAIN in April, but this Australian owned & operated service could save
           you big money
@@ -219,7 +215,7 @@ function DeathByThousandCut(props) {
         </P>
 
         {/* Life Stage Stack */}
-        <LifeStageStack link={mainlink} />
+        <LifeStageStack link={mainlink} onClick={() => logEvent('Clicked Life Stage CTA')} />
 
         <Typography className={classes.sectionheading} component="h4">
           <strong>Not all funds are created equal</strong>
@@ -241,7 +237,7 @@ function DeathByThousandCut(props) {
         </P>
 
         <div className="text-center">
-          <PremiumIncrease />
+          <PremiumIncrease onClick={() => logEvent('Premium Increase Table CTA')} />
         </div>
 
         <Typography className={classes.sectionheading} component="h4">
@@ -273,8 +269,10 @@ function DeathByThousandCut(props) {
           <div className="mt-2 text-center px-4">Source: Health.gov.au and RBA</div>
 
           <div className="pt-3 text-center">
-            <Link href="/form/step1" passHref>
-              <a className="btn btn-primary btn-lg">Compare Now</a>
+            <Link href="/form/step1">
+              <button className="btn btn-primary btn-lg" onClick={() => logEvent('Clicked Premium Increase Table CTA')}>
+                Compare Now
+              </button>
             </Link>
           </div>
 
@@ -348,7 +346,7 @@ function DeathByThousandCut(props) {
         </P>
 
         {/* Andrew Video */}
-        <AndrewVideo />
+        <AndrewVideo onClick={() => logEvent('Played Andrew Davis video')} />
 
         <P>
           Health funds often use fear and ignorance of the system to keep people paying for things they don’t need. What
@@ -407,9 +405,11 @@ function DeathByThousandCut(props) {
                     Get this deluxe 210 piece first aid kit FREE when you switch and save with Health Insurance
                     Comparison. While stocks last only.
                   </p>
-                  <a href={mainlink} className="btn btn-primary btn-lg">
-                    Compare Now
-                  </a>
+                  <Link href={mainlink}>
+                    <button className="btn btn-primary btn-lg" onClick={() => logEvent('Clicked Freebies CTA')}>
+                      Compare Now
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -549,6 +549,7 @@ function DeathByThousandCut(props) {
 
         {!customMap && (
           <AustraliaState
+            onClick={() => logEvent('Clicked State Map CTA')}
             link={mainlink}
             infoText={
               <>
