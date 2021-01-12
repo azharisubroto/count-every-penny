@@ -7,7 +7,8 @@ export default function AustraliaStates({
   dark,
   ctaColor,
   ctaProps,
-  price
+  price,
+  infoText
 }) {
   const states = ['WA', 'NT', 'QLD', 'SA', 'NSW', 'ACT', 'VIC', 'TAS']
   const bg = background ? background : '#fff'
@@ -132,8 +133,20 @@ export default function AustraliaStates({
                   marginRight: 0,
                   width: '80%'
                 }}>
-                Australia: We saved our average customer &nbsp;
-                <strong>{price ? price : '$375.74'} on their average annual premium!</strong>
+                <div>
+                  {infoText ? (
+                    <>
+                      <div>{infoText}</div>
+                    </>
+                  ) : (
+                    <>
+                      <div>
+                        Australia: We saved our average customer &nbsp;
+                        <strong>{price ? price : '$375.74'} on their average annual premium!</strong>
+                      </div>
+                    </>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -147,7 +160,7 @@ export default function AustraliaStates({
             ))}
           </ul>
         </div>
-        <a href={link} className="get-started-now__cta-button" {...ctaProps}>
+        <a href={link} className="btn btn-block btn-primary text-md-22 mt-4" {...ctaProps}>
           {' '}
           Get Your Free Quote{' '}
         </a>
