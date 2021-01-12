@@ -171,10 +171,6 @@ export default function Step5(props) {
   })
 
   useEffect(() => {
-    logEvent({
-      event_type: `Opened Form Step 5`
-    })
-
     setTimeout(() => {
       setOpen(true)
     }, 1000)

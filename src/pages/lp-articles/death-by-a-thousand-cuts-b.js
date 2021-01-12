@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import NavBar from '@/components/NavBar'
 import AustraliaState from '@/components/AustraliaState'
-import DeathByThousandcuts from '@/components/Articles/DeathByThousandcuts'
+import DeathByThousandcuts from '@/components/ArticleContent/DeathByThousandcuts'
 import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
 
@@ -92,28 +92,13 @@ export default function Article2() {
     )
   }
 
-  // Toggle Drawer
-  // const toggleDrawer = (open) => (event) => {
-  //   if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-  //     return
-  //   }
-
-  //   setShowSidebar(open)
-  // }
-
-  // Lottie setup
-  // const defaultOptions = {
-  //   loop: true,
-  //   autoplay: true,
-  //   animationData: animationData.default,
-  //   rendererSettings: {
-  //     preserveAspectRatio: 'xMidYMid slice'
-  //   }
-  // }
-
   return (
     <>
       <Head>
+        <title>
+          Death by a thousand cuts - how to stop your health insurer bleeding you dry as Aussies get stung with a second
+          rate rise in 6 months
+        </title>
         <link
           rel="preload"
           as="style"

@@ -12,7 +12,7 @@ import { formCounter } from '@/store/counter/action'
 import { ValidatorForm, TextValidator, SelectValidator } from 'react-material-ui-form-validator'
 import theme from '@/theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import { logEvent } from '@/utils/tracker'
+import { logEvent } from '@/utils/analytics'
 
 // CoverStyle to reusable
 const coverstyle = {
@@ -293,9 +293,7 @@ const FormStep = (props) => {
   // Handle Submit
   const handleSubmit = () => {
     if (state.postcode != '' && state.covertype != 'none') {
-      logEvent({
-        event_type: `Submitted Form Step ${step}`
-      })
+      logEvent(`Submitted Form Step ${step}`)
 
       // Set passed step
       dispatch(

@@ -27,10 +27,6 @@ function Step4() {
   ]
 
   useEffect(() => {
-    logEvent({
-      event_type: `Opened Form Step 4`
-    })
-
     setTimeout(() => {
       logEvent({
         event_type: `Submitted Form Step 4`

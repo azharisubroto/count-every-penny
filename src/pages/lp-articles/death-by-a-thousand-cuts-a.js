@@ -4,7 +4,7 @@ import NavBar from '@/components/NavBar'
 import AgeCardCTA from '@/components/AgeCardCTA'
 import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
-import DeathByThousandcuts from '@/components/Articles/DeathByThousandcuts'
+import DeathByThousandcuts from '@/components/ArticleContent/DeathByThousandcuts'
 
 export default function Article() {
   const isAmp = false
@@ -14,6 +14,10 @@ export default function Article() {
   return (
     <>
       <Head>
+        <title>
+          Death by a thousand cuts - how to stop your health insurer bleeding you dry as Aussies get stung with a second
+          rate rise in 6 months
+        </title>
         <link
           rel="preload"
           as="style"
