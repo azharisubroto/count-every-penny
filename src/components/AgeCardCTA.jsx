@@ -30,7 +30,8 @@ export default function AgeCardCTA(props) {
       <aside {...props}>
         <div className="age-card">
           <div className="alert text-primary">
-            <strong>Australia:</strong> We saved our average customer $357.95* on their average annual premium.
+            <strong>Australia:</strong> We saved our average customer <strong>$357.95*</strong> on their average annual
+            premium.
             <br />
             Policies start from just <strong>$2.93</strong> per day!
           </div>
