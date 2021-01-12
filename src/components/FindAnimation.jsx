@@ -4,15 +4,16 @@ import * as animationData from '@/components/Lottie/file-search.json'
 
 function findAnimation() {
   const statically = 'https://cdn.statically.io/img'
-  const hichost = 'asset.healthinsurancecomparison.com.au/wp-content/uploads/2020/04'
+  const hichost = 'counteverypenny.com.au/static/img/partners'
   const imgopt = '?h=75&q=70&f=webp'
   const partners = [
-    '/28014653/partner-ahm.png',
-    '/28014719/partner-nib.png',
-    '/28014701/partner-australianUnity.png',
-    '/28014705/partner-hcf.png',
-    '/28014720/partner-peoplecare.png',
-    '/28014714/partner-gmhba.png'
+    '/partner-bupa.webp',
+    '/partner-ahm.webp',
+    '/partner-nib.webp',
+    '/partner-australianUnity.webp',
+    '/partner-hcf.webp',
+    '/partner-peoplecare.webp',
+    '/partner-gmhba.webp'
   ]
 
   // Lottie setup
