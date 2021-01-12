@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Card from '@/components/Card'
 import ArticleAuthor from '@/components/ArticleAuthor'
 import AustraliaState from '@/components/AustraliaState'
@@ -253,12 +254,15 @@ function DeathByThousandCut(props) {
           it was in 2001. The good news is that now there’s something you can do about it.
         </P>
 
+        {/* INFLATION INCREASES */}
         <div className="card pt-4">
           <div className="text-center px-4">
             <h4 className="text-22">Health insurance vs. inflation increases: 2001-2020</h4>
 
             <p className="text-16">
-              How much has the average health insurance premium increased compared to inflation?
+              How much has the average health insurance premium increased compared to inflation? Health insurance
+              premiums have increased by <strong>336% in the last 20 years</strong>, far outstripping the rate of
+              inflation. With such regular rate rises, it’s absolutely essential to review your cover every 12 months.
             </p>
           </div>
 
@@ -267,6 +271,12 @@ function DeathByThousandCut(props) {
           </div>
 
           <div className="mt-2 text-center px-4">Source: Health.gov.au and RBA</div>
+
+          <div className="pt-3 text-center">
+            <Link href="/form/step1" passHref>
+              <a className="btn btn-primary btn-lg">Compare Now</a>
+            </Link>
+          </div>
 
           <div className="card-footer mt-3">
             <p>
@@ -352,18 +362,59 @@ function DeathByThousandCut(props) {
         </Typography>
 
         <P>
-          If you feel like your policy is letting you down on the important things, like rebates on dental, optical, or
-          physiotherapy, that’s something that Health Insurance Comparison can help with too. A good Extras policy
-          should have you covered and
+          If you feel like your policy is letting you down on the important things, like rebates on dental, optical,
+          or&nbsp; physiotherapy, that’s something that Health Insurance Comparison can help with too. A good Extras
+          policy&nbsp; should have you covered and &nbsp;
           <strong>keep any gap fees or out of pocket expenses to an absolute minimum</strong>.<br />
           <br />
-          “There’s now a huge variety of Extras policies on the market, some of which cover things as broad as
-          Acupuncture and Psychology”, continues Andrew Davis, CEO of HealthInsuranceComparison.com.au.
+          “There’s now a huge variety of Extras policies on the market, some of which cover things as broad as&nbsp;
+          Acupuncture and Psychology”, continues Andrew Davis, CEO of HealthInsuranceComparison.com.au.&nbsp;
           <br />
           <br />
-          “But many Aussies would be better off sticking to policies that have comprehensive cover for the fundamentals,
-          like general and major dental, optical, and physiotherapy.”
+          “But many Aussies would be better off sticking to policies that have comprehensive cover for the&nbsp;
+          fundamentals,&nbsp; like general and major dental, optical, and physiotherapy.”
         </P>
+
+        {/* Freebies */}
+        <div className="card mb-4">
+          <div className="card-body">
+            <div className="article-widget-freebies py-3">
+              <div className="row">
+                <div className="col-lg-4 col-md-4">
+                  <div className="card">
+                    <div className="card-body">
+                      <div className="card-img">
+                        <img src="/static/img/articles/firs-aid-kit.png" alt="First Aid Kit Free" loading="lazy" />
+                      </div>
+                    </div>
+                    <div className="card-ribbon">
+                      <h6>
+                        Get
+                        <br />
+                        This for
+                        <br />
+                        FREE!
+                      </h6>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-lg-8 col-md-8">
+                  <div className="article-widget-freebies__title">
+                    <img src="/static/img/icons/free.svg" alt="Free" loading="lazy" />
+                    <h5>210 PCS Emergency First Aid Kit - Home, Car & Travel</h5>
+                  </div>
+                  <p className="mb-3">
+                    Get this deluxe 210 piece first aid kit FREE when you switch and save with Health Insurance
+                    Comparison. While stocks last only.
+                  </p>
+                  <a href={mainlink} className="btn btn-primary btn-lg">
+                    Compare Now
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <Typography className={classes.sectionheading} component="h4">
           <strong>53,893 Aussies can’t be wrong!</strong>
@@ -379,6 +430,7 @@ function DeathByThousandCut(props) {
           incentivised or compensated to leave positive reviews in any way.
         </P>
 
+        {/* Great Customer Service */}
         <div className="article-widget-rating article-widget-rating--type-1">
           <div className="card">
             <div className="card-body">
@@ -404,6 +456,7 @@ function DeathByThousandCut(props) {
           </div>
         </div>
 
+        {/* Word Of Mouth */}
         <div className="article-widget-rating article-widget-rating--type-2">
           <div className="card">
             <div className="row g-0">
@@ -429,6 +482,7 @@ function DeathByThousandCut(props) {
           </div>
         </div>
 
+        {/* PRODUCT REVIEW */}
         <div className="article-widget-rating article-widget-rating--type-3">
           <div className="card">
             <div className="card-body">
@@ -464,42 +518,6 @@ function DeathByThousandCut(props) {
           </div>
         </div>
 
-        <div className="article-widget-freebies mt-5">
-          <div className="row">
-            <div className="col-lg-4 col-md-4">
-              <div className="card">
-                <div className="card-body">
-                  <div className="card-img">
-                    <img src="/static/img/articles/firs-aid-kit.png" alt="First Aid Kit Free" loading="lazy" />
-                  </div>
-                </div>
-                <div className="card-ribbon">
-                  <h6>
-                    Get
-                    <br />
-                    This for
-                    <br />
-                    FREE!
-                  </h6>
-                </div>
-              </div>
-            </div>
-            <div className="col-lg-8 col-md-8">
-              <div className="article-widget-freebies__title">
-                <img src="/static/img/icons/free.svg" alt="Free" loading="lazy" />
-                <h5>210 PCS Emergency First Aid Kit - Home, Car & Travel</h5>
-              </div>
-              <p>
-                Get this deluxe 210 piece first aid kit FREE when you switch and save with Health Insurance Comparison.
-                While stocks last only.
-              </p>
-              <a href={mainlink} className="btn btn-primary">
-                Compare Now
-              </a>
-            </div>
-          </div>
-        </div>
-
         <Typography className={classes.sectionheading} component="h4">
           <strong>Cover for less than a cup of coffee per day</strong>
         </Typography>
@@ -529,7 +547,17 @@ function DeathByThousandCut(props) {
           your area and could be eligible for significant savings.
         </P>
 
-        {!customMap && <AustraliaState link={mainlink} price="$357.95" isamp={isamp} />}
+        {!customMap && (
+          <AustraliaState
+            link={mainlink}
+            infoText={
+              <>
+                <strong>Australia:</strong> We saved our average customer{' '}
+                <strong>$357.95 on their annual premium!</strong>
+              </>
+            }
+          />
+        )}
         {customMap !== false && customMap}
       </Card>
 
@@ -549,8 +577,6 @@ function DeathByThousandCut(props) {
         }
 
         .article-widget-freebies {
-          margin-bottom: 65px;
-
           .card {
             &-body {
               padding: 35px;

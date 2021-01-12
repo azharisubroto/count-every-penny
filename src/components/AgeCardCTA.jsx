@@ -21,17 +21,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-export default function Sidebar(props) {
+export default function AgeCardCTA(props) {
   const classes = useStyles(props)
-  const { link, subheading } = props
+  const { link, subheading, footerText } = props
 
   return (
     <>
       <aside {...props}>
         <div className="age-card">
           <div className="alert text-primary">
-            <strong>Australia:</strong> We saved our average customer $357.95* on their average annual premium. Policies
-            start from just <strong>$2.93</strong> per day!
+            <strong>Australia:</strong> We saved our average customer <strong>$357.95*</strong> on their average annual
+            premium.
+            <br />
+            Policies start from just <strong>$2.93</strong> per day!
           </div>
 
           <div className="headline">
@@ -61,7 +63,7 @@ export default function Sidebar(props) {
             ))}
           </Box>
 
-          <div className="age-card-footer">*Average savings based on data from 13136 customers during 2020.</div>
+          <div className="age-card-footer">{footerText !== false && footerText}</div>
         </div>
 
         <style jsx>

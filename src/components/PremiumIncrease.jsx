@@ -1,10 +1,14 @@
-export default function PremiumIncrease() {
+import Link from 'next/link'
+export default function PremiumIncrease(props) {
+  const { headline, caption } = props
   return (
     <>
       <div className="d-none d-md-block">
         <div className="card card-widget">
-          <div className="card-body">
-            <h5 className="card-title text-center mb-25px">Premium increases 2020 and 2021</h5>
+          <div className="card-body pt-4">
+            <h5 className="card-title text-center mb-4">
+              {headline ? headline : 'Health Insurance Premium Increases in 2020 and 2021'}
+            </h5>
             <div className="card-table">
               <table className="table table-borderless table-fund">
                 <thead>
@@ -76,10 +80,17 @@ export default function PremiumIncrease() {
               </table>
             </div>
             <p className="card-source mt-3 mb-0">Source: Health.gov.au</p>
+
+            <div className="pt-4 text-center">
+              <Link href="/form/step1" passHref>
+                <a className="btn btn-primary btn-lg">Compare Now</a>
+              </Link>
+            </div>
           </div>
           <div className="card-footer py-md-3">
-            As you can see from the table, some funds are increasing their premiums by 4 times as much as other funds!
-            We can’t mention them by name here but you can talk to an advisor for the full details.
+            {caption
+              ? caption
+              : 'The table below shows that some funds (which we cannot name here) are increasing their premiums by 4 times as much as other funds. You can talk to one of our advisors for the full details'}
           </div>
         </div>
       </div>
