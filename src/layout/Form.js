@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
@@ -9,22 +9,22 @@ const FooterSimple = dynamic(() => import('@/components/FooterSimple'))
 const BestFeatures = dynamic(() => import('@/components/BestFeatures'))
 import { wrapper } from '@/store/store'
 import theme from '@/theme'
-import { useRouter } from 'next/router'
-import { useSelector } from 'react-redux'
+// import { useRouter } from 'next/router'
+// import { useSelector } from 'react-redux'
 
 function Form({ children }) {
-  const router = useRouter()
-  const state = useSelector((state) => state.counter.form)
+  // const router = useRouter()
+  // const state = useSelector((state) => state.counter.form)
 
-  useEffect(() => {
-    const pathname = router.pathname
-    const step_passed = state.step_passed
-    const step = parseInt(pathname.substr(pathname.length - 1))
+  // useEffect(() => {
+  //   const pathname = router.pathname
+  //   const step_passed = state.step_passed
+  //   const step = parseInt(pathname.substr(pathname.length - 1))
 
-    if (step_passed < step) {
-      router.push(step_passed).then(() => window.scrollTo(0, 0))
-    }
-  }, [state, router.pathname])
+  //   if (step_passed < step) {
+  //     router.push(step_passed).then(() => window.scrollTo(0, 0))
+  //   }
+  // }, [state, router.pathname])
 
   return (
     <>

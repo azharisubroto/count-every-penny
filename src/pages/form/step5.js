@@ -184,26 +184,29 @@ export default function Step5(props) {
   // Handle Submit
   const handleSubmit = async () => {
     setLoading(true)
+
+    const payload = {
+      fullname: state.name,
+      phone: state.phone,
+      email: state.email,
+      postcode: state.postcode,
+      life_stage: state.covertype,
+      health_fund: state.fund,
+      cover_type: JSON.stringify({
+        hospital: state.hospitalCovers,
+        extras: state.extraCovers
+      }),
+      age: state.age,
+      //date_of_birth: '02/03/1995',
+      utm_source: router.query.utm_source ? router.query.utm_source : '',
+      utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+      utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+      utm_content: router.query.utm_content ? router.query.utm_content : '',
+      utm_term: router.query.utm_term ? router.query.utm_term : ''
+    }
+
     try {
-      const response = await axios.post('/api/lead', {
-        fullname: state.name,
-        phone: state.phone,
-        email: state.email,
-        postcode: state.postcode,
-        life_stage: state.covertype,
-        health_fund: state.fund,
-        cover_type: JSON.stringify({
-          hospital: state.hospitalCovers,
-          extras: state.extraCovers
-        }),
-        age: state.age,
-        //date_of_birth: '02/03/1995',
-        utm_source: router.query.utm_source ? router.query.utm_source : '',
-        utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
-        utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
-        utm_content: router.query.utm_content ? router.query.utm_content : '',
-        utm_term: router.query.utm_term ? router.query.utm_term : ''
-      })
+      const response = await axios.post('/api/lead', payload)
       const data = await response.data
 
       if (data.status == 'success') {
