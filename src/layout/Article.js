@@ -3,7 +3,7 @@ import Head from 'next/head'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import NavBar from '@/components/NavBar'
-import Sidebar from '@/components/Sidebar'
+import AgeCardCTA from '@/components/AgeCardCTA'
 import FooterSimple from '@/components/FooterSimple'
 
 export default function Article({ children }) {
@@ -36,7 +36,7 @@ export default function Article({ children }) {
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <div className="sticky">
-                <Sidebar />
+                <AgeCardCTA />
               </div>
             </Grid>
           </Grid>
