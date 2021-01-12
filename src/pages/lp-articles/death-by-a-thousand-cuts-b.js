@@ -24,7 +24,8 @@ export default function Article2() {
 
           <div className="age-card-2--content">
             <div className="age-card-2--subheadline">
-              <strong>Australia:</strong> We saved our average customer $357.95 on their annual premium!
+              <strong>Australia:</strong> We saved our average customer <strong>$357.95</strong> on their annual
+              premium!
             </div>
 
             <div className="age-buttons">
