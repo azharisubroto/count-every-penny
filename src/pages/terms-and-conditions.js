@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
 import FooterMisc from '@/components/FooterMisc'
-import Tocbot from '@/utils/tocbot'
 
 export default function privacyPolicy() {
   return (
@@ -26,10 +25,9 @@ export default function privacyPolicy() {
 
         <div className="container">
           <div className="row">
-            <div className="col-lg-9">
-              <section className="page-content js-toc-content">
+            <div className="col-lg-12">
+              <section className="page-content">
                 <div className="page-content__item">
-                  <h4 id="toc-1">Introduction</h4>
                   <p>
                     This Count Every Penny Website www.counteverypenny.com.au is owned and operated by Asymmetric
                     Information (AI). Count Every Penny (CEP) is not a registered health benefits organisation. The
@@ -217,11 +215,7 @@ export default function privacyPolicy() {
                 </div>
               </section>
             </div>
-            <div className="col-lg-3 page-aside js-toc" id="page-aside">
-              <aside className=""></aside>
-            </div>
           </div>
-          <Tocbot />
         </div>
       </div>
 

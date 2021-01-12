@@ -1,14 +1,12 @@
 const Partners = () => {
-  const statically = 'https://cdn.statically.io/img'
-  const hichost = 'asset.healthinsurancecomparison.com.au/wp-content/uploads/2020/04'
-  const imgopt = '?h=75&q=70&f=webp'
   const partners = [
-    '/28014653/partner-ahm.png',
-    '/28014719/partner-nib.png',
-    '/28014701/partner-australianUnity.png',
-    '/28014705/partner-hcf.png',
-    '/28014720/partner-peoplecare.png',
-    '/28014714/partner-gmhba.png'
+    '/static/img/partners/partner-ahm.webp',
+    '/static/img/partners/partner-nib.webp',
+    '/static/img/partners/partner-australianUnity.webp',
+    '/static/img/partners/partner-hcf.webp',
+    '/static/img/partners/partner-peoplecare.webp',
+    '/static/img/partners/partner-bupa.webp',
+    '/static/img/partners/partner-gmhba.webp'
   ]
 
   return (
@@ -16,7 +14,7 @@ const Partners = () => {
       <div className="partners">
         {partners.map((item) => (
           <div key={item}>
-            <img src={`${statically}/${hichost}${item}${imgopt}`} alt="" loading="lazy" height="40" width="90" />
+            <img src={item} alt="" loading="lazy" height="40" width="90" />
           </div>
         ))}
       </div>
