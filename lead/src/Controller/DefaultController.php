@@ -85,6 +85,7 @@ class DefaultController extends AbstractController
         }
 
         $leads = new Leads();
+        $leads->setDateCreated(new \DateTime());
         $leads->setFirstName($nameDetail['first']);
         if(empty($nameDetail['middle'])) {
             $leads->setMiddleName($nameDetail['middle']);
@@ -119,7 +120,6 @@ class DefaultController extends AbstractController
         $em->persist($utm);
 
         $leadData = [
-//            'apikey' => $params->get('hic_api_key'),
             'email' => $email,
             'phone' => $phone,
             'first_name' => $nameDetail['first'],
@@ -147,18 +147,41 @@ class DefaultController extends AbstractController
         $em->flush();
 
         if(!empty($coverType)) {
-            if(!empty($coverType['hospital']) && !empty($coverType['extras'])) {
-                $leadData['cover_type'] = 'Combined';
-            } else if(!empty($coverType['hospital'])) {
-                $leadData['cover_type'] = 'Hospital';
-            } else if(!empty($coverType['extras'])) {
-                $leadData['cover_type'] = 'Extras';
+            //for form 1
+            if(is_array($coverType['hospital']) && is_array($coverType['extras'])) {
+                if(!empty($coverType['hospital']) && !empty($coverType['extras'])) {
+                    $leadData['cover_type'] = 'Combined';
+                } else if(!empty($coverType['hospital'])) {
+                    $leadData['cover_type'] = 'Hospital';
+                } else if(!empty($coverType['extras'])) {
+                    $leadData['cover_type'] = 'Extras';
+                }
+            } else {
+                //form 4
+                if($coverType['hospital'] && $coverType['extras']) {
+                    $leadData['cover_type'] = 'Combined';
+                } else if($coverType['hospital']) {
+                    $leadData['cover_type'] = 'Hospital';
+                } else if($coverType['extras']) {
+                    $leadData['cover_type'] = 'Extras';
+                }
             }
         } else {
             $leadData['cover_type'] = 'Combined';
         }
 
-//        $ccLeadResult = $helper->createPostRequest('https://dev.api.alternativemedia.com.au/lead/create', $leadData);
+        $leadData['apikey'] = $params->get('hic_api_key');
+        $leadData['utm_medium'] = !empty($utmMedium) ? $utmMedium : 'affiliate';
+        $leadData['utm_source'] = !empty($utmSource) ? $utmSource : 'cep';
+        $leadData['utm_campaign'] = !empty($utmCampaign) ? $utmCampaign : 'jancampaign';
+        $ccLeadResult = $this->helper->createPostRequest('https://staging.api.alternativemedia.com.au/lead/create', $leadData);
+        if(!empty($ccLeadResult->response)) {
+            $leadUUID = $ccLeadResult->response->data->lead_uuid;
+            $leads->setLeadUuid($leadUUID);
+            $leads->setLeadStatus((array) $ccLeadResult->response);
+            $em->persist($leads);
+            $em->flush();
+        }
 
         return $this->json([
             'status' => 'success',
