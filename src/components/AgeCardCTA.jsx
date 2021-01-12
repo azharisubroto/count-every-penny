@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AgeCardCTA(props) {
   const classes = useStyles(props)
-  const { link, subheading, footerText } = props
+  const { link, subheading, footertext } = props
 
   return (
     <>
@@ -63,7 +63,7 @@ export default function AgeCardCTA(props) {
             ))}
           </Box>
 
-          <div className="age-card-footer">{footerText !== false && footerText}</div>
+          <div className="age-card-footer">{footertext !== false && footertext}</div>
         </div>
 
         <style jsx>

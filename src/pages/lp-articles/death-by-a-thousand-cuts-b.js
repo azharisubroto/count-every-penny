@@ -18,11 +18,11 @@ export default function Article2() {
 
   React.useEffect(() => {
     const utms = {
-      utm_source: router.query.utm_source ? router.query.utm_source : '',
-      utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
-      utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
-      utm_content: router.query.utm_content ? router.query.utm_content : '',
-      utm_term: router.query.utm_term ? router.query.utm_term : ''
+      ...(router.query.utm_source && { utm_source: router.query.utm_source }),
+      ...(router.query.utm_medium && { utm_medium: router.query.utm_medium }),
+      ...(router.query.utm_campaign && { utm_campaign: router.query.utm_campaign }),
+      ...(router.query.utm_content && { utm_content: router.query.utm_content }),
+      ...(router.query.utm_term && { utm_term: router.query.utm_term })
     }
 
     const urlparam = Object.entries(utms)
@@ -36,7 +36,7 @@ export default function Article2() {
    * Age Card
    * @param {color} param determine color
    */
-  const AgeCard = ({ color }) => {
+  const AgeCard = ({ color, link }) => {
     const clr = color ? color : '#0C345A'
     return (
       <>
@@ -54,7 +54,7 @@ export default function Article2() {
                 length: 28
               }).map((e, i) => (
                 <Button
-                  href="/form/step1"
+                  href={link}
                   key={'age-' + i}
                   width="22%"
                   height="36"
@@ -136,7 +136,7 @@ export default function Article2() {
         logo="/static/logo-cep.svg"
         isamp={isAmp ? 1 : 0}
         height="70"
-        cta={<Button href="/form/step1">Get Quotes</Button>}
+        cta={<Button href={mainlink}>Get Quotes</Button>}
       />
 
       {/* Container */}
@@ -184,7 +184,7 @@ export default function Article2() {
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <aside className="sticky">
-                <AgeCard />
+                <AgeCard link={mainlink} />
               </aside>
             </Grid>
           </Grid>
