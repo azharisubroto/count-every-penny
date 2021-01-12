@@ -116,17 +116,21 @@ export default function ThankYou1() {
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-md-8">
-                  <figure className="freebie">
-                    <div className="freebie-img">
-                      <img src="/static/img/thankyou/first-aid-kit.png" alt="First Aid Kit" />
+                  <div className="card mb-40px">
+                    <div className="card-body">
+                      <figure className="freebie mb-0">
+                        <div className="freebie-img">
+                          <img src="/static/img/thankyou/first-aid-kit.png" alt="First Aid Kit" />
+                        </div>
+                        <figcaption>
+                          <h3>
+                            <span>You will get a free</span> first aid kit when you switch &amp; save in{' '}
+                            <span>January</span>
+                          </h3>
+                        </figcaption>
+                      </figure>
                     </div>
-                    <figcaption>
-                      <h3>
-                        <span>You will get a free</span> first aid kit when you switch &amp; save in{' '}
-                        <span>January</span>
-                      </h3>
-                    </figcaption>
-                  </figure>
+                  </div>
 
                   <ThanksVideo />
                 </div>
