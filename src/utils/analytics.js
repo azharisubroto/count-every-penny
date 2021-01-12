@@ -7,6 +7,8 @@ const tagManagerArgs = {
   gtmId: gtm_id
 }
 export const init = () => {
+  if (process.env.NODE_ENV !== 'production') return false
+
   if (isBrowser()) {
     amplitude = require('amplitude-js')
     amplitude.getInstance().init('3128673ea132dc53eced675cc1b18026')
@@ -15,12 +17,16 @@ export const init = () => {
 }
 
 export const logPageView = () => {
+  if (process.env.NODE_ENV !== 'production') return false
+
   if (isBrowser()) {
     amplitude.getInstance().logEvent(`Pageview for ${window.location.pathname}`)
   }
 }
 
 export const logEvent = (eventName) => {
+  if (process.env.NODE_ENV !== 'production') return false
+
   if (isBrowser()) {
     amplitude.getInstance().logEvent(eventName)
 
