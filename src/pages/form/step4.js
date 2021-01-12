@@ -14,6 +14,18 @@ function Step4() {
   const state = useSelector((state) => state.counter.form)
 
   useEffect(() => {
+    const utms = {
+      utm_source: router.query.utm_source ? router.query.utm_source : '',
+      utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+      utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+      utm_content: router.query.utm_content ? router.query.utm_content : '',
+      utm_term: router.query.utm_term ? router.query.utm_term : ''
+    }
+
+    const urlparam = Object.entries(utms)
+      .map(([key, val]) => `${key}=${val}`)
+      .join('&')
+
     setTimeout(() => {
       logEvent({
         event_type: `Submitted Form Step 4`
@@ -22,15 +34,13 @@ function Step4() {
       dispatch(
         formCounter({
           ...state,
-          step_passed: 4
+          step_passed: 5
         })
       )
-
-      router.push(`/form/step5`).then(() => {
-        window.scrollTo(0, 0)
-      })
+      console.log(urlparam)
+      router.push(`/form/step5?${urlparam}`).then(() => window.scrollTo(0, 0))
     }, 5000)
-  }, [])
+  }, [router.asPath])
 
   return (
     <>

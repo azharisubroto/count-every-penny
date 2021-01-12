@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import Button from '@/components/Button'
 import Container from '@material-ui/core/Container'
@@ -7,9 +8,29 @@ import AustraliaState from '@/components/AustraliaState'
 import DeathByThousandcuts from '@/components/ArticleContent/DeathByThousandcuts'
 import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
+import { useRouter } from 'next/router'
 
 export default function Article2() {
   const isAmp = false
+  const router = useRouter()
+
+  const [mainlink, setMainlink] = React.useState('')
+
+  React.useEffect(() => {
+    const utms = {
+      utm_source: router.query.utm_source ? router.query.utm_source : '',
+      utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+      utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+      utm_content: router.query.utm_content ? router.query.utm_content : '',
+      utm_term: router.query.utm_term ? router.query.utm_term : ''
+    }
+
+    const urlparam = Object.entries(utms)
+      .map(([key, val]) => `${key}=${val}`)
+      .join('&')
+
+    setMainlink(`/form/step1?${urlparam}`)
+  }, [router.query])
 
   /**
    * Age Card
@@ -152,7 +173,7 @@ export default function Article2() {
                           display: 'none'
                         }
                       }}
-                      link="/form/step1"
+                      link={mainlink}
                       isamp={false}
                     />
                   }

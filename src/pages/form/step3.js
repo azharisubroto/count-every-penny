@@ -116,7 +116,20 @@ function Step3(props) {
           step_passed: 3
         })
       )
-      router.push('/form/step4/')
+
+      const utms = {
+        utm_source: router.query.utm_source ? router.query.utm_source : '',
+        utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+        utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+        utm_content: router.query.utm_content ? router.query.utm_content : '',
+        utm_term: router.query.utm_term ? router.query.utm_term : ''
+      }
+
+      const urlparam = Object.entries(utms)
+        .map(([key, val]) => `${key}=${val}`)
+        .join('&')
+
+      router.push(`/form/step4?${urlparam}`).then(() => window.scrollTo(0, 0))
     } else {
       window.scrollTo(0, 0)
     }

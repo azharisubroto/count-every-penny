@@ -10,6 +10,7 @@ import AndrewVideo from '@/components/AndrewVideo'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import { logEvent } from '@/utils/analytics'
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   articlecard: {
@@ -141,10 +142,27 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function DeathByThousandCut(props) {
+  const router = useRouter()
   const isamp = false
   const classes = useStyles(props)
-  const mainlink = '/form/step1'
   const { customMap } = props
+  const [mainlink, setMainlink] = React.useState('')
+
+  React.useEffect(() => {
+    const utms = {
+      utm_source: router.query.utm_source ? router.query.utm_source : '',
+      utm_medium: router.query.utm_medium ? router.query.utm_medium : '',
+      utm_campaign: router.query.utm_campaign ? router.query.utm_campaign : '',
+      utm_content: router.query.utm_content ? router.query.utm_content : '',
+      utm_term: router.query.utm_term ? router.query.utm_term : ''
+    }
+
+    const urlparam = Object.entries(utms)
+      .map(([key, val]) => `${key}=${val}`)
+      .join('&')
+
+    setMainlink(`/form/step1?${urlparam}`)
+  }, [router.query])
 
   return (
     <>
@@ -237,7 +255,7 @@ function DeathByThousandCut(props) {
         </P>
 
         <div className="text-center">
-          <PremiumIncrease onClick={() => logEvent('Premium Increase Table CTA')} />
+          <PremiumIncrease link={mainlink} onClick={() => logEvent('Premium Increase Table CTA')} />
         </div>
 
         <Typography className={classes.sectionheading} component="h4">
@@ -269,7 +287,7 @@ function DeathByThousandCut(props) {
           <div className="mt-2 text-center px-4">Source: Health.gov.au and RBA</div>
 
           <div className="pt-3 text-center">
-            <Link href="/form/step1">
+            <Link href={mainlink}>
               <button className="btn btn-primary btn-lg" onClick={() => logEvent('Clicked Premium Increase Table CTA')}>
                 Compare Now
               </button>

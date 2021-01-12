@@ -1,6 +1,6 @@
 import Link from 'next/link'
 export default function PremiumIncrease(props) {
-  const { headline, caption } = props
+  const { headline, caption, link } = props
   return (
     <>
       <div className="d-none d-md-block">
@@ -82,8 +82,8 @@ export default function PremiumIncrease(props) {
             <p className="card-source mt-3 mb-0">Source: Health.gov.au</p>
 
             <div className="pt-4 text-center">
-              <Link href="/form/step1" passHref>
-                <a className="btn btn-primary btn-lg">Compare Now</a>
+              <Link href={link}>
+                <button className="btn btn-primary btn-lg">Compare Now</button>
               </Link>
             </div>
           </div>
