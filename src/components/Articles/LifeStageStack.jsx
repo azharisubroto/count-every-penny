@@ -13,7 +13,7 @@ const stages = [
   },
   {
     text: 'My family',
-    img: '/static/img/articles/family.svg'
+    img: '/static/img/articles/me-and-family.svg'
   },
   {
     text: 'Myself and my kid(s)',
