@@ -12,7 +12,7 @@ export default function ThanksAward() {
                 length: 7
               }).map((e, i) => (
                 // eslint-disable-next-line react/jsx-key
-                <div className="card-award-year__item">
+                <div key={`award-${i}`} className="card-award-year__item">
                   <img src={'/static/img/form/award-' + parseInt(i + 1) + '-1.png'} alt="Yearly Award" />
                 </div>
               ))}

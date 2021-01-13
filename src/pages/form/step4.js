@@ -5,7 +5,7 @@ import { formCounter } from '@/store/counter/action'
 import { wrapper } from '@/store/store'
 import NavBarForm from '@/components/NavBarForm'
 import { useRouter } from 'next/router'
-import { logEvent } from '@/utils/tracker'
+import { logEvent } from '@/utils/analytics'
 import FindAnimation from '@/components/FindAnimation'
 
 function Step4() {

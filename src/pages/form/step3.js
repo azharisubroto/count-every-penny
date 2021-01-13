@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '@/store/counter/action'
 import theme from '@/theme'
 import { useRouter } from 'next/router'
-import { logEvent } from '@/utils/tracker'
+import { logEvent } from '@/utils/analytics'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles((theme) => ({

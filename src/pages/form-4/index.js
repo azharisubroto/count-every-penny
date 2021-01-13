@@ -363,7 +363,7 @@ function form4Page(props) {
   const [progress, setProgress] = useState(0)
   const [step6texts, setStep6texts] = useState(loadintexts[0])
   const [loading, setLoading] = useState(false)
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState('')
   const classes = useStyles(props)
   const state = useSelector((state) => state.form4.form)
   const dispatch = useDispatch()
@@ -372,25 +372,14 @@ function form4Page(props) {
     init()
     if (step == 1) {
       setProgress(0)
-
-      // Log event
-      logEvent(`Form 4: Opened Step 1`)
     } else if (step == 2) {
       setProgress(20)
-      // Log event
-      logEvent(`Form 4: Opened Step 2`)
     } else if (step == 3) {
       setProgress(40)
-      // Log event
-      logEvent(`Form 4: Opened Step 3`)
     } else if (step == 4) {
       setProgress(60)
-      // Log event
-      logEvent(`Form 4: Opened Step 4`)
     } else if (step == 5) {
       setProgress(85)
-      // Log event
-      logEvent(`Form 4: Opened Step 5`)
       setTimeout(() => {
         setStep6texts(loadintexts[1])
       }, 2000)
@@ -408,12 +397,8 @@ function form4Page(props) {
       }, 5000)
     } else if (step == 6) {
       setProgress(90)
-      // Log event
-      logEvent(`Form 4: Opened Step 6`)
     } else if (step == 7) {
       setProgress(98)
-      // Log event
-      logEvent(`Form 4: Opened Step 7`)
     }
   }, [step])
 
@@ -447,23 +432,6 @@ function form4Page(props) {
     } else {
       setStep(1)
     }
-    // const statestep = parseInt(state.step_passed + 1)
-    // if (statestep != thisstep) {
-    //   router
-    //     .push({
-    //       pathname: '/form-4',
-    //       query: {
-    //         step: statestep
-    //       }
-    //     })
-    //     .then(() => window.scrollTo(0, 0))
-    // } else {
-    //   if (thisstep > 1) {
-    //     setStep(thisstep)
-    //   } else {
-    //     setStep(1)
-    //   }
-    // }
   })
 
   /**
@@ -550,11 +518,14 @@ function form4Page(props) {
 
       if (data.status == 'success') {
         logEvent(`Form 4: Submitted Step 7`)
-        router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
+        setTimeout(() => {
+          router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
+          setLoading(false)
+        }, 4000)
       } else {
         logEvent(`Submission Failed`)
+        setLoading(false)
       }
-      setLoading(false)
     } catch (error) {
       logEvent(`Submission Failed`)
       alert('An error occured')
