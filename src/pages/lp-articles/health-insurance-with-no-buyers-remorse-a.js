@@ -5,11 +5,28 @@ import AgeCardCTA from '@/components/AgeCardCTA'
 import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
 import NoBuyersRemorse from '@/components/Articles/NoBuyersRemorse'
+import { useRouter } from 'next/router'
 
 export default function Article() {
   const isAmp = false
+  const router = useRouter()
+  const [mainlink, setMainlink] = React.useState('')
 
-  const cta_target = '/form/step1'
+  React.useEffect(() => {
+    const utms = {
+      ...(router.query.utm_source && { utm_source: router.query.utm_source }),
+      ...(router.query.utm_medium && { utm_medium: router.query.utm_medium }),
+      ...(router.query.utm_campaign && { utm_campaign: router.query.utm_campaign }),
+      ...(router.query.utm_content && { utm_content: router.query.utm_content }),
+      ...(router.query.utm_term && { utm_term: router.query.utm_term })
+    }
+
+    const urlparam = Object.entries(utms)
+      .map(([key, val]) => `${key}=${val}`)
+      .join('&')
+
+    setMainlink(`/form/step1${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+  })
 
   return (
     <>
@@ -25,7 +42,7 @@ export default function Article() {
         />
       </Head>
       {/* NavBar */}
-      <NavBar isamp={isAmp ? 1 : 0} link={cta_target} />
+      <NavBar isamp={isAmp ? 1 : 0} link={mainlink} />
 
       {/* Container */}
       <section className="main-content">
@@ -33,15 +50,15 @@ export default function Article() {
           <div className="row">
             <div className="col-lg-8">
               <div className="content-wrapper">
-                <NoBuyersRemorse />
+                <NoBuyersRemorse link={mainlink} />
               </div>
             </div>
             <div className="col-lg-4">
               <div className="sticky">
                 <AgeCardCTA
-                  link={cta_target}
+                  link={mainlink}
                   subheading="100% Australian owned &amp; operated"
-                  footerText="*Average savings based on data from 13,136 customers during 2020"
+                  footertext="*Average savings based on data from 13,136 customers during 2020"
                 />
               </div>
             </div>

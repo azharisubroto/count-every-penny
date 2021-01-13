@@ -242,7 +242,7 @@ export default function LandingPage2(props) {
           href="https://google.com/"
           headline="Paying too Much?"
           intro="Australia: We saved our average customer $380.79* on their average annual premium! Select your age and see how much you could save!"
-          footerText="Average saving based off 20,400 customers during 2019"
+          footertext="Average saving based off 20,400 customers during 2019"
         />
         <P>
           Despite rising costs, too many people stay with the same fund and keep cover that’s inappropriate for their

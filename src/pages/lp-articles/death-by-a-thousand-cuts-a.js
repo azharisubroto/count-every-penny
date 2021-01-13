@@ -25,7 +25,7 @@ export default function Article() {
       .map(([key, val]) => `${key}=${val}`)
       .join('&')
 
-    setMainlink(`/form/step1?${urlparam}`)
+    setMainlink(`/form/step1${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
   })
 
   return (
@@ -54,7 +54,7 @@ export default function Article() {
           <div className="row">
             <div className="col-lg-8">
               <div className="content-wrapper">
-                <DeathByThousandcuts />
+                <DeathByThousandcuts link={mainlink} />
               </div>
             </div>
             <div className="col-lg-4">

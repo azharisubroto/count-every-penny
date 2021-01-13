@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import NavBar from '@/components/NavBar'
 import AustraliaState from '@/components/AustraliaState'
+import AgeCardBlueYellow from '@/components/Articles/Cta/AgeCardBlueYellow'
 import DeathByThousandcuts from '@/components/ArticleContent/DeathByThousandcuts'
 import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
@@ -13,7 +14,6 @@ import { useRouter } from 'next/router'
 export default function Article2() {
   const isAmp = false
   const router = useRouter()
-
   const [mainlink, setMainlink] = React.useState('')
 
   React.useEffect(() => {
@@ -29,89 +29,8 @@ export default function Article2() {
       .map(([key, val]) => `${key}=${val}`)
       .join('&')
 
-    setMainlink(`/form/step1?${urlparam}`)
-  }, [router.query])
-
-  /**
-   * Age Card
-   * @param {color} param determine color
-   */
-  const AgeCard = ({ color, link }) => {
-    const clr = color ? color : '#0C345A'
-    return (
-      <>
-        <div className="age-card-2">
-          <div className="age-card-2--head">Select your age and compare health insurance now</div>
-
-          <div className="age-card-2--content">
-            <div className="age-card-2--subheadline">
-              <strong>Australia:</strong> We saved our average customer <strong>$357.95</strong> on their annual
-              premium!
-            </div>
-
-            <div className="age-buttons">
-              {Array.apply(null, {
-                length: 28
-              }).map((e, i) => (
-                <Button
-                  href={link}
-                  key={'age-' + i}
-                  width="22%"
-                  height="36"
-                  smWidth="22%"
-                  style={{ padding: '0 10px' }}>
-                  <strong>
-                    {i == 0 && <>&lt; </>}
-                    {i == 27 && <>&gt; </>}
-                    {i + 50}
-                  </strong>
-                </Button>
-              ))}
-            </div>
-
-            <div className="age-card-2--subheadline" style={{ marginTop: 20 }}>
-              *Average savings based on the data from 13,136 customers during 2020
-            </div>
-          </div>
-        </div>
-
-        <style jsx>{`
-          .age-card-2 {
-            background-color: ${clr};
-            color: #fff;
-
-            .age-card-2--head {
-              font-size: 20px;
-              line-height: 30px;
-              font-weight: 700;
-              background: rgba(0, 0, 0, 0.2);
-              color: #fff;
-              padding: 10px 20px;
-              text-align: center;
-            }
-
-            .age-card-2--content {
-              padding: 10px 20px 15px;
-              font-size: 18px;
-            }
-
-            .age-card-2--subheadline {
-              background: rgba(0, 0, 0, 0.2);
-              padding: 8px;
-              font-size: 14px;
-            }
-          }
-
-          .age-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 10px;
-          }
-        `}</style>
-      </>
-    )
-  }
+    setMainlink(`/form/step1${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+  })
 
   return (
     <>
@@ -147,6 +66,7 @@ export default function Article2() {
             <Grid item xs={12} md={8}>
               <div className="content-wrapper">
                 <DeathByThousandcuts
+                  link={mainlink}
                   customMap={
                     <AustraliaState
                       disableElevation
@@ -184,7 +104,7 @@ export default function Article2() {
             {/* Sidebar */}
             <Grid item xs={12} md={4}>
               <aside className="sticky">
-                <AgeCard link={mainlink} />
+                <AgeCardBlueYellow link={mainlink} />
               </aside>
             </Grid>
           </Grid>
