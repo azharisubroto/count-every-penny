@@ -1,28 +1,6 @@
-import Box from '@material-ui/core/Box'
-import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/styles'
 import theme from '@/theme'
 
-//const useStyles = makeStyles((theme) => ({
-const useStyles = makeStyles((theme) => ({
-  getquotes: {
-    borderBottom: `3px solid ${theme.palette.secondary.bevel}`
-  },
-  'age-btn': {
-    padding: '10px 0',
-    minWidth: 'inherit',
-    maxWidth: 'inherit',
-    width: 'calc((100% / 4) - 10px)',
-    margin: 5,
-    lineHeight: 1,
-    '&:hover': {
-      color: '#fff'
-    }
-  }
-}))
-
 export default function AgeCardCTA(props) {
-  const classes = useStyles(props)
   const { link, subheading, footertext } = props
 
   return (
@@ -43,25 +21,21 @@ export default function AgeCardCTA(props) {
           </div>
           <p>{subheading ? subheading : 'We’ll show best quotes for you'}</p>
 
-          <Box display="flex" justifyContent="space-between" flexWrap="wrap">
+          <div className="mt-3 row row-cols-3 row-cols-sm-6 row-cols-md-6 row-cols-lg-4 g-2">
             {Array.apply(null, {
               length: 28
             }).map((e, i) => (
-              <Button
-                key={'age-' + i}
-                variant="contained"
-                color="primary"
-                disableElevation
-                href={link}
-                className={classes['age-btn']}>
-                <strong>
-                  {i == 0 && <>&lt; </>}
-                  {i == 27 && <>&gt; </>}
-                  {i + 43}
-                </strong>
-              </Button>
+              <div className="col" key={`side-cta-${i}`}>
+                <a className="btn btn-primary btn-block" href={link} key={'age-' + i}>
+                  <strong>
+                    {i == 0 && <>&lt; </>}
+                    {i == 27 && <>&gt; </>}
+                    {i + 43}
+                  </strong>
+                </a>
+              </div>
             ))}
-          </Box>
+          </div>
 
           <div className="age-card-footer">{footertext !== false && footertext}</div>
         </div>
@@ -73,6 +47,10 @@ export default function AgeCardCTA(props) {
               border-radius: 3px;
               padding: 20px;
               color: #fff;
+
+              .btn-primary {
+                border-bottom: 2px solid #0470d4;
+              }
             }
             .alert {
               padding: 10px;
