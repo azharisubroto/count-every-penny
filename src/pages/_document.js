@@ -40,9 +40,10 @@ export default class MyDocument extends Document {
             }}></script>
 
           {/* FB Pixels */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: ` !function(f,b,e,v,n,t,s)
+          {process.env.NODE_ENV === 'production' && (
+            <script
+              dangerouslySetInnerHTML={{
+                __html: ` !function(f,b,e,v,n,t,s)
               {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
               n.callMethod.apply(n,arguments):n.queue.push(arguments)};
               if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -52,7 +53,8 @@ export default class MyDocument extends Document {
               'https://connect.facebook.net/en_US/fbevents.js');
               fbq('init', '151048309955768');
               fbq('track', 'PageView');`
-            }}></script>
+              }}></script>
+          )}
         </Head>
         <body>
           <script src="https://cdn.optimizely.com/js/19735997801.js"></script>

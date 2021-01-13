@@ -367,6 +367,22 @@ function form4Page(props) {
   const classes = useStyles(props)
   const state = useSelector((state) => state.form4.form)
   const dispatch = useDispatch()
+  const [postcodes, setPostcodes] = useState({})
+
+  // Fetch Postcode
+  useEffect(() => {
+    fetchPostcode()
+  }, [])
+
+  // Fetch postcode
+  const fetchPostcode = async () => {
+    try {
+      const { data } = await axios.get('/api/postcode')
+      setPostcodes(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   useEffect(() => {
     init()
@@ -424,6 +440,11 @@ function form4Page(props) {
         return false
       }
       return true
+    })
+    ValidatorForm.addValidationRule('validPostcode', (value) => {
+      const result = [value] in postcodes
+      //console.log(result)
+      return result
     })
 
     const thisstep = parseInt(router.query.step)
@@ -796,8 +817,13 @@ function form4Page(props) {
                                   variant="outlined"
                                   value={state.postcode}
                                   className={`${classes.formcontrol}`}
-                                  validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$']}
-                                  errorMessages={['Required', 'Numeric only', 'Must be 4 digit']}
+                                  validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$', 'validPostcode']}
+                                  errorMessages={[
+                                    'Required',
+                                    'Numeric only',
+                                    'Must be 4 digit',
+                                    'Enter valid postcode'
+                                  ]}
                                   onChange={(e) => {
                                     setState('postcode', e.target.value)
                                   }}
@@ -816,7 +842,9 @@ function form4Page(props) {
                           <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
                             <Button
                               onClick={() => {
-                                redirect(5)
+                                if (state.postcode in postcodes) {
+                                  redirect(5)
+                                }
                               }}
                               disabled={state.yob == '' || state.postcode == ''}
                               type="submit"
