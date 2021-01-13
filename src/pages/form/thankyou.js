@@ -1,15 +1,8 @@
-import { useEffect } from 'react'
 import Head from 'next/head'
 import Form from '@/layout/Form'
 import theme from '@/theme'
-import { logEvent } from '@/utils/tracker'
 
 export default function ThankYou() {
-  useEffect(() => {
-    logEvent({
-      event_type: `Opened Thank You Page`
-    })
-  }, [])
   return (
     <>
       <Head>
