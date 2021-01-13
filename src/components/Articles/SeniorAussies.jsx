@@ -135,7 +135,7 @@ const useStyles = makeStyles((theme) => ({
 function SeniorAussies(props) {
   const isamp = false
   const classes = useStyles(props)
-  const mainlink = '/form/step1'
+  const mainlink = props.link
   const { customMap } = props
 
   return (
@@ -164,8 +164,8 @@ function SeniorAussies(props) {
         <div className={classes.thumbnailContainer}>
           <img
             src="/static/img/articles/5-aussies-aged.jpg"
-            width="610"
-            height="610"
+            width="612"
+            height="344"
             style={{ width: '100%' }}
             loading="lazy"
             alt="Older Aussies are Saving on their Health Insurance using this service."

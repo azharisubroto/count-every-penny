@@ -10,7 +10,6 @@ import AndrewVideo from '@/components/AndrewVideo'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import { logEvent } from '@/utils/analytics'
-import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   articlecard: {
@@ -142,27 +141,10 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 function DeathByThousandCut(props) {
-  const router = useRouter()
+  const mainlink = props.link
   const isamp = false
   const classes = useStyles(props)
   const { customMap } = props
-  const [mainlink, setMainlink] = React.useState('')
-
-  React.useEffect(() => {
-    const utms = {
-      ...(router.query.utm_source && { utm_source: router.query.utm_source }),
-      ...(router.query.utm_medium && { utm_medium: router.query.utm_medium }),
-      ...(router.query.utm_campaign && { utm_campaign: router.query.utm_campaign }),
-      ...(router.query.utm_content && { utm_content: router.query.utm_content }),
-      ...(router.query.utm_term && { utm_term: router.query.utm_term })
-    }
-
-    const urlparam = Object.entries(utms)
-      .map(([key, val]) => `${key}=${val}`)
-      .join('&')
-
-    setMainlink(`/form/step1?${urlparam}`)
-  }, [router.query])
 
   return (
     <>
