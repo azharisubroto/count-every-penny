@@ -363,7 +363,7 @@ function form4Page(props) {
   const [progress, setProgress] = useState(0)
   const [step6texts, setStep6texts] = useState(loadintexts[0])
   const [loading, setLoading] = useState(false)
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState('')
   const classes = useStyles(props)
   const state = useSelector((state) => state.form4.form)
   const dispatch = useDispatch()
@@ -552,11 +552,14 @@ function form4Page(props) {
 
       if (data.status == 'success') {
         logEvent(`Form 4: Submitted Step 7`)
-        router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
+        setTimeout(() => {
+          router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
+          setLoading(false)
+        }, 4000)
       } else {
         logEvent(`Submission Failed`)
+        setLoading(false)
       }
-      setLoading(false)
     } catch (error) {
       logEvent(`Submission Failed`)
       alert('An error occured')

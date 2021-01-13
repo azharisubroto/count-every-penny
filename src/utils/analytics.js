@@ -7,7 +7,7 @@ const tagManagerArgs = {
   gtmId: gtm_id
 }
 export const init = () => {
-  if (process.env.NODE_ENV !== 'production') return false
+  //if (process.env.NODE_ENV !== 'production') return false
 
   if (isBrowser()) {
     amplitude = require('amplitude-js')
@@ -17,26 +17,30 @@ export const init = () => {
 }
 
 export const logPageView = () => {
-  if (process.env.NODE_ENV !== 'production') return false
+  //if (process.env.NODE_ENV !== 'production') return false
 
   if (isBrowser()) {
-    amplitude.getInstance().logEvent(`Pageview for ${window.location.pathname}`)
+    const track_text = `Pageview for ${window.location.pathname}`
+    amplitude.getInstance().logEvent(track_text)
   }
 }
 
 export const logEvent = (eventName) => {
-  if (process.env.NODE_ENV !== 'production') return false
+  //if (process.env.NODE_ENV !== 'production') return false
 
   if (isBrowser()) {
+    // Amplitude Track
     amplitude.getInstance().logEvent(eventName)
 
-    const gtmArgs = {
+    // Fb Pixel track
+    window.fbq('track', eventName)
+
+    // GTM Track
+    TagManager.initialize({
       gtmId: gtm_id,
       dataLayer: {
         event_name: eventName
       }
-    }
-
-    TagManager.initialize(gtmArgs)
+    })
   }
 }
