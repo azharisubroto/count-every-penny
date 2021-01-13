@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -13,6 +13,7 @@ import { ValidatorForm, TextValidator, SelectValidator } from 'react-material-ui
 import theme from '@/theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { logEvent } from '@/utils/analytics'
+import axios from 'axios'
 
 // CoverStyle to reusable
 const coverstyle = {
@@ -237,10 +238,16 @@ const fundlist = [
 const FormStep = (props) => {
   const classes = useStyles(props)
   const router = useRouter()
+  const [postcodes, setPostcodes] = useState({})
   const state = useSelector((state) => state.counter.form)
   const { step } = props
 
   const dispatch = useDispatch()
+
+  // Fetch Postcode
+  useEffect(() => {
+    fetchPostcode()
+  }, [])
 
   // Set custom validation rules
   useEffect(() => {
@@ -256,6 +263,11 @@ const FormStep = (props) => {
       }
       return true
     })
+    ValidatorForm.addValidationRule('validPostcode', (value) => {
+      const result = [value] in postcodes
+      //console.log(result)
+      return result
+    })
   })
 
   // Check Route
@@ -263,7 +275,7 @@ const FormStep = (props) => {
     const path = router.pathname
     const passed_step = parseInt(state.step_passed)
     const step = parseInt(path.substr(path.length - 1))
-    console.log(passed_step, step)
+    //console.log(passed_step, step)
 
     // If not thank you
     if (path != '/form/thankyou') {
@@ -277,6 +289,16 @@ const FormStep = (props) => {
       }
     }
   }, [router.asPath])
+
+  // Fetch postcode
+  const fetchPostcode = async () => {
+    try {
+      const { data } = await axios.get('/api/postcode')
+      setPostcodes(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   // Handle Select Change
   const handleChange = (e, key) => {
@@ -392,8 +414,8 @@ const FormStep = (props) => {
                   My four digit postcode
                 </InputLabel>
                 <TextValidator
-                  validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$']}
-                  errorMessages={['Required', 'Numeric only', 'Must be 4 digit']}
+                  validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$', 'validPostcode']}
+                  errorMessages={['Required', 'Numeric only', 'Must be 4 digit', 'Enter valid postcode']}
                   id="postcode"
                   placeholder="Enter Postcode"
                   variant="outlined"
