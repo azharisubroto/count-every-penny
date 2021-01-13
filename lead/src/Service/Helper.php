@@ -59,7 +59,11 @@ class Helper
         $projectDir = $this->parameter->get('kernel.project_dir');
         $geodata = json_decode(file_get_contents($projectDir . '/public/postcode_state.json'), true);
 
-        return $geodata[$postcode];
+        if(!empty($geodata[$postcode])) {
+            return $geodata[$postcode];
+        } else {
+            return 'NSW';
+        }
     }
 
     public function createGetRequest($url, $headers = [])
