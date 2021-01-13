@@ -844,7 +844,9 @@ function form4Page(props) {
                           <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
                             <Button
                               onClick={() => {
-                                redirect(5)
+                                if (state.postcode in postcodes) {
+                                  redirect(5)
+                                }
                               }}
                               disabled={state.yob == '' || state.postcode == ''}
                               type="submit"
