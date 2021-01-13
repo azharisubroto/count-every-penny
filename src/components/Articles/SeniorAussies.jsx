@@ -6,7 +6,7 @@ import P from '@/components/P'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
-import Cta2 from '@/components/Articles/Cta/Cta2'
+import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 
 const useStyles = makeStyles((theme) => ({
   articlecard: {
@@ -232,7 +232,7 @@ function SeniorAussies(props) {
           private health insurance in Australia, and we want to do something about it.
         </P>
 
-        <Cta2 />
+        <FreebiesCTA link={mainlink} />
 
         <P>
           By teaming up our services, Older Aussies can compare multiple health insurance brands, cover options and

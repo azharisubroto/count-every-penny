@@ -1,5 +1,5 @@
-function Cta2() {
-  const mainlink = '/form/step1'
+function FreebiesCTA(props) {
+  const mainlink = props.link
   return (
     <>
       {/* Freebies */}
@@ -110,4 +110,4 @@ function Cta2() {
   )
 }
 
-export default Cta2
+export default FreebiesCTA

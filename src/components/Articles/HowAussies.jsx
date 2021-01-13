@@ -6,7 +6,7 @@ import P from '@/components/P'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
-import Cta2 from '@/components/Articles/Cta/Cta2'
+import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 
 const useStyles = makeStyles((theme) => ({
   articlecard: {
@@ -250,7 +250,7 @@ function SeniorAussies(props) {
           system and keep you from any further confusion.{' '}
         </P>
 
-        <Cta2 />
+        <FreebiesCTA link={mainlink} />
 
         <P>
           Count Every Penny is a <strong>one-of-a-kind comparison service</strong> made for hard working Aussies. Our
