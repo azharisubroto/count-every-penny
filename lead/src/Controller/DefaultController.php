@@ -174,7 +174,7 @@ class DefaultController extends AbstractController
         $leadData['utm_medium'] = !empty($utmMedium) ? $utmMedium : 'affiliate';
         $leadData['utm_source'] = !empty($utmSource) ? $utmSource : 'cep';
         $leadData['utm_campaign'] = !empty($utmCampaign) ? $utmCampaign : 'jancampaign';
-        $ccLeadResult = $this->helper->createPostRequest('https://staging.api.alternativemedia.com.au/lead/create', $leadData);
+        $ccLeadResult = $this->helper->createPostRequest($params->get('hic_api_url'), $leadData);
         if(!empty($ccLeadResult->response)) {
             $leadUUID = $ccLeadResult->response->data->lead_uuid;
             $leads->setLeadUuid($leadUUID);
