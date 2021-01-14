@@ -222,8 +222,8 @@ function DeathByThousandCut(props) {
         </Typography>
 
         <P>
-          Although the average rate rise in April is &lsquo;only&rsquo; 2.92%, some funds will be increasing their rates
-          by as much as 5.47%, just as in October other funds increased their rates by up to 5.6%.{' '}
+          Although the average rate rise in April is ‘only’ 2.74%, some funds will be increasing their rates by as much
+          as 5.47%, just as in October other funds increased their rates by up to 5.6%.{' '}
           <strong>
             One fund which we can&rsquo;t name here will have raised their rates by an outrageous 9.36% across the
             October 2020 and April 2021 rate rises
