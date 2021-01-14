@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     hic_api_key: '%env(HIC_API_KEY)%'
+    hic_api_url: '%env(HIC_API_URL)%'
 
 services:
     # default configuration for services in *this* file
