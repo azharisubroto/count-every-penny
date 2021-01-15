@@ -394,19 +394,19 @@ function form4Page(props) {
     } else if (step == 2) {
       setProgress(20)
       // Log event
-      logEvent(`Form 4: Opened Step 2`)
+      //logEvent(`Form 4: Opened Step 2`)
     } else if (step == 3) {
       setProgress(40)
       // Log event
-      logEvent(`Form 4: Opened Step 3`)
+      //logEvent(`Form 4: Opened Step 3`)
     } else if (step == 4) {
       setProgress(60)
       // Log event
-      logEvent(`Form 4: Opened Step 4`)
+      //logEvent(`Form 4: Opened Step 4`)
     } else if (step == 5) {
       setProgress(85)
       // Log event
-      logEvent(`Form 4: Opened Step 5`)
+      //logEvent(`Form 4: Opened Step 5`)
       setTimeout(() => {
         setStep6texts(loadintexts[1])
       }, 2000)
@@ -425,11 +425,11 @@ function form4Page(props) {
     } else if (step == 6) {
       setProgress(90)
       // Log event
-      logEvent(`Form 4: Opened Step 6`)
+      //logEvent(`Form 4: Opened Step 6`)
     } else if (step == 7) {
       setProgress(98)
       // Log event
-      logEvent(`Form 4: Opened Step 7`)
+      //logEvent(`Form 4: Opened Step 7`)
     }
   }, [step])
 
@@ -491,7 +491,8 @@ function form4Page(props) {
    * Set router
    */
   const redirect = (step) => {
-    logEvent(`Form 4: Submitted Step ${step}`)
+    logEvent(`Form 4: Opened Step ${step}`)
+    logEvent(`Form 4: Submitted Step ${parseInt(step - 1)}`)
     router
       .push({
         pathname: `/form-4`,
@@ -554,6 +555,7 @@ function form4Page(props) {
 
       if (data.status == 'success') {
         logEvent(`Form 4: Submitted Step 7`)
+        logEvent(`Form 4: Opened Thank You Page`)
         setTimeout(() => {
           router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
           setLoading(false)
