@@ -7,7 +7,7 @@ const tagManagerArgs = {
   gtmId: gtm_id
 }
 export const init = () => {
-  if (process.env.NODE_ENV !== 'production') return false
+  //if (process.env.NODE_ENV !== 'production') return false
 
   if (isBrowser()) {
     amplitude = require('amplitude-js')
@@ -26,7 +26,7 @@ export const logPageView = () => {
 }
 
 export const logEvent = (eventName) => {
-  if (process.env.NODE_ENV !== 'production') return false
+  //if (process.env.NODE_ENV !== 'production') return false
 
   if (isBrowser()) {
     // Amplitude Track

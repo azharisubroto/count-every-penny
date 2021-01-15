@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
@@ -10,7 +10,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '@/store/counter/action'
 import theme from '@/theme'
 import { useRouter } from 'next/router'
-import { logEvent } from '@/utils/analytics'
+import { init, logEvent } from '@/utils/analytics'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
 const useStyles = makeStyles((theme) => ({
@@ -54,6 +54,14 @@ function Step3(props) {
   const [coverList] = useState(props.data)
   const hospitalCovers = state.hospitalCovers
   const extraCovers = state.extraCovers
+
+  useEffect(() => {
+    init()
+
+    if (typeof window !== 'undefined') {
+      logEvent('Opened Form Step 3')
+    }
+  }, [])
 
   // Handle Change Switch
   const handleChange = (e) => {
@@ -107,9 +115,7 @@ function Step3(props) {
   // Handle submit
   const handleSubmit = () => {
     if (state.hospitalCovers.length > 0 || state.extraCovers.length > 0) {
-      logEvent({
-        event_type: `Submitted Form Step 3`
-      })
+      logEvent(`Submitted Form Step 3`)
       dispatch(
         formCounter({
           ...state,

@@ -5,13 +5,20 @@ import { formCounter } from '@/store/counter/action'
 import { wrapper } from '@/store/store'
 import NavBarForm from '@/components/NavBarForm'
 import { useRouter } from 'next/router'
-import { logEvent } from '@/utils/analytics'
+import { init, logEvent } from '@/utils/analytics'
 import FindAnimation from '@/components/FindAnimation'
 
 function Step4() {
   const router = useRouter()
   const dispatch = useDispatch()
   const state = useSelector((state) => state.counter.form)
+
+  useEffect(() => {
+    init()
+    if (typeof window !== 'undefined') {
+      logEvent('Opened Form Step 4')
+    }
+  }, [])
 
   useEffect(() => {
     const utms = {
