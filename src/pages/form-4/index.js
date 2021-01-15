@@ -388,14 +388,25 @@ function form4Page(props) {
     init()
     if (step == 1) {
       setProgress(0)
+
+      // Log event
+      logEvent(`Form 4: Opened Step 1`)
     } else if (step == 2) {
       setProgress(20)
+      // Log event
+      logEvent(`Form 4: Opened Step 2`)
     } else if (step == 3) {
       setProgress(40)
+      // Log event
+      logEvent(`Form 4: Opened Step 3`)
     } else if (step == 4) {
       setProgress(60)
+      // Log event
+      logEvent(`Form 4: Opened Step 4`)
     } else if (step == 5) {
       setProgress(85)
+      // Log event
+      logEvent(`Form 4: Opened Step 5`)
       setTimeout(() => {
         setStep6texts(loadintexts[1])
       }, 2000)
@@ -413,8 +424,12 @@ function form4Page(props) {
       }, 5000)
     } else if (step == 6) {
       setProgress(90)
+      // Log event
+      logEvent(`Form 4: Opened Step 6`)
     } else if (step == 7) {
       setProgress(98)
+      // Log event
+      logEvent(`Form 4: Opened Step 7`)
     }
   }, [step])
 
