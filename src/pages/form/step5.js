@@ -13,7 +13,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '@/store/counter/action'
-import { logEvent } from '@/utils/analytics'
+import { init, logEvent } from '@/utils/analytics'
 import { useRouter } from 'next/router'
 import Slide from '@material-ui/core/Slide'
 import axios from 'axios'
@@ -171,6 +171,12 @@ export default function Step5(props) {
   })
 
   useEffect(() => {
+    init()
+
+    if (typeof window !== 'undefined') {
+      logEvent('Opened Form Step 5')
+    }
+
     setTimeout(() => {
       setOpen(true)
     }, 1000)
@@ -210,9 +216,7 @@ export default function Step5(props) {
       const data = await response.data
 
       if (data.status == 'success') {
-        logEvent({
-          event_type: `Submitted Form Step 5`
-        })
+        logEvent(`Submitted Form Step 5`)
         dispatch(
           formCounter({
             ...state,
@@ -221,15 +225,11 @@ export default function Step5(props) {
         )
         router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
       } else {
-        logEvent({
-          event_type: `Submission Failed`
-        })
+        logEvent(`Submission Failed`)
       }
       setLoading(false)
     } catch (error) {
-      logEvent({
-        event_type: `Submission Failed`
-      })
+      logEvent(`Submission Failed`)
       alert('An error occured')
 
       setLoading(false)
