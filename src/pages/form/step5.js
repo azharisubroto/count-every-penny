@@ -223,6 +223,7 @@ export default function Step5(props) {
             step_passed: 5
           })
         )
+        logEvent('Opened Thank You Page')
         router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
       } else {
         logEvent(`Submission Failed`)
