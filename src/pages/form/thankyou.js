@@ -1,8 +1,17 @@
 import Head from 'next/head'
 import Form from '@/layout/Form'
 import theme from '@/theme'
+import React, { useEffect } from 'react'
+import { init, logEvent } from '@/utils/analytics'
 
 export default function ThankYou() {
+  useEffect(() => {
+    init()
+
+    if (typeof window !== 'undefined') {
+      logEvent('Opened Thank You Page')
+    }
+  }, [])
   return (
     <>
       <Head>
