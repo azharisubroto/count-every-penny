@@ -224,6 +224,7 @@ export default function Step5(props) {
           })
         )
         logEvent('Opened Thank You Page')
+        window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
         router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
       } else {
         logEvent(`Submission Failed`)
