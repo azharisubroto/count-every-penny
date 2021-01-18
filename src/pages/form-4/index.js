@@ -699,7 +699,7 @@ function form4Page(props) {
                     {step < 8 && (
                       <Box mt={3}>
                         <div className="lookingfor text-20 lh-25 text-md-32 lh-md-40">
-                          {step == 1 && <>I’m looking a Health cover for...</>}
+                          {step == 1 && <>I'm interested in Health cover for...</>}
                           {step == 2 && <>What kind of cover are you looking for?</>}
                           {step == 3 && <>Who is your current health fund?</>}
                           {step == 4 && <>Tell us about yourself</>}

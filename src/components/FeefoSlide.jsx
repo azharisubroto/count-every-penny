@@ -38,8 +38,8 @@ const FeefoSlide = (props) => {
   // Slides JSON
   const slides = [
     {
-      author: 'Caroline',
-      text: `The service was excelent. We ended up saving approximately %800.00 for changing our Health Insurance. Definitely would recommend your service. Thank you!`
+      author: 'Geoffrey',
+      text: `Upgraded for Less money. The result was beyond my expectations, which means that I was not up with the latest details of all the Health Funds, They helped me upgrade and with less payments.`
     },
     {
       author: 'Brooke',
