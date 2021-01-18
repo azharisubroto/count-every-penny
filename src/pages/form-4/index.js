@@ -556,6 +556,7 @@ function form4Page(props) {
       if (data.status == 'success') {
         logEvent(`Form 4: Submitted Step 7`)
         logEvent(`Form 4: Opened Thank You Page`)
+        window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
         setTimeout(() => {
           router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
           setLoading(false)

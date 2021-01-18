@@ -63,10 +63,10 @@ export default function Footer(props) {
               />
               <p className="copyright">
                 &copy; Copyright Count Every Penny 2021. All rights reserved. Counteverypenny.com.au or the companies it
-                works with does not compare all products in the market. The availability of products compared may change
+                works with do not compare all products in the market. The availability of products compared may change
                 from time to time. Not all products available from our partners are compared and not all products are
                 available to all customers. This is a sponsored article and is intended as an advertisement, not
-                editorial content.
+                editorial content. Asymmetric Information ATF Sideprojects Unit Trust.
               </p>
             </Grid>
           </Grid>
