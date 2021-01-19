@@ -189,6 +189,58 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @param $date
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     *
+     * @Route("/get_leads/{date}")
+     */
+    public function getLeadsByDate(Request $request, $date)
+    {
+        $key = $request->get('key');
+        if(empty($key) || $key != '56f46ef4-0db7-48fa-9f29-352b0558c1d2') {
+            return $this->json([]);
+        }
+        $day = substr($date, 0, 2);
+        $month = substr($date, 2, 2);
+        $year = substr($date, 4);
+
+        $leads = $this->getDoctrine()->getRepository('App:Leads')->findLeadsByDate("$year-$month-$day");
+        $result = [];
+        foreach($leads as $lead) {
+            $leadStatus = $lead->getLeadStatus();
+            $tmp = [
+                'first_name' => $lead->getFirstName(),
+                'middle_name' => $lead->getMiddleName(),
+                'last_name' => $lead->getLastName(),
+                'phone' => $lead->getPhone(),
+                'email' => $lead->getEmail(),
+                'postcode' => $lead->getPostcode(),
+                'state' => $lead->getState(),
+                'age' => $lead->getAge(),
+                'life_stage' => $lead->getLifeStage(),
+                'cover_type' => $lead->getCoverType(),
+                'health_fund' => $lead->getHealthFund(),
+                'lead_status' => $leadStatus,
+                'lead_uuid' => $lead->getLeadUuid(),
+                'activecampaign_id' => $lead->getActivecampaignId(),
+                'date_of_birth' => $lead->getDateOfBirth(),
+                'date_created' => $lead->getDateCreated(),
+                'status' => 'success'
+            ];
+
+            if(!empty($leadStatus['error'])) {
+                $tmp['status'] = $leadStatus['error'];
+            } else if(!empty($leadStatus['warning'])) {
+                $tmp['status'] = $leadStatus['warning'];
+            }
+
+            $result[] = $tmp;
+        }
+        return $this->json($result);
+    }
+
     private function InsertActiveCampaign($param)
     {
         $data = [
