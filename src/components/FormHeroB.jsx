@@ -512,8 +512,8 @@ export default function FormHeroB(props) {
               </h1>
 
               {props.step == 1 && (
-                <div className="row white--text text-16 mt-4 pb-4 key-points">
-                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-2">
+                <div className="row white--text text-16 mt-2 mt-md-4 pb-md-4 key-points">
+                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-1 py-md-2">
                     <div className="d-flex">
                       <div className="mr-2">
                         <img src="/static/img/icons/check-badge.svg" loading="lazy" alt="" />
@@ -521,7 +521,7 @@ export default function FormHeroB(props) {
                       <div>Average saving of $357.95 per customer in 2020</div>
                     </div>
                   </div>
-                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-2">
+                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-1 py-md-2">
                     <div className="d-flex">
                       <div className="mr-2">
                         <img src="/static/img/icons/check-badge.svg" loading="lazy" alt="" />
@@ -529,7 +529,7 @@ export default function FormHeroB(props) {
                       <div>No lock in contracts</div>
                     </div>
                   </div>
-                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-2">
+                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-1 py-md-2">
                     <div className="d-flex">
                       <div className="mr-2">
                         <img src="/static/img/icons/check-badge.svg" loading="lazy" alt="" />
@@ -537,7 +537,7 @@ export default function FormHeroB(props) {
                       <div>No fees or markups</div>
                     </div>
                   </div>
-                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-2">
+                  <div className="col-12 col-md-12 col-lg-12 col-xl-6 py-1 py-md-2">
                     <div className="d-flex">
                       <div className="mr-2">
                         <img src="/static/img/icons/check-badge.svg" loading="lazy" alt="" />
@@ -599,7 +599,7 @@ export default function FormHeroB(props) {
           }
           @media screen and (max-width: 1023px) {
             background: ${theme.palette.cep.primary};
-            padding: 40px 0;
+            padding: 25px 0;
           }
           @media screen and (max-width: 769px) {
             margin-bottom: 40px;
