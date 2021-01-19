@@ -7,7 +7,8 @@ import '@/styles/styles.global.scss'
 import theme from '@/theme'
 import { init, logPageView } from '@/utils/analytics'
 import { useRouter } from 'next/router'
-
+import { SWRConfig } from 'swr'
+import fetch from '@/utils/fetchJson'
 function CountEveryPenny(props) {
   const router = useRouter()
   const { Component, pageProps } = props
@@ -38,7 +39,15 @@ function CountEveryPenny(props) {
     <ThemeProvider theme={theme}>
       <Layout>
         <CssBaseline />
-        <Component {...pageProps} />
+        <SWRConfig
+          value={{
+            fetcher: fetch,
+            onError: (err) => {
+              console.error(err)
+            }
+          }}>
+          <Component {...pageProps} />
+        </SWRConfig>
       </Layout>
     </ThemeProvider>
   )

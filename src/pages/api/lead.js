@@ -17,21 +17,4 @@ export default async (req, res) => {
 
   const data = await response.json()
   res.status(200).json(JSON.stringify(data))
-
-  // if (data.status == 'success') {
-  //   res.status(200).json(JSON.stringify(data))
-  // } else {
-  //   res.status(500).json(JSON.stringify({ status: data.status }))
-  // }
-
-  //const data = await response.json()
-
-  // const {
-  //   query: { postcode }
-  // } = req
-
-  // const response = await fetch('https://counteverypenny.com.au/lead/submit')
-  // var data = await response.json()
-  // //const data = response['body']
-  // res.status(200).json(JSON.stringify(data))
 }
