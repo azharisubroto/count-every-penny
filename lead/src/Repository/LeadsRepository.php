@@ -19,6 +19,16 @@ class LeadsRepository extends ServiceEntityRepository
         parent::__construct($registry, Leads::class);
     }
 
+    public function findLeadsByDate($date)
+    {
+        $qb = $this->createQueryBuilder('l');
+
+        return $qb->where($qb->expr()->like('l.date_created', ':date'))
+                  ->setParameter('date', "$date%")
+                  ->getQuery()
+                  ->getResult();
+    }
+
     // /**
     //  * @return Leads[] Returns an array of Leads objects
     //  */
