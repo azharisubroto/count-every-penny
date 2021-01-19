@@ -113,6 +113,15 @@ function Form({ children }) {
           }
         `}
       </style>
+      <style jsx global>{`
+        .price-tag {
+          display: inline-block;
+          background: rgba(0, 0, 0, 0.15);
+          border-radius: 10px;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      `}</style>
     </>
   )
 }
