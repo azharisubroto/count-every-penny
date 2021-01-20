@@ -2203,6 +2203,13 @@ copy-descriptor@^0.1.0:
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz"
   integrity sha1-Z29us8OZl8LuGsOpJP1hJHSPV40=
 
+copy-to-clipboard@^3.3.1:
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/copy-to-clipboard/-/copy-to-clipboard-3.3.1.tgz#115aa1a9998ffab6196f93076ad6da3b913662ae"
+  integrity sha512-i13qo6kIHTTpCm8/Wup+0b1mVWETvu2kIMzKoK8FpkLkFxlt0znUAHcMzox+T8sPlqtZXq3CulEjQHsYiGFJUw==
+  dependencies:
+    toggle-selection "^1.0.6"
+
 core-js-pure@^3.0.0:
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/core-js-pure/-/core-js-pure-3.8.1.tgz"
@@ -4756,6 +4763,13 @@ lru-cache@^5.1.1:
   integrity sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==
   dependencies:
     yallist "^3.0.2"
+
+lzutf8@^0.5.8:
+  version "0.5.8"
+  resolved "https://registry.yarnpkg.com/lzutf8/-/lzutf8-0.5.8.tgz#e07c531ad086258c0d842646bd3b973565823330"
+  integrity sha512-YrwDpLWfVFJfVfVErafPsglTpil+9BIfume6UJ6EWOFFwTJcyvMvDEFts3Ec8rEo4x1hkbh5cDnTAREfzdTSgA==
+  dependencies:
+    readable-stream "^3.6.0"
 
 make-dir@^2.0.0:
   version "2.1.0"
@@ -7429,6 +7443,11 @@ tocbot@^4.12.1:
   version "4.12.1"
   resolved "https://registry.yarnpkg.com/tocbot/-/tocbot-4.12.1.tgz#e0f7e5b917e2d4850eff753479f34110dc73e763"
   integrity sha512-hz1iiuHs7mGyR1xmnOmq6cxFnRJVIYJYbQIvzSZ3jTolKnM/Zv4FS6artaZiM616Ia3PyNIn0Z6OIBDfdXFsyA==
+
+toggle-selection@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/toggle-selection/-/toggle-selection-1.0.6.tgz#6e45b1263f2017fa0acc7d89d78b15b8bf77da32"
+  integrity sha1-bkWxJj8gF/oKzH2J14sVuL932jI=
 
 toidentifier@1.0.0:
   version "1.0.0"

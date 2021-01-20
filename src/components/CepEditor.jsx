@@ -1,15 +1,15 @@
 import { Editor, Frame, Element } from '@craftjs/core'
-import { Typography, Paper, Grid, makeStyles } from '@material-ui/core'
+import { Paper, Grid, makeStyles } from '@material-ui/core'
 import React from 'react'
 
 import { SettingsPanel } from '@/components/SettingsPanel'
 import { Toolbox } from '@/components/Toolbox'
-import { Topbar } from '@/components/Topbar'
+//import { Topbar } from '@/components/Topbar'
 import { Button } from '@/components/editor/Button'
 import { Card, CardBottom, CardTop } from '@/components/editor/Card'
 import { Container } from '@/components/editor/Container'
 import { Text } from '@/components/editor/Text'
-import '@/styles/main.css'
+import { Author } from '@/components/editor/ArticleAuthor'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -17,14 +17,12 @@ const useStyles = makeStyles(() => ({
     background: 'rgb(252, 253, 253)'
   }
 }))
-export default function App() {
+export default function CepEditor(props) {
   const classes = useStyles()
+  const { sidebarSlot } = props
 
   return (
-    <div style={{ margin: '0 auto', width: '800px' }}>
-      <Typography style={{ margin: '20px 0' }} variant="h5" align="center">
-        Basic Page Editor
-      </Typography>
+    <>
       <Editor
         resolver={{
           Card,
@@ -32,30 +30,60 @@ export default function App() {
           Text,
           Container,
           CardTop,
-          CardBottom
+          CardBottom,
+          Author
         }}>
-        <Topbar />
-        <Grid container spacing={5} style={{ paddingTop: '10px' }}>
-          <Grid item xs>
-            <Frame>
-              <Element canvas is={Container} padding={5} background="#eeeeee">
-                <Card />
-                <Button text="Click me" size="small" />
-                <Text fontSize={20} text="Hi world!" />
-                <Element canvas is={Container} padding={6} background="#999999">
+        {/* <Topbar /> */}
+        <Grid container spacing={3} style={{ paddingTop: '10px' }}>
+          <Grid item xs md={9}>
+            <div className="editor-container">
+              <Frame>
+                <Element canvas is={Container} padding={40} background="#fff" style={{ minHeight: 300 }}>
+                  <Text
+                    fontSize={12}
+                    text="Two rate rises in 6 months leaves Aussies with $230.36 bigger bills"
+                    textColor="#757575"
+                  />
+                  <Text fontSize={30} text="Article headline, lorem ipsum dolor sit amet" fontWeight="700" />
+
+                  <Author avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
+
+                  {/* <Card /> */}
+                  {/* <Button text="Click me" size="small" /> */}
+                  {/* <Element canvas is={Container} padding={6} background="#999999">
                   <Text size="small" text="It's me again!" />
+                </Element> */}
                 </Element>
-              </Element>
-            </Frame>
+              </Frame>
+            </div>
           </Grid>
-          <Grid item xs={4}>
-            <Paper className={classes.root}>
-              <Toolbox />
-              <SettingsPanel />
-            </Paper>
+          <Grid item xs={4} md={3}>
+            <div className="sticky">
+              {sidebarSlot}
+
+              <Paper className={classes.root}>
+                <Toolbox />
+                <SettingsPanel />
+              </Paper>
+            </div>
           </Grid>
         </Grid>
       </Editor>
-    </div>
+
+      <style jsx global>{`
+        .sticky {
+          position: sticky;
+          top: 90px;
+        }
+        .editor-container {
+          div[draggable='true'] {
+            border: 1px dashed transparent;
+            &:hover {
+              border-color: #d1d1d1;
+            }
+          }
+        }
+      `}</style>
+    </>
   )
 }

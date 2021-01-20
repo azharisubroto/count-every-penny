@@ -1,6 +1,16 @@
+import { useEditor, Element } from '@craftjs/core'
 import { Box, Typography, Grid, Button as MaterialButton } from '@material-ui/core'
+import React from 'react'
+
+import { Button } from '@/components/editor/Button'
+//import { Card } from '@/components/editor/Card'
+import { Container } from '@/components/editor/Container'
+import { Text } from '@/components/editor/Text'
+import { Author } from '@/components/editor/ArticleAuthor'
 
 export const Toolbox = () => {
+  const { connectors } = useEditor()
+
   return (
     <Box px={2} py={2}>
       <Grid container direction="column" alignItems="center" justify="center" spacing={1}>
@@ -8,17 +18,47 @@ export const Toolbox = () => {
           <Typography>Drag to add</Typography>
         </Box>
         <Grid container direction="column" item>
-          <MaterialButton variant="contained">Button</MaterialButton>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <Button text="Click me" size="small" />)}
+            disableElevation
+            variant="contained">
+            Button
+          </MaterialButton>
         </Grid>
         <Grid container direction="column" item>
-          <MaterialButton variant="contained">Text</MaterialButton>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
+            disableElevation
+            variant="contained">
+            Text
+          </MaterialButton>
         </Grid>
         <Grid container direction="column" item>
-          <MaterialButton variant="contained">Container</MaterialButton>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <Element canvas is={Container} background="#f1f1f1" padding={20} />)}
+            disableElevation
+            variant="contained">
+            Card
+          </MaterialButton>
         </Grid>
         <Grid container direction="column" item>
-          <MaterialButton variant="contained">Card</MaterialButton>
+          <MaterialButton
+            ref={(ref) =>
+              connectors.create(
+                ref,
+                <Author avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
+              )
+            }
+            disableElevation
+            variant="contained">
+            Article Author
+          </MaterialButton>
         </Grid>
+        {/* <Grid container direction="column" item>
+          <MaterialButton ref={(ref) => connectors.create(ref, <Card />)} disableElevation variant="contained">
+            Card
+          </MaterialButton>
+        </Grid> */}
       </Grid>
     </Box>
   )

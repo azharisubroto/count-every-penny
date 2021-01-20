@@ -25,15 +25,15 @@ import NotificationsIcon from '@material-ui/icons/Notifications'
 import { secondaryListItems } from './listItems'
 import Collapse from '@material-ui/core/Collapse'
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link href="/form/step1">Your Website</Link> {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  )
-}
+// function Copyright() {
+//   return (
+//     <Typography variant="body2" color="textSecondary" align="center">
+//       {'Copyright © '}
+//       <Link href="/form/step1">Your Website</Link> {new Date().getFullYear()}
+//       {'.'}
+//     </Typography>
+//   )
+// }
 
 const drawerWidth = 240
 
@@ -230,12 +230,16 @@ export default function DashboardLayout(props) {
           <div className={classes.appBarSpacer}></div>
           <Container maxWidth="lg" className={classes.container}>
             {children}
-            <Box pt={4}>
-              <Copyright />
-            </Box>
+            <Box pt={4}>{/* <Copyright /> */}</Box>
           </Container>
         </main>
       </div>
+
+      <style jsx global>{`
+        body {
+          background: #f7f7f7 !important;
+        }
+      `}</style>
     </>
   )
 }

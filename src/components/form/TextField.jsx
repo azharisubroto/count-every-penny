@@ -30,6 +30,7 @@ const styles = {
     overflow: 'hidden',
     '& .MuiInputBase-formControl': {
       minHeight: 60,
+      background: '#fff',
       '&:hover fieldset': formControlTouch,
       '&.Mui-focused fieldset': formControlTouch
     },
