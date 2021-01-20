@@ -45,7 +45,9 @@ function Step4() {
         })
       )
       console.log(urlparam)
-      router.push(`/form/step5?${urlparam}`).then(() => window.scrollTo(0, 0))
+      router
+        .push(`/form-b/step5${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+        .then(() => window.scrollTo(0, 0))
     }, 5000)
   }, [router.asPath])
 

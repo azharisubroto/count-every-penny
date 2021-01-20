@@ -217,12 +217,13 @@ export default function Step5(props) {
       const data = await response.data
 
       if (data.status == 'success') {
+        logEvent(`Submitted Form Step 5`)
+
         if (process.env.NODE_ENV === 'production') {
           window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
         }
 
         router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
-        logEvent(`Submitted Form Step 5`)
         dispatch(
           formCounter({
             ...state,

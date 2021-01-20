@@ -337,7 +337,9 @@ const FormStep = (props) => {
         .map(([key, val]) => `${key}=${val}`)
         .join('&')
 
-      router.push(`/form/step${parseInt(step + 1)}?${urlparam}`).then(() => window.scrollTo(0, 0))
+      router
+        .push(`/form/step${parseInt(step + 1)}${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+        .then(() => window.scrollTo(0, 0))
     }
   }
 
