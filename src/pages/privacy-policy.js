@@ -178,8 +178,8 @@ export default function privacyPolicy() {
                     <li>
                       You may opt out of receiving direct marketing communications from AI at any time by contacting us
                       at{' '}
-                      <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
-                        asymmetricinfoau@gmail.com.au
+                      <a href="mailto:contact@counteverypenny.com.au" className="text-underline">
+                        contact@counteverypenny.com.au
                       </a>
                       .
                     </li>
@@ -187,8 +187,8 @@ export default function privacyPolicy() {
                       If we use your personal information to facilitate direct marketing by other organisations on
                       behalf of other organisations, you can ask us to provide the source of the information by
                       contacting us at{' '}
-                      <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
-                        asymmetricinfoau@gmail.com.au
+                      <a href="mailto:contact@counteverypenny.com.au" className="text-underline">
+                        contact@counteverypenny.com.au
                       </a>
                       .
                     </li>
@@ -278,8 +278,8 @@ export default function privacyPolicy() {
                   <p>
                     If you wish to have access to information AI holds about you, you should contact us by emailing us
                     on{' '}
-                    <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
-                      asymmetricinfoau@gmail.com.au
+                    <a href="mailto:contact@counteverypenny.com.au" className="text-underline">
+                      contact@counteverypenny.com.au
                     </a>
                     .
                   </p>
@@ -315,8 +315,8 @@ export default function privacyPolicy() {
                     If you no longer want to receive communications from us that are non-account related or legally
                     required, you may request to opt-out from receiving such marketing communication by emailing us on
                     &nbsp;
-                    <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
-                      asymmetricinfoau@gmail.com.au
+                    <a href="mailto:contact@counteverypenny.com.au" className="text-underline">
+                      contact@counteverypenny.com.au
                     </a>
                     . We will not charge you for any request to opt-out and will process your request in accordance with
                     our legal obligations.
@@ -327,8 +327,8 @@ export default function privacyPolicy() {
                   <p>
                     If you believe your privacy has been interfered with and wish to make a complaint, please contact
                     our Compliance Manager at{' '}
-                    <a href="mailto:asymmetricinfoau@gmail.com.au" className="text-underline">
-                      asymmetricinfoau@gmail.com.au
+                    <a href="mailto:contact@counteverypenny.com.au" className="text-underline">
+                      contact@counteverypenny.com.au
                     </a>
                     . The Compliance Manager will investigate your complaint and notify you of the outcome.
                     <br />

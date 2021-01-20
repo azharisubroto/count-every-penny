@@ -15,7 +15,7 @@ export default function Step1() {
       <FormHeroB
         headline={
           <>
-            Get health insurance quotes from just <span className="price-tag">$2.93 per day</span>
+            Hospital &amp; Extras cover from just <span className="price-tag">$2.93 per day</span>
           </>
         }
         step={1}

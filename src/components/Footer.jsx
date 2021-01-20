@@ -32,7 +32,7 @@ export default function Footer(props) {
                   <a href="/careers">Careers</a>
                 </li>{' '}
                 <li>
-                  <a href="mailto:asymmetricinfoau@gmail.com">Contact Us</a>
+                  <a href="mailto:contact@counteverypenny.com.au">Contact Us</a>
                 </li>
               </ul>
             </Grid>

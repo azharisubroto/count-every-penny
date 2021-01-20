@@ -20,7 +20,7 @@ export default function FooterMisc(props) {
               <a href="/terms-and-conditions">Terms of Use</a>
             </li>
             <li>
-              <a href="mailto:asymmetricinfoau@gmail.com">Contact Us</a>
+              <a href="mailto:contact@counteverypenny.com.au">Contact Us</a>
             </li>
           </ul>
         </div>
