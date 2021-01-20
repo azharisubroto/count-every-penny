@@ -188,7 +188,8 @@ export default function Step5(props) {
   }
 
   // Handle Submit
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     setLoading(true)
 
     const payload = {
@@ -216,6 +217,11 @@ export default function Step5(props) {
       const data = await response.data
 
       if (data.status == 'success') {
+        if (process.env.NODE_ENV === 'production') {
+          window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
+        }
+
+        router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
         logEvent(`Submitted Form Step 5`)
         dispatch(
           formCounter({
@@ -224,8 +230,6 @@ export default function Step5(props) {
           })
         )
         logEvent('Opened Thank You Page')
-        window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
-        router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
       } else {
         logEvent(`Submission Failed`)
       }

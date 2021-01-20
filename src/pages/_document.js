@@ -8,7 +8,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* PWA primary color */}
           <script src="https://cdn.optimizely.com/js/19735997801.js"></script>
 
           <meta name="theme-color" content={theme.palette.primary.main} />
@@ -69,7 +68,6 @@ export default class MyDocument extends Document {
           )}
         </Head>
         <body>
-          <script src="https://cdn.optimizely.com/js/19735997801.js"></script>
           <Main />
           <NextScript />
         </body>
