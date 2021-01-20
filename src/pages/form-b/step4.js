@@ -34,9 +34,7 @@ function Step4() {
       .join('&')
 
     setTimeout(() => {
-      logEvent({
-        event_type: `Submitted Form Step 4`
-      })
+      logEvent('Submitted Form B Step 4')
 
       dispatch(
         formCounter({
