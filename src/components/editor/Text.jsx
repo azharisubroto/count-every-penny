@@ -33,7 +33,13 @@ export const Text = ({ text, fontSize, textAlign, textColor, fontWeight }) => {
         disabled={!editable}
         onChange={(e) => setProp((props) => (props.text = e.target.value.replace(/<\/?[^>]+(>|$)/g, '')), 500)}
         tagName="p"
-        style={{ fontSize: `${fontSize}px`, lineHeight: 1.7, textAlign, color: textColor, fontWeight: fontWeight }}
+        style={{
+          fontSize: `${fontSize}px`,
+          lineHeight: `${parseInt(fontSize * 1.5)}px`,
+          textAlign,
+          color: textColor,
+          fontWeight: fontWeight
+        }}
       />
     </div>
   )

@@ -4,7 +4,7 @@ import React from 'react'
 
 import { SettingsPanel } from '@/components/SettingsPanel'
 import { Toolbox } from '@/components/Toolbox'
-//import { Topbar } from '@/components/Topbar'
+import { Topbar } from '@/components/Topbar'
 import { Button } from '@/components/editor/Button'
 import { Card, CardBottom, CardTop } from '@/components/editor/Card'
 import { Container } from '@/components/editor/Container'
@@ -33,18 +33,27 @@ export default function CepEditor(props) {
           CardBottom,
           Author
         }}>
-        {/* <Topbar /> */}
+        <Topbar />
         <Grid container spacing={3} style={{ paddingTop: '10px' }}>
           <Grid item xs md={9}>
             <div className="editor-container">
               <Frame>
                 <Element canvas is={Container} padding={40} background="#fff" style={{ minHeight: 300 }}>
                   <Text
-                    fontSize={12}
+                    fontSize={14}
                     text="Two rate rises in 6 months leaves Aussies with $230.36 bigger bills"
                     textColor="#757575"
                   />
-                  <Text fontSize={30} text="Article headline, lorem ipsum dolor sit amet" fontWeight="700" />
+                  <Text
+                    fontSize={30}
+                    text="Article headline, lorem ipsum dolor sit ametlorem ipsum dolor sit amet"
+                    fontWeight="700"
+                  />
+                  <Text
+                    fontSize={18}
+                    text="Subheadline lorem ipsum dolor sit amet, lorem ipsum dolor sit amet"
+                    fontWeight="700"
+                  />
 
                   <Author avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
 
@@ -76,8 +85,10 @@ export default function CepEditor(props) {
           top: 90px;
         }
         .editor-container {
-          div[draggable='true'] {
+          div[draggable] {
             border: 1px dashed transparent;
+          }
+          div[draggable='true'] {
             &:hover {
               border-color: #d1d1d1;
             }

@@ -3,7 +3,7 @@ import Head from 'next/head'
 import DashboardLayout from '@/layout/DashboardLayout'
 import TextField from '@/components/form/TextField'
 import Button from '@material-ui/core/Button'
-import fire from '@/utils/fire-config'
+//import fire from '@/utils/fire-config'
 import CepEditor from '@/components/CepEditor'
 
 export default function addNewArticle() {
