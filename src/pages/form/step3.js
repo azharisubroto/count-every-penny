@@ -135,7 +135,9 @@ function Step3(props) {
         .map(([key, val]) => `${key}=${val}`)
         .join('&')
 
-      router.push(`/form/step4?${urlparam}`).then(() => window.scrollTo(0, 0))
+      router
+        .push(`/form/step4${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+        .then(() => window.scrollTo(0, 0))
     } else {
       window.scrollTo(0, 0)
     }

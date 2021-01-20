@@ -34,18 +34,17 @@ function Step4() {
       .join('&')
 
     setTimeout(() => {
-      logEvent({
-        event_type: `Submitted Form Step 4`
-      })
+      logEvent('Submitted Form Step 4')
 
       dispatch(
         formCounter({
           ...state,
-          step_passed: 5
+          step_passed: 4
         })
       )
-      console.log(urlparam)
-      router.push(`/form/step5?${urlparam}`).then(() => window.scrollTo(0, 0))
+      router
+        .push(`/form/step5${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+        .then(() => window.scrollTo(0, 0))
     }, 5000)
   }, [router.asPath])
 
