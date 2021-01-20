@@ -1,3 +1,4 @@
+import React from 'react'
 import Head from 'next/head'
 import NavBarThanks from '@/components/NavBarThanks'
 import FooterMisc from '@/components/FooterMisc'
@@ -8,6 +9,21 @@ import ThanksAward from '@/components/ThanksAward'
 import ThanksSwiper from '@/components/ThanksSwiper'
 
 export default function ThankYou1() {
+  React.useEffect(() => {
+    if (typeof window != 'undefined') {
+      window['optimizely'] = window['optimizely'] || []
+      window['optimizely'].push({
+        type: 'event',
+        eventName: 'typageventoptimizely',
+        tags: {
+          revenue: 0, // Optional in cents as integer (500 == $5.00)
+          value: 0.0 // Optional as float
+        }
+      })
+      //console.log('optimizely fired')
+    }
+  })
+
   return (
     <>
       <Head>
