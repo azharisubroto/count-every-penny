@@ -7,6 +7,7 @@ import { Button } from '@/components/editor/Button'
 import { Container } from '@/components/editor/Container'
 import { Text } from '@/components/editor/Text'
 import { Author } from '@/components/editor/ArticleAuthor'
+import { LifeStageCta1 } from '@/components/editor/LifeStageCta1'
 
 export const Toolbox = () => {
   const { connectors } = useEditor()
@@ -52,6 +53,14 @@ export const Toolbox = () => {
             disableElevation
             variant="contained">
             Article Author
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <LifeStageCta1 link="http://google.com" />)}
+            disableElevation
+            variant="contained">
+            Life Stage Cards CTA
           </MaterialButton>
         </Grid>
         {/* <Grid container direction="column" item>

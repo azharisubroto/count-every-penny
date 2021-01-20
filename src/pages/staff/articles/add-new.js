@@ -37,7 +37,7 @@ export default function addNewArticle() {
             <Button
               className="py-3 mb-2"
               type="submit"
-              color="primary"
+              color="secondary"
               variant="contained"
               size="large"
               disableElevation

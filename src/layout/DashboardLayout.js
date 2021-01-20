@@ -155,7 +155,7 @@ export default function DashboardLayout(props) {
     <>
       <div className={classes.root}>
         <CssBaseline />
-        <AppBar position="fixed" className={clsx(classes.appBar, open && classes.appBarShift)}>
+        <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
           <Toolbar className={classes.toolbar}>
             <IconButton
               edge="start"
