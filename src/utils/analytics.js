@@ -1,8 +1,8 @@
 import { isBrowser } from '@unly/utils'
 import TagManager from 'react-gtm-module'
 
-//const isProd = process.env.NODE_ENV === 'production'
-const isProd = true
+const isProd = process.env.NODE_ENV === 'production'
+//const isProd = true
 
 let amplitude
 const gtm_id = 'GTM-W44WBJZ'
