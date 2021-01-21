@@ -1,0 +1,38 @@
+.d-desktop{
+  @include device(tablet){
+    display: none !important;
+  }
+  @include device(mobile){
+    display: none !important;
+  }
+
+  &.d-tablet{
+    @include device(tablet){
+      display: block !important;
+    }
+  }
+}
+.d-mobile{
+  display: none !important;
+  @include device(tablet){
+    display: block !important;
+  }
+  @include device(mobile){
+    display: block !important;
+  }
+
+  &.row, &.navbar-nav{
+    @include device(tablet){
+      display: flex !important;
+    }
+    @include device(mobile){
+      display: flex !important;
+    }
+  }
+
+  &.d-tablet-none{
+    @include device(tablet){
+      display: none !important;
+    }
+  }
+}

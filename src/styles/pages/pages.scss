@@ -1,0 +1,18 @@
+@import './variables.scss';
+@import './animation.scss';
+@import './misc.scss';
+@import './thanks.scss';
+.article-wrapper{
+    overflow-x: hidden;
+    // position: relative;
+    font-size: 18px;
+    line-height: 26px;
+    color: $default;
+    @extend %montserrat-regular;
+    width: 100%;
+
+    @import './global.scss';
+    @import '../components/components.scss';
+}
+@import './article.scss';
+@import '../utilities/utilities.scss';

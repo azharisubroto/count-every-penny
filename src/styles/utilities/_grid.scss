@@ -1,0 +1,10 @@
+.row{
+  &-5-column{
+    [class*="col-lg"]{
+      @include device(desktop-up){
+        flex: 0 0 20%;
+        max-width: 20%;
+      }
+    }
+  }
+}

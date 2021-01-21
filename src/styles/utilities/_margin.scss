@@ -1,0 +1,15 @@
+.mb{
+  @for $i from 1 through 30 {
+    &-#{$i * 5}px {
+      margin-bottom: #{$i * 5}px !important;
+    }
+  }
+}
+
+.mt{
+  @for $i from 1 through 30 {
+    &-#{$i * 5}px {
+      margin-top: #{$i * 5}px !important;
+    }
+  }
+}
