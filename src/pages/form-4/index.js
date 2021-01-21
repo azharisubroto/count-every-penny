@@ -343,7 +343,7 @@ const funds = [
   'HCF (Hospitals Contribution Fund)',
   'health.com.au',
   'Latrobe Health',
-  'Medibank Provate',
+  'Medibank Private',
   'NIB',
   'ACA Health Benefits',
   'Other fund or not listed',
@@ -834,6 +834,7 @@ function form4Page(props) {
                                   placeholder="2000"
                                   variant="outlined"
                                   value={state.postcode}
+                                  type="number"
                                   className={`${classes.formcontrol}`}
                                   validators={['required', 'isNumber', 'matchRegexp:^\\d{4}$', 'validPostcode']}
                                   errorMessages={[
@@ -929,6 +930,7 @@ function form4Page(props) {
                                     placeholder="Enter Phone Number"
                                     variant="outlined"
                                     value={state.phone}
+                                    type="tel"
                                     className={`${classes.formcontrol}`}
                                     inputProps={{ maxLength: 10, pattern: '[0-9]', type: 'number' }}
                                     onChange={(e) => {
