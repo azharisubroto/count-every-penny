@@ -21,10 +21,15 @@ class LeadsRepository extends ServiceEntityRepository
 
     public function findLeadsByDate($date)
     {
+        $tmpDate = new \DateTime($date);
+        $startDate = clone $tmpDate;
+        $startDate->sub(new \DateInterval('P1D'));
+
         $qb = $this->createQueryBuilder('l');
 
-        return $qb->where($qb->expr()->like('l.date_created', ':date'))
-                  ->setParameter('date', "$date%")
+        return $qb->where($qb->expr()->between('l.date_created', ':start_date', ':end_date'))
+                  ->setParameter('start_date', $startDate->format('Y-m-d') . ' 00:00:00')
+                  ->setParameter('end_date', $tmpDate->format('Y-m-d') . ' 23:59:59')
                   ->getQuery()
                   ->getResult();
     }
