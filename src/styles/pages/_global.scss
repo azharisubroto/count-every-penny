@@ -1,0 +1,124 @@
+// body {
+//     overflow-x: hidden;
+//     // position: relative;
+//     font-size: 18px;
+//     line-height: 26px;
+//     color: $default;
+//     @extend %montserrat-regular;
+//     width: 100%;
+// }
+
+.font-montserrat-regular, body {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+  }
+
+  .font-montserrat-medium {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+  }
+
+  .font-montserrat-semibold {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+  }
+
+  .font-montserrat-bold, .btn {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+  }
+
+  .article-title, .article-flash h3 {
+    font-family: "Faustina", sans-serif;
+    font-weight: 700;
+  }
+
+  .font-vollkorn-bold {
+    font-family: "Vollkorn", serif;
+    font-weight: 700;
+  }
+
+  .font-nunitosans-regular, .footer-copyright {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 400;
+  }
+
+  .font-nunitosans-bold, .footer-nav li a {
+    font-family: "Nunito Sans", sans-serif;
+    font-weight: 700;
+  }
+
+  .font-arimo-regular, .article--type-2 .article-content, .article--type-2 .article-featured-img figcaption p, .article--type-2 .article-highlight, .article--type-2 .article-subheading, .card-quotes--type-2 .card-quotes__display p {
+    font-family: "Arimo", Arial, serif;
+    font-weight: 400;
+  }
+
+  .font-arimo-bold, .article-crossheading h3, .article--type-2 .btn, .card-quotes--type-2 .card-header, .btn-emboss {
+    font-family: "Arimo", Arial, serif;
+    font-weight: 700;
+  }
+
+  h2, h3, h4, h5, h6{
+      @extend %arimo-bold;
+  }
+
+*{
+    outline: none;
+
+    &:focus, &:active{
+        outline: none !important;
+    }
+}
+
+a{
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+    cursor: pointer !important;
+    color: $primary;
+
+    &:hover, &:focus{
+        text-decoration: none;
+    }
+}
+
+ul, ol{
+    li{
+        font-weight: 400;
+    }
+}
+
+small{
+    font-size: 12px;
+    line-height: 18px;
+}
+
+strong{
+    font-weight: 700 !important;
+}
+
+.main{
+    // overflow: hidden;
+    // min-height: 100%;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+    padding-top: 35px;
+
+    @include device(mobile){
+        padding-top: 20px;
+    }
+
+    @include device(tablet){
+        padding-top: 20px;
+    }
+}
+.container{
+    position: relative;
+    z-index: 3;
+}
+section{
+    padding: 80px 0;
+    position: relative;
+    background-size: cover;
+    z-index: 2;
+}

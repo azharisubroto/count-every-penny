@@ -1,0 +1,81 @@
+.font {
+  &-weight {
+    &-bold {
+      font-weight: bold !important;
+    }
+
+    &-700 {
+      font-weight: 700 !important;
+    }
+
+    &-medium {
+      font-weight: 500 !important;
+    }
+
+    &-normal {
+      font-weight: normal !important;
+    }
+
+    &-400 {
+      font-weight: 400 !important;
+    }
+
+    &-light {
+      font-weight: 300 !important;
+    }
+  }
+
+  &-montserrat{
+    &-regular{
+      @extend %montserrat-regular;
+    }
+    &-medium{
+      @extend %montserrat-medium;
+    }
+    &-semibold{
+      @extend %montserrat-semibold;
+    }
+    &-bold{
+      @extend %montserrat-bold;
+    }
+  }
+
+  &-nunitosans{
+    &-regular{
+      @extend %nunitosans-regular;
+    }
+    &-bold{
+      @extend %nunitosans-bold;
+    }
+  }
+
+  &-arimo{
+    &-regular{
+      @extend %arimo-regular;
+    }
+    &-bold{
+      @extend %arimo-bold;
+    }
+  }
+
+  &-vollkorn{
+    &-bold{
+      @extend %vollkorn-bold;
+    }
+  }
+}
+
+.text{
+  &-primary{
+    color: $primary !important;
+  }
+  &-secondary{
+    color: $secondary !important;
+  }
+  &-black{
+    color: $black !important;
+  }
+  &-white{
+    color: $white !important;
+  }
+}

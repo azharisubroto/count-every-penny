@@ -1,3 +1,73 @@
+// Base Color
 $primary: #F09020;
-$white: #fff;
+$secondary: #0B3053;
+$white: #FFF;
 $black: #000;
+$default: #323232;
+$grey: #f1f1f1;
+$dark: #120136;
+$facebook: #4267B2;
+$twitter: #1DA1F2;
+$whatsapp: #25D366;
+
+// Font
+$fontawesome: 'Font Awesome 5 Free';
+$faustina: 'Faustina', sans-serif;
+$montserrat: 'Montserrat', sans-serif;
+$nunitosans: 'Nunito Sans', sans-serif;
+$vollkorn: 'Vollkorn', serif;
+$arimo: 'Arimo', Arial, serif;
+%fontawesome{
+  font-family: $fontawesome;
+  font-weight: 900;
+}
+
+%montserrat-regular{
+  font-family: $montserrat;
+  font-weight: 400;
+}
+
+%montserrat-medium{
+  font-family: $montserrat;
+  font-weight: 500;
+}
+
+%montserrat-semibold{
+  font-family: $montserrat;
+  font-weight: 600;
+}
+
+%montserrat-bold{
+  font-family: $montserrat;
+  font-weight: 700;
+}
+
+%faustina-bold{
+  font-family: $faustina;
+  font-weight: 700;
+}
+
+%vollkorn-bold{
+  font-family: $vollkorn;
+  font-weight: 700;
+}
+
+%nunitosans-regular{
+  font-family: $nunitosans;
+  font-weight: 400;
+}
+
+%nunitosans-bold{
+  font-family: $nunitosans;
+  font-weight: 700;
+}
+
+%arimo-regular{
+  font-family: $arimo;
+  font-weight: 400;
+}
+
+%arimo-bold{
+  font-family: $arimo;
+  font-weight: 700;
+}
