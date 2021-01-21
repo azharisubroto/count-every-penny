@@ -202,14 +202,23 @@ class DefaultController extends AbstractController
         if(empty($key) || $key != '56f46ef4-0db7-48fa-9f29-352b0558c1d2') {
             return $this->json([]);
         }
+        
         $day = substr($date, 0, 2);
         $month = substr($date, 2, 2);
         $year = substr($date, 4);
 
         $leads = $this->getDoctrine()->getRepository('App:Leads')->findLeadsByDate("$year-$month-$day");
+
         $result = [];
         foreach($leads as $lead) {
             $leadStatus = $lead->getLeadStatus();
+            $dt = $lead->getDateCreated();
+            $dt->setTimezone(new \DateTimeZone('Australia/Sydney'));
+
+            if($dt->format('Y-m-d') != "$year-$month-$day") {
+                continue;
+            }
+
             $tmp = [
                 'first_name' => $lead->getFirstName(),
                 'middle_name' => $lead->getMiddleName(),
@@ -226,7 +235,7 @@ class DefaultController extends AbstractController
                 'lead_uuid' => $lead->getLeadUuid(),
                 'activecampaign_id' => $lead->getActivecampaignId(),
                 'date_of_birth' => $lead->getDateOfBirth(),
-                'date_created' => $lead->getDateCreated(),
+                'date_created' => $dt,
                 'status' => 'success'
             ];
 
