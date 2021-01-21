@@ -16,12 +16,10 @@ import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown'
 import Typography from '@material-ui/core/Typography'
 import Divider from '@material-ui/core/Divider'
 import IconButton from '@material-ui/core/IconButton'
-import Badge from '@material-ui/core/Badge'
 import Container from '@material-ui/core/Container'
 import Link from 'next/link'
 import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import NotificationsIcon from '@material-ui/icons/Notifications'
 import { secondaryListItems } from './listItems'
 import Collapse from '@material-ui/core/Collapse'
 
@@ -57,7 +55,8 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
     }),
-    background: '#F09020',
+    background: '#fff',
+    color: '#000',
     boxShadow: 'none'
   },
   appBarShift: {
@@ -168,11 +167,6 @@ export default function DashboardLayout(props) {
             <Typography component="h1" variant="h6" noWrap className={classes.title}>
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
           </Toolbar>
         </AppBar>
         <Drawer

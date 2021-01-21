@@ -4,7 +4,7 @@ import DashboardLayout from '@/layout/DashboardLayout'
 import TextField from '@/components/form/TextField'
 import Button from '@material-ui/core/Button'
 //import fire from '@/utils/fire-config'
-import CepEditor from '@/components/CepEditor'
+import CepEditor from '@/components/editor/CepEditor'
 
 export default function addNewArticle() {
   const [title, setTitle] = useState('')
