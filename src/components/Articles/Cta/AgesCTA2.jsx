@@ -30,7 +30,7 @@ export default function AgesCTA(props) {
       </div>
 
       <p className="card-quotes__notes card-quotes__notes--type-2">
-        *Average savings based off 15178 customers during FY18/19. Average saving based off 20,400 customers during 2019
+        *Average savings based on data from 13,136 customers during 2020
       </p>
     </>
   )
