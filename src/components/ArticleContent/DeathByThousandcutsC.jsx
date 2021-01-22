@@ -158,9 +158,8 @@ function DeathByThousandCut(props) {
                         <ol className="circle">
                           <li>
                             You tell us what <strong>types of cover are important to you</strong>. What’s essential,
-                            what’s nice to have, and <strong>what you definitely don’t need</strong>. If you’re unsure,
-                            we can help you figure this out. essential, what’s nice to have, and what you definitely
-                            don’t need. If you’re unsure, we can help you figure this out.
+                            what’s nice to have, and what you definitely don’t need. If you’re unsure, we can help you
+                            figure this out.
                           </li>
                           <li>
                             We go out and see if we can <strong>find a policy that meets your needs</strong> at an{' '}
