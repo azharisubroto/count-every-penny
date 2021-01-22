@@ -2,7 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 import FooterSimple from '@/components/FooterSimple'
 import Navbar from '@/components/Articles/Header/Navbar2'
-import AgeCardCTA from '@/components/AgeCardCTA'
 import { useRouter } from 'next/router'
 
 export default function Article(props) {
@@ -27,13 +26,10 @@ export default function Article(props) {
     document.querySelector('body').classList.add('article-wrapper')
   })
 
-  const { title, content, sidebar, className, ...rest } = props
+  const { title, content } = props
 
   // Clone Content Component from content prop
   const Content = content ? React.cloneElement(content, { link: mainlink }) : null
-
-  // Clone Sidebar Component from sidebar prop
-  const Sidebar = sidebar ? React.cloneElement(sidebar, { link: mainlink }) : null
 
   return (
     <>

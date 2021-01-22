@@ -1,5 +1,5 @@
 import Article2 from '@/layout/Article2'
-import SeniorAussies from '@/components/Articles/SeniorAussies'
+import SeniorAussies from '@/components/ArticleContent/SeniorAussies'
 
 export default function deathbythousandcuts() {
   return (

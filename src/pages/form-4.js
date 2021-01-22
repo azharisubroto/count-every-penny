@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import NavBarForm from '@/components/NavBarForm'
-import FeefoSlide from '@/components/FeefoSlide'
+import FeefoSlide from '@/components/Articles/FeefoSlide'
 import Box from '@material-ui/core/Box'
 import Button from '@material-ui/core/Button'
 import Tooltip from '@material-ui/core/Tooltip'

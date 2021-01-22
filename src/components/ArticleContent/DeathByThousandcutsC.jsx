@@ -1,16 +1,13 @@
 import React from 'react'
-import Link from 'next/link'
-import ArticleAuthor from '@/components/ArticleAuthor'
-import AustraliaState from '@/components/AustraliaState2'
-import PremiumIncrease from '@/components/PremiumIncrease2'
-import AgesCTA from '@/components/AgesCTA2'
-import AndrewVideo from '@/components/AndrewVideo2'
+import AustraliaState from '@/components/Articles/Cta/AustraliaState2'
+import PremiumIncrease from '@/components/Articles/PremiumIncrease2'
+import AgesCTA from '@/components/Articles/Cta/AgesCTA2'
+import AndrewVideo from '@/components/Articles/AndrewVideo2'
 import LifeStageStack from '@/components/Articles/LifeStageStack3'
 import { logEvent } from '@/utils/analytics'
 
 function DeathByThousandCut(props) {
   const mainlink = props.link
-  const isamp = false
   const { customMap } = props
 
   return (
@@ -55,7 +52,7 @@ function DeathByThousandCut(props) {
                 </div>
                 <div className="col-auto ml-auto">
                   <div className="article-meta__action">
-                    <a href="javascript:void(0);" className="btn btn-outline-primary btn-sm btn-icon">
+                    <a href={mainlink} className="btn btn-outline-primary btn-sm btn-icon">
                       <img src="/static/img/articles/type-2/icons/share.svg" alt="Share" /> <span>Share</span>
                     </a>
                   </div>
@@ -68,13 +65,13 @@ function DeathByThousandCut(props) {
         <div className="row">
           <div className="col-md-1 article-share">
             <p>Share</p>
-            <a href="javascript:void(0);" className="facebook">
+            <a href={mainlink} className="facebook">
               <img src="/static/img/articles/type-2/icons/fb.png" alt="Share Facebook" />
             </a>
-            <a href="javascript:void(0);" className="twitter">
+            <a href={mainlink} className="twitter">
               <img src="/static/img/articles/type-2/icons/tw.png" alt="Share Twitter" />
             </a>
-            <a href="javascript:void(0);" className="whatsapp">
+            <a href={mainlink} className="whatsapp">
               <img src="/static/img/articles/type-2/icons/wa.png" alt="Share Whatsapp" />
             </a>
           </div>
@@ -96,7 +93,7 @@ function DeathByThousandCut(props) {
                     <img src="/static/img/articles/type-2/hero-2.png" alt="Health Insurance" />
                   </picture>
                   <figcaption>
-                    <img src="/static/img/articles/type-2/icons/camera-grey.svg" alt="Featured Image" />
+                    <img src="/static/img/articles/type-2/icons/camera-grey.svg" alt="Camera Grey" />
                     <p>
                       Health insurance premiums are <strong>going up AGAIN</strong> in April, but this Australian owned
                       &amp; operated service could save you big money

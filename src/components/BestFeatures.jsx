@@ -1,6 +1,3 @@
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Box from '@material-ui/core/Box'
 import dynamic from 'next/dynamic'
 const FeatureBox = dynamic(() => import('@/components/FeatureBox'))
 
@@ -27,27 +24,24 @@ export default function BestFeatures() {
   ]
 
   return (
-    <Box pt={5} pb={10} style={{ backgroundColor: '#f9f9f9' }}>
-      <Container style={{ maxWidth: 1120 }}>
-        <Grid container spacing={0}>
-          {/* Second Headline */}
-          <Grid item xs={12}>
+    <section className="best-features pt-3 pb-5">
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-12">
             <h2>Here’s why you should compare health insurance with us</h2>
-          </Grid>
-
-          {/* BENEFITS */}
+          </div>
           {benefits.map((item) => (
-            <Grid item xs={12} sm={4} lg={4} key={item.id}>
+            <div className="col-xs-12 col-sm-4 col-lg-4" key={item.id}>
               <FeatureBox
                 image={'/static/img/form/benefit-' + item.id + '.svg'}
                 title={item.title}
                 link={item.link}
                 text={item.text}
               />
-            </Grid>
+            </div>
           ))}
-        </Grid>
-      </Container>
+        </div>
+      </div>
       <style jsx>{`
         h2 {
           font-weight: 800;
@@ -62,6 +56,6 @@ export default function BestFeatures() {
           }
         }
       `}</style>
-    </Box>
+    </section>
   )
 }

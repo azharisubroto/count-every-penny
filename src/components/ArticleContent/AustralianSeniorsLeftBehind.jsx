@@ -1,9 +1,9 @@
 /* eslint-disable react/jsx-no-target-blank */
 import Head from 'next/head'
 import Card from '@/components/Card'
-import ArticleAuthor from '@/components/ArticleAuthor'
-import AustraliaState from '@/components/AustraliaState'
-import P from '@/components/P'
+import ArticleAuthor from '@/components/Articles/ArticleAuthor'
+import AustraliaState from '@/components/Articles/Cta/AustraliaState'
+import P from '@/components/Articles/Paragraph'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function NoBuyersRemorse(props) {
+function AustralianSeniors(props) {
   const isamp = false
   const classes = useStyles(props)
   const mainlink = props.link
@@ -141,24 +141,20 @@ function NoBuyersRemorse(props) {
   return (
     <>
       <Head>
-        <title>
-          A simple message to fed-up Aussies who are sick of paying too much and getting ripped off by their health
-          insurers
-        </title>
+        <title>It’s true: Australian Seniors are being left behind by out-of-pocket health insurance costs. </title>
       </Head>
       <Card display="block">
         <Typography component="span" gutterBottom color="textSecondary" style={{ fontSize: 14 }}>
-          Health Insurance Hack for Fed Up Aussies
+          Health Insurers Are Leaving Aussie Seniors Behind.
         </Typography>
 
         <Typography component="h1" gutterBottom className={classes.headline}>
-          A simple message to fed-up Aussies who are sick of paying too much and getting ripped off by their health
-          insurers
+          It’s true: Australian Seniors are being left behind by out-of-pocket health insurance costs.
         </Typography>
 
         {/* SUB HEADLING */}
         <Typography component="h2" gutterBottom className={classes.subheadline}>
-          A simple way to save with no buyers remorse.
+          Senior Aussies are stuck paying for pregnancy, IVF and orthodontics cover.
         </Typography>
 
         {/* AUTHOR */}
@@ -167,7 +163,7 @@ function NoBuyersRemorse(props) {
         {/* THUMBNAIL */}
         <div className={classes.thumbnailContainer}>
           <img
-            src="/static/img/articles/8-health-insurance-with-no-buyers-remorse.jpg"
+            src="/static/img/articles/7-health-insurers-leaving-aussie-seniors-behind.jpg"
             width="612"
             height="344"
             style={{ width: '100%' }}
@@ -175,17 +171,56 @@ function NoBuyersRemorse(props) {
             alt="Stressed Seniors Out-Of-Pocket With Health Insurers."
           />
         </div>
-        <div className={classes.caption}>Big savings for Aussies fed up with overpriced health cover.</div>
+        <div className={classes.caption}>Stressed Seniors Out-Of-Pocket With Health Insurers.</div>
 
         <P>
-          What if you could save <strong>$357.95*</strong>, <strong>enjoy a 30 day cooling off period</strong> and have{' '}
-          <strong>no lock-in contracts</strong> with your health insurer?
+          The National Seniors Association (NSA) have estimated that over the past decade{' '}
+          <strong>health costs have increased by 56.7%</strong>, despite{' '}
+          <strong>inflation increasing just by 23.5%</strong> over the same period*. The chart below, says it all.
+          “Unless the underlying issues are addressed, Australian seniors could face skyrocketing health insurance
+          premiums that will increase by a ridiculous 66% this decade”, NSA’s chief advocate Ian Henschke has stated.
         </P>
+
+        {/* Chart */}
+        <div className="card py-4">
+          <div className="text-center px-4">
+            <h4 className="text-22">Average Health Insurance Premiums Over Time</h4>
+
+            <p className="text-16">
+              The average health insurance premium is nearly 3.5 times higher in 2020 than it was in 1996
+            </p>
+          </div>
+
+          <div className="px-4 mb-3">
+            <img src="/static/img/articles/over-time-chart.png" alt="" loading="lazy" />
+          </div>
+
+          <div className="mt-2 text-center px-4">Source: Health.gov.au</div>
+        </div>
+
         <P>
-          You can have all of this by comparing your health insurance with Count Every Penny. How? We have partnered
-          with leading comparison company HealthInsuranceComparison.com.au. This partnership helps Aussies not only save
-          on their health insurance, but to stop them getting stuck in contracts they don’t understand, with policies
-          that don't suit their needs.
+          At Count Every Penny, we know these increases could leave older Aussies struggling to make ends meet and
+          that’s why we have teamed up with{' '}
+          <a href="HealthInsuranceComparison.com.au" target="_blank">
+            HealthInsuranceComparison.com.au
+          </a>{' '}
+          to help senior Aussies compare their health insurance for free, with no obligation to sign up. We have made
+          sure <strong>all policies</strong> that Aussie seniors compare have <strong>no lock-in contracts</strong> and
+          that the cover types seniors choose are the <strong>ones seniors need</strong>.
+        </P>
+
+        <P>
+          {' '}
+          <a href="HealthInsuranceComparison.com.au" target="_blank">
+            HealthInsuranceComparison.com.au
+          </a>{' '}
+          ’s CEO Andrew Davis says,{' '}
+          <strong>
+            “it’s not at all uncommon to speak to people in their 50’s, 60’s and beyond, who are still paying for cover
+            like pregnancy, orthodontics and IVF”
+          </strong>
+          . We think this is outrageous and that’s why we’ve made it our mission to make sure{' '}
+          <strong>you aren’t paying for inappropriate cover</strong>.
         </P>
 
         <Typography className={classes.sectionheading} component="h4">
@@ -202,32 +237,44 @@ function NoBuyersRemorse(props) {
         {/* Life Stage Stack */}
         <LifeStageStack link={mainlink} />
 
-        <P>Here’s how it works:</P>
+        <P>
+          Did you know that a recent survey of 6000 NSA members revealed that seniors want lower out-of-pocket fees for
+          specialists, cost-effective private health cover premiums, and more funding from Medicare across more
+          services, including public hospitals?
+        </P>
 
-        <ol className={classes.paragraph}>
-          <li>
-            <strong>You tell us what types of cover are important to you</strong>. What’s essential, what’s nice to
-            have, and what you definitely don’t need. <strong>If you’re unsure, we can help you</strong> figure this
-            out.
-          </li>
-          <li>
-            We go out and see if we can find a policy that meets your needs at an{' '}
-            <strong>acceptable price point</strong>.
-          </li>
-          <li>
-            We talk you through your policy options and take you through our recommendations, clearly comparing them in
-            a like-for-like way with the cover you currently have.
-          </li>
-          <li>
-            If you decide to switch, <strong>we handle all the paperwork and the switching process</strong>. We’ll talk
-            both funds for you and ensure that your new cover starts the same day your old over ends, so you won’t ever
-            be without cover or paying for two policies at the same time.
-          </li>
-          <li>
-            <strong>We check in to see how you’re getting on with your new fund</strong> and provide ongoing support to
-            make sure your new policy stays competitive.
-          </li>
-        </ol>
+        <P>
+          According to Ian Henschke, seniors who are often on “low and fixed incomes are particularly hard hit and are
+          forced to put off medical treatment or cut their private health cover”, and we think this is horrific. We{' '}
+          <strong>do not want seniors putting off medical treatment or cutting their private health insurance</strong>,
+          because we know there are <strong>more affordable options out there</strong>.
+        </P>
+
+        <P>
+          We know <strong>it is possible to get health insurance cover from as little as $2.93 a day**</strong>. We also
+          know, and it is one of the main reasons we have partnered with them, that{' '}
+          <a href="HealthInsuranceComparison.com.au" target="_blank">
+            HealthInsuranceComparison.com.au
+          </a>{' '}
+          saves their <strong>customers an average of $357.95*** annually</strong>.
+        </P>
+
+        <P>
+          Insurance policies are confusing to compare and the insurers know seniors struggle to understand the lingo,
+          which keeps them from switching to more affordable health cover. For example, did you know you{' '}
+          <strong>do not need to re-serve waiting periods on hospital cover?</strong> Or that you{' '}
+          <strong>could be getting less than the full rebate you are entitled to?</strong> This is why we are doing the
+          hard yards for seniors.
+        </P>
+
+        <P>
+          We are 100% Australian owned and operated and so are{' '}
+          <a href="HealthInsuranceComparison.com.au" target="_blank">
+            HealthInsuranceComparison.com.au
+          </a>
+          . The best part about our partnership is, there are no outsourced call centres, anyone you speak to is from
+          Sydney, Brisbane or Melbourne and are experts in the health insurance industry.
+        </P>
 
         <Typography className={classes.sectionheading} component="h4">
           <strong>Get Started Now:</strong>
@@ -253,9 +300,37 @@ function NoBuyersRemorse(props) {
         {customMap !== false && customMap}
 
         <P>
-          Count Every Penny is a <strong>one-of-a-kind comparison service</strong> made for hard working Aussies. Our
-          team of experts offer no lock-in contracts and help save <strong>Aussies an average of $357.95**</strong> a
-          year and in a few short minutes, you could be on your way to <strong>hundreds of dollars in savings</strong>.
+          We have already had thousands of senior Australians jump on board and compare with the team at Count Every
+          Penny and HealthInsuranceComparison.com.au. We could offer you significant savings, especially with the April
+          rate rise looming.
+        </P>
+        <P>
+          To get help comparing your health insurance, click{' '}
+          <a href={mainlink}>
+            <strong>here</strong>
+          </a>
+          . If you want to find out more about the NSA campaign that is working tirelessly to help Australian seniors
+          pay less for health cover, see the link below^.
+        </P>
+        <P>
+          *Statistics taken from Australian Department of Government Health, average annual increases in private health
+          insurance premiums,{' '}
+          <a
+            href="https://www.health.gov.au/resources/publications/average-annual-increases-in-private-health-insurance-premiums"
+            target="_blank">
+            https://www.health.gov.au/resources/publications/average-annual-increases-in-private-health-insurance-premiums
+          </a>
+          <br />
+          *Based on the ‘AHM Starter basic and black 50 extras’ for a single individual based in Victoria.
+          <br />
+          **Average savings based off 13,136 customers during 2020
+          <br />
+          ^NSA Campaign,{' '}
+          <a
+            href="https://nationalseniors.com.au/?_sp=c0fb85aa-9335-412b-9670-76952d93d82e.1609554161961"
+            target="_blank">
+            https://nationalseniors.com.au/?_sp=c0fb85aa-9335-412b-9670-76952d93d82e.1609554161961
+          </a>
         </P>
       </Card>
 
@@ -340,4 +415,4 @@ function NoBuyersRemorse(props) {
   )
 }
 
-export default NoBuyersRemorse
+export default AustralianSeniors

@@ -1,5 +1,5 @@
 import Article from '@/layout/Article'
-import NoBuyersRemorse from '@/components/Articles/NoBuyersRemorse'
+import NoBuyersRemorse from '@/components/ArticleContent/NoBuyersRemorse'
 
 export default function deathbythousandcuts() {
   return (
