@@ -1,12 +1,12 @@
+/* eslint-disable react/jsx-no-target-blank */
 import Head from 'next/head'
 import Card from '@/components/Card'
-import ArticleAuthor from '@/components/ArticleAuthor'
-import AustraliaState from '@/components/AustraliaState'
-import P from '@/components/P'
+import ArticleAuthor from '@/components/Articles/ArticleAuthor'
+import AustraliaState from '@/components/Articles/Cta/AustraliaState'
+import P from '@/components/Articles/Paragraph'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
-import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 
 const useStyles = makeStyles((theme) => ({
   articlecard: {
@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }))
 
-function SeniorAussies(props) {
+function NoBuyersRemorse(props) {
   const isamp = false
   const classes = useStyles(props)
   const mainlink = props.link
@@ -141,20 +141,24 @@ function SeniorAussies(props) {
   return (
     <>
       <Head>
-        <title>Aussies aged between 56 and 74 are missing out on health insurance savings every year.</title>
+        <title>
+          A simple message to fed-up Aussies who are sick of paying too much and getting ripped off by their health
+          insurers
+        </title>
       </Head>
       <Card display="block">
         <Typography component="span" gutterBottom color="textSecondary" style={{ fontSize: 14 }}>
-          How Older Aussies Can Stop Missing Out on Health Cover Savings
+          Health Insurance Hack for Fed Up Aussies
         </Typography>
 
         <Typography component="h1" gutterBottom className={classes.headline}>
-          Aussies aged between 56 and 74 are missing out on health insurance savings every year.
+          A simple message to fed-up Aussies who are sick of paying too much and getting ripped off by their health
+          insurers
         </Typography>
 
         {/* SUB HEADLING */}
         <Typography component="h2" gutterBottom className={classes.subheadline}>
-          You could save up to $357.95* on your health insurance.
+          A simple way to save with no buyers remorse.
         </Typography>
 
         {/* AUTHOR */}
@@ -163,34 +167,25 @@ function SeniorAussies(props) {
         {/* THUMBNAIL */}
         <div className={classes.thumbnailContainer}>
           <img
-            src="/static/img/articles/5-aussies-aged.jpg"
+            src="/static/img/articles/8-health-insurance-with-no-buyers-remorse.jpg"
             width="612"
             height="344"
             style={{ width: '100%' }}
             loading="lazy"
-            alt="Older Aussies are Saving on their Health Insurance using this service."
+            alt="Stressed Seniors Out-Of-Pocket With Health Insurers."
           />
         </div>
-        <div className={classes.caption}>Older Aussies are Saving on their Health Insurance using this service.</div>
+        <div className={classes.caption}>Big savings for Aussies fed up with overpriced health cover.</div>
 
         <P>
-          We’ll get straight to the point: <strong>You’re almost certainly overpaying for your health insurance</strong>
-          . We saved the average Aussie <strong>$357.95 on their policy in 2020</strong> and there’s a very good chance
-          we can save you a similar amount.
+          What if you could save <strong>$357.95*</strong>, <strong>enjoy a 30 day cooling off period</strong> and have{' '}
+          <strong>no lock-in contracts</strong> with your health insurer?
         </P>
-
         <P>
-          When was the last time you checked what services your health insurance cover includes? Everyday, we see older
-          Australians paying expensive health insurance premiums for services they’ll never need, like couples aged 50+
-          paying hundreds of dollars more for pregnancy and IVF cover.
-        </P>
-
-        <P>
-          <strong>You might also be a victim of ‘premium creep’</strong>. While it’s true that most policies get more
-          expensive over time, funds increase their premiums at drastically different rates. For example, over the last
-          two rate rises, one fund had an <strong>average increase of 2.92%</strong>, while another had an{' '}
-          <strong>increase of 9.36%</strong>. That’s over the exact same period of time and translates into literally
-          hundreds of dollars of difference for essentially the same level of cover.
+          You can have all of this by comparing your health insurance with Count Every Penny. How? We have partnered
+          with leading comparison company HealthInsuranceComparison.com.au. This partnership helps Aussies not only save
+          on their health insurance, but to stop them getting stuck in contracts they don’t understand, with policies
+          that don't suit their needs.
         </P>
 
         <Typography className={classes.sectionheading} component="h4">
@@ -207,45 +202,32 @@ function SeniorAussies(props) {
         {/* Life Stage Stack */}
         <LifeStageStack link={mainlink} />
 
-        <P>
-          Our free comparison service shows mature Aussies and retirees where to make big savings without compromising
-          on cover and how to avoid paying for cover they don’t need.
-        </P>
+        <P>Here’s how it works:</P>
 
-        <P>
-          Our award-winning comparison service Count Every Penny is giving older Aussies a fighting chance by giving
-          them the power to compare health insurers cover options, side by side, saving them time, money and helping
-          them make the best, most informed choices about their private health cover. We are achieving this by teaming
-          up with industry-leader{' '}
-          <a href="HealthInsuranceComparison.com.au" target="_blank">
-            HealthInsuranceComparison.com.au
-          </a>
-          .
-        </P>
-
-        <P>
-          We’ve teamed up with{' '}
-          <a href="HealthInsuranceComparison.com.au" target="_blank">
-            HealthInsuranceComparison.com.au
-          </a>{' '}
-          because we know many older Australians are feeling increasingly stung by the permanently rising costs of
-          private health insurance in Australia, and we want to do something about it.
-        </P>
-
-        <FreebiesCTA link={mainlink} />
-
-        <P>
-          By teaming up our services, Older Aussies can compare multiple health insurance brands, cover options and
-          pricing all in one place. Our service saves you time, but the biggest benefit for most is how much money you
-          can save off your yearly premiums, in fact,{' '}
-          <strong>our customers save an average of $357.95* annually</strong>.
-        </P>
-
-        <P>
-          Our services are customised too. When you first arrive at counteverypenny.com.au you will be asked for some
-          basic details. Our system then searches it’s extensive database of policies to show you policies better suited
-          to your needs, side by side, to help you make a well informed decision.
-        </P>
+        <ol className={classes.paragraph}>
+          <li>
+            <strong>You tell us what types of cover are important to you</strong>. What’s essential, what’s nice to
+            have, and what you definitely don’t need. <strong>If you’re unsure, we can help you</strong> figure this
+            out.
+          </li>
+          <li>
+            We go out and see if we can find a policy that meets your needs at an{' '}
+            <strong>acceptable price point</strong>.
+          </li>
+          <li>
+            We talk you through your policy options and take you through our recommendations, clearly comparing them in
+            a like-for-like way with the cover you currently have.
+          </li>
+          <li>
+            If you decide to switch, <strong>we handle all the paperwork and the switching process</strong>. We’ll talk
+            both funds for you and ensure that your new cover starts the same day your old over ends, so you won’t ever
+            be without cover or paying for two policies at the same time.
+          </li>
+          <li>
+            <strong>We check in to see how you’re getting on with your new fund</strong> and provide ongoing support to
+            make sure your new policy stays competitive.
+          </li>
+        </ol>
 
         <Typography className={classes.sectionheading} component="h4">
           <strong>Get Started Now:</strong>
@@ -271,17 +253,10 @@ function SeniorAussies(props) {
         {customMap !== false && customMap}
 
         <P>
-          Here at Count Every Penny, we really do care about every penny. When you work with our team, you get the peace
-          of mind that comes with working with trusted-professionals who have the years of experience needed to navigate
-          the complicated health insurance system and keep you from any further confusion.
+          Count Every Penny is a <strong>one-of-a-kind comparison service</strong> made for hard working Aussies. Our
+          team of experts offer no lock-in contracts and help save <strong>Aussies an average of $357.95**</strong> a
+          year and in a few short minutes, you could be on your way to <strong>hundreds of dollars in savings</strong>.
         </P>
-
-        <P>
-          Our team will make sure you have the cover you need, while paying the best possible price for the cover you
-          want.
-        </P>
-
-        <P>*Average savings based off 13,136 customers during 2020'</P>
       </Card>
 
       <style jsx global>{`
@@ -365,4 +340,4 @@ function SeniorAussies(props) {
   )
 }
 
-export default SeniorAussies
+export default NoBuyersRemorse

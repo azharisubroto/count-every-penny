@@ -4,7 +4,7 @@ import Head from 'next/head'
 import NavBarForm from '@/components/NavBarForm'
 import LazyLoad from 'react-lazyload'
 const AwardBox = dynamic(() => import('@/components/AwardBox'))
-const FeefoSlide = dynamic(() => import('@/components/FeefoSlide'))
+const FeefoSlide = dynamic(() => import('@/components/Articles/FeefoSlide'))
 const FooterSimple = dynamic(() => import('@/components/FooterSimple'))
 const BestFeatures = dynamic(() => import('@/components/BestFeatures'))
 import { wrapper } from '@/store/store'

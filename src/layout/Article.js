@@ -3,7 +3,7 @@ import Head from 'next/head'
 import NavBar from '@/components/NavBar'
 import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
-import AgeCardCTA from '@/components/AgeCardCTA'
+import AgeCardCTA from '@/components/Articles/Cta/AgeCardCTA'
 import { useRouter } from 'next/router'
 
 export default function Article(props) {

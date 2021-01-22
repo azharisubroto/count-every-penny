@@ -1,6 +1,5 @@
-export default function AustraliaStates({ link, colors, background }) {
+export default function AustraliaStates({ link, colors }) {
   const states = ['WA', 'NT', 'QLD', 'SA', 'NSW', 'ACT', 'VIC', 'TAS']
-  const bg = background ? background : '#fff'
   return (
     <>
       <div className="card card-widget card-widget-map">
