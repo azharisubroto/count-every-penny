@@ -332,24 +332,6 @@ const covers = [
   }
 ]
 
-// Fund lists
-const funds = [
-  'Select One',
-  'AHM Health Insurance',
-  'Australian Unity',
-  'BUPA',
-  'GMHBA',
-  'HBF (Health Benefits Fund)',
-  'HCF (Hospitals Contribution Fund)',
-  'health.com.au',
-  'Latrobe Health',
-  'Medibank Private',
-  'NIB',
-  'ACA Health Benefits',
-  'Other fund or not listed',
-  "I'm not currently insured"
-]
-
 const loadintexts = [
   'Reviewing your hospital cover preferences...',
   'Checking your extras cover selections...',
@@ -368,10 +350,12 @@ function form4Page(props) {
   const state = useSelector((state) => state.form4.form)
   const dispatch = useDispatch()
   const [postcodes, setPostcodes] = useState({})
+  const [fundlist, setFundlist] = useState({})
 
   // Fetch Postcode
   useEffect(() => {
     fetchPostcode()
+    fetchFundList()
   }, [])
 
   // Fetch postcode
@@ -379,6 +363,18 @@ function form4Page(props) {
     try {
       const { data } = await axios.get('/api/postcode')
       setPostcodes(data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  // Fetch Fund List
+  const fetchFundList = async () => {
+    try {
+      const { data } = await axios.get('/api/fundlist')
+      //const fundArray = Object.entries(data).map(([key]) => key)
+      //console.log('fundlist: ', fundArray)
+      setFundlist(data)
     } catch (error) {
       console.log(error)
     }
@@ -729,6 +725,7 @@ function form4Page(props) {
                       </Box>
                     )}
 
+                    {/* STEP 2 */}
                     {step == 2 && (
                       <Box
                         className={classes.lifestagecards}
@@ -754,7 +751,7 @@ function form4Page(props) {
                       </Box>
                     )}
 
-                    {/* STEP 4 */}
+                    {/* STEP 3 */}
                     {step == 3 && (
                       <>
                         {/* Life Card Section */}
@@ -767,13 +764,13 @@ function form4Page(props) {
                             onChange={(e) => {
                               setState('fund', e.target.value)
                             }}>
-                            {funds.map((item) => (
+                            {Object.entries(fundlist).map(([key]) => (
                               <MenuItem
-                                disabled={item == 'Select One'}
+                                disabled={key == 'Select One'}
                                 className={classes.coveritem}
-                                key={item}
-                                value={item}>
-                                <div className={`${classes.seltext} seltext-root`}>{item}</div>
+                                key={key}
+                                value={key}>
+                                <div className={`${classes.seltext} seltext-root`}>{key}</div>
                               </MenuItem>
                             ))}
                           </Select>
@@ -884,12 +881,28 @@ function form4Page(props) {
                             <Grid item xs={12} md={6}>
                               <div className="finalintro">
                                 <h3 className="text-20 lh-25 text-md-28 lh-md-38">
-                                  Almost there. Please add your details so we can get the best comparison from our panel
-                                  direct to you.
+                                  It looks like you might be overpaying on your{' '}
+                                  <span className="highlight">{state.fund}</span>. Let's see if we can save you some
+                                  money.
                                 </h3>
-                                <p className="text-16 text-md-24 text-md-18 lh-md-32">
-                                  One of our consultants will contact you as soon as possible, for now sit tight, you’re
-                                  already on your way to finding the right fund, with the right cover.
+                                <p className="text-16 lh-md-24 text-md-20 lh-md-35">
+                                  <strong>{state.fund}</strong>'s average policy increase was{' '}
+                                  <strong>
+                                    {Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2020]}%
+                                  </strong>{' '}
+                                  in October 2020 and will be a further{' '}
+                                  <strong>
+                                    {Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2021]}%
+                                  </strong>{' '}
+                                  in April 2021. That's{' '}
+                                  <strong>
+                                    {Object.keys(fundlist).length > 0 &&
+                                      parseFloat(fundlist[`${state.fund}`][2020]) +
+                                        parseFloat(fundlist[`${state.fund}`][2021])}
+                                    %
+                                  </strong>{' '}
+                                  in 6 months. Give us a chance to do better - <br />
+                                  <strong>we saved our average customer $357.95 in 2020.</strong>
                                 </p>
 
                                 <FeefoSlide
@@ -1202,6 +1215,10 @@ function form4Page(props) {
           a {
             color: ${theme.palette.cep.primary};
           }
+        }
+
+        .highlight {
+          color: #035aa6;
         }
       `}</style>
     </>
