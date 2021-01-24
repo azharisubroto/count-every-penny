@@ -22,8 +22,8 @@ export const init = () => {
 export const logPageView = () => {
   if (isProd) {
     if (isBrowser()) {
-      // const track_text = `Pageview for ${window.location.pathname}`
-      // amplitude.getInstance().logEvent(track_text)
+      const track_text = `Pageview for ${window.location.pathname}`
+      amplitude.getInstance().logEvent(track_text)
     }
   }
 }
