@@ -56,7 +56,7 @@ export default function AgeCardCTA(props) {
               padding: 10px;
               border-radius: 5px;
               background: #fff;
-              color: ${theme.palette.primary.main};
+              color: ${theme.palette.primary.main}!important;
             }
             .headline {
               font-weight: 800;
