@@ -37,12 +37,12 @@ export const LifeStageCta1Settings = () => {
   )
 }
 
-export const ArticleAuthorDefaultProps = {
+export const LifeStageCta1DefaultProps = {
   link: ''
 }
 
 LifeStageCta1.craft = {
-  props: ArticleAuthorDefaultProps,
+  props: LifeStageCta1DefaultProps,
   related: {
     settings: LifeStageCta1Settings
   }
