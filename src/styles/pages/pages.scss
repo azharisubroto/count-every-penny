@@ -1,7 +1,9 @@
+@import "../mixins/mixins.scss";
 @import './variables.scss';
 @import './animation.scss';
 @import './misc.scss';
 @import './thanks.scss';
+
 .article-wrapper{
     overflow-x: hidden;
     // position: relative;
@@ -14,5 +16,8 @@
     @import './global.scss';
     @import '../components/components.scss';
 }
+
+.article{
 @import './article.scss';
 @import '../utilities/utilities.scss';
+}

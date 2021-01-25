@@ -40,6 +40,7 @@ export default function Article(props) {
           href="https://fonts.googleapis.com/css2?family=Faustina:wght@700&family=Montserrat:wght@400;500;600;700&family=Vollkorn:wght@700&family=Nunito+Sans:wght@400;700&family=Arimo:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link href="/static/css/theme.css" rel="stylesheet" />
       </Head>
       {/* NavBar */}
       <Navbar link={mainlink} />
@@ -52,6 +53,37 @@ export default function Article(props) {
 
       {/* Footer */}
       <FooterSimple isamp={isAmp ? 1 : 0} />
+
+      <style jsx global>{`
+        body {
+          font-size: 18px;
+          line-height: 26px;
+          color: #323232;
+        }
+        @media (min-width: 1200px) {
+          .container,
+          .container-lg,
+          .container-md,
+          .container-sm,
+          .container-xl {
+            max-width: 1140px;
+          }
+        }
+        .card-body {
+          overflow: hidden;
+        }
+        .btn-primary {
+          background-color: #f09020 !important;
+          border-color: #f09020 !important;
+          border: 1px solid rgba(0, 0, 0, 0.5) !important;
+          color: #fff !important;
+          border-width: 1px !important;
+          box-shadow: inset 3px 3px 4px 2px hsla(0, 0%, 100%, 0.34), inset -3px -3px 3px 2px rgba(0, 0, 0, 0.2) !important;
+        }
+        .btn-circle {
+          border-radius: 30px;
+        }
+      `}</style>
     </>
   )
 }

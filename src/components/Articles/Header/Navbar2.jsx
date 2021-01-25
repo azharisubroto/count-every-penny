@@ -11,12 +11,18 @@ function Navbar2(props) {
             </a>
           </div>
           <div className="navbar-action">
-            <a href={mainlink} className="btn btn-primary btn-emboss btn-circle">
+            <a href={mainlink} className="btn btn-primary btn-emboss btn-circle text-20 fw-700  px-4">
               Get My Quotes
             </a>
           </div>
         </div>
       </nav>
+
+      <style jsx>{`
+        .btn {
+          padding: 3px 23px !important;
+        }
+      `}</style>
     </header>
   )
 }
