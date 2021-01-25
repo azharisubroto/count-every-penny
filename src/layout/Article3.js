@@ -69,6 +69,9 @@ export default function Article(props) {
             max-width: 1140px;
           }
         }
+        .article-meta__author {
+          display: flex !important;
+        }
         .card-body {
           overflow: hidden;
         }
