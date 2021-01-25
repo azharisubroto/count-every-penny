@@ -56,8 +56,8 @@ export default function Article(props) {
 
       <style jsx global>{`
         body {
-          font-size: 18px;
-          line-height: 26px;
+          font-size: 18px !important;
+          line-height: 26px !important;
           color: #323232;
         }
         @media (min-width: 1200px) {
