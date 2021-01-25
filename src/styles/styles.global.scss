@@ -2,7 +2,10 @@
 //   -webkit-font-smoothing: antialiased;
 //   -moz-osx-font-smoothing: grayscale;
 // }
+
+@import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 @import 'breakpoint.scss';
+
 html,
 body {
   padding: 0;
@@ -13,11 +16,6 @@ body {
 
 html {
   scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent; /* make scrollbar transparent */
 }
 
 input[type="number"] {
@@ -161,5 +159,5 @@ img {
 }
 
 // Pages
-@import "mixins/mixins.scss";
-@import "pages/pages.scss";
+// @import "mixins/mixins.scss";
+// @import "pages/pages.scss";

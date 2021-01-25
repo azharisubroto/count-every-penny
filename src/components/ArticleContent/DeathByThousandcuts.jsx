@@ -562,7 +562,7 @@ function DeathByThousandCut(props) {
         {customMap !== false && customMap}
       </Card>
 
-      <style jsx global>{`
+      <style jsx>{`
         .card {
           position: relative;
           border-radius: 5px;

@@ -362,7 +362,7 @@ function DeathByThousandCut(props) {
                   </div>
                   <div className="article-widget-rating article-widget-rating--type-2">
                     <div className="card">
-                      <div className="row no-gutters">
+                      <div className="row g-0">
                         <div className="col-md-4 card-header">
                           <div className="card-stars">
                             <img src="/static/img/articles/type-2/icons/stars-2.svg" alt="Five Stars" />
