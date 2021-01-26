@@ -1,5 +1,5 @@
 import Article from '@/layout/Article3'
-import DeathByThousandcutsC from '@/components/ArticleContent/DeathByThousandcutsC'
+import DeathByThousandcutsD from '@/components/ArticleContent/DeathByThousandcutsD'
 
 export default function deathbythousandcuts() {
   return (
@@ -7,7 +7,7 @@ export default function deathbythousandcuts() {
       <Article
         title="Death by a thousand cuts - how to stop your health insurer bleeding you dry as Aussies get stung with a second
         rate rise in 6 months"
-        content={<DeathByThousandcutsC />}
+        content={<DeathByThousandcutsD />}
         buttonType="btn-emboss"
         navbarType="border-bottom"
       />

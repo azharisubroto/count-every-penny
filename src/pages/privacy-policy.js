@@ -7,6 +7,7 @@ export default function privacyPolicy() {
     <>
       <Head>
         <title>Privacy Policy</title>
+        <link href="/static/css/theme.css" rel="stylesheet" />
       </Head>
       {/* NAVBAR */}
       <NavBarForm
