@@ -19,17 +19,13 @@ class LeadsRepository extends ServiceEntityRepository
         parent::__construct($registry, Leads::class);
     }
 
-    public function findLeadsByDate($date)
+    public function findLeadsByDate(\DateTime $startDate, \DateTime $endDate)
     {
-        $tmpDate = new \DateTime($date);
-        $startDate = clone $tmpDate;
-        $startDate->sub(new \DateInterval('P1D'));
-
         $qb = $this->createQueryBuilder('l');
 
         return $qb->where($qb->expr()->between('l.date_created', ':start_date', ':end_date'))
                   ->setParameter('start_date', $startDate->format('Y-m-d') . ' 00:00:00')
-                  ->setParameter('end_date', $tmpDate->format('Y-m-d') . ' 23:59:59')
+                  ->setParameter('end_date', $endDate->format('Y-m-d') . ' 23:59:59')
                   ->getQuery()
                   ->getResult();
     }
