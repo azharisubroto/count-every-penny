@@ -167,12 +167,12 @@ function AustralianSeniors(props) {
         {/* THUMBNAIL */}
         <div className={classes.thumbnailContainer}>
           <img
-            src="/static/img/articles/healh-insurance.png"
+            src="/static/img/articles/8-bex-7_720.webp"
             width="612"
-            height="344"
+            height="357"
             style={{ width: '100%' }}
             loading="lazy"
-            alt="Stressed Seniors Out-Of-Pocket With Health Insurers."
+            alt="Are your health insurance bills giving you headaches?"
           />
         </div>
         <div className={classes.caption}>
