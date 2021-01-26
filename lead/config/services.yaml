@@ -6,6 +6,7 @@
 parameters:
     hic_api_key: '%env(HIC_API_KEY)%'
     hic_api_url: '%env(HIC_API_URL)%'
+    api_key : '%env(KEY)%'
 
 services:
     # default configuration for services in *this* file

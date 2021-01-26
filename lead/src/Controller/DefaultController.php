@@ -196,18 +196,22 @@ class DefaultController extends AbstractController
      *
      * @Route("/get_leads/{date}")
      */
-    public function getLeadsByDate(Request $request, $date)
+    public function getLeadsByDate(Request $request, ParameterBagInterface $params, $date)
     {
         $key = $request->get('key');
-        if(empty($key) || $key != '56f46ef4-0db7-48fa-9f29-352b0558c1d2') {
+        if(empty($key) || $key != $params->get('api_key')) {
             return $this->json([]);
         }
-        
+
         $day = substr($date, 0, 2);
         $month = substr($date, 2, 2);
         $year = substr($date, 4);
 
-        $leads = $this->getDoctrine()->getRepository('App:Leads')->findLeadsByDate("$year-$month-$day");
+        $date = new \DateTime("$year-$month-$day");
+        $startDate = clone $date;
+        $startDate->sub(new \DateInterval('P1D'));
+
+        $leads = $this->getDoctrine()->getRepository('App:Leads')->findLeadsByDate($startDate, $date);
 
         $result = [];
         foreach($leads as $lead) {
@@ -248,6 +252,58 @@ class DefaultController extends AbstractController
             $result[] = $tmp;
         }
         return $this->json($result);
+    }
+
+    /**
+     * @param Request $request
+     * @param ParameterBagInterface $params
+     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @throws \Exception
+     *
+     * @Route("/summary")
+     */
+    public function leadSummary(Request $request, ParameterBagInterface $params)
+    {
+        $key = $request->get('key');
+        if(empty($key) || $key != $params->get('api_key')) {
+            return $this->json([]);
+        }
+
+        $range = !empty($request->get('range')) ? $request->get('range') : 30;
+        $yesterday = new \DateTime('yesterday');
+        $startDate = clone $yesterday;
+        $startDate->sub(new \DateInterval('P' . $range . 'D'));
+
+        $leads = $this->getDoctrine()->getRepository('App:Leads')->findLeadsByDate($startDate, $yesterday);
+        $results = [];
+        foreach($leads as $lead) {
+            $leadStatus = $lead->getLeadStatus();
+            $dt = $lead->getDateCreated();
+            $dt->setTimezone(new \DateTimeZone('Australia/Sydney'));
+
+            if(empty($results[$dt->format('Y-m-d')])) {
+                $results[$dt->format('Y-m-d')] = [
+                    'total_lead' => 1,
+                ];
+                if(!empty($leadStatus['error']) || !empty($leadStatus['warning'])) {
+                    $results[$dt->format('Y-m-d')]['rejected_lead'] = 1;
+                    $results[$dt->format('Y-m-d')]['accepted_lead'] = 0;
+                } else {
+                    $results[$dt->format('Y-m-d')]['rejected_lead'] = 0;
+                    $results[$dt->format('Y-m-d')]['accepted_lead'] = 1;
+                }
+            } else {
+                $results[$dt->format('Y-m-d')]['total_lead']++;
+
+                if(!empty($leadStatus['error']) || !empty($leadStatus['warning'])) {
+                    $results[$dt->format('Y-m-d')]['rejected_lead']++;
+                } else {
+                    $results[$dt->format('Y-m-d')]['accepted_lead']++;
+                }
+            }
+        }
+
+        return $this->json($results);
     }
 
     private function InsertActiveCampaign($param)
