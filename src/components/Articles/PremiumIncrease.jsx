@@ -88,9 +88,11 @@ export default function PremiumIncrease(props) {
             </div>
           </div>
           <div className="card-footer py-md-3">
-            {caption
-              ? caption
-              : 'The table below shows that some funds (which we cannot name here) are increasing their premiums by 4 times as much as other funds. You can talk to one of our advisors for the full details'}
+            <p>
+              {caption
+                ? caption
+                : 'The table below shows that some funds (which we cannot name here) are increasing their premiums by 4 times as much as other funds. You can talk to one of our advisors for the full details'}
+            </p>
           </div>
         </div>
       </div>
@@ -102,6 +104,10 @@ export default function PremiumIncrease(props) {
           border: 1px solid #e3e3e3;
           box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
           margin-bottom: 30px;
+
+          &.card-widget {
+            margin-bottom: 45px;
+          }
         }
         .table {
           tr {

@@ -1,4 +1,4 @@
-export default function AustraliaStates({ link, colors }) {
+export default function AustraliaStates({ link, colors, buttonType }) {
   const states = ['WA', 'NT', 'QLD', 'SA', 'NSW', 'ACT', 'VIC', 'TAS']
   return (
     <>
@@ -118,7 +118,7 @@ export default function AustraliaStates({ link, colors }) {
           </div>
           <div className="row pt-4">
             <div className="col">
-              <a href={link} className="btn btn-primary btn-emboss">
+              <a href={link} className={`btn btn-primary ${buttonType}`}>
                 Click Here To Check If You Qualify
               </a>
             </div>

@@ -524,7 +524,7 @@ function DeathByThousandCut(props) {
               </div>
               <div className="col-lg-3">
                 <aside className="article-aside d-desktop">
-                  <AgesCTA onClick={() => logEvent('Clicked Aside Age CTA')} link={mainlink} type="2" />
+                  <AgesCTA onClick={() => logEvent('Clicked Aside Age CTA')} link={mainlink} type="3" />
 
                   <div className="article-aside-rating d-desktop">
                     <img src="/static/img/articles/type-2/rating/aside.png" alt="Rating" className="w-100" />

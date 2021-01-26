@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import FooterSimple from '@/components/FooterSimple'
+import FooterWithAwards from '@/components/FooterWithAwards'
 import Navbar from '@/components/Articles/Header/Navbar2'
 import { useRouter } from 'next/router'
 
@@ -26,7 +27,7 @@ export default function Article(props) {
     document.querySelector('body').classList.add('article-wrapper')
   })
 
-  const { title, content } = props
+  const { title, content, buttonType, footerType } = props
 
   // Clone Content Component from content prop
   const Content = content ? React.cloneElement(content, { link: mainlink }) : null
@@ -43,7 +44,7 @@ export default function Article(props) {
         <link href="/static/css/theme.css" rel="stylesheet" />
       </Head>
       {/* NavBar */}
-      <Navbar link={mainlink} />
+      <Navbar link={mainlink} buttonType={buttonType} />
       {/* Container */}
       <main className="main" id="main">
         <section className="page--article py-0">
@@ -52,9 +53,13 @@ export default function Article(props) {
       </main>
 
       {/* Footer */}
-      <FooterSimple isamp={isAmp ? 1 : 0} />
+      {footerType == 2 ? <FooterWithAwards /> : <FooterSimple isamp={isAmp ? 1 : 0} />}
 
       <style jsx global>{`
+        $primary: #f09020;
+        $secondary: #0b3053;
+        $white: #fff;
+        $black: #000;
         body {
           font-size: 18px !important;
           line-height: 26px !important;
@@ -75,16 +80,81 @@ export default function Article(props) {
         .card-body {
           overflow: hidden;
         }
-        .btn-primary {
-          background-color: #f09020 !important;
-          border-color: #f09020 !important;
-          border: 1px solid rgba(0, 0, 0, 0.5) !important;
-          color: #fff !important;
-          border-width: 1px !important;
-          box-shadow: inset 3px 3px 4px 2px hsla(0, 0%, 100%, 0.34), inset -3px -3px 3px 2px rgba(0, 0, 0, 0.2) !important;
-        }
-        .btn-circle {
-          border-radius: 30px;
+        .btn {
+          padding: 11px 35px !important;
+          font-weight: 700;
+          &-primary {
+            background-color: #f09020 !important;
+            border-color: #f09020 !important;
+            color: #fff !important;
+            border-width: 1px !important;
+          }
+          &-circle {
+            border-radius: 30px;
+          }
+          &-emboss {
+            border: 1px solid rgba(0, 0, 0, 0.5) !important;
+            box-shadow: inset 3px 3px 4px 2px hsla(0, 0%, 100%, 0.34), inset -3px -3px 3px 2px rgba(0, 0, 0, 0.2) !important;
+          }
+
+          &-sm {
+            font-size: 18px !important;
+            line-height: 21px !important;
+            padding: 10px 30px !important;
+          }
+
+          &-outline {
+            &-primary {
+              background-color: transparent !important;
+              border-color: $primary !important;
+              color: $primary !important;
+              border-width: 2px !important;
+
+              &:hover,
+              &:focus,
+              &:active {
+                border-color: $primary !important;
+                box-shadow: none;
+                background-color: $primary !important;
+                color: $white !important;
+                img {
+                  filter: brightness(10);
+                }
+              }
+            }
+
+            &-secondary {
+              background-color: transparent !important;
+              border-color: $secondary !important;
+              color: $secondary !important;
+
+              &:hover,
+              &:focus,
+              &:active {
+                border-color: $secondary !important;
+                box-shadow: none;
+                background-color: $secondary !important;
+                color: $primary;
+              }
+            }
+
+            &-default {
+              background-color: transparent !important;
+              border-color: #d0d0d0 !important;
+              color: $secondary !important;
+              border-radius: 5px;
+              border-width: 2px !important;
+
+              &:hover,
+              &:focus,
+              &:active {
+                border-color: $secondary !important;
+                box-shadow: none;
+                background-color: $secondary !important;
+                color: $primary !important;
+              }
+            }
+          }
         }
       `}</style>
     </>
