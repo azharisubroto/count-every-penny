@@ -234,7 +234,6 @@ function AustralianSeniors(props) {
           trained experts trying to find you a better deal.&nbsp;
         </P>
         <P>
-          <br />
           Unlike some other comparison services, they&rsquo;re{' '}
           <strong>independently owned and not beholden to any specific insurer</strong>, comparing hundreds of policies
           from both standard and not for profit health insurers.
