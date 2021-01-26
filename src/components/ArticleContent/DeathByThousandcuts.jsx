@@ -9,6 +9,8 @@ import PremiumIncrease from '@/components/Articles/PremiumIncrease'
 import AndrewVideo from '@/components/Articles/AndrewVideo'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
+import FeefoTestimonial from '@/components/Articles/FeefoTestimonial'
+import WomTestimonial from '@/components/Articles/WomTestimonial'
 import { logEvent } from '@/utils/analytics'
 
 const useStyles = makeStyles((theme) => ({
@@ -431,56 +433,10 @@ function DeathByThousandCut(props) {
         </P>
 
         {/* Great Customer Service */}
-        <div className="article-widget-rating article-widget-rating--type-1">
-          <div className="card">
-            <div className="card-body">
-              <div className="card-stars mb-3">
-                <img src="/static/img/icons/stars.svg" width="120" alt="Five Stars" loading="lazy" />
-              </div>
-              <h5 className="card-title">Great customer service</h5>
-              <p className="text-16">
-                Tom Carroll was very professional, friendly and helpful. He took the time to explain everything to me
-                and found me a better coverage for less $$ monthly! Thanks Tom = legend!
-              </p>
-              <div className="row align-items-center justify-content-between">
-                <div className="col-auto">
-                  <h6 className="card-author text-18">Tracey</h6>
-                </div>
-                <div className="col-auto">
-                  <div className="card-brand">
-                    <img src="/static/img/feefo.png" width="90" height="20" alt="feefo logo" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <FeefoTestimonial />
 
         {/* Word Of Mouth */}
-        <div className="article-widget-rating article-widget-rating--type-2">
-          <div className="card">
-            <div className="row g-0">
-              <div className="col-md-4 card-header">
-                <div className="card-stars my-3">
-                  <img src="/static/img/icons/stars-2.svg" alt="Five Stars" loading="lazy" />
-                </div>
-                <div className="card-brand">
-                  <img src="/static/img/rating/logo-2.png" alt="feefo" loading="lazy" />
-                </div>
-              </div>
-              <div className="col-md-8 card-body">
-                <p>
-                  Brittany gave exceptional service - thank you so much. <br />I am saving over $700 a year. Wish I had
-                  done it before.
-                </p>
-                <h6 className="card-author">Karyl W.</h6>
-                <div className="card-brand-bg">
-                  <img src="/static/img/rating/logo-2-bg.png" alt="feefo" loading="lazy" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <WomTestimonial />
 
         {/* PRODUCT REVIEW */}
         <div className="article-widget-rating article-widget-rating--type-3">
@@ -563,20 +519,6 @@ function DeathByThousandCut(props) {
       </Card>
 
       <style jsx>{`
-        .card {
-          position: relative;
-          border-radius: 5px;
-          border: 1px solid #e3e3e3;
-          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
-          margin-bottom: 30px;
-        }
-
-        .card-brand-bg {
-          position: absolute;
-          right: 0;
-          bottom: 0;
-        }
-
         .article-widget-freebies {
           .card {
             &-body {
