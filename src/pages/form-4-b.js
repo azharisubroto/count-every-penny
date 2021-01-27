@@ -18,7 +18,6 @@ import Head from 'next/head'
 import Lottie from 'react-lottie'
 import * as animationData from '@/components/Lottie/check.json'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
-import InputLabel from '@material-ui/core/InputLabel'
 import theme from '@/theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import InputMask from 'react-input-mask'
@@ -382,27 +381,16 @@ function form4Page(props) {
 
   useEffect(() => {
     init()
-    if (step == 1) {
-      setProgress(0)
 
-      // Log event
-      logEvent(`Form 4: Opened Step 1`)
-    } else if (step == 2) {
-      setProgress(20)
-      // Log event
-      //logEvent(`Form 4: Opened Step 2`)
-    } else if (step == 3) {
-      setProgress(40)
-      // Log event
-      //logEvent(`Form 4: Opened Step 3`)
-    } else if (step == 4) {
-      setProgress(60)
-      // Log event
-      //logEvent(`Form 4: Opened Step 4`)
-    } else if (step == 5) {
-      setProgress(85)
-      // Log event
-      //logEvent(`Form 4: Opened Step 5`)
+    const total_steps = 9
+    const per_step = 100 / total_steps // 10%
+    const barwidth = step > 1 ? parseInt(per_step * step) : 0
+
+    logEvent(`Form 4B: Opened Step ${step}`)
+
+    setProgress(barwidth)
+
+    if (step == 5) {
       setTimeout(() => {
         setStep6texts(loadintexts[1])
       }, 2000)
@@ -418,14 +406,6 @@ function form4Page(props) {
       setTimeout(() => {
         redirect(6)
       }, 5000)
-    } else if (step == 6) {
-      setProgress(90)
-      // Log event
-      //logEvent(`Form 4: Opened Step 6`)
-    } else if (step == 7) {
-      setProgress(98)
-      // Log event
-      //logEvent(`Form 4: Opened Step 7`)
     }
   }, [step])
 
@@ -487,11 +467,10 @@ function form4Page(props) {
    * Set router
    */
   const redirect = (step) => {
-    logEvent(`Form 4: Opened Step ${step}`)
-    logEvent(`Form 4: Submitted Step ${parseInt(step - 1)}`)
+    logEvent(`Form 4B: Submitted Step ${parseInt(step - 1)}`)
     router
       .push({
-        pathname: `/form-4`,
+        pathname: `/form-4-b`,
         query: {
           step: step,
           ...(router.query.utm_source && { utm_source: router.query.utm_source }),
@@ -550,20 +529,20 @@ function form4Page(props) {
       const data = await response.data
 
       if (data.status == 'success') {
-        logEvent(`Form 4: Submitted Step 7`)
-        logEvent(`Form 4: Opened Thank You Page`)
-        window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
         setTimeout(() => {
           router.push(`/thankyou`).then(() => window.scrollTo(0, 0))
           setLoading(false)
         }, 4000)
+        logEvent(`Form 4B: Submitted Step 9`)
+        logEvent(`Form 4B: Opened Thank You Page`)
+        window.gtag('event', 'conversion', { send_to: 'AW-442105576/x68cCLupoPEBEOj959IB' })
       } else {
         logEvent(`Submission Failed`)
         setLoading(false)
       }
     } catch (error) {
       logEvent(`Submission Failed`)
-      alert('An error occured')
+      //alert('An error occured')
       setLoading(false)
     }
   }
@@ -639,7 +618,7 @@ function form4Page(props) {
       />
 
       {/* FORM HERO */}
-      {(step < 5 || step == 7) && (
+      {step != 5 && step != 6 && (
         <>
           <section className="hero">
             {/* <pre>{JSON.stringify(state, null, 2)}</pre> */}
@@ -692,16 +671,19 @@ function form4Page(props) {
                     </div>
 
                     {/* Headling */}
-                    {step < 8 && (
-                      <Box mt={3}>
-                        <div className="lookingfor text-20 lh-25 text-md-32 lh-md-40">
-                          {step == 1 && <>I'm interested in Health cover for...</>}
-                          {step == 2 && <>What kind of cover are you looking for?</>}
-                          {step == 3 && <>Who is your current health fund?</>}
-                          {step == 4 && <>Tell us about yourself</>}
-                        </div>
-                      </Box>
-                    )}
+                    <Box mt={3}>
+                      <div className="lookingfor text-20 lh-25 text-md-32 lh-md-40">
+                        {step == 1 && <>I'm interested in Health cover for...</>}
+                        {step == 2 && <>What kind of cover are you looking for?</>}
+                        {step == 3 && <>Who is your current health fund?</>}
+                        {step == 4 && <>Tell us about yourself</>}
+                        {step == 7 && (
+                          <>Almost done. Fill in your last few details to continue. Let us know your email address.</>
+                        )}
+                        {step == 8 && <>And what is your name?</>}
+                        {step == 9 && <>This is the last question. What is your phone number?</>}
+                      </div>
+                    </Box>
 
                     {/* STEP 1 */}
                     {step == 1 && (
@@ -743,7 +725,7 @@ function form4Page(props) {
                               isActive={state.cover_type == item.value ? 'active' : ''}
                               onClick={() => {
                                 setState('cover_type', item.value)
-                                redirect(3)
+                                redirect(parseInt(step + 1))
                               }}
                             />
                           </Box>
@@ -781,7 +763,7 @@ function form4Page(props) {
 
                         <div className="row justify-content-center">
                           <div className="col-lg-8">
-                            <div className="mb-3 infobox text-14 lh-25">
+                            <div className="mb-3 step-3-alert text-14 lh-25">
                               FYI: In October 2020, Australian Unity policies went up an average of 2.79%. In April
                               2021, they'll be increasing by a further 1.99%.
                             </div>
@@ -790,7 +772,7 @@ function form4Page(props) {
                               disabled={state.fund == 'Select One' || state.fund == 'none'}
                               className={classes.submitbutton}
                               onClick={() => {
-                                redirect(4)
+                                redirect(parseInt(step + 1))
                               }}>
                               Next
                             </Button>
@@ -869,7 +851,7 @@ function form4Page(props) {
                             <Button
                               onClick={() => {
                                 if (state.postcode in postcodes) {
-                                  redirect(5)
+                                  redirect(parseInt(step + 1))
                                 }
                               }}
                               disabled={state.yob == '' || state.postcode == ''}
@@ -882,148 +864,108 @@ function form4Page(props) {
                       </>
                     )}
 
-                    {/* STEP 7, LAST */}
+                    {/* STEP 7 */}
                     {step == 7 && (
                       <>
-                        <Box mt={4}>
-                          <Grid container spacing={3}>
-                            {/* LEFT */}
-                            <Grid item xs={12} md={6}>
-                              <div className="finalintro">
-                                <h3 className="text-20 lh-25 text-md-28 lh-md-38">
-                                  {state.fund != 'Select One' && state.fund != "Average / I don't have a fund" ? (
-                                    <>
-                                      It looks like you might be overpaying on your{' '}
-                                      <span className="highlight">{state.fund}</span>. Let's see if we can save you some
-                                      money.
-                                    </>
-                                  ) : (
-                                    <>
-                                      Let's see if we can save you some money with one of the quotes we found that meet
-                                      your requirements.
-                                    </>
-                                  )}
-                                </h3>
-                                <p className="text-16 lh-md-24 text-md-20 lh-md-35">
-                                  <strong>
-                                    {state.fund != 'Select One' && state.fund != "Average / I don't have a fund"
-                                      ? state.fund + "'s average"
-                                      : 'Average'}
-                                  </strong>{' '}
-                                  policy increase was{' '}
-                                  <strong>
-                                    {Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2020]}%
-                                  </strong>{' '}
-                                  in October 2020 and will be a further{' '}
-                                  <strong>
-                                    {Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2021]}%
-                                  </strong>{' '}
-                                  in April 2021. That's{' '}
-                                  <strong>
-                                    {Object.keys(fundlist).length > 0 &&
-                                      parseFloat(fundlist[`${state.fund}`][2020]) +
-                                        parseFloat(fundlist[`${state.fund}`][2021])}
-                                    %
-                                  </strong>{' '}
-                                  in 6 months. Give us a chance to do better - <br />
-                                  <strong>we saved our average customer $357.95 in 2020.</strong>
-                                </p>
+                        <ValidatorForm
+                          key="step5validator"
+                          instantValidate={true}
+                          onSubmit={() => {
+                            if (state.email != '') {
+                              redirect(parseInt(step + 1))
+                            }
+                          }}>
+                          <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
+                            <Box maxWidth="500px" width="100%">
+                              <TextValidator
+                                variant="outlined"
+                                className={`${classes.formcontrol}`}
+                                value={state.email}
+                                validators={['required', 'isEmail']}
+                                errorMessages={['Required', 'Invalid Email']}
+                                placeholder="Enter full Name"
+                                onChange={(e) => {
+                                  setState('email', e.target.value)
+                                }}
+                              />
+                            </Box>
+                          </Box>
+                          <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
+                            <Button disabled={state.email == ''} type="submit" className={classes.submitbutton}>
+                              Next
+                            </Button>
+                          </Box>
+                        </ValidatorForm>
+                      </>
+                    )}
 
-                                <FeefoSlide
-                                  className={`${classes.feefocustom} d-none d-md-block`}
-                                  slideBackground="linear-gradient(69.17deg, #F5F5F5 1.82%, rgba(255, 255, 255, 0) 63.85%), linear-gradient(243.37deg, rgba(228, 228, 228, 0.4) 0%, rgba(255, 255, 255, 0.1) 49.83%)"
-                                  slideDotsColor={theme.palette.cep.primary}
-                                  slideDotsPosition="right"
-                                  slideFontStyle="normal"
-                                  slideFontWeight="400"
-                                  slideQuoteIconColor="#F09020"
-                                  maxWidth={1220}
-                                  disableRatingCard
-                                />
-                              </div>
-                            </Grid>
-                            <Grid item xs={12} md={6}>
-                              <ValidatorForm instantValidate={true} onSubmit={handleSubmit}>
-                                <InputLabel className={`${classes.label}`}>My Name</InputLabel>
-                                <TextValidator
-                                  validators={['required']}
-                                  errorMessages={['Required']}
-                                  id="age"
-                                  placeholder="Enter Full Name"
-                                  variant="outlined"
-                                  name="full_name"
-                                  value={state.name}
-                                  className={`${classes.formcontrol}`}
-                                  onChange={(e) => {
-                                    setState('name', e.target.value)
-                                  }}
-                                />
+                    {/* Step 8 */}
+                    {step == 8 && (
+                      <>
+                        <ValidatorForm
+                          key="step5validator"
+                          instantValidate={true}
+                          onSubmit={() => {
+                            if (state.email != '') {
+                              redirect(parseInt(step + 1))
+                            }
+                          }}>
+                          <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
+                            <Box maxWidth="500px" width="100%">
+                              <TextValidator
+                                validators={['required']}
+                                errorMessages={['Required']}
+                                id="age"
+                                placeholder="Enter Full Name"
+                                variant="outlined"
+                                name="full_name"
+                                value={state.name}
+                                className={`${classes.formcontrol}`}
+                                onChange={(e) => {
+                                  setState('name', e.target.value)
+                                }}
+                              />
+                            </Box>
+                          </Box>
+                          <Box maxWidth="740px" mx="auto" justifyContent="center" display="flex">
+                            <Button disabled={state.name == ''} type="submit" className={classes.submitbutton}>
+                              Next
+                            </Button>
+                          </Box>
+                        </ValidatorForm>
+                      </>
+                    )}
 
-                                <Box mt={{ xs: 3, md: 4, lg: 5 }}>
-                                  <InputLabel className={`${classes.label}`}>My 10 digit phone number</InputLabel>
-                                  <TextValidator
-                                    validators={['required', 'auPhone']}
-                                    errorMessages={['Required', 'Invalid phone number format']}
-                                    placeholder="Enter Phone Number"
-                                    variant="outlined"
-                                    value={state.phone}
-                                    type="tel"
-                                    className={`${classes.formcontrol}`}
-                                    inputProps={{ maxLength: 10, pattern: '[0-9]', type: 'number' }}
-                                    onChange={(e) => {
-                                      setState('phone', e.target.value)
-                                    }}
-                                  />
-                                </Box>
-                                <Box mt={{ xs: 3, md: 4, lg: 5 }}>
-                                  <InputLabel className={`${classes.label}`} id="age-label">
-                                    My email address
-                                  </InputLabel>
-                                  <TextValidator
-                                    validators={['required', 'isEmail']}
-                                    errorMessages={['Required', 'Invalid email address']}
-                                    placeholder="Enter Email Address"
-                                    variant="outlined"
-                                    value={state.email}
-                                    className={`${classes.formcontrol}`}
-                                    onChange={(e) => {
-                                      setState('email', e.target.value)
-                                    }}
-                                  />
-                                </Box>
-                                <Box mt={{ xs: 3, md: 4, lg: 5 }}>
-                                  <Button
-                                    type="submit"
-                                    variant="contained"
-                                    size="large"
-                                    disableElevation
-                                    disabled={state.name == '' || state.phone == '' || state.email == ''}
-                                    className={classes.submitbutton}
-                                    fullWidth>
-                                    Get Me My Quotes
-                                  </Button>
-                                </Box>
-                              </ValidatorForm>
-
-                              {/* Submission Loader Effect */}
-                              <Backdrop className={classes.backdrop} open={loading}>
-                                <CircularProgress color="secondary" />
-                              </Backdrop>
-
-                              <Box mt={3} mx={{ sm: 0, lg: 3 }}>
-                                <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>
-                                  Free 210 piece first aid kit if you switch in January
-                                </div>
-                                <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>
-                                  100% Australian owned &amp; operated
-                                </div>
-                                <div className={`${classes.featureitem} text-16 text-md-18`}>
-                                  No lock in contracts &amp; 30 day cooling off period
-                                </div>
-                              </Box>
-                            </Grid>
-                          </Grid>
-                        </Box>
+                    {/* Step 8 */}
+                    {step == 9 && (
+                      <>
+                        <ValidatorForm key="step5validator" instantValidate={true} onSubmit={handleSubmit}>
+                          <Box mt={{ xs: 4, sm: 3, md: 4 }} pb={5} display="flex" justifyContent="center">
+                            <Box maxWidth="500px" width="100%">
+                              <TextValidator
+                                validators={['required', 'auPhone']}
+                                errorMessages={['Required', 'Invalid phone number format']}
+                                placeholder="Enter Phone Number"
+                                variant="outlined"
+                                value={state.phone}
+                                type="tel"
+                                className={`${classes.formcontrol}`}
+                                inputProps={{ maxLength: 10, pattern: '[0-9]', type: 'number' }}
+                                onChange={(e) => {
+                                  setState('phone', e.target.value)
+                                }}
+                              />
+                            </Box>
+                          </Box>
+                          <Box maxWidth="740px" mx="auto" display="block">
+                            <div className="mb-3 infobox text-14 lh-25">
+                              Providing a contact number will help our consultants to contact you as soon as possible
+                            </div>
+                            <Button disabled={state.phone == ''} type="submit" className={classes.submitbutton}>
+                              Get My Quotes
+                            </Button>
+                          </Box>
+                        </ValidatorForm>
                       </>
                     )}
                   </Box>
@@ -1031,6 +973,11 @@ function form4Page(props) {
               </Box>
             </div>
           </section>
+
+          {/* Submission Loader Effect */}
+          <Backdrop className={classes.backdrop} open={loading}>
+            <CircularProgress color="secondary" />
+          </Backdrop>
 
           {/* FEEFO SLIDE */}
           {step != 7 && (
@@ -1243,6 +1190,14 @@ function form4Page(props) {
 
         .highlight {
           color: #035aa6;
+        }
+
+        .step-3-alert {
+          background: rgba(0, 0, 0, 0.05);
+          border-radius: 4px;
+          padding: 16px;
+          color: #6a6a6a;
+          font-weight: bold;
         }
 
         .infobox {
