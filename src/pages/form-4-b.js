@@ -883,7 +883,7 @@ function form4Page(props) {
                                 value={state.email}
                                 validators={['required', 'isEmail']}
                                 errorMessages={['Required', 'Invalid Email']}
-                                placeholder="Enter full Name"
+                                placeholder="Enter Email Address"
                                 onChange={(e) => {
                                   setState('email', e.target.value)
                                 }}
@@ -980,7 +980,7 @@ function form4Page(props) {
           </Backdrop>
 
           {/* FEEFO SLIDE */}
-          {step != 7 && (
+          {step == 1 && (
             <Box py={5} style={{ backgroundColor: '#fff' }}>
               <FeefoSlide
                 slideBackground={slideBg}
@@ -994,7 +994,7 @@ function form4Page(props) {
             </Box>
           )}
 
-          {step == 7 && (
+          {step == 1 && (
             <>
               <div className="d-none d-md-block">
                 <AwardBox maxWidth="1200px" className={classes.awardbox} />
