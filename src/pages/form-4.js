@@ -894,8 +894,8 @@ function form4Page(props) {
                                   {state.fund != 'Select One' && state.fund != "Average / I don't have a fund" ? (
                                     <>
                                       It looks like you might be overpaying on your{' '}
-                                      <span className="highlight">{state.fund}</span>. Let's see if we can save you some
-                                      money.
+                                      <span className="highlight">{state.fund}</span> policy. Let's see if we can save
+                                      you some money.
                                     </>
                                   ) : (
                                     <>
