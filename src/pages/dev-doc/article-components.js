@@ -133,6 +133,9 @@ const articleComponents = () => {
         ul {
           list-style: none;
         }
+        .card {
+          background: #f8f8f8;
+        }
         .indexmenu {
           list-style: none;
           padding: 0;
