@@ -158,6 +158,7 @@ const FeefoSlide = (props) => {
         }
         .hicdots {
           text-align: ${slideDotsPosition ? slideDotsPosition : 'center'};
+
           button {
             background: ${slideDotsColor ? slideDotsColor : '#fff'};
             border-radius: 500px;
