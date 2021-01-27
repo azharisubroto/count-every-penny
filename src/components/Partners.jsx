@@ -11,13 +11,13 @@ const Partners = (props) => {
   ]
 
   const partnersWhite = [
+    '/static/img/partners/white/partner-australianUnity.svg',
+    '/static/img/partners/white/partner-bupa.svg',
+    '/static/img/partners/white/partner-hcf.svg',
     '/static/img/partners/white/partner-ahm.svg',
     '/static/img/partners/white/partner-nib.svg',
-    '/static/img/partners/white/partner-australianUnity.svg',
-    '/static/img/partners/white/partner-hcf.svg',
-    '/static/img/partners/white/partner-peoplecare.svg',
-    '/static/img/partners/white/partner-bupa.svg',
-    '/static/img/partners/white/partner-gmhba.svg'
+    '/static/img/partners/white/partner-gmhba.svg',
+    '/static/img/partners/white/partner-peoplecare.svg'
   ]
 
   return (

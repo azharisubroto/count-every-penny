@@ -40,82 +40,75 @@ function Form({ children }) {
         />
       </Head>
       <div className="page page--form-9">
+        <div className="page-shape">
+          <img src="/static/img/bg-shape.png" alt="bg-shape" />
+        </div>
+
         {/* NavBarForm */}
         <NavBarForm type="white" className="header-white" />
 
-        {/* Children */}
-        {children}
+        <main className="main">
+          {/* Children */}
+          {children}
 
-        <PartnersFieldset />
+          <PartnersFieldset />
 
-        {/* Feefo Slideshow */}
-        <LazyLoad offset={[-100, 100]} height={250}>
-          <FeefoSlide
-            slideBackground="rgba(0, 0, 0, 0.1)"
-            slideDotsColor="#fff"
-            slideDotsPosition="right"
-            slideFontStyle="normal"
-            slideFontWeight="400"
-            slideQuoteIconColor="#fff"
-            maxWidth={1160}
-            slideTheme="dark"
-          />
-        </LazyLoad>
+          {/* Feefo Slideshow */}
+          <LazyLoad offset={[-100, 100]} height={250}>
+            <FeefoSlide
+              slideBackground="rgba(0, 0, 0, 0.1)"
+              slideDotsColor="#fff"
+              slideDotsPosition="right"
+              slideFontStyle="normal"
+              slideFontWeight="400"
+              slideQuoteIconColor="#fff"
+              maxWidth={1200}
+              slideTheme="dark"
+            />
+          </LazyLoad>
 
-        {/* FooterSimple */}
-        <LazyLoad offset={[-100, 100]} height={250}>
-          <FooterSimple className="footer footer-dark" />
-        </LazyLoad>
+          {/* FooterSimple */}
+          <LazyLoad offset={[-100, 100]} height={250}>
+            <FooterSimple className="footer footer-dark" />
+          </LazyLoad>
+        </main>
       </div>
 
       <style jsx>
         {`
           .page {
+            position: relative;
             &--form-9 {
-              background-color: ${theme.palette.cep.primary};
+              background-color: #f09020;
             }
-          }
-          .content-wrapper {
-            padding-top: 35px;
-          }
-          h2 {
-            font-weight: 800;
-            font-size: 28px;
-            line-height: 38px;
-            text-align: center;
-            color: #373737;
-            margin-bottom: 50px;
-            margin-top: 0;
-            @media screen and (min-width: 900px) {
-              margin-top: 80px;
-            }
-          }
-          .sticky {
-            @media screen and (min-width: 1024px) {
-              position: sticky;
+
+            &-shape {
+              position: absolute;
               top: 0;
-              bottom: 0;
-              max-height: 100vh;
-              overflow-y: auto;
-              padding: 35px 0 0;
+              left: 0;
+              width: 100%;
+
+              img {
+                width: 100%;
+                height: auto;
+              }
             }
-          }
-          @media screen and (max-width: 500px) {
-            .d-xs-none {
-              display: none;
+
+            .main {
+              position: relative;
+              z-index: 2;
+              padding-top: 30px;
             }
           }
         `}
       </style>
-      <style jsx global>{`
-        .price-tag {
-          display: inline-block;
-          background: rgba(0, 0, 0, 0.15);
-          border-radius: 10px;
-          padding-left: 5px;
-          padding-right: 5px;
-        }
-      `}</style>
+      <style jsx global>
+        {`
+          .footer {
+            margin-top: 0 !important;
+          }
+        `}
+      </style>
     </>
   )
 }

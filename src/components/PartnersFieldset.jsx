@@ -4,7 +4,7 @@ function PartnersFieldset() {
     <>
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-xl-10">
+          <div className="col-xl-9">
             <fieldset>
               <legend align="center">In Partnership With</legend>
               <Partners type="white" />
@@ -16,8 +16,8 @@ function PartnersFieldset() {
       <style jsx>{`
         fieldset {
           border: 1px solid #fff;
-          padding: 35px;
-          padding-top: 20px;
+          padding: 20px;
+          padding-top: 10px;
           border-radius: 10px;
           margin-bottom: 40px;
 
