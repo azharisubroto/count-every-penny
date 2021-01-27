@@ -764,6 +764,9 @@ function form4Page(props) {
                             onChange={(e) => {
                               setState('fund', e.target.value)
                             }}>
+                            <MenuItem disabled className={classes.coveritem} value="Select One">
+                              <div className={`${classes.seltext} seltext-root`}>Select One</div>
+                            </MenuItem>
                             {Object.entries(fundlist).map(([key]) => (
                               <MenuItem
                                 disabled={key == 'Select One'}
@@ -881,12 +884,26 @@ function form4Page(props) {
                             <Grid item xs={12} md={6}>
                               <div className="finalintro">
                                 <h3 className="text-20 lh-25 text-md-28 lh-md-38">
-                                  It looks like you might be overpaying on your{' '}
-                                  <span className="highlight">{state.fund}</span>. Let's see if we can save you some
-                                  money.
+                                  {state.fund != 'Select One' && state.fund != "Average / I don't have a fund" ? (
+                                    <>
+                                      It looks like you might be overpaying on your{' '}
+                                      <span className="highlight">{state.fund}</span>. Let's see if we can save you some
+                                      money.
+                                    </>
+                                  ) : (
+                                    <>
+                                      Let's see if we can save you some money with one of the quotes we found that meet
+                                      your requirements.
+                                    </>
+                                  )}
                                 </h3>
                                 <p className="text-16 lh-md-24 text-md-20 lh-md-35">
-                                  <strong>{state.fund}</strong>'s average policy increase was{' '}
+                                  <strong>
+                                    {state.fund != 'Select One' && state.fund != "Average / I don't have a fund"
+                                      ? state.fund + "'s average"
+                                      : 'Average'}
+                                  </strong>{' '}
+                                  policy increase was{' '}
                                   <strong>
                                     {Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2020]}%
                                   </strong>{' '}
