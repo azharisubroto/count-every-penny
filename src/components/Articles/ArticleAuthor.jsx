@@ -79,6 +79,7 @@ export default function ArticleAuthor({ avatar, name, date, isamp, variant }) {
           .avatar {
             width: 42px;
             height: 42px;
+            margin-right: 10px;
           }
           .author-info {
             margin-right: auto;

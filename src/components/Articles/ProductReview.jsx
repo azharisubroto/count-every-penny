@@ -33,6 +33,20 @@ export default function ProductReview() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .card {
+          position: relative;
+          border-radius: 5px;
+          border: 1px solid #e3e3e3;
+          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+          margin-bottom: 30px;
+
+          &.card-widget {
+            margin-bottom: 45px;
+          }
+        }
+      `}</style>
     </div>
   )
 }

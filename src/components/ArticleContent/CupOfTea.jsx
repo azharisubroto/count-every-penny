@@ -8,7 +8,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 import PremiumIncrease from '@/components/Articles/PremiumIncrease'
-import AndrewVideo from '@/components/Articles/AndrewVideo'
+import VideoCard from '@/components/Articles/VideoCard'
 import FeefoTestimonial from '@/components/Articles/FeefoTestimonial'
 import WomTestimonial from '@/components/Articles/WomTestimonial'
 
@@ -308,7 +308,7 @@ function AustralianSeniors(props) {
           &rdquo;
         </P>
 
-        <AndrewVideo />
+        <VideoCard />
 
         <P>
           Health funds often use fear and ignorance of the system to keep people paying for things they don&rsquo;t

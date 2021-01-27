@@ -6,7 +6,7 @@ import AustraliaState from '@/components/Articles/Cta/AustraliaState'
 import P from '@/components/Articles/Paragraph'
 import Typography from '@material-ui/core/Typography'
 import PremiumIncrease from '@/components/Articles/PremiumIncrease'
-import AndrewVideo from '@/components/Articles/AndrewVideo'
+import VideoCard from '@/components/Articles/VideoCard'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import FeefoTestimonial from '@/components/Articles/FeefoTestimonial'
@@ -348,7 +348,7 @@ function DeathByThousandCut(props) {
         </P>
 
         {/* Andrew Video */}
-        <AndrewVideo onClick={() => logEvent('Played Andrew Davis video')} />
+        <VideoCard onClick={() => logEvent('Played Andrew Davis video')} />
 
         <P>
           Health funds often use fear and ignorance of the system to keep people paying for things they don’t need. What
