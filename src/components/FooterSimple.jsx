@@ -47,7 +47,7 @@ export default function FooterSimple(props) {
       {/* Styles */}
       <style jsx>{`
         .footer {
-          background: #fff;
+          background-color: #fff;
           padding: 20px 0;
           text-align: center;
           border-top: 1px solid #eeeeee;
@@ -101,6 +101,26 @@ export default function FooterSimple(props) {
             max-width: 1050px;
             margin: 20px auto 0;
             color: #25282b;
+          }
+
+          &.footer-dark {
+            background-color: #59370f;
+            border-color: #59370f;
+
+            @media screen and (max-width: 500px) {
+              text-align: left;
+              padding-left: 40px;
+              padding-right: 40px;
+              background: #59370f;
+            }
+
+            a {
+              color: #fff;
+            }
+
+            .copyright {
+              color: #fff;
+            }
           }
         }
       `}</style>
