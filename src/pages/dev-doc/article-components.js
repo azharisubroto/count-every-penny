@@ -10,6 +10,7 @@ import PremiumIncrease from '@/components/Articles/PremiumIncrease'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import WomTestimonial from '@/components/Articles/WomTestimonial'
 import ProductReview from '@/components/Articles/ProductReview'
+import FundsList from '@/components/Articles/Cta/FundsList'
 
 const ar_components = [
   {
@@ -81,6 +82,11 @@ const ar_components = [
     name: 'Product Review',
     import: "import ProductReview from '@/components/Articles/ProductReview'",
     preview: <ProductReview />
+  },
+  {
+    name: 'Funds List',
+    import: "import FundsList from '@/components/Articles/Cta/FundsList'",
+    preview: <FundsList />
   }
 ]
 
