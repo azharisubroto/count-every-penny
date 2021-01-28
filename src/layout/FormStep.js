@@ -6,7 +6,6 @@ import LazyLoad from 'react-lazyload'
 const FeefoSlide = dynamic(() => import('@/components/Articles/FeefoSlide'))
 const FooterSimple = dynamic(() => import('@/components/FooterSimple'))
 import { wrapper } from '@/store/store'
-import theme from '@/theme'
 import PartnersFieldset from '@/components/PartnersFieldset'
 // import { useRouter } from 'next/router'
 // import { useSelector } from 'react-redux'
