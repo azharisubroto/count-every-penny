@@ -167,7 +167,7 @@ export default function AustraliaStates({
       </div>
       <style jsx>{`
         .get-started-now__choose-area {
-          max-width: 550px;
+          width: 100%;
           box-shadow: ${disableElevation == true ? 'none' : '0 0 10px rgba(0, 0, 0, 0.1)'};
           color: ${dark == true ? '#fff' : 'inherit'};
           margin: 0 auto 60px;

@@ -2,7 +2,7 @@ import React from 'react'
 import AustraliaState from '@/components/Articles/Cta/AustraliaState2'
 import PremiumIncrease from '@/components/Articles/PremiumIncrease2'
 import AgesCTA from '@/components/Articles/Cta/AgesCTA2'
-import AndrewVideo from '@/components/Articles/AndrewVideo2'
+import VideoCard from '@/components/Articles/VideoCard2'
 import LifeStageStack from '@/components/Articles/LifeStageStack3'
 import { logEvent } from '@/utils/analytics'
 
@@ -300,7 +300,7 @@ function DeathByThousandCut(props) {
                   </p>
 
                   {/* Andrew Video */}
-                  <AndrewVideo onClick={() => logEvent('Played Andrew Davis video')} />
+                  <VideoCard onClick={() => logEvent('Played Andrew Davis video')} />
 
                   <p>
                     Health funds often use fear and ignorance of the system to keep people paying for things they don’t

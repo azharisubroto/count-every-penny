@@ -1,5 +1,5 @@
 function WomTestimonial(props) {
-  const { className, ...other } = props
+  const { text, username, className, ...other } = props
 
   return (
     <div {...other} className={`article-widget-rating article-widget-rating--type-2 ${className}`}>
@@ -15,10 +15,12 @@ function WomTestimonial(props) {
           </div>
           <div className="col-md-8 card-body">
             <p>
-              Brittany gave exceptional service - thank you so much. <br />I am saving over $700 a year. Wish I had done
-              it before.
+              {text
+                ? text
+                : `Brittany gave exceptional service - thank you so much. <br />I am saving over $700 a year. Wish I had done
+              it before.`}
             </p>
-            <h6 className="card-author">Karyl W.</h6>
+            <h6 className="card-author">{username ? username : `Karyl W.`}</h6>
             <div className="card-brand-bg">
               <img src="/static/img/rating/logo-2-bg.png" alt="feefo" loading="lazy" />
             </div>

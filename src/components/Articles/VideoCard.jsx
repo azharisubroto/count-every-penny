@@ -1,5 +1,5 @@
 function AdrewVideo(props) {
-  const { videoID } = props
+  const { videoID, headline, description } = props
 
   return (
     <figure className="article-video mx-0">
@@ -19,8 +19,14 @@ function AdrewVideo(props) {
         </div>
         <div className="col-lg-4 card mb-0">
           <div className="card-body pt-md-4">
-            <h5 className="text-14 lh-20">Why you need to review your private health insurance</h5>
-            <p>If you haven’t reviewed your policy lately, you could be leaving thousands of dollars on the table.</p>
+            <h5 className="text-14 lh-20">
+              {headline ? headline : 'Why you need to review your private health insurance'}
+            </h5>
+            <p>
+              {description
+                ? description
+                : 'If you haven’t reviewed your policy lately, you could be leaving thousands of dollars on the table.'}
+            </p>
           </div>
         </div>
       </div>
