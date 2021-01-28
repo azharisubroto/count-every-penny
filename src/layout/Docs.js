@@ -23,7 +23,7 @@ const DocLayout = ({ children, ...other }) => {
           <div className="container-fluid">
             <div className="row">
               {/* Menu */}
-              <div className="col-md-3">
+              <div className="col-md-2">
                 <div className="doc-sidebar">
                   <ul className="doc-list">
                     {menu.map((item, i) => (
@@ -38,7 +38,7 @@ const DocLayout = ({ children, ...other }) => {
               </div>
 
               {/* Content Children  */}
-              <div className="col-md-9">
+              <div className="col-md-10">
                 <div className="py-5 px-md-4">{children}</div>
               </div>
             </div>

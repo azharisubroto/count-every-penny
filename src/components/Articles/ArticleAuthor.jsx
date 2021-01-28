@@ -79,6 +79,8 @@ export default function ArticleAuthor({ avatar, name, date, isamp, variant }) {
           .avatar {
             width: 42px;
             height: 42px;
+            border-radius: 90px;
+            overflow: hidden;
             margin-right: 10px;
           }
           .author-info {
