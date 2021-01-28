@@ -8,6 +8,7 @@ import { Container } from '@/components/editor/Container'
 import { Text } from '@/components/editor/Text'
 import { Author } from '@/components/editor/ArticleAuthor'
 import { LifeStageCta1 } from '@/components/editor/LifeStageCta1'
+import { VideoCardEditor } from '@/components/editor/VideoCard'
 
 export const Toolbox = () => {
   const { connectors } = useEditor()
@@ -61,6 +62,14 @@ export const Toolbox = () => {
             disableElevation
             variant="contained">
             Life Stage Cards CTA
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <VideoCardEditor />)}
+            disableElevation
+            variant="contained">
+            Video Card
           </MaterialButton>
         </Grid>
         {/* <Grid container direction="column" item>

@@ -11,6 +11,7 @@ import { Container } from '@/components/editor/Container'
 import { Text } from '@/components/editor/Text'
 import { Author } from '@/components/editor/ArticleAuthor'
 import { LifeStageCta1 } from '@/components/editor/LifeStageCta1'
+import { VideoCardEditor } from '@/components/editor/VideoCard'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -33,7 +34,8 @@ export default function CepEditor(props) {
           CardTop,
           CardBottom,
           Author,
-          LifeStageCta1
+          LifeStageCta1,
+          VideoCardEditor
         }}>
         <Topbar />
         <Grid container spacing={3} style={{ paddingTop: '10px' }}>
