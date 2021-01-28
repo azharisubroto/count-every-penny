@@ -746,9 +746,6 @@ function form4Page(props) {
                             onChange={(e) => {
                               setState('fund', e.target.value)
                             }}>
-                            <MenuItem disabled className={classes.coveritem} value="Select One">
-                              <div className={`${classes.seltext} seltext-root`}>Select One</div>
-                            </MenuItem>
                             {Object.entries(fundlist).map(([key]) => (
                               <MenuItem
                                 disabled={key == 'Select One'}
@@ -763,10 +760,16 @@ function form4Page(props) {
 
                         <div className="row justify-content-center">
                           <div className="col-lg-8">
-                            <div className="mb-3 step-3-alert text-14 lh-25">
-                              FYI: In October 2020, Australian Unity policies went up an average of 2.79%. In April
-                              2021, they'll be increasing by a further 1.99%.
-                            </div>
+                            {state.fund != 'Select One' && (
+                              <div className="mb-3 infobox text-14 lh-25">
+                                FYI: In October 2020, <strong>{state.fund ? state.fund : 'average'}</strong> policies
+                                went up an average of{' '}
+                                <strong>{Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2020]}%</strong>{' '}
+                                . In April 2021, they'll be increasing by a further{' '}
+                                <strong>{Object.keys(fundlist).length > 0 && fundlist[`${state.fund}`][2021]}%</strong>{' '}
+                                .
+                              </div>
+                            )}
 
                             <Button
                               disabled={state.fund == 'Select One' || state.fund == 'none'}
