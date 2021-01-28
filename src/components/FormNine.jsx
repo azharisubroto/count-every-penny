@@ -226,7 +226,7 @@ export default function FormNine(props) {
   const router = useRouter()
   const classes = useStyles(props)
   const { step } = props
-  let progress = step * 10
+  let progress = parseInt(step - 1) * 10
 
   const handleSubmit = () => {
     const utms = {
@@ -485,6 +485,97 @@ export default function FormNine(props) {
                             handleSubmit()
                           }}>
                           Next
+                        </Button>
+                      </>
+                    )}
+                    {step == 8 && (
+                      <>
+                        <h3 className="card-title mb-50px">
+                          Almost done. Fill in your last few details to continue. What is your email address?
+                        </h3>
+                        <TextValidator
+                          validators={['required', 'isEmail']}
+                          errorMessages={['Required', 'Invalid email address']}
+                          placeholder="Enter Email Address"
+                          variant="outlined"
+                          // value={state.email}
+                          className={`${classes.formcontrol} mb-50px`}
+                          onChange={(e) => {
+                            handleChange(e, 'email')
+                          }}
+                        />
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          size="large"
+                          disableElevation
+                          className={classes.submitbutton}
+                          fullWidth
+                          onClick={() => {
+                            handleSubmit()
+                          }}>
+                          Next
+                        </Button>
+                      </>
+                    )}
+                    {step == 9 && (
+                      <>
+                        <h3 className="card-title mb-50px">What is your name?</h3>
+                        <TextValidator
+                          validators={['required', 'isName']}
+                          errorMessages={['Required', 'Invalid name']}
+                          placeholder="Enter Full Name"
+                          variant="outlined"
+                          // value={state.email}
+                          className={`${classes.formcontrol} mb-50px`}
+                          onChange={(e) => {
+                            handleChange(e, 'name')
+                          }}
+                        />
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          size="large"
+                          disableElevation
+                          className={classes.submitbutton}
+                          fullWidth
+                          onClick={() => {
+                            handleSubmit()
+                          }}>
+                          Next
+                        </Button>
+                      </>
+                    )}
+                    {step == 10 && (
+                      <>
+                        <h3 className="card-title mb-50px">This is the last question. What is your phone number?</h3>
+                        <TextValidator
+                          validators={['required', 'auPhone']}
+                          errorMessages={['Required', 'Invalid phone number format']}
+                          placeholder="Enter Phone Number"
+                          variant="outlined"
+                          // value={state.phone}
+                          type="tel"
+                          className={`${classes.formcontrol} mb-50px`}
+                          inputProps={{ maxLength: 10, pattern: '[0-9]', type: 'number' }}
+                          onChange={(e) => {
+                            handleChange(e, 'phone')
+                          }}
+                        />
+                        <p className="note">
+                          Providing a contact number will help our consultants to contact you as soon as possible
+                        </p>
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          size="large"
+                          disableElevation
+                          className={classes.submitbutton}
+                          fullWidth
+                          onClick={() => {
+                            handleSubmit()
+                          }}>
+                          Get My Quotes
                         </Button>
                       </>
                     )}
