@@ -3,7 +3,7 @@ import axios from 'axios'
 import Select from '@/components/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 
-export default function FundSelect() {
+function FundSelect() {
   const [fundlist, setFundlist] = React.useState([])
   const [fund, setFund] = React.useState('Select One')
 
@@ -63,3 +63,7 @@ export default function FundSelect() {
     </>
   )
 }
+
+FundSelect.displayName = 'FundSelect'
+
+export default FundSelect

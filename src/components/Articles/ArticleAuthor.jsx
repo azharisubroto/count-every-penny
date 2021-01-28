@@ -1,4 +1,4 @@
-export default function ArticleAuthor({ avatar, name, date, isamp, variant }) {
+function ArticleAuthor({ avatar, name, date, isamp, variant }) {
   const InlineAuthorInfo = () => {
     return (
       <>
@@ -93,3 +93,7 @@ export default function ArticleAuthor({ avatar, name, date, isamp, variant }) {
     </>
   )
 }
+
+ArticleAuthor.displayName = 'ArticleAuthor'
+
+export default ArticleAuthor

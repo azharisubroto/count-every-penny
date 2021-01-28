@@ -41,4 +41,6 @@ const LifeStageStack = ({ className, link, ...props }) => {
   )
 }
 
+LifeStageStack.displayName = 'LifeStageStack'
+
 export default LifeStageStack

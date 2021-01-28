@@ -1,4 +1,4 @@
-export default function ProductReview() {
+function ProductReview() {
   return (
     <div className="article-widget-rating article-widget-rating--type-3">
       <div className="card">
@@ -50,3 +50,7 @@ export default function ProductReview() {
     </div>
   )
 }
+
+ProductReview.displayName = 'ProductReview'
+
+export default ProductReview

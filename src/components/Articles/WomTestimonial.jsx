@@ -46,4 +46,6 @@ function WomTestimonial(props) {
   )
 }
 
+WomTestimonial.displayName = 'WomTestimonial'
+
 export default WomTestimonial
