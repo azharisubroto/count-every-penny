@@ -15,7 +15,7 @@ import FundSelect from '@/components/Articles/Cta/FundSelect'
 
 const ar_components = [
   {
-    name: 'Video Card',
+    name: 'VideoCard',
     import: "import VideoCard from '@/components/Articles/VideoCard'",
     preview: (
       <VideoCard
@@ -26,12 +26,12 @@ const ar_components = [
     )
   },
   {
-    name: 'Article Author',
+    name: 'ArticleAuthor',
     import: "import ArticleAuthor from '@/components/Articles/ArticleAuthor'",
     preview: <ArticleAuthor isamp={false} avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
   },
   {
-    name: 'Australia State',
+    name: 'AustraliaState',
     import: "import AustraliaState from '@/components/Articles/cta/AustraliaState'",
     preview: (
       <AustraliaState
@@ -60,17 +60,17 @@ const ar_components = [
     )
   },
   {
-    name: 'Premium Increase',
+    name: 'PremiumIncrease',
     import: "import PremiumIncrease from '@/components/Articles/PremiumIncrease'",
     preview: <PremiumIncrease link="https://google.com" />
   },
   {
-    name: 'Life Stage Stack',
+    name: 'LifeStageStack',
     import: "import LifeStageStack from '@/components/Articles/LifeStageStack'",
     preview: <LifeStageStack link="https://google.com" />
   },
   {
-    name: 'Wom Testimonial',
+    name: 'WomTestimonial',
     import: "import WomTestimonial from '@/components/Articles/WomTestimonial'",
     preview: (
       <WomTestimonial
@@ -80,12 +80,12 @@ const ar_components = [
     )
   },
   {
-    name: 'Product Review',
+    name: 'ProductReview',
     import: "import ProductReview from '@/components/Articles/ProductReview'",
     preview: <ProductReview />
   },
   {
-    name: 'Funds List',
+    name: 'FundsList',
     import: "import FundsList from '@/components/Articles/Cta/FundsList'",
     preview: (
       <>
@@ -114,7 +114,7 @@ const ar_components = [
     )
   },
   {
-    name: 'Fund Select',
+    name: 'FundSelect',
     import: "import FundSelect from '@/components/Articles/Cta/FundSelect'",
     preview: (
       <div className="card px-4 py-4">
@@ -143,7 +143,12 @@ const articleComponents = () => {
 
                 <h6 className="mt-3">Usage:</h6>
 
-                <SyntaxHighlighter language="javascript" showLineNumbers style={atomOneDarkReasonable}>
+                <SyntaxHighlighter
+                  key={'code-' + item.name}
+                  language="javascript"
+                  showLineNumbers
+                  style={atomOneDarkReasonable}
+                  wrapLines={false}>
                   {`${item.import}\n
                   export default function App() {
                     return (
@@ -152,9 +157,9 @@ const articleComponents = () => {
                         .replace('\n/>', '\n    />')
                         .replace('\n</div>', '\n    </div>')
                         .replace('\n</>', '\n    </>')}
-                    )
-                  }
-                  `.replace(/^ {18}/gm, '')}
+                      )
+                    }
+                    `.replace(/^ {18}/gm, '')}
                 </SyntaxHighlighter>
               </div>
             ))}

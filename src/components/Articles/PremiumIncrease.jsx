@@ -1,5 +1,5 @@
 import Link from 'next/link'
-export default function PremiumIncrease(props) {
+function PremiumIncrease(props) {
   const { headline, caption, link } = props
   return (
     <>
@@ -192,3 +192,7 @@ export default function PremiumIncrease(props) {
     </>
   )
 }
+
+PremiumIncrease.displayName = 'PremiumIncrease'
+
+export default PremiumIncrease

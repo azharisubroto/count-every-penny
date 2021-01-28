@@ -1,4 +1,4 @@
-function AdrewVideo(props) {
+function VideoCard(props) {
   const { videoID, headline, description } = props
 
   return (
@@ -116,4 +116,6 @@ function AdrewVideo(props) {
   )
 }
 
-export default AdrewVideo
+VideoCard.displayName = 'VideoCard'
+
+export default VideoCard

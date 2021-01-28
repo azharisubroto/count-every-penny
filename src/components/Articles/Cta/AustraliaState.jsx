@@ -1,4 +1,4 @@
-export default function AustraliaStates({
+function AustraliaStates({
   link,
   isamp,
   colors,
@@ -307,3 +307,7 @@ export default function AustraliaStates({
     </>
   )
 }
+
+AustraliaStates.displayName = 'AustraliaStates'
+
+export default AustraliaStates

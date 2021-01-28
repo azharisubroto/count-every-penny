@@ -1,4 +1,4 @@
-export default function FundsList(props) {
+function FundsList(props) {
   const { link, ...other } = props
 
   const funds = [
@@ -72,3 +72,7 @@ export default function FundsList(props) {
     </div>
   )
 }
+
+FundsList.displayName = 'FundsList'
+
+export default FundsList
