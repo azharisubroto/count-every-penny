@@ -1,4 +1,6 @@
-export default function FundsList() {
+export default function FundsList(props) {
+  const { link, ...other } = props
+
   const funds = [
     'AHM.svg',
     'Australia-Unity.svg',
@@ -14,52 +16,59 @@ export default function FundsList() {
   ]
 
   return (
-    <div className="row row-cols-2 row-cols-lg-5">
-      {funds.map((item) => (
-        <div key={item} className="col">
-          <div className="brand-card">
-            <img src={`/static/img/partners/CTA/${item}`} alt="" loading="lazy" />
+    <div {...other}>
+      <div className="row row-cols-2 row-cols-lg-5">
+        {funds.map((item) => (
+          <div key={item} className="col">
+            <a href={link} className="brand-card">
+              <img src={`/static/img/partners/CTA/${item}`} alt="" loading="lazy" />
+            </a>
           </div>
+        ))}
+
+        <div className="col-lg-40">
+          <a href={link} className="brand-card">
+            Other Fund
+          </a>
         </div>
-      ))}
 
-      <div className="col-lg-40">
-        <div className="brand-card">Other Fund</div>
-      </div>
+        <div className="col-12 col-lg-40">
+          <a href={link} className="brand-card">
+            I'm not currently insured
+          </a>
+        </div>
 
-      <div className="col-12 col-lg-40">
-        <div className="brand-card">I'm not currently insured</div>
-      </div>
+        <style jsx>{`
+          .row {
+            & > div {
+              padding-top: 10px;
+              padding-bottom: 10px;
 
-      <style jsx>{`
-        .row {
-          & > div {
-            padding-top: 10px;
-            padding-bottom: 10px;
-
-            &.col-lg-40 {
-              @media screen and (min-width: 992px) {
-                width: 40%;
+              &.col-lg-40 {
+                @media screen and (min-width: 992px) {
+                  width: 40%;
+                }
               }
             }
           }
-        }
-        .brand-card {
-          background: #ffffff;
-          border: 1px solid #e6e6e6;
-          border-radius: 4px;
-          height: 50px;
-          line-height: 50px;
-          text-align: center;
-          cursor: pointer;
-          transition: border-color 0.2s ease;
-          will-change: border;
+          .brand-card {
+            display: block;
+            background: #ffffff;
+            border: 2px solid #e6e6e6;
+            border-radius: 4px;
+            height: 50px;
+            line-height: 45px;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.2s ease;
+            will-change: border;
 
-          &:hover {
-            border-color: #000;
+            &:hover {
+              border: 2px solid #f09020;
+            }
           }
-        }
-      `}</style>
+        `}</style>
+      </div>
     </div>
   )
 }

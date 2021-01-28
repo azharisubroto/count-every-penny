@@ -86,7 +86,31 @@ const ar_components = [
   {
     name: 'Funds List',
     import: "import FundsList from '@/components/Articles/Cta/FundsList'",
-    preview: <FundsList />
+    preview: (
+      <>
+        {/* Basic */}
+        <h5>Plain</h5>
+        <FundsList link="https://google.com" />
+
+        {/* Customize */}
+        <h5>Custom Markup</h5>
+        <div className="card px-4 py-4 mt-4">
+          <h4 className="text-20 lh-20 mt-0 text-center fw-700 mb-3">What is your current Health fund?</h4>
+
+          <FundsList link="https://google.com" />
+
+          <div className="alert alert-danger mt-3 text-center">
+            The average increase for <strong>Australian Unity</strong> policies was <strong>%X</strong> in October 2020
+            and will be a further <strong>%Y</strong> in April 2021. That's a <strong>%X+Y</strong> increase in 6
+            months!
+          </div>
+
+          <button className="btn btn-lg btn-primary btn-block py-3">
+            Save me some money on my Australian Unity policy
+          </button>
+        </div>
+      </>
+    )
   }
 ]
 
@@ -112,7 +136,10 @@ const articleComponents = () => {
                   {`${item.import}\n
                   export default function App() {
                     return (
-                      ${reactElementToJSXString(item.preview).replace(/^ {2}/gm, '      ').replace('\n/>', '\n    />')}
+                      ${reactElementToJSXString(item.preview)
+                        .replace(/^ {2}/gm, '      ')
+                        .replace('\n/>', '\n    />')
+                        .replace('\n</>', '\n    </>')}
                     )
                   }
                   `.replace(/^ {18}/gm, '')}
@@ -150,6 +177,10 @@ const articleComponents = () => {
         .sticky {
           position: sticky;
           top: 20px;
+        }
+
+        strong {
+          font-weight: 700;
         }
       `}</style>
     </>
