@@ -116,7 +116,12 @@ const ar_components = [
   {
     name: 'Fund Select',
     import: "import FundSelect from '@/components/Articles/Cta/FundSelect'",
-    preview: <FundSelect />
+    preview: (
+      <div className="card px-4 py-4">
+        <strong className="text-22 lh-30 mb-3 text-center fw-600">Select your fund</strong>
+        <FundSelect />
+      </div>
+    )
   }
 ]
 
@@ -145,6 +150,7 @@ const articleComponents = () => {
                       ${reactElementToJSXString(item.preview)
                         .replace(/^ {2}/gm, '      ')
                         .replace('\n/>', '\n    />')
+                        .replace('\n</div>', '\n    </div>')
                         .replace('\n</>', '\n    </>')}
                     )
                   }

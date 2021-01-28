@@ -38,7 +38,21 @@ export default function FundSelect() {
       </Select>
 
       <div className="alert alert-danger text-center mt-4">
-        Please select one fund to see the average increase from the last six months
+        {fund == 'Select One' && <>Please select one fund to see the average increase from the last six months</>}
+
+        {fund != 'Select One' && (
+          <>
+            The average increase for <strong>{fund}</strong> policies was{' '}
+            <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in October 2020 and will
+            be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in April
+            2021. That's a{' '}
+            <strong>
+              {Object.keys(fundlist).length > 0 &&
+                parseFloat(fundlist[`${fund}`][2020]) + parseFloat(fundlist[`${fund}`][2021])}
+            </strong>
+            % increase in 6 months!
+          </>
+        )}
       </div>
 
       <button
