@@ -60,6 +60,14 @@ function FundSelect() {
         className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
         Save me some money {fund != 'Select One' && <> on my {fund} policy</>}
       </button>
+
+      <style jsx>{`
+        .alert-danger {
+          background: #ffe7ca;
+          border: 1px solid #ffc989;
+          color: #333;
+        }
+      `}</style>
     </>
   )
 }

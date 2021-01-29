@@ -90,26 +90,12 @@ const ar_components = [
     import: "import FundsList from '@/components/Articles/Cta/FundsList'",
     preview: (
       <>
-        {/* Basic */}
-        <h5>Plain</h5>
-        <FundsList link="https://google.com" />
-
         {/* Customize */}
         <h5 className="mt-4">Custom Markup</h5>
         <div className="card px-4 py-4 mt-4">
           <h4 className="text-20 lh-20 mt-0 text-center fw-700 mb-3">What is your current Health fund?</h4>
 
           <FundsList link="https://google.com" />
-
-          <div className="alert alert-danger mt-3 text-center">
-            The average increase for <strong>Australian Unity</strong> policies was <strong>%X</strong> in October 2020
-            and will be a further <strong>%Y</strong> in April 2021. That's a <strong>%X+Y</strong> increase in 6
-            months!
-          </div>
-
-          <button className="btn btn-lg btn-primary btn-block py-3">
-            Save me some money on my Australian Unity policy
-          </button>
         </div>
       </>
     )
