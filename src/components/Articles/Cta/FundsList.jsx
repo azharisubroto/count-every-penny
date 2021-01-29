@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import Link from 'next/link'
 
 function FundsList(props) {
   const { link, ...other } = props
@@ -22,7 +23,7 @@ function FundsList(props) {
 
   return (
     <div {...other}>
-      <div className="row row-cols-2 row-cols-lg-5">
+      <div className="row row-cols-2 row-cols-lg-5 mb-4">
         {Object.entries(fundlist).map(([key]) => (
           <>
             {key != 'Select One' && key != "Average / I don't have a fund" && (
@@ -31,7 +32,6 @@ function FundsList(props) {
                   onClick={() => {
                     setFund(key)
                   }}
-                  href={link}
                   className={`brand-card ${key == fund ? 'active' : ''}`}>
                   <img src={`/static/img/partners/CTA/${key.replace(' ', '-')}.svg`} alt={key} loading="lazy" />
                 </button>
@@ -61,29 +61,33 @@ function FundsList(props) {
         </div>
       </div>
 
-      <div className="alert alert-danger text-center mt-4">
-        {fund == '' && <>Please select one fund to see the average increase from the last six months</>}
+      {fund in fundlist && (
+        <div className="alert alert-danger text-center">
+          {fund == '' && <>Please select one fund to see the average increase from the last six months</>}
 
-        {fund != '' && (
-          <>
-            The average increase for <strong>{fund}</strong> policies was{' '}
-            <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in October 2020 and will
-            be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2021]}%</strong> in April
-            2021. That's a{' '}
-            <strong>
-              {Object.keys(fundlist).length > 0 &&
-                parseFloat(fundlist[`${fund}`][2020]) + parseFloat(fundlist[`${fund}`][2021])}
-            </strong>
-            % increase in 6 months!
-          </>
-        )}
-      </div>
+          {fund in fundlist && (
+            <>
+              The average increase for <strong>{fund}</strong> policies was{' '}
+              <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in October 2020 and will
+              be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2021]}%</strong> in April
+              2021. That's a{' '}
+              <strong>
+                {Object.keys(fundlist).length > 0 &&
+                  parseFloat(fundlist[`${fund}`][2020]) + parseFloat(fundlist[`${fund}`][2021])}
+              </strong>
+              % increase in 6 months!
+            </>
+          )}
+        </div>
+      )}
 
-      <button
-        disabled={fund == ''}
-        className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
-        Save me some money {fund != 'Select One' && <> on my {fund} policy</>}
-      </button>
+      <Link href={link ? link : '/form/step1'}>
+        <button
+          disabled={fund == ''}
+          className={`btn btn-lg btn-block py-3 mt-2 ${fund in fundlist ? 'btn-primary ' : 'disabled btn-secondary'}`}>
+          Save me some money {fund in fundlist && <> on my {fund} policy</>}
+        </button>
+      </Link>
 
       <style jsx>{`
         .row {
@@ -125,6 +129,10 @@ function FundsList(props) {
           &:focus {
             border: 2px solid #f09020 !important;
             outline: none;
+          }
+
+          &:hover {
+            border-color: #d1d1d1;
           }
         }
 

@@ -55,7 +55,7 @@ const ar_components = [
             display: 'none'
           }
         }}
-        link="https://google.com"
+        link="/form/step1"
         isamp={false}
       />
     )
@@ -63,12 +63,12 @@ const ar_components = [
   {
     name: 'PremiumIncrease',
     import: "import PremiumIncrease from '@/components/Articles/PremiumIncrease'",
-    preview: <PremiumIncrease link="https://google.com" />
+    preview: <PremiumIncrease link="/form/step1" />
   },
   {
     name: 'LifeStageStack',
     import: "import LifeStageStack from '@/components/Articles/LifeStageStack'",
-    preview: <LifeStageStack link="https://google.com" />
+    preview: <LifeStageStack link="/form/step1" />
   },
   {
     name: 'WomTestimonial',
@@ -95,7 +95,7 @@ const ar_components = [
         <div className="card px-4 py-4 mt-4">
           <h4 className="text-20 lh-20 mt-0 text-center fw-700 mb-3">What is your current Health fund?</h4>
 
-          <FundsList link="https://google.com" />
+          <FundsList link="/form/step1" />
         </div>
       </>
     )
