@@ -106,7 +106,7 @@ const ar_components = [
     preview: (
       <div className="card px-4 py-4">
         <strong className="text-22 lh-30 mb-3 text-center fw-600">Select your fund</strong>
-        <FundSelect />
+        <FundSelect link="/form/step1" />
       </div>
     )
   },
