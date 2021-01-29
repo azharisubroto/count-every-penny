@@ -47,8 +47,8 @@ export default function FooterSimple(props) {
       {/* Styles */}
       <style jsx>{`
         .footer {
-          background: #fff;
-          padding: 20px 0;
+          background-color: #fff;
+          padding: 20px;
           text-align: center;
           border-top: 1px solid #eeeeee;
           margin-top: 50px;
@@ -102,8 +102,76 @@ export default function FooterSimple(props) {
             margin: 20px auto 0;
             color: #25282b;
           }
+
+          &.footer-dark {
+            background-color: #59370f;
+            border-color: #59370f;
+            color: #fff;
+
+            @media screen and (max-width: 500px) {
+              text-align: left;
+              padding-left: 10px;
+              padding-right: 10px;
+              background: #59370f;
+            }
+
+            .logo {
+              display: none !important;
+            }
+
+            ul {
+              @media screen and (max-width: 767px) {
+                border-bottom: none;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+              }
+              li {
+                font-size: 16px;
+                @media screen and (max-width: 767px) {
+                  margin-left: 5px;
+                  margin-right: 5px;
+                }
+                a {
+                  font-weight: 700;
+                  font-size: 16px;
+                }
+              }
+            }
+
+            .partners {
+              display: none;
+            }
+
+            a {
+              color: #fff;
+            }
+
+            .copyright {
+              color: #fff;
+              font-size: 14px;
+              font-weight: 400;
+              strong {
+                font-weight: 400;
+              }
+              @media screen and (max-width: 767px) {
+                text-align: center;
+              }
+            }
+          }
         }
       `}</style>
+      <style jsx global>
+        {`
+          .footer {
+            &.footer-dark {
+              .partners {
+                display: none;
+              }
+            }
+          }
+        `}
+      </style>
     </>
   )
 }

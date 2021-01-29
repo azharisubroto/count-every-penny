@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Logo from '@/components/Logo'
 
 export default function NavBarForm(props) {
+  const { type } = props
   let l_width = 177,
     l_height = 40
 
@@ -19,7 +20,15 @@ export default function NavBarForm(props) {
             {/* Left Content */}
             <Grid xs={6} item>
               <div className="logo">
-                <Logo width={l_width} height={l_height} />
+                {type == 'white' ? (
+                  <>
+                    <img src="/static/logo/cep-white.svg" className="logo-white" alt="Count Every Penny" />
+                  </>
+                ) : (
+                  <>
+                    <Logo width={l_width} height={l_height} />
+                  </>
+                )}
               </div>
             </Grid>
 
@@ -27,7 +36,13 @@ export default function NavBarForm(props) {
             <Grid xs={6} item style={{ textAlign: 'right' }}>
               <div className="phonebutton">
                 <div className="icon">
-                  <img src="/static/img/phone.svg" loading="lazy" width="32" height="32" alt="" />
+                  <img
+                    src={`${type == 'white' ? '/static/img/phone-white.svg' : '/static/img/phone.svg'}`}
+                    loading="lazy"
+                    width="32"
+                    height="32"
+                    alt=""
+                  />
                 </div>
                 <div className="number">
                   <a href="tel:1300163402">1300 163 402</a>
@@ -42,7 +57,7 @@ export default function NavBarForm(props) {
       <style jsx>
         {`
           header {
-            background: #fff;
+            background-color: #fff;
             min-height: 60px;
             display: flex;
             width: 100%;
@@ -51,6 +66,17 @@ export default function NavBarForm(props) {
             position: relative;
             z-index: 100;
             box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.05);
+
+            &.header-white {
+              background-color: transparent;
+              box-shadow: none;
+
+              .phonebutton {
+                a {
+                  color: #fff;
+                }
+              }
+            }
           }
 
           .phonebutton {
@@ -69,6 +95,10 @@ export default function NavBarForm(props) {
           }
 
           .logo {
+            &-white {
+              height: 50px;
+              width: auto;
+            }
             @media screen and (max-width: 500px) {
               max-width: 150px;
               height: auto;
