@@ -9,6 +9,11 @@ import { Text } from '@/components/editor/Text'
 import { Author } from '@/components/editor/ArticleAuthor'
 import { LifeStageCta1 } from '@/components/editor/LifeStageCta1'
 import { VideoCardEditor } from '@/components/editor/VideoCard'
+import { PremiumIncreaseEditor } from '@/components/editor/PremiumIncrease'
+import { WomTestimonialEditor } from '@/components/editor/WomTestimonial'
+import { AustraliaStateEditor } from '@/components/editor/AustraliaState'
+import { ProductReviewEditor } from '@/components/editor/ProductReview'
+import { FundSelectEditor } from '@/components/editor/FundSelect'
 
 export const Toolbox = () => {
   const { connectors } = useEditor()
@@ -72,6 +77,47 @@ export const Toolbox = () => {
             Video Card
           </MaterialButton>
         </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <PremiumIncreaseEditor />)}
+            disableElevation
+            variant="contained">
+            Premium Increase Table
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <WomTestimonialEditor />)}
+            disableElevation
+            variant="contained">
+            Word of Mouth
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <AustraliaStateEditor />)}
+            disableElevation
+            variant="contained">
+            Map CTA
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <FundSelectEditor />)}
+            disableElevation
+            variant="contained">
+            Fund Selection CTA
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <ProductReviewEditor />)}
+            disableElevation
+            variant="contained">
+            Product Review
+          </MaterialButton>
+        </Grid>
+
         {/* <Grid container direction="column" item>
           <MaterialButton ref={(ref) => connectors.create(ref, <Card />)} disableElevation variant="contained">
             Card

@@ -12,6 +12,11 @@ import { Text } from '@/components/editor/Text'
 import { Author } from '@/components/editor/ArticleAuthor'
 import { LifeStageCta1 } from '@/components/editor/LifeStageCta1'
 import { VideoCardEditor } from '@/components/editor/VideoCard'
+import { PremiumIncreaseEditor } from '@/components/editor/PremiumIncrease'
+import { WomTestimonialEditor } from '@/components/editor/WomTestimonial'
+import { AustraliaStateEditor } from '@/components/editor/AustraliaState'
+import { ProductReviewEditor } from '@/components/editor/ProductReview'
+import { FundSelectEditor } from '@/components/editor/FundSelect'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -35,7 +40,12 @@ export default function CepEditor(props) {
           CardBottom,
           Author,
           LifeStageCta1,
-          VideoCardEditor
+          VideoCardEditor,
+          PremiumIncreaseEditor,
+          WomTestimonialEditor,
+          AustraliaStateEditor,
+          ProductReviewEditor,
+          FundSelectEditor
         }}>
         <Topbar />
         <Grid container spacing={3} style={{ paddingTop: '10px' }}>
@@ -84,6 +94,11 @@ export default function CepEditor(props) {
       </Editor>
 
       <style jsx global>{`
+        body {
+          font-size: 16px;
+          line-height: 27px;
+        }
+
         .sticky {
           position: sticky;
           top: 90px;

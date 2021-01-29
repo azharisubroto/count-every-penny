@@ -79,7 +79,7 @@ function PremiumIncrease(props) {
                 </tfoot>
               </table>
             </div>
-            <p className="card-source mt-3 mb-0">Source: Health.gov.au</p>
+            <p className="card-source mt-3 mb-0 text-center">Source: Health.gov.au</p>
 
             <div className="pt-4 text-center">
               <Link href={link}>

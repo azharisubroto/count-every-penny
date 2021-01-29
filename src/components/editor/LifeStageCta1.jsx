@@ -9,7 +9,7 @@ export const LifeStageCta1 = ({ link }) => {
   } = useNode()
   return (
     <div ref={(ref) => connect(drag(ref))}>
-      <LifeStageStack link={link} />
+      <LifeStageStack link={link} className="my-4" />
     </div>
   )
 }

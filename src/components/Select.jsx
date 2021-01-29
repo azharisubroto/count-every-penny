@@ -25,10 +25,10 @@ const formControlStyle = {
   background: '#FCFCFC',
   border: '1px solid #DFDFDF',
   borderRadius: 4,
+  minHeight: 50,
   '& .MuiInputBase-formControl': {
-    height: 60,
-    minHeight: 60,
-    lineHeight: '60px',
+    height: 50,
+    lineHeight: '50px',
     '&:hover fieldset': formControlTouch,
     '&.Mui-focused fieldset': formControlTouch
   },

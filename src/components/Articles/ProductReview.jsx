@@ -1,15 +1,16 @@
-function ProductReview() {
+function ProductReview({
+  headline = 'Friendly & Helpful Service',
+  content = 'The whole experience was very friendly and helpful. We love being able to tailor the insurance cover to what our needs are, and we are saving $70 a fortnight with no decrease in cover. Thank you very much.',
+  username = '<strong>Sandy</strong> <span>|</span> Darling Downs, QLD'
+}) {
   return (
     <div className="article-widget-rating article-widget-rating--type-3">
       <div className="card">
         <div className="card-body">
-          <h5 className="card-title">Friendly &amp; Helpful Service</h5>
-          <p>
-            The whole experience was very friendly and helpful. We love being able to tailor the insurance cover to what
-            our needs are, and we are saving $70 a fortnight with no decrease in cover. Thank you very much.
-          </p>
+          <h5 className="card-title">{headline}</h5>
+          <p dangerouslySetInnerHTML={{ __html: content }}></p>
           <h6 className="card-author">
-            <strong>Sandy</strong> <span>|</span> Darling Downs, QLD
+            <div dangerouslySetInnerHTML={{ __html: username }}></div>
           </h6>
           <hr />
           <div className="row align-items-center">
@@ -45,6 +46,11 @@ function ProductReview() {
           &.card-widget {
             margin-bottom: 45px;
           }
+        }
+
+        p {
+          font-size: inherit;
+          line-height: inherit;
         }
       `}</style>
     </div>
