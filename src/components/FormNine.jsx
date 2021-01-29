@@ -596,6 +596,11 @@ export default function FormNine(props) {
             line-height: 45px;
             margin-bottom: 20px;
             color: #fff;
+
+            @media only screen and (max-width: 768px - 1) {
+              font-size: 20px;
+              line-height: 24px;
+            }
           }
           .card {
             margin-bottom: 40px;
@@ -606,12 +611,21 @@ export default function FormNine(props) {
             color: #333;
             &-body {
               padding: 40px;
+
+              @media only screen and (max-width: 768px - 1) {
+                padding: 20px;
+              }
             }
             &-title {
               font-weight: 700;
               font-size: 24px;
               line-height: 33px;
               margin-bottom: 20px;
+
+              @media only screen and (max-width: 768px - 1) {
+                font-size: 18px;
+                line-height: 24px;
+              }
             }
 
             p {
