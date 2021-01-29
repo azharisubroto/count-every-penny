@@ -84,7 +84,7 @@ function FundsList(props) {
       <Link href={link ? link : '/form/step1'}>
         <button
           disabled={fund == ''}
-          className={`btn btn-lg btn-block py-3 mt-2 ${fund in fundlist ? 'btn-primary ' : 'disabled btn-secondary'}`}>
+          className={`btn btn-lg btn-block py-3 mt-2 ${fund != '' ? 'btn-primary ' : 'disabled btn-secondary'}`}>
           Save me some money {fund in fundlist && <> on my {fund} policy</>}
         </button>
       </Link>
