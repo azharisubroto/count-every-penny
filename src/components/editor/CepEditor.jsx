@@ -17,6 +17,7 @@ import { WomTestimonialEditor } from '@/components/editor/WomTestimonial'
 import { AustraliaStateEditor } from '@/components/editor/AustraliaState'
 import { ProductReviewEditor } from '@/components/editor/ProductReview'
 import { FundSelectEditor } from '@/components/editor/FundSelect'
+import { FreebiesCTAEditor } from '@/components/editor/FreebiesCTA'
 
 const useStyles = makeStyles(() => ({
   root: {
@@ -45,7 +46,8 @@ export default function CepEditor(props) {
           WomTestimonialEditor,
           AustraliaStateEditor,
           ProductReviewEditor,
-          FundSelectEditor
+          FundSelectEditor,
+          FreebiesCTAEditor
         }}>
         <Topbar />
         <Grid container spacing={3} style={{ paddingTop: '10px' }}>

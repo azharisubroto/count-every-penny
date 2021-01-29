@@ -12,6 +12,7 @@ import WomTestimonial from '@/components/Articles/WomTestimonial'
 import ProductReview from '@/components/Articles/ProductReview'
 import FundsList from '@/components/Articles/Cta/FundsList'
 import FundSelect from '@/components/Articles/Cta/FundSelect'
+import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 
 const ar_components = [
   {
@@ -122,6 +123,11 @@ const ar_components = [
         <FundSelect />
       </div>
     )
+  },
+  {
+    name: 'FreebiesCTA',
+    import: "import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'",
+    preview: <FreebiesCTA />
   }
 ]
 

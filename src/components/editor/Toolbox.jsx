@@ -14,6 +14,7 @@ import { WomTestimonialEditor } from '@/components/editor/WomTestimonial'
 import { AustraliaStateEditor } from '@/components/editor/AustraliaState'
 import { ProductReviewEditor } from '@/components/editor/ProductReview'
 import { FundSelectEditor } from '@/components/editor/FundSelect'
+import { FreebiesCTAEditor } from '@/components/editor/FreebiesCTA'
 
 export const Toolbox = () => {
   const { connectors } = useEditor()
@@ -63,14 +64,6 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) => connectors.create(ref, <LifeStageCta1 link="http://google.com" />)}
-            disableElevation
-            variant="contained">
-            Life Stage Cards CTA
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
             ref={(ref) => connectors.create(ref, <VideoCardEditor />)}
             disableElevation
             variant="contained">
@@ -79,18 +72,36 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) => connectors.create(ref, <PremiumIncreaseEditor />)}
-            disableElevation
-            variant="contained">
-            Premium Increase Table
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
             ref={(ref) => connectors.create(ref, <WomTestimonialEditor />)}
             disableElevation
             variant="contained">
             Word of Mouth
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <ProductReviewEditor />)}
+            disableElevation
+            variant="contained">
+            Product Review
+          </MaterialButton>
+        </Grid>
+
+        {/* CTA */}
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <LifeStageCta1 link="http://google.com" />)}
+            disableElevation
+            variant="contained">
+            Life Stage Cards CTA
+          </MaterialButton>
+        </Grid>
+        <Grid container direction="column" item>
+          <MaterialButton
+            ref={(ref) => connectors.create(ref, <PremiumIncreaseEditor />)}
+            disableElevation
+            variant="contained">
+            Premium Increase CTA
           </MaterialButton>
         </Grid>
         <Grid container direction="column" item>
@@ -111,10 +122,10 @@ export const Toolbox = () => {
         </Grid>
         <Grid container direction="column" item>
           <MaterialButton
-            ref={(ref) => connectors.create(ref, <ProductReviewEditor />)}
+            ref={(ref) => connectors.create(ref, <FreebiesCTAEditor />)}
             disableElevation
             variant="contained">
-            Product Review
+            Freebies CTA
           </MaterialButton>
         </Grid>
 
