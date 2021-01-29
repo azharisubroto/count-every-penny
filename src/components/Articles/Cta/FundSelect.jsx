@@ -44,7 +44,7 @@ function FundSelect() {
           <>
             The average increase for <strong>{fund}</strong> policies was{' '}
             <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in October 2020 and will
-            be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in April
+            be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2021]}%</strong> in April
             2021. That's a{' '}
             <strong>
               {Object.keys(fundlist).length > 0 &&
@@ -58,8 +58,16 @@ function FundSelect() {
       <button
         disabled={fund == 'Select One'}
         className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
-        Save me some money
+        Save me some money {fund != 'Select One' && <> on my {fund} policy</>}
       </button>
+
+      <style jsx>{`
+        .alert-danger {
+          background: #ffe7ca;
+          border: 1px solid #ffc989;
+          color: #333;
+        }
+      `}</style>
     </>
   )
 }
