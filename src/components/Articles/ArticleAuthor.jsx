@@ -82,6 +82,9 @@ function ArticleAuthor({ avatar, name, date, isamp, variant }) {
             border-radius: 90px;
             overflow: hidden;
             margin-right: 10px;
+            img {
+              object-fit: cover;
+            }
           }
           .author-info {
             margin-right: auto;

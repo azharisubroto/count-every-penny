@@ -21,7 +21,7 @@ module.exports = {
       } else {
         var link = path.parse(file).name
         return {
-          link: link,
+          link: '/lp-articles/' + link,
           name: ccase.capitalCase(link)
         }
       }
