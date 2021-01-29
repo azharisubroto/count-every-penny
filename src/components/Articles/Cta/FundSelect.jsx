@@ -1,9 +1,10 @@
 import React from 'react'
+import Link from 'next/link'
 import axios from 'axios'
 import Select from '@/components/Select'
 import MenuItem from '@material-ui/core/MenuItem'
 
-function FundSelect() {
+function FundSelect({ link }) {
   const [fundlist, setFundlist] = React.useState([])
   const [fund, setFund] = React.useState('Select One')
 
@@ -55,11 +56,13 @@ function FundSelect() {
         )}
       </div>
 
-      <button
-        disabled={fund == 'Select One'}
-        className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
-        Save me some money {fund != 'Select One' && <> on my {fund} policy</>}
-      </button>
+      <Link href={link ? link : '/form/step1'}>
+        <button
+          disabled={fund == 'Select One'}
+          className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
+          Save me some money {fund != 'Select One' && <> on my {fund} policy</>}
+        </button>
+      </Link>
 
       <style jsx>{`
         .alert-danger {
