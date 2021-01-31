@@ -10,7 +10,7 @@ import PremiumIncrease from '@/components/Articles/PremiumIncrease'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import WomTestimonial from '@/components/Articles/WomTestimonial'
 import ProductReview from '@/components/Articles/ProductReview'
-import FundsList from '@/components/Articles/Cta/FundsList'
+import FundsTiles from '@/components/Articles/Cta/FundsTiles'
 import FundSelect from '@/components/Articles/Cta/FundSelect'
 import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 
@@ -86,8 +86,8 @@ const ar_components = [
     preview: <ProductReview />
   },
   {
-    name: 'FundsList',
-    import: "import FundsList from '@/components/Articles/Cta/FundsList'",
+    name: 'FundsTiles',
+    import: "import FundsTiles from '@/components/Articles/Cta/FundsTiles'",
     preview: (
       <>
         {/* Customize */}
@@ -95,7 +95,7 @@ const ar_components = [
         <div className="card px-4 py-4 mt-4">
           <h4 className="text-20 lh-20 mt-0 text-center fw-700 mb-3">What is your current Health fund?</h4>
 
-          <FundsList link="/form/step1" />
+          <FundsTiles link="/form/step1" />
         </div>
       </>
     )
