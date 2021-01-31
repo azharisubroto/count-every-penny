@@ -8,12 +8,13 @@ import Typography from '@material-ui/core/Typography'
 import PremiumIncrease from '@/components/Articles/PremiumIncrease'
 import VideoCard from '@/components/Articles/VideoCard'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import theme from '@/theme'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import FeefoTestimonial from '@/components/Articles/FeefoTestimonial'
 import WomTestimonial from '@/components/Articles/WomTestimonial'
 import { logEvent } from '@/utils/analytics'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   articlecard: {
     padding: 40,
     backgroundColor: '#fff',

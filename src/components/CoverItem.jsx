@@ -1,9 +1,10 @@
 import ListItem from '@material-ui/core/ListItem'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import theme from '@/theme'
 import Switch from './Switch'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   coverlist: {
     borderBottom: '1px solid #d7d7d7',
     fontStyle: 'italic',

@@ -2,9 +2,10 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/styles'
+import theme from '@/theme'
 
-//const useStyles = makeStyles((theme) => ({
-const useStyles = makeStyles((theme) => ({
+//const useStyles = makeStyles(() => ({
+const useStyles = makeStyles(() => ({
   getquotes: {
     borderBottom: `3px solid ${theme.palette.primary.darken1}`
   }

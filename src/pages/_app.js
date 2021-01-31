@@ -1,13 +1,9 @@
 import React from 'react'
 import Head from 'next/head'
-import { ThemeProvider } from '@material-ui/core/styles'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import theme from '@/theme'
 import { init, logPageView } from '@/utils/analytics'
 import { useRouter } from 'next/router'
 import { SWRConfig } from 'swr'
 import fetch from '@/utils/fetchJson'
-import 'bootstrap/dist/css/bootstrap.min.css'
 import '@/styles/styles.global.scss'
 
 // Start Application
@@ -51,7 +47,7 @@ function CountEveryPenny(props) {
         {loaded && isProd == true && (
           <>
             {/* HotJar Script */}
-            <script src="https://cdn.optimizely.com/js/19735997801.js"></script>
+            <script src="https://cdn.optimizely.com/js/19735997801.js" defer></script>
 
             <script
               dangerouslySetInnerHTML={{
@@ -101,20 +97,17 @@ function CountEveryPenny(props) {
           </>
         )}
       </Head>
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <CssBaseline />
-          <SWRConfig
-            value={{
-              fetcher: fetch,
-              onError: (err) => {
-                console.error(err)
-              }
-            }}>
-            <Component {...pageProps} />
-          </SWRConfig>
-        </Layout>
-      </ThemeProvider>
+      <Layout>
+        <SWRConfig
+          value={{
+            fetcher: fetch,
+            onError: (err) => {
+              console.error(err)
+            }
+          }}>
+          <Component {...pageProps} />
+        </SWRConfig>
+      </Layout>
     </>
   )
 }

@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 import { init, logEvent } from '@/utils/analytics'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   coverparent: {
     padding: 0
   },

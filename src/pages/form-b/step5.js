@@ -10,6 +10,7 @@ import Backdrop from '@material-ui/core/Backdrop'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import theme from '@/theme'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator'
 import { useSelector, useDispatch } from 'react-redux'
 import { formCounter } from '@/store/counter/action'
@@ -62,7 +63,7 @@ const formControlStyle = {
   }
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   cep_dialog: {
     [theme.breakpoints.down('xs')]: {
       '& .MuiPaper-root': {
