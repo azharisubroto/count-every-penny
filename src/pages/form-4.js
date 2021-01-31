@@ -1137,7 +1137,7 @@ function form4Page(props) {
 
       <style jsx>{`
         .hero {
-          background: url('/static/img/form_b/hero.jpg') no-repeat center center;
+          background: url('/static/img/form_b/hero.webp') no-repeat center center;
           background-size: cover;
           min-height: 300px;
           padding-top: 0;

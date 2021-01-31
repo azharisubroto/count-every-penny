@@ -1,24 +1,9 @@
 const menu = require('./src/utils/menu.js')
+// const withBundleAnalyzer = require('@next/bundle-analyzer')({
+//   enabled: process.env.ANALYZE === 'true'
+// })
 
 module.exports = {
-  // webpack: (config, { defaultLoaders }) => {
-  //   config.module.rules.push({
-  //     test: /\.scss$|\.css$/,
-  //     use: [
-  //       defaultLoaders.babel,
-  //       {
-  //         loader: require('styled-jsx/webpack').loader,
-  //         options: {
-  //           // type: "scoped"
-  //           type: 'global'
-  //         }
-  //       },
-  //       'sass-loader'
-  //     ]
-  //   })
-
-  //   return config
-  // },
   env: {
     SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD,
     // Firebase setup
@@ -38,3 +23,5 @@ module.exports = {
   compress: true,
   trailingSlash: false
 }
+
+//module.exports = withBundleAnalyzer({})
