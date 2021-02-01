@@ -1,8 +1,8 @@
-@import "../mixins/mixins.scss";
-@import './variables.scss';
-@import './animation.scss';
-@import './misc.scss';
-@import './thanks.scss';
+@import "../mixins/mixins";
+@import './variables';
+@import './animation';
+@import './misc';
+@import './thanks';
 
 .article-wrapper{
     overflow-x: hidden;
@@ -13,11 +13,11 @@
     @extend %montserrat-regular;
     width: 100%;
 
-    @import './global.scss';
-    @import '../components/components.scss';
+    @import './global';
+    @import '../components/components';
 }
 
 .article{
-@import './article.scss';
-@import '../utilities/utilities.scss';
+@import './article';
+@import '../utilities/utilities';
 }
