@@ -3,6 +3,8 @@ import Head from 'next/head'
 import NavBarThanks from '@/components/NavBarThanks'
 import FooterMisc from '@/components/FooterMisc'
 import LineSeparator from '@/components/LineSeparator'
+import ThanksRating from '@/components/ThanksRating'
+import ThanksFreebie from '@/components/ThanksFreebie'
 import ThanksVideo from '@/components/ThanksVideo'
 import ThanksBenefit from '@/components/ThanksBenefit'
 import ThanksAward from '@/components/ThanksAward'
@@ -58,96 +60,13 @@ export default function ThankYou1() {
             </div>
             <LineSeparator />
           </section>
-          <section className="thanks-rating">
-            <div className="container">
-              <h4 className="section-title">Count Every Penny and Health Insurance Comparison Reviews</h4>
-              <div className="row">
-                <div className="col-md-6">
-                  <div className="card card-rating">
-                    <div className="card-body">
-                      <div className="row justify-content-between align-items-center">
-                        <div className="col-auto">
-                          <div className="card-stars">
-                            <img src="/static/img/thankyou/rating/stars-1.svg" alt="Five Stars" />
-                          </div>
-                        </div>
-                        <div className="col-auto">
-                          <div className="card-brand">
-                            <img src="/static/img/thankyou/rating/feefo.png" alt="Feefo" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card-text">
-                        <h6 className="card-title">Great customer service</h6>
-                        <p>
-                          Tom Carroll was very professional, friendly and helpful. He took the time to explain
-                          everything to me and found me a better coverage for less $$ monthly! Thanks Tom = legend!
-                        </p>
-                      </div>
-                      <h6 className="card-author">— Caroline</h6>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="card card-rating">
-                    <div className="card-body">
-                      <div className="row justify-content-between align-items-center">
-                        <div className="col-auto">
-                          <div className="card-stars">
-                            <picture>
-                              <source
-                                srcSet="/static/img/thankyou/rating/stars-2-m.svg"
-                                media="(max-width: 768px)"
-                                type="image/png"
-                              />
-                              <source
-                                srcSet="/static/img/thankyou/rating/stars-2.svg"
-                                media="(min-width: 769px)"
-                                type="image/png"
-                              />
-                              <img src="/static/img/thankyou/rating/stars-2.svg" alt="Five Stars" />
-                            </picture>
-                          </div>
-                        </div>
-                        <div className="col-auto">
-                          <div className="card-brand">
-                            <img src="/static/img/thankyou/rating/word-of-mouth.png" alt="Word of Mouth" />
-                          </div>
-                        </div>
-                      </div>
-                      <div className="card-text">
-                        <p>
-                          Brittany gave exceptional service - thank you so much. I am saving over $700 a year. Wish I
-                          had done it before.
-                        </p>
-                      </div>
-                      <h6 className="card-author">— Caroline</h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <LineSeparator />
-          </section>
+          {/* THANKS RATING */}
+          <ThanksRating />
           <section className="thanks-freebie">
             <div className="container">
               <div className="row justify-content-center">
                 <div className="col-md-8">
-                  <div className="card mb-40px">
-                    <div className="card-body">
-                      <figure className="freebie mb-0">
-                        <div className="freebie-img">
-                          <img src="/static/img/thankyou/first-aid-kit.png" alt="First Aid Kit" />
-                        </div>
-                        <figcaption>
-                          <h3>
-                            <span>You will get a free</span> first aid kit when you switch &amp; save in{' '}
-                            <span>January</span>
-                          </h3>
-                        </figcaption>
-                      </figure>
-                    </div>
-                  </div>
+                  <ThanksFreebie />
 
                   <ThanksVideo />
                 </div>
@@ -302,6 +221,153 @@ export default function ThankYou1() {
       </div>
 
       <FooterMisc style={{ marginTop: 0 }} />
+      <style jsx>{`
+        $primary: #f09020;
+        $secondary: #0b3053;
+        $white: #fff;
+        $black: #000;
+        .page {
+          &--thanks {
+            color: #333;
+            background-color: #f9f9f9;
+            padding-top: 20px;
+
+            .page-content {
+              background-color: #f9f9f9;
+              padding: 0;
+            }
+          }
+
+          .thanks {
+            &-title {
+              text-align: center;
+              margin-bottom: 40px;
+              h1 {
+                font-weight: 800;
+                font-size: 55px;
+                line-height: 1;
+                letter-spacing: 0.07em;
+                color: $primary;
+                text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.1);
+                margin-bottom: 10px;
+
+                @media screen and (max-width: 768px - 1) {
+                  font-size: 45px;
+                }
+              }
+
+              h4 {
+                font-weight: 700;
+                font-size: 24px;
+                line-height: 40px;
+                margin-bottom: 0;
+              }
+            }
+
+            &-table {
+              @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
+                display: none;
+              }
+              @media screen and (max-width: 768px - 1) {
+                display: none;
+              }
+            }
+          }
+
+          .card {
+            position: relative;
+            border-radius: 5px;
+            border: 1px solid #e3e3e3;
+            box-shadow: 0px 6px 10px rgba($black, 0.1);
+            margin-bottom: 20px;
+
+            &-body {
+              padding: 20px;
+            }
+
+            &-img {
+              img {
+                width: 100%;
+                height: auto;
+              }
+            }
+
+            &-footer {
+              background-color: #f8f8f8;
+              border-color: #e3e3e3;
+            }
+
+            &-widget {
+              margin-bottom: 40px;
+              h5 {
+                &.card-title {
+                  font-size: 24px;
+                  line-height: 34px;
+                  margin-bottom: 20px;
+                  font-weight: 700;
+
+                  @media screen and (max-width: 768px - 1) {
+                    font-size: 22px;
+                    line-height: 30px;
+                  }
+                }
+
+                + p {
+                  font-size: 16px;
+                  line-height: 24px;
+                }
+              }
+              .card {
+                &-body {
+                  padding: 20px;
+                }
+
+                &-img {
+                  img {
+                    width: 100%;
+                    height: auto;
+                  }
+                }
+
+                &-source {
+                  font-style: italic;
+                  font-size: 16px;
+                  line-height: 20px;
+                  text-align: center;
+                  color: #707070;
+                  margin-bottom: 0;
+
+                  @media screen and (max-width: 768px - 1) {
+                    font-size: 14px;
+                    line-height: 22px;
+                  }
+
+                  &.small {
+                    font-size: 12px;
+                    line-height: 15px;
+                    font-style: normal;
+                  }
+                }
+
+                &-footer {
+                  padding: 25px;
+                  p {
+                    margin-bottom: 0;
+                    font-size: 15px;
+                    line-height: 22px;
+                  }
+                }
+              }
+            }
+
+            &-table {
+              border-radius: 5px;
+              overflow: hidden;
+              margin-bottom: 20px;
+            }
+          }
+        }
+      `}</style>
     </>
   )
 }

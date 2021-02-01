@@ -233,6 +233,22 @@ const ThanksSwiper = () => {
       {/* Style */}
       <style jsx>
         {`
+          $primary: #f09020;
+          $secondary: #0b3053;
+          $white: #fff;
+          $black: #000;
+          .thanks {
+            &-slide {
+              margin-bottom: 40px;
+              display: none;
+              @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
+                display: block;
+              }
+              @media screen and (max-width: 768px - 1) {
+                display: block;
+              }
+            }
+          }
           .swiper {
             &-slide {
               width: calc(100% / 3);
@@ -241,6 +257,49 @@ const ThanksSwiper = () => {
               }
               @media screen and (max-width: 540px) {
                 width: 100%;
+              }
+            }
+            &-button {
+              &-next,
+              &-prev {
+                top: 35%;
+                color: $primary;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background-color: $white;
+                box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:after {
+                  font-size: 1.5rem;
+                }
+              }
+              &-next {
+                right: 25px;
+              }
+
+              &-prev {
+                left: 25px;
+              }
+            }
+            &-pagination {
+              position: relative;
+              margin: 40px 0;
+
+              &-bullet {
+                width: 10px;
+                height: 10px;
+                outline: 0;
+                border: 0;
+                margin: 0 3px;
+                opacity: 0.25;
+                background: $primary;
+                &-active {
+                  opacity: 1;
+                }
               }
             }
           }
