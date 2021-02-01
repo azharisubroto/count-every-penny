@@ -28,7 +28,7 @@ const ar_components = [
   {
     name: 'ArticleAuthor',
     import: "import ArticleAuthor from '@/components/Articles/ArticleAuthor'",
-    preview: <ArticleAuthor isamp={false} avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
+    preview: <ArticleAuthor isamp={false} avatar="/static/img/audrea.webp" name="Audrea B." date="10th February 2021" />
   },
   {
     name: 'AustraliaState',
