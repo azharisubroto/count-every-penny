@@ -1015,7 +1015,7 @@ function form4Page(props) {
 
                               <Box mt={3} mx={{ sm: 0, lg: 3 }}>
                                 <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>
-                                  Free 210 piece first aid kit if you switch in January
+                                  Free 210 piece first aid kit if you switch in February
                                 </div>
                                 <div className={`${classes.featureitem} mb-3 text-16 text-md-18`}>
                                   100% Australian owned &amp; operated

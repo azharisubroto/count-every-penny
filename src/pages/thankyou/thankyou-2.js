@@ -121,7 +121,7 @@ export default function ThankYou2() {
                     <figcaption>
                       <h3>
                         <span>You will get a free</span> first aid kit when you switch &amp; save in{' '}
-                        <span>January</span>
+                        <span>February</span>
                       </h3>
                     </figcaption>
                   </figure>

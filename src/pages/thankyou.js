@@ -28,7 +28,7 @@ export default function ThankYou1() {
     <>
       <Head>
         <title>Thank You</title>
-        <link href="/static/css/theme.css" rel="stylesheet" />
+        {/* <link href="/static/css/theme.css" rel="stylesheet" /> */}
       </Head>
       {/* NAVBAR */}
       <NavBarThanks />

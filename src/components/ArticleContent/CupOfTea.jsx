@@ -391,7 +391,7 @@ function AustralianSeniors(props) {
         </P>
         <P>
           And remember, as a special deal for Count Every Penny readers only, you&rsquo;re entitled to a free 210 piece
-          first aid kit when you switch and save in January. Enter your details below and see how much you could be
+          first aid kit when you switch and save in February. Enter your details below and see how much you could be
           saving today.
         </P>
 

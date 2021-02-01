@@ -116,7 +116,7 @@ function DeathByThousandCut(props) {
                     Hospital &amp; Extras policies start at $2.93 per day with no lock in contracts. There are no fees
                     or markups, and no waiting periods to worry about if you’re switching to a similar or lower level of
                     cover.{' '}
-                    <strong>Plus, if you switch &amp; save in January, you get a free 210 piece first aid kit.</strong>
+                    <strong>Plus, if you switch &amp; save in February, you get a free 210 piece first aid kit.</strong>
                   </p>
 
                   <h4>Here’s How You Do It:</h4>
@@ -501,7 +501,7 @@ function DeathByThousandCut(props) {
                     <br />
                     <br />
                     And remember, as a special deal for Count Every Penny readers only, you’re entitled to a free 210
-                    piece first aid kit when you switch and save in January. Enter your details below and see how much
+                    piece first aid kit when you switch and save in February. Enter your details below and see how much
                     you could be saving today.
                   </p>
 
