@@ -202,7 +202,7 @@ function DeathByThousandCut(props) {
         <P>
           Hospital &amp; Extras policies start at just $2.93 per day with no lock in contracts. There are no fees or
           markups, and no waiting periods to worry about if you’re switching to a similar or lower level of cover.{' '}
-          <strong>Plus, if you switch & save in January, you get a free 210 piece first aid kit</strong>
+          <strong>Plus, if you switch & save in February, you get a free 210 piece first aid kit</strong>
         </P>
 
         <Typography className={classes.sectionheading} component="h4">
