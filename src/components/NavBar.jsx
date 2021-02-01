@@ -1,8 +1,7 @@
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
 import { makeStyles } from '@material-ui/styles'
 import theme from '@/theme'
+import dynamic from 'next/dynamic'
+const Button = dynamic(() => import('@material-ui/core/Button'))
 
 //const useStyles = makeStyles(() => ({
 const useStyles = makeStyles(() => ({
@@ -19,19 +18,17 @@ export default function NavBar(props) {
   return (
     <>
       <header {...other}>
-        <Container style={{ maxWidth: 1100 }}>
-          <Grid container spacing={2} justify="space-between" alignItems="center">
-            {/* Left Content */}
-            <Grid xs={6} md={3} item>
+        <div className="container">
+          <div className="row justify-content-between align-content-center">
+            <div className="col-6 col-md-3">
               {!isamp ? (
                 <img src={logoImg} loading="lazy" alt="Logo" width="195" height="44.82" className="logo" />
               ) : (
                 <amp-img src={logoImg} width="195" height="44.82" layout="responsive"></amp-img>
               )}
-            </Grid>
+            </div>
 
-            {/* Sidebar */}
-            <Grid xs={6} md={9} item style={{ textAlign: 'right' }}>
+            <div className="col-6 col-md-9 text-right">
               {cta != null ? (
                 cta
               ) : (
@@ -45,9 +42,9 @@ export default function NavBar(props) {
                   {!isamp && <img src={chevron} alt="chevron" width="20" height="20" style={{ marginLeft: 5 }} />}
                 </Button>
               )}
-            </Grid>
-          </Grid>
-        </Container>
+            </div>
+          </div>
+        </div>
       </header>
       <style jsx>
         {`

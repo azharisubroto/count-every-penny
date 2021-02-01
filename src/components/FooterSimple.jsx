@@ -1,4 +1,5 @@
-import Partners from '@/components/Partners'
+import dynamic from 'next/dynamic'
+const Partners = dynamic(() => import('@/components/Partners'))
 
 export default function FooterSimple(props) {
   const { isamp, ...other } = props
