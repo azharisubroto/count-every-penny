@@ -6,13 +6,13 @@ const Card = dynamic(() => import('@/components/Card'))
 const ArticleAuthor = dynamic(() => import('@/components/Articles/ArticleAuthor'))
 const AustraliaState = dynamic(() => import('@/components/Articles/Cta/AustraliaState'))
 const P = dynamic(() => import('@/components/Articles/Paragraph'))
-const Typography = dynamic(() => import('@material-ui/core/Typography'))
 const PremiumIncrease = dynamic(() => import('@/components/Articles/PremiumIncrease'))
 const VideoCard = dynamic(() => import('@/components/Articles/VideoCard'))
 const LifeStageStack = dynamic(() => import('@/components/Articles/LifeStageStack'))
 const FeefoTestimonial = dynamic(() => import('@/components/Articles/FeefoTestimonial'))
 const WomTestimonial = dynamic(() => import('@/components/Articles/WomTestimonial'))
 
+import Typography from '@material-ui/core/Typography'
 import theme from '@/theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
 import { logEvent } from '@/utils/analytics'
