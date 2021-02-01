@@ -47,7 +47,7 @@ function DeathByThousandCut(props) {
                   <h6>
                     By <strong>Audrea B.</strong>
                   </h6>
-                  <p>Last Updated 19th January 2021</p>
+                  <p>Last Updated 19th February 2021</p>
                 </div>
               </div>
             </div>

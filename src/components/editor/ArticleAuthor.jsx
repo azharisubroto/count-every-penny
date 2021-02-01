@@ -62,7 +62,7 @@ export const ArticleAuthorSettings = () => {
 export const ArticleAuthorDefaultProps = {
   avatar: 'Audrea B.',
   name: '/static/img/audrea.webp',
-  date: '10th January 2021'
+  date: '10th February 2021'
 }
 
 Author.craft = {
