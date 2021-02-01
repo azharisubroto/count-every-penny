@@ -32,7 +32,7 @@ export default function ThankYou1() {
       </Head>
       {/* NAVBAR */}
       <NavBarThanks />
-      <div className="page-content page--thanks">
+      <div className="page page--thanks">
         <div className="page-content">
           <section className="thanks-title">
             <div className="container">
