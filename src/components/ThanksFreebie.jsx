@@ -9,7 +9,7 @@ export default function ThanksFreebie() {
             </div>
             <figcaption>
               <h3>
-                <span>You will get a free</span> first aid kit when you switch &amp; save in <span>January</span>
+                <span>You will get a free</span> first aid kit when you switch &amp; save in <span>February</span>
               </h3>
             </figcaption>
           </figure>
