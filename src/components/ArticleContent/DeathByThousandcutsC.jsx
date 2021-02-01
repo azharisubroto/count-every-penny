@@ -42,7 +42,7 @@ function DeathByThousandCut(props) {
                 </div>
                 <div className="col-auto pl-0">
                   <div className="article-meta__date">
-                    <p>Last Updated 19th January 2021</p>
+                    <p>Last Updated 19th February 2021</p>
                   </div>
                 </div>
                 <div className="col-auto pl-0">

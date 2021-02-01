@@ -159,7 +159,7 @@ function SeniorAussies(props) {
         </Typography>
 
         {/* AUTHOR */}
-        <ArticleAuthor isamp={isamp} avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
+        <ArticleAuthor isamp={isamp} avatar="/static/img/audrea.webp" name="Audrea B." date="10th February 2021" />
 
         {/* THUMBNAIL */}
         <div className={classes.thumbnailContainer}>
