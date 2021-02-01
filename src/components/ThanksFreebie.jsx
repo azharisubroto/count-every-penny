@@ -20,6 +20,13 @@ export default function ThanksFreebie() {
         $secondary: #0b3053;
         $white: #fff;
         $black: #000;
+        .card {
+          position: relative;
+          border-radius: 5px;
+          border: 1px solid #e3e3e3;
+          box-shadow: 0px 6px 10px rgba($black, 0.1);
+          margin-bottom: 20px;
+        }
         .freebie {
           display: flex;
           align-items: center;

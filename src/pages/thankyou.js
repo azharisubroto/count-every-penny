@@ -221,12 +221,113 @@ export default function ThankYou1() {
       </div>
 
       <FooterMisc style={{ marginTop: 0 }} />
-      <style jsx>{`
+      <style jsx global>{`
         $primary: #f09020;
         $secondary: #0b3053;
         $white: #fff;
         $black: #000;
+        .card {
+          position: relative;
+          border-radius: 5px;
+          border: 1px solid #e3e3e3;
+          box-shadow: 0px 6px 10px rgba($black, 0.1);
+          margin-bottom: 20px;
+
+          &-shadow {
+            position: relative;
+            border-radius: 5px;
+            border: 1px solid #e3e3e3;
+            box-shadow: 0px 6px 10px rgba($black, 0.1);
+            margin-bottom: 20px;
+          }
+
+          &-body {
+            padding: 20px;
+          }
+
+          &-img {
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+
+          &-footer {
+            background-color: #f8f8f8;
+            border-color: #e3e3e3;
+          }
+
+          &-widget {
+            margin-bottom: 40px;
+            h5 {
+              &.card-title {
+                font-size: 24px;
+                line-height: 34px;
+                margin-bottom: 20px;
+                font-weight: 700;
+
+                @media screen and (max-width: 768px - 1) {
+                  font-size: 22px;
+                  line-height: 30px;
+                }
+              }
+
+              + p {
+                font-size: 16px;
+                line-height: 24px;
+              }
+            }
+            .card {
+              &-body {
+                padding: 20px;
+              }
+
+              &-img {
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+              }
+
+              &-source {
+                font-style: italic;
+                font-size: 16px;
+                line-height: 20px;
+                text-align: center;
+                color: #707070;
+                margin-bottom: 0;
+
+                @media screen and (max-width: 768px - 1) {
+                  font-size: 14px;
+                  line-height: 22px;
+                }
+
+                &.small {
+                  font-size: 12px;
+                  line-height: 15px;
+                  font-style: normal;
+                }
+              }
+
+              &-footer {
+                padding: 25px;
+                p {
+                  margin-bottom: 0;
+                  font-size: 15px;
+                  line-height: 22px;
+                }
+              }
+            }
+          }
+
+          &-table {
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+          }
+        }
         .page {
+          padding-bottom: 40px;
           &--thanks {
             color: #333;
             background-color: #f9f9f9;
@@ -235,6 +336,209 @@ export default function ThankYou1() {
             .page-content {
               background-color: #f9f9f9;
               padding: 0;
+            }
+          }
+
+          &-content {
+            padding: 20px;
+            background-color: $white;
+            border-radius: 4px;
+            &__item {
+              margin-bottom: 60px;
+
+              &:last-of-type {
+                margin-bottom: 0;
+              }
+            }
+            h4 {
+              font-size: 24px;
+              margin-bottom: 20px;
+              font-weight: 700;
+              margin-top: 0;
+              &:focus,
+              &:active {
+                outline: none;
+                box-shadow: none;
+              }
+
+              &.section-title {
+                margin-bottom: 35px;
+              }
+            }
+
+            &.js-toc-content {
+              h1::before,
+              h2::before,
+              h3::before,
+              h4::before,
+              h5::before,
+              h6::before {
+                display: block;
+                content: ' ';
+                height: 60px;
+                margin-top: -60px;
+                visibility: hidden;
+              }
+            }
+
+            p {
+              font-size: 18px;
+              line-height: 28px;
+              margin-top: 0;
+              margin-bottom: 20px;
+            }
+
+            a {
+              color: $primary;
+
+              &:hover {
+                color: lighten($primary, 10%);
+              }
+            }
+
+            &-table {
+              margin-bottom: 20px;
+              border-radius: 4px;
+              overflow: hidden;
+              .table {
+                border: 1px solid #efefef;
+                border-spacing: 0;
+                tr {
+                  th,
+                  td {
+                    font-size: 18px;
+                    line-height: 30px;
+                    padding: 15px 20px;
+                    color: #333;
+                    vertical-align: middle;
+                    border: none;
+
+                    @media screen and (max-width: 768px - 1) {
+                      font-size: 15px;
+                      line-height: 18px;
+                      padding: 15px 10px;
+                    }
+                  }
+
+                  td {
+                    background-color: #fdfdfd;
+                  }
+
+                  th {
+                    font-weight: 700;
+                    font-size: 20px;
+                    line-height: 27px;
+                  }
+                }
+
+                &-orange {
+                  th {
+                    background-color: $primary;
+                    color: $white !important;
+                    &:nth-child(2) {
+                      background-color: #e98a1a;
+                    }
+                    &:nth-child(3) {
+                      background-color: #d3801f;
+                    }
+                  }
+                }
+
+                &-danger {
+                  background-color: #e8b9b9 !important;
+                  color: #b41818 !important;
+                }
+
+                &-success {
+                  background-color: #dee8b9 !important;
+                  color: #85a412 !important;
+                }
+
+                &-fund {
+                  margin-bottom: 0;
+                  text-align: center;
+                  border: 1px solid #efefef;
+                  .table-orange {
+                    th {
+                      background-color: #f09020;
+                      color: $white;
+                      &:nth-child(2) {
+                        background-color: #e98a1a;
+                      }
+                      &:nth-child(3) {
+                        background-color: #e1871e;
+                      }
+                      &:last-child {
+                        background-color: #d3801f;
+                      }
+                    }
+                  }
+                  tbody {
+                    tr {
+                      td {
+                        font-weight: 700;
+
+                        &:first-child {
+                          font-weight: 600;
+                          text-align: left;
+                        }
+
+                        &:nth-child(2) {
+                          background-color: #fdfdfd;
+                        }
+                        &:last-child {
+                          background-color: #f9f9f9;
+                        }
+                      }
+                    }
+                  }
+                  tfoot {
+                    tr {
+                      td {
+                        background-color: #fee9cf;
+                        color: #7c4e18;
+                        font-weight: 700;
+
+                        &:first-child {
+                          font-weight: 600;
+                          text-align: left;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            ul {
+              padding: 0;
+              margin-bottom: 0;
+              padding-left: 10px;
+              li {
+                font-size: 18px;
+                line-height: 28px;
+                margin-top: 0;
+                margin-bottom: 20px;
+                position: relative;
+              }
+
+              &.check {
+                list-style: none;
+
+                li {
+                  padding-left: 40px;
+                  &:before {
+                    position: absolute;
+                    content: '';
+                    width: 26px;
+                    height: 26px;
+                    left: 0;
+                    background-image: url('/static/img/misc-pages/check.png');
+                    background-size: cover;
+                    top: 2px;
+                  }
+                }
+              }
             }
           }
 
@@ -271,99 +575,6 @@ export default function ThankYou1() {
               @media screen and (max-width: 768px - 1) {
                 display: none;
               }
-            }
-          }
-
-          .card {
-            position: relative;
-            border-radius: 5px;
-            border: 1px solid #e3e3e3;
-            box-shadow: 0px 6px 10px rgba($black, 0.1);
-            margin-bottom: 20px;
-
-            &-body {
-              padding: 20px;
-            }
-
-            &-img {
-              img {
-                width: 100%;
-                height: auto;
-              }
-            }
-
-            &-footer {
-              background-color: #f8f8f8;
-              border-color: #e3e3e3;
-            }
-
-            &-widget {
-              margin-bottom: 40px;
-              h5 {
-                &.card-title {
-                  font-size: 24px;
-                  line-height: 34px;
-                  margin-bottom: 20px;
-                  font-weight: 700;
-
-                  @media screen and (max-width: 768px - 1) {
-                    font-size: 22px;
-                    line-height: 30px;
-                  }
-                }
-
-                + p {
-                  font-size: 16px;
-                  line-height: 24px;
-                }
-              }
-              .card {
-                &-body {
-                  padding: 20px;
-                }
-
-                &-img {
-                  img {
-                    width: 100%;
-                    height: auto;
-                  }
-                }
-
-                &-source {
-                  font-style: italic;
-                  font-size: 16px;
-                  line-height: 20px;
-                  text-align: center;
-                  color: #707070;
-                  margin-bottom: 0;
-
-                  @media screen and (max-width: 768px - 1) {
-                    font-size: 14px;
-                    line-height: 22px;
-                  }
-
-                  &.small {
-                    font-size: 12px;
-                    line-height: 15px;
-                    font-style: normal;
-                  }
-                }
-
-                &-footer {
-                  padding: 25px;
-                  p {
-                    margin-bottom: 0;
-                    font-size: 15px;
-                    line-height: 22px;
-                  }
-                }
-              }
-            }
-
-            &-table {
-              border-radius: 5px;
-              overflow: hidden;
-              margin-bottom: 20px;
             }
           }
         }

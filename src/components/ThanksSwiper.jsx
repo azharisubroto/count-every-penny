@@ -305,6 +305,11 @@ const ThanksSwiper = () => {
           }
           .card {
             &-fund {
+              position: relative;
+              border-radius: 5px;
+              border: 1px solid #e3e3e3;
+              box-shadow: 0px 6px 10px rgba($black, 0.1);
+              margin-bottom: 20px;
               .card-header {
                 background-color: ${theme.palette.cep.primary};
                 h6 {

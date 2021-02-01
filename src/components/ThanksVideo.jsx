@@ -57,6 +57,13 @@ function ThanksVideo() {
               @include img-cover;
             }
           }
+          .card {
+            position: relative;
+            border-radius: 5px;
+            border: 1px solid #e3e3e3;
+            box-shadow: 0px 6px 10px rgba($black, 0.1);
+            margin-bottom: 20px;
+          }
           .article {
             &-video {
               margin-bottom: 40px;

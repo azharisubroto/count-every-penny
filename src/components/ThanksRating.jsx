@@ -75,6 +75,11 @@ export default function ThanksRating() {
       </section>
       <style jsx>{`
         .card {
+          position: relative;
+          border-radius: 5px;
+          border: 1px solid #e3e3e3;
+          box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.1);
+          margin-bottom: 20px;
           &-rating {
             .card {
               &-title {
