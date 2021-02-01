@@ -5,10 +5,11 @@ import AustraliaState from '@/components/Articles/Cta/AustraliaState'
 import P from '@/components/Articles/Paragraph'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/core/styles/makeStyles'
+import theme from '@/theme'
 import LifeStageStack from '@/components/Articles/LifeStageStack'
 import FreebiesCTA from '@/components/Articles/Cta/FreebiesCTA'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   articlecard: {
     padding: 40,
     backgroundColor: '#fff',

@@ -1,14 +1,13 @@
 import React from 'react'
 import Head from 'next/head'
-import Button from '@/components/Button'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
-import NavBar from '@/components/NavBar'
-import AgeCardBlueYellow from '@/components/Articles/Cta/AgeCardBlueYellow'
-import AustraliaState from '@/components/Articles/Cta/AustraliaState'
-import FooterSimple from '@/components/FooterSimple'
 import theme from '@/theme'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
+import AustraliaState from '@/components/Articles/Cta/AustraliaState'
+const NavBar = dynamic(() => import('@/components/NavBar'))
+const FooterSimple = dynamic(() => import('@/components/FooterSimple'))
+const AgeCardBlueYellow = dynamic(() => import('@/components/Articles/Cta/AgeCardBlueYellow'))
+const Button = dynamic(() => import('@/components/Button'))
 
 export default function Article2(props) {
   const isAmp = false
@@ -96,19 +95,16 @@ export default function Article2(props) {
 
       {/* Container */}
       <section className={`${className} main-content`} {...rest}>
-        <Container style={{ maxWidth: 1100 }}>
-          <Grid container spacing={4}>
-            {/* Left Content */}
-            <Grid item xs={12} md={8}>
+        <div className="container">
+          <div className="row">
+            <div className="col-12 col-md-8">
               <div className="content-wrapper">{content && Content}</div>
-            </Grid>
-
-            {/* Sidebar */}
-            <Grid item xs={12} md={4}>
+            </div>
+            <div className="col-12 col-md-4">
               <aside className="sticky">{sidebar ? <>{Sidebar}</> : <AgeCardBlueYellow link={mainlink} />}</aside>
-            </Grid>
-          </Grid>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Footer */}

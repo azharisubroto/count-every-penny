@@ -1,9 +1,29 @@
-const menu = require('./src/utils/menu.js')
-// const withBundleAnalyzer = require('@next/bundle-analyzer')({
-//   enabled: process.env.ANALYZE === 'true'
-// })
+const withPreact = (next = {}) =>
+  Object.assign({}, next, {
+    webpack(config, options) {
+      const { dev, isServer } = options
 
-module.exports = {
+      // Use Preact only in client production bundle.
+      if (!dev && !isServer) {
+        Object.assign(config.resolve.alias, {
+          react: 'preact/compat',
+          'react-dom': 'preact/compat',
+          'create-react-class': 'preact-compat/lib/create-react-class',
+          'react-dom-factories': 'preact-compat/lib/react-dom-factories'
+        })
+      }
+
+      if (typeof next.webpack === 'function') {
+        return next.webpack(config, options)
+      }
+
+      return config
+    }
+  })
+
+const menu = require('./src/utils/menu.js')
+
+module.exports = withPreact({
   env: {
     SECRET_COOKIE_PASSWORD: process.env.SECRET_COOKIE_PASSWORD,
     // Firebase setup
@@ -22,6 +42,4 @@ module.exports = {
   poweredByHeader: false,
   compress: true,
   trailingSlash: false
-}
-
-//module.exports = withBundleAnalyzer({})
+})

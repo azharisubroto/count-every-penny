@@ -62,7 +62,7 @@ const formControlStyle = {
 }
 
 // Custom Styles
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   bar: () => ({
     borderRadius: 50,
     backgroundColor: 'rgba(0,0,0,.1)'

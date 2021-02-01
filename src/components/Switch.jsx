@@ -1,7 +1,8 @@
 import { withStyles } from '@material-ui/core/styles'
 import Switch from '@material-ui/core/Switch'
+import theme from '@/theme'
 
-const IOSSwitch = withStyles((theme) => ({
+const IOSSwitch = withStyles(() => ({
   root: {
     width: 42,
     height: 26,

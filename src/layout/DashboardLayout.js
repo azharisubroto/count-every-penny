@@ -22,6 +22,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { secondaryListItems } from './listItems'
 import Collapse from '@material-ui/core/Collapse'
+import theme from '@/theme'
 
 // function Copyright() {
 //   return (
@@ -35,7 +36,7 @@ import Collapse from '@material-ui/core/Collapse'
 
 const drawerWidth = 240
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     display: 'flex'
   },

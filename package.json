@@ -40,6 +40,7 @@
     "next-iron-session": "^4.1.10",
     "next-redux-wrapper": "^6.0.2",
     "path": "^0.12.7",
+    "preact": "^10.5.12",
     "prop-types": "^15.7.2",
     "pure-react-carousel": "^1.27.6",
     "react": "17.0.0",
