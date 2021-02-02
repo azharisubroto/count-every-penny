@@ -3,7 +3,10 @@ import { useNode } from '@craftjs/core'
 import { Slider, FormControl, FormLabel, FormControlLabel, RadioGroup, Radio } from '@material-ui/core'
 import ColorPicker from 'material-ui-color-picker'
 import React, { useState, useEffect } from 'react'
-import ContentEditable from 'react-contenteditable'
+import Editor from 'react-medium-editor'
+// load theme styles with webpack
+require('medium-editor/dist/css/medium-editor.css')
+require('medium-editor/dist/css/themes/default.css')
 
 export const Text = ({ text, fontSize, textAlign, textColor, fontWeight }) => {
   const {
@@ -28,12 +31,13 @@ export const Text = ({ text, fontSize, textAlign, textColor, fontWeight }) => {
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events
     <div ref={(ref) => connect(drag(ref))} onClick={() => selected && setEditable(true)}>
-      <ContentEditable
-        html={text}
+      <Editor
         disabled={!editable}
-        onChange={(e) => setProp((props) => (props.text = e.target.value.replace(/<\/?[^>]+(>|$)/g, '')), 500)}
-        tagName="p"
+        text={text}
+        onChange={(e) => setProp((props) => (props.text = e), 500)}
+        options={{ toolbar: { buttons: ['bold', 'italic', 'underline', 'anchor', 'h2', 'h3', 'quote'] } }}
         style={{
+          fontFamily: '',
           fontSize: `${fontSize}px`,
           lineHeight: `${parseInt(fontSize * 1.5)}px`,
           textAlign,
