@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Leads;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Leads|null find($id, $lockMode = null, $lockVersion = null)
@@ -26,6 +27,15 @@ class LeadsRepository extends ServiceEntityRepository
         return $qb->where($qb->expr()->between('l.date_created', ':start_date', ':end_date'))
                   ->setParameter('start_date', $startDate->format('Y-m-d') . ' 00:00:00')
                   ->setParameter('end_date', $endDate->format('Y-m-d') . ' 23:59:59')
+                  ->getQuery()
+                  ->getResult();
+    }
+
+    public function getLeadsHasActiveCampaignID()
+    {
+        $qb = $this->createQueryBuilder('l');
+
+        return $qb->where($qb->expr()->isNotNull('l.activecampaign_id'))
                   ->getQuery()
                   ->getResult();
     }
