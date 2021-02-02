@@ -63,7 +63,7 @@ export default function privacyPolicy() {
             <div className="row justify-content-center">
               <div className="col-xl-11">
                 <div className="row">
-                  <div className="col-lg-6">
+                  <div className="col-md-6">
                     <ul className="features-list">
                       <li>The most complained about health insurers in Australia</li>
                       <li>How much has each fund’s premium increased over the last 23 years</li>
@@ -71,7 +71,7 @@ export default function privacyPolicy() {
                       <li>What percentage extras treatment expenses are covered by the fund</li>
                     </ul>
                   </div>
-                  <div className="col-lg-6">
+                  <div className="col-md-6">
                     <ul className="features-list">
                       <li>Which funds pay out the most to their members</li>
                       <li>Which funds had the highest rate rises in 2020 and 2021</li>
@@ -91,7 +91,7 @@ export default function privacyPolicy() {
       <style jsx>
         {`
           .page {
-            padding-bottom: 60px;
+            padding-bottom: 40px;
             &--ebook {
               .container {
                 position: relative;
