@@ -142,6 +142,17 @@ class DefaultController extends AbstractController
         if(empty($activeCampaignResponse->message) && empty($activeCampaignResponse->errors)) {
             $leads->setActivecampaignId($activeCampaignResponse->contact->id);
             $em->persist($leads);
+
+            $this->helper->createPostRequest('https://asymmetricinfoau.api-us1.com/api/3/accountContacts',
+                [
+                    'accountContact' => [
+                        'contact' => $activeCampaignResponse->contact->id,
+                        'account' => 2, //CEP Account ID
+                    ]
+                ], [
+                    'Api-Token: 7040bcf0fc18276925e6d7b5bb1cfbc5164a01aee66c0e674acb1448a1f235c84e7e8134',
+                    'Content-Type: application/json'
+                ]);
         }
 
         $em->flush();
