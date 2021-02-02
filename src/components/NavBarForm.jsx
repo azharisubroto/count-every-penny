@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid'
 import Logo from '@/components/Logo'
 
 export default function NavBarForm(props) {
-  const { type } = props
+  const { type, cta } = props
   let l_width = 177,
     l_height = 40
 
@@ -33,22 +33,26 @@ export default function NavBarForm(props) {
             </Grid>
 
             {/* Sidebar */}
-            <Grid xs={6} item style={{ textAlign: 'right' }}>
-              <div className="phonebutton">
-                <div className="icon">
-                  <img
-                    src={`${type == 'white' ? '/static/img/phone-white.svg' : '/static/img/phone.svg'}`}
-                    loading="lazy"
-                    width="32"
-                    height="32"
-                    alt=""
-                  />
-                </div>
-                <div className="number">
-                  <a href="tel:1300163402">1300 163 402</a>
-                </div>
-              </div>
-            </Grid>
+            {cta != 0 && (
+              <>
+                <Grid xs={6} item style={{ textAlign: 'right' }}>
+                  <div className="phonebutton">
+                    <div className="icon">
+                      <img
+                        src={`${type == 'white' ? '/static/img/phone-white.svg' : '/static/img/phone.svg'}`}
+                        loading="lazy"
+                        width="32"
+                        height="32"
+                        alt=""
+                      />
+                    </div>
+                    <div className="number">
+                      <a href="tel:1300163402">1300 163 402</a>
+                    </div>
+                  </div>
+                </Grid>
+              </>
+            )}
           </Grid>
         </Container>
       </header>
