@@ -52,9 +52,7 @@ export default function ArticleList() {
                 <TableCell>
                   <strong>Title</strong>
                 </TableCell>
-                <TableCell align="left">
-                  <strong>Link</strong>
-                </TableCell>
+
                 <TableCell align="right">
                   <strong>Action</strong>
                 </TableCell>
@@ -67,14 +65,13 @@ export default function ArticleList() {
                     <TableCell component="th" scope="row">
                       {article.title}
                     </TableCell>
-                    <TableCell align="left">
-                      <Link color="secondary" href={`/lp-articles/${article.slug}`}>
-                        <a>{article.slug}</a>
-                      </Link>
-                    </TableCell>
                     <TableCell align="right">
+                      <Link color="secondary" href={`/lp-articles/${article.slug}`}>
+                        <a className="btn btn-success">View</a>
+                      </Link>
+                      {'  '}
                       <Link color="secondary" href={`./articles/edit/${article.id}`}>
-                        <a>Edit</a>
+                        <a className="btn btn-text btn-secondary">Edit</a>
                       </Link>
                     </TableCell>
                   </TableRow>
