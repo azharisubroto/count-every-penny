@@ -8,7 +8,11 @@ export default async (req, res) => {
     formdata.append(key, payload[key])
   }
 
-  const url = 'https://counteverypenny.com.au/lead/submit'
+  if(process.env.NODE_ENV === 'production') {
+    var url = 'https://counteverypenny.com.au/lead/submit'
+  } else {
+    var url = 'https://dev.counteverypenny.com.au/lead/submit'
+  }
 
   const response = await fetch(url, {
     method: 'POST',
