@@ -16,7 +16,7 @@ export default function addNewArticle() {
       <DashboardLayout>
         <div className="row align-items-center">
           <div className="col-md-9">
-            <h3 className="my-0">Add New Article</h3>
+            <h3 className="my-0">Edit Article</h3>
           </div>
         </div>
 
