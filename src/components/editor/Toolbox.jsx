@@ -1,5 +1,5 @@
 import { useEditor, Element } from '@craftjs/core'
-import { Box, Typography, Grid, Button as MaterialButton } from '@material-ui/core'
+import { Box } from '@material-ui/core'
 import React from 'react'
 
 import { Button } from '@/components/editor/Button'
@@ -18,123 +18,107 @@ import { FreebiesCTAEditor } from '@/components/editor/FreebiesCTA'
 
 export const Toolbox = () => {
   const { connectors } = useEditor()
+  const btnclass = 'btn btn-block btn-secondary text-12 mt-2'
 
   return (
     <Box px={2} py={2}>
-      <Grid container direction="column" alignItems="center" justify="center" spacing={1}>
-        <Box pb={2}>
-          <Typography>Drag to add</Typography>
-        </Box>
-        <Grid container direction="column" item>
-          <MaterialButton
+      <div className="row">
+        <div className="col-12 mb-3">
+          <strong>Drag to add</strong>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <Button text="Click me" size="small" />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
             Button
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <Text text="Hi world" />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
             Text
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <Element canvas is={Container} background="#f1f1f1" padding={20} />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
             Card
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) =>
               connectors.create(
                 ref,
                 <Author avatar="/static/img/audrea.webp" name="Audrea B." date="10th January 2021" />
               )
             }
-            disableElevation
+            className={btnclass}
             variant="contained">
             Article Author
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
-            ref={(ref) => connectors.create(ref, <VideoCardEditor />)}
-            disableElevation
-            variant="contained">
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button ref={(ref) => connectors.create(ref, <VideoCardEditor />)} className={btnclass} variant="contained">
             Video Card
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <WomTestimonialEditor />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
             Word of Mouth
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <ProductReviewEditor />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
             Product Review
-          </MaterialButton>
-        </Grid>
-
-        {/* CTA */}
-        <Grid container direction="column" item>
-          <MaterialButton
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <LifeStageCta1 link="http://google.com" />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
-            Life Stage Cards CTA
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+            Life Stage Cards
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <PremiumIncreaseEditor />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
-            Premium Increase CTA
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
+            Premium Increase
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button
             ref={(ref) => connectors.create(ref, <AustraliaStateEditor />)}
-            disableElevation
+            className={btnclass}
             variant="contained">
-            Map CTA
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
-            ref={(ref) => connectors.create(ref, <FundSelectEditor />)}
-            disableElevation
-            variant="contained">
-            Fund Selection CTA
-          </MaterialButton>
-        </Grid>
-        <Grid container direction="column" item>
-          <MaterialButton
-            ref={(ref) => connectors.create(ref, <FreebiesCTAEditor />)}
-            disableElevation
-            variant="contained">
-            Freebies CTA
-          </MaterialButton>
-        </Grid>
-
-        {/* <Grid container direction="column" item>
-          <MaterialButton ref={(ref) => connectors.create(ref, <Card />)} disableElevation variant="contained">
-            Card
-          </MaterialButton>
-        </Grid> */}
-      </Grid>
+            Map
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button ref={(ref) => connectors.create(ref, <FundSelectEditor />)} className={btnclass} variant="contained">
+            Fund Selection
+          </button>
+        </div>
+        <div className="col-md-6">
+          <button ref={(ref) => connectors.create(ref, <FreebiesCTAEditor />)} className={btnclass} variant="contained">
+            Freebies
+          </button>
+        </div>
+      </div>
     </Box>
   )
 }

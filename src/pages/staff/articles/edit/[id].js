@@ -2,12 +2,15 @@
 import Head from 'next/head'
 import DashboardLayout from '@/layout/DashboardLayout'
 import CepEditor from '@/components/editor/CepEditor'
+import { useRouter } from 'next/router'
 
 export default function addNewArticle() {
+  const router = useRouter()
+
   return (
     <>
       <Head>
-        <title>Add new article</title>
+        <title>Edit article</title>
       </Head>
 
       <DashboardLayout>
@@ -19,9 +22,7 @@ export default function addNewArticle() {
 
         <hr />
 
-        <div>
-          <CepEditor />
-        </div>
+        <div>{router.query.id && <CepEditor articleid={router.query.id} />}</div>
       </DashboardLayout>
     </>
   )

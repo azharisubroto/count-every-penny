@@ -27,7 +27,7 @@ const useStyles = makeStyles(() => ({
 }))
 export default function CepEditor(props) {
   const classes = useStyles()
-  const { sidebarSlot } = props
+  const { sidebarSlot, articleid } = props
 
   return (
     <>
@@ -49,9 +49,10 @@ export default function CepEditor(props) {
           FundSelectEditor,
           FreebiesCTAEditor
         }}>
-        <Topbar />
         <Grid container spacing={3} style={{ paddingTop: '10px' }}>
           <Grid item xs md={9}>
+            <Topbar articleID={articleid} />
+
             <div className="editor-container">
               <Frame>
                 <Element canvas is={Container} padding={40} background="#fff" style={{ minHeight: 300 }}>

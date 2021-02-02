@@ -45,6 +45,13 @@ export const Text = ({ text, fontSize, textAlign, textColor, fontWeight }) => {
           fontWeight: fontWeight
         }}
       />
+
+      <style jsx global>{`
+        a {
+          color: #3d91df;
+          text-decoration: underline;
+        }
+      `}</style>
     </div>
   )
 }

@@ -10,6 +10,7 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import fire from '@/utils/fire-config'
 
 const useStyles = makeStyles({
   table: {
@@ -21,6 +22,21 @@ const articles = process.env.article_list
 
 export default function ArticleList() {
   const classes = useStyles()
+  const [posts, setPosts] = React.useState([])
+
+  React.useEffect(() => {
+    fire
+      .firestore()
+      .collection('blog')
+      .onSnapshot((snap) => {
+        const blogs = snap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        console.log(blogs)
+        setPosts(blogs)
+      })
+  }, [])
 
   return (
     <>
@@ -28,7 +44,47 @@ export default function ArticleList() {
         <title>Articles</title>
       </Head>
       <DashboardLayout>
-        <h3>Static Native Articles</h3>
+        <h3>Dynamic Articles</h3>
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>
+                  <strong>Title</strong>
+                </TableCell>
+                <TableCell align="left">
+                  <strong>Link</strong>
+                </TableCell>
+                <TableCell align="right">
+                  <strong>Action</strong>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {posts.map((article) => {
+                return (
+                  <TableRow key={article.slug}>
+                    <TableCell component="th" scope="row">
+                      {article.title}
+                    </TableCell>
+                    <TableCell align="left">
+                      <Link color="secondary" href={`/lp-articles/${article.slug}`}>
+                        <a>{article.slug}</a>
+                      </Link>
+                    </TableCell>
+                    <TableCell align="right">
+                      <Link color="secondary" href={`./articles/edit/${article.id}`}>
+                        <a>Edit</a>
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                )
+              })}
+            </TableBody>
+          </Table>
+        </TableContainer>
+
+        <h3 className="mt-5">Static Native Articles</h3>
         <TableContainer component={Paper}>
           <Table className={classes.table} aria-label="simple table">
             <TableHead>

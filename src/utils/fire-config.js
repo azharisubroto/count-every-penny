@@ -2,13 +2,13 @@ import { firebase } from '@firebase/app'
 import '@firebase/firestore'
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_APIKEY,
-  authDomain: process.env.FIREBASE_AUTHDOMAIN,
-  projectId: process.env.FIREBASE_PROJECTID,
-  storageBucket: process.env.FIREBASE_STORAGEBUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
-  appId: process.env.FIREBASE_APPID,
-  measurementId: process.env.FIREBASE_MEASUREMENTID
+  apiKey: 'AIzaSyB8IrKreJZDn6OF3bQE02BoS4hNXt_tHY0',
+  authDomain: 'count-every-penny-blog.firebaseapp.com',
+  projectId: 'count-every-penny-blog',
+  storageBucket: 'count-every-penny-blog.appspot.com',
+  messagingSenderId: '156763202345',
+  appId: '1:156763202345:web:97d85eaecd08521a504d38',
+  measurementId: 'G-NFHFNR6LN1'
 }
 try {
   firebase.initializeApp(firebaseConfig)
