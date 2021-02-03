@@ -125,7 +125,7 @@ export default function privacyPolicy() {
                     line-height: 63px;
                     margin-bottom: 10px;
 
-                    @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                    @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                       font-size: 36px;
                       line-height: 49px;
                     }
@@ -150,6 +150,12 @@ export default function privacyPolicy() {
                           left: 50%;
                           transform: translateX(-50%);
 
+                          @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
+                            width: 100px;
+                            height: 6px;
+                            background-size: 100px 6px;
+                          }
+
                           @media only screen and (max-width: 768px - 1) {
                             width: 84px;
                             height: 5px;
@@ -166,7 +172,7 @@ export default function privacyPolicy() {
                     line-height: 41px;
                     margin-bottom: 30px;
 
-                    @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                    @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                       font-size: 24px;
                       line-height: 33px;
                     }
@@ -179,7 +185,7 @@ export default function privacyPolicy() {
                 }
 
                 &-form {
-                  @media only screen and (max-width: 992px - 1) {
+                  @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                     padding-right: 0;
                   }
                   @media screen and (max-width: 768px - 1) {
@@ -197,7 +203,7 @@ export default function privacyPolicy() {
                   color: #120136;
                   margin-bottom: 60px;
 
-                  @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                  @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                     font-size: 24px;
                     line-height: 33px;
                   }
@@ -227,7 +233,7 @@ export default function privacyPolicy() {
                     margin-bottom: 30px;
                     position: relative;
 
-                    @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                    @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                       font-size: 20px;
                       line-height: 27px;
                       color: #494949;
