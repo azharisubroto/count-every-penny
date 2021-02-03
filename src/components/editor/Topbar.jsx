@@ -15,9 +15,11 @@ import fire from '@/utils/fire-config'
 import lz from 'lzutf8'
 import TextField from '@/components/form/TextField'
 import React, { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export const Topbar = (props) => {
   const { articleID } = props
+  const router = useRouter()
 
   const { actions, query, enabled, canUndo, canRedo } = useEditor((state, query) => ({
     enabled: state.options.enabled,
@@ -81,6 +83,7 @@ export const Topbar = (props) => {
       .then((doc) => {
         //console.log(res)
         console.log('Document written with ID: ', doc.id)
+        router.push('/staff/articles/edit/' + doc.id)
         setLoading(false)
       })
   }
