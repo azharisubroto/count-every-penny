@@ -32,7 +32,7 @@ export default function privacyPolicy() {
               </div>
             </div>
             <div className="row justify-content-center">
-              <div className="col-xl-11">
+              <div className="col-xl-11 col-lg-11">
                 <div className="row justify-content-lg-center justify-content-start align-items-md-center">
                   <div className="col-lg-5 col-md-6 col-10 pr-lg-4 pr-3 pl-lg-3 pl-md-0 pl-3">
                     <div className="hero-ebook">
