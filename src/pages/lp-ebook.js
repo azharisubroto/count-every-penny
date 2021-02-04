@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import NavBarForm from '@/components/NavBarForm'
+import NavBarEbook from '@/components/NavBarEbook'
 import FormEbook from '@/components/FormEbook'
 import FooterSimpleEbook from '@/components/FooterSimpleEbook'
 
@@ -14,22 +14,15 @@ export default function privacyPolicy() {
           rel="stylesheet"></link>
       </Head>
       {/* NAVBAR */}
-      <NavBarForm
-        logoprops={{
-          logoWidth: 245,
-          logoHeight: 53
-        }}
-        cta={0}
-        style={{ padding: '10px 0' }}
-      />
+      <NavBarEbook />
       <div className="page page--ebook">
         <section className="hero">
           <div className="container">
             <div className="row justify-content-center">
-              <div className="col-lg-11">
+              <div className="col-lg-11 col-11">
                 <div className="hero-caption">
                   <h1>
-                    Get your <span className="text-underline">FREE</span> eBook Now
+                    Get your <span className="underline">FREE</span> eBook Now
                   </h1>
                   <h3>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum justo ut justo congue
@@ -39,14 +32,14 @@ export default function privacyPolicy() {
               </div>
             </div>
             <div className="row justify-content-center">
-              <div className="col-xl-11">
-                <div className="row justify-content-lg-center justify-content-start">
-                  <div className="col-lg-5 col-10 pr-lg-4 pr-3">
+              <div className="col-xl-11 col-lg-11">
+                <div className="row justify-content-lg-center justify-content-start align-items-md-center">
+                  <div className="col-lg-5 col-md-6 col-10 pr-lg-4 pr-3 pl-lg-3 pl-md-0 pl-3">
                     <div className="hero-ebook">
                       <img src="/static/img/ebook/ebook.png" alt="Ebook" className="w-100" />
                     </div>
                   </div>
-                  <div className="col-lg-6 pl-lg-4 pl-3 hero-form">
+                  <div className="col-lg-6 col-md-5 pl-lg-4 pl-3 hero-form">
                     <FormEbook />
                   </div>
                 </div>
@@ -56,12 +49,16 @@ export default function privacyPolicy() {
         </section>
         <section className="features">
           <div className="container">
-            <h3 className="features-title">
-              All the dirty little secrets your health insurer doesn’t want you to know about. Written by industry
-              insiders. Get it <strong>FREE for a limited time</strong>, delivered instantly to your email inbox.
-            </h3>
             <div className="row justify-content-center">
-              <div className="col-xl-11">
+              <div className="col-xl-11 col-11">
+                <h3 className="features-title">
+                  All the dirty little secrets your health insurer doesn’t want you to know about. Written by industry
+                  insiders. Get it <strong>FREE for a limited time</strong>, delivered instantly to your email inbox.
+                </h3>
+              </div>
+            </div>
+            <div className="row justify-content-center">
+              <div className="col-xl-11 col-11">
                 <div className="row">
                   <div className="col-md-6">
                     <ul className="features-list">
@@ -105,10 +102,10 @@ export default function privacyPolicy() {
 
                 &:before {
                   width: 110%;
-                  height: 40%;
+                  height: 50%;
                   position: absolute;
                   left: 50%;
-                  bottom: -90px;
+                  bottom: -15%;
                   content: '';
                   background-color: #fff;
                   transform: translateX(-50%) rotate(8deg);
@@ -128,7 +125,7 @@ export default function privacyPolicy() {
                     line-height: 63px;
                     margin-bottom: 10px;
 
-                    @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                    @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                       font-size: 36px;
                       line-height: 49px;
                     }
@@ -136,6 +133,36 @@ export default function privacyPolicy() {
                     @media only screen and (max-width: 768px - 1) {
                       font-size: 32px;
                       line-height: 38px;
+                    }
+
+                    span {
+                      &.underline {
+                        position: relative;
+
+                        &:before {
+                          width: 138px;
+                          height: 6px;
+                          position: absolute;
+                          bottom: 0;
+                          background-image: url('/static/img/ebook/underline.png');
+                          background-size: 138px 6px;
+                          content: '';
+                          left: 50%;
+                          transform: translateX(-50%);
+
+                          @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
+                            width: 100px;
+                            height: 6px;
+                            background-size: 100px 6px;
+                          }
+
+                          @media only screen and (max-width: 768px - 1) {
+                            width: 84px;
+                            height: 5px;
+                            background-size: 84px 5px;
+                          }
+                        }
+                      }
                     }
                   }
 
@@ -145,7 +172,7 @@ export default function privacyPolicy() {
                     line-height: 41px;
                     margin-bottom: 30px;
 
-                    @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                    @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                       font-size: 24px;
                       line-height: 33px;
                     }
@@ -158,7 +185,10 @@ export default function privacyPolicy() {
                 }
 
                 &-form {
-                  @media screen and (max-width: 992px - 1) {
+                  @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
+                    padding-right: 0;
+                  }
+                  @media screen and (max-width: 768px - 1) {
                     margin-top: -50%;
                   }
                 }
@@ -173,7 +203,7 @@ export default function privacyPolicy() {
                   color: #120136;
                   margin-bottom: 60px;
 
-                  @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                  @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                     font-size: 24px;
                     line-height: 33px;
                   }
@@ -203,7 +233,7 @@ export default function privacyPolicy() {
                     margin-bottom: 30px;
                     position: relative;
 
-                    @media only screen and (min-width: 992px) and (max-width: 1200px - 1) {
+                    @media only screen and (min-width: 768px) and (max-width: 992px - 1) {
                       font-size: 20px;
                       line-height: 27px;
                       color: #494949;
