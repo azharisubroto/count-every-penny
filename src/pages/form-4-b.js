@@ -888,7 +888,7 @@ function form4Page(props) {
                                 errorMessages={['Required', 'Invalid Email']}
                                 placeholder="Enter Email Address"
                                 onChange={(e) => {
-                                  setState('email', e.target.value)
+                                  setState('email', e.target.value.replace(' ', ''))
                                 }}
                               />
                             </Box>

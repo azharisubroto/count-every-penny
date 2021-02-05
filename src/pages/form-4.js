@@ -990,7 +990,7 @@ function form4Page(props) {
                                     value={state.email}
                                     className={`${classes.formcontrol}`}
                                     onChange={(e) => {
-                                      setState('email', e.target.value)
+                                      setState('email', e.target.value.replace(' ', ''))
                                     }}
                                   />
                                 </Box>
