@@ -94,7 +94,7 @@ const formControlStyle = {
   }
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   bar: () => ({
     borderRadius: 50,
     backgroundColor: 'rgba(0,0,0,.1)'
@@ -1084,7 +1084,7 @@ function form4Page(props) {
 
       <style jsx>{`
         .hero {
-          background: url('/static/img/form_b/hero.jpg') no-repeat center center;
+          background: url('/static/img/form_b/hero.webp') no-repeat center center;
           background-size: cover;
           min-height: 300px;
           padding-top: 0;

@@ -70,7 +70,7 @@ const formControlStyle = {
 }
 
 // Custom Styles
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   formcard: {
     background: '#fff',
     border: '1px solid #e0e0e0',

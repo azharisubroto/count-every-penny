@@ -1,19 +1,23 @@
 import React from 'react'
 import Link from 'next/link'
-import Card from '@/components/Card'
-import ArticleAuthor from '@/components/Articles/ArticleAuthor'
-import AustraliaState from '@/components/Articles/Cta/AustraliaState'
-import P from '@/components/Articles/Paragraph'
+import dynamic from 'next/dynamic'
+
+const Card = dynamic(() => import('@/components/Card'))
+const ArticleAuthor = dynamic(() => import('@/components/Articles/ArticleAuthor'))
+const AustraliaState = dynamic(() => import('@/components/Articles/Cta/AustraliaState'))
+const P = dynamic(() => import('@/components/Articles/Paragraph'))
+const PremiumIncrease = dynamic(() => import('@/components/Articles/PremiumIncrease'))
+const VideoCard = dynamic(() => import('@/components/Articles/VideoCard'))
+const LifeStageStack = dynamic(() => import('@/components/Articles/LifeStageStack'))
+const FeefoTestimonial = dynamic(() => import('@/components/Articles/FeefoTestimonial'))
+const WomTestimonial = dynamic(() => import('@/components/Articles/WomTestimonial'))
+
 import Typography from '@material-ui/core/Typography'
-import PremiumIncrease from '@/components/Articles/PremiumIncrease'
-import VideoCard from '@/components/Articles/VideoCard'
+import theme from '@/theme'
 import makeStyles from '@material-ui/core/styles/makeStyles'
-import LifeStageStack from '@/components/Articles/LifeStageStack'
-import FeefoTestimonial from '@/components/Articles/FeefoTestimonial'
-import WomTestimonial from '@/components/Articles/WomTestimonial'
 import { logEvent } from '@/utils/analytics'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   articlecard: {
     padding: 40,
     backgroundColor: '#fff',

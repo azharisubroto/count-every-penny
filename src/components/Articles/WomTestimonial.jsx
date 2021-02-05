@@ -41,6 +41,10 @@ function WomTestimonial(props) {
           right: 0;
           bottom: 0;
         }
+
+        p {
+          font-size: inherit;
+        }
       `}</style>
     </div>
   )

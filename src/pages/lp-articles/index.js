@@ -15,7 +15,7 @@ export default function lpArticleIndex() {
                 <ul>
                   {process.env.article_list.map((item) => {
                     if (item.link != '/') {
-                      const path = `/lp-articles/${item.link}`
+                      const path = `${item.link}`
                       return (
                         <li className="mb-3" key={item.link}>
                           <Link href={path}>

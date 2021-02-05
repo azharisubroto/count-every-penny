@@ -1,25 +1,18 @@
 import React from 'react'
-import axios from 'axios'
+import Link from 'next/link'
 import Select from '@/components/Select'
 import MenuItem from '@material-ui/core/MenuItem'
+import useSWR from 'swr'
 
-function FundSelect() {
-  const [fundlist, setFundlist] = React.useState([])
+function FundSelect({ link }) {
   const [fund, setFund] = React.useState('Select One')
 
-  React.useEffect(() => {
-    fetchFund()
-  }, [])
+  const { data, error } = useSWR('/api/fundlist')
+  if (error) return <div>failed to load</div>
+  if (!data) return <div>loading...</div>
 
-  // Fetch fundlist
-  const fetchFund = async () => {
-    try {
-      const { data } = await axios.get('/api/fundlist')
-      setFundlist(data)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  const fundlist = data
+  const average = "Average / I don't have a fund"
 
   return (
     <>
@@ -40,11 +33,11 @@ function FundSelect() {
       <div className="alert alert-danger text-center mt-4">
         {fund == 'Select One' && <>Please select one fund to see the average increase from the last six months</>}
 
-        {fund != 'Select One' && (
+        {fund != 'Select One' && fund != average && (
           <>
             The average increase for <strong>{fund}</strong> policies was{' '}
             <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in October 2020 and will
-            be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2020]}%</strong> in April
+            be a further <strong>{Object.keys(fundlist).length > 0 && fundlist[`${fund}`][2021]}%</strong> in April
             2021. That's a{' '}
             <strong>
               {Object.keys(fundlist).length > 0 &&
@@ -53,13 +46,30 @@ function FundSelect() {
             % increase in 6 months!
           </>
         )}
+
+        {fund == average && (
+          <>
+            The average increase for policies was <strong>2.92%</strong> in October 2020 and will be a further{' '}
+            <strong>2.74%</strong> in April 2021. That's a <strong>5.66%</strong> increase in 6 months!
+          </>
+        )}
       </div>
 
-      <button
-        disabled={fund == 'Select One'}
-        className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
-        Save me some money
-      </button>
+      <Link href={link ? link : '/form/step1'}>
+        <button
+          disabled={fund == 'Select One'}
+          className={`btn btn-lg btn-block py-3 ${fund == 'Select One' ? 'disabled btn-secondary' : 'btn-primary'}`}>
+          Save me some money {fund != 'Select One' && <> on my {fund} policy</>}
+        </button>
+      </Link>
+
+      <style jsx>{`
+        .alert-danger {
+          background: #ffe7ca;
+          border: 1px solid #ffc989;
+          color: #333;
+        }
+      `}</style>
     </>
   )
 }
