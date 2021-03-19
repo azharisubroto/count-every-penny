@@ -247,10 +247,14 @@ export default function Step5(props) {
   const handleChange = (e, key) => {
     const { value } = e.target
 
+    let final_value = value
+    if (key == 'email') {
+      final_value = final_value.replace(' ', '')
+    }
     dispatch(
       formCounter({
         ...state,
-        [key]: value
+        [key]: final_value
       })
     )
   }

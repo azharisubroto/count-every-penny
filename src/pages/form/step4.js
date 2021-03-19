@@ -33,24 +33,24 @@ function Step4() {
       .map(([key, val]) => `${key}=${val}`)
       .join('&')
 
-    setTimeout(() => {
-      logEvent('Submitted Form Step 4')
+    // setTimeout(() => {
+    //   logEvent('Submitted Form Step 4')
 
-      dispatch(
-        formCounter({
-          ...state,
-          step_passed: 4
-        })
-      )
-      router
-        .push(`/form/step5${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
-        .then(() => window.scrollTo(0, 0))
-    }, 5000)
+    //   dispatch(
+    //     formCounter({
+    //       ...state,
+    //       step_passed: 4
+    //     })
+    //   )
+    //   router
+    //     .push(`/form/step5${Object.keys(urlparam).length > 0 ? '?' + urlparam : ''}`)
+    //     .then(() => window.scrollTo(0, 0))
+    // }, 5000)
   }, [router.asPath])
 
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Finding Policies Now - Count Every Penny</title>
       </Head>
 
@@ -60,7 +60,7 @@ function Step4() {
         <div className="container">
           <h1>Finding Policies Now</h1>
         </div>
-      </section>
+      </section> */}
 
       <section className="partners-section">
         <div className="container">

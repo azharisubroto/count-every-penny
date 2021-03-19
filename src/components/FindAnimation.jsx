@@ -17,10 +17,20 @@ function findAnimation() {
   ]
 
   // Lottie setup
-  const defaultOptions = {
+  const defaultOptions1 = {
     loop: true,
     autoplay: true,
-    animationData: animationData.default,
+    path: 'https://assets3.lottiefiles.com/packages/lf20_gfl00zkx.json',
+    renderer: 'canvas',
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
+  const defaultOptions2 = {
+    loop: true,
+    autoplay: true,
+    path: 'https://assets9.lottiefiles.com/packages/lf20_jfmjd0wo.json',
+    renderer: 'canvas',
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -30,7 +40,8 @@ function findAnimation() {
     <>
       <section className="partners-section">
         <div className="container">
-          <Lottie options={defaultOptions} height={300} width={300} />
+          <Lottie options={defaultOptions1} height={300} width={300} />
+          <Lottie options={defaultOptions2} height={300} width={300} />
 
           <div className="partners">
             {partners.map((item) => (
